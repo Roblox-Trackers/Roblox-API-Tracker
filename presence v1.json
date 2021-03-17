@@ -1,0 +1,205 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Presence Api v1"
+  },
+  "host": "presence.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/presence/register-app-presence": {
+      "post": {
+        "tags": [
+          "Presence"
+        ],
+        "summary": "Register User Presence for IOS, Android, Xbox, regular studio session",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "registerAppPresenceRequest",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Presence.Api.Models.Request.RegisterAppPresenceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Presence:RegisterAppPresence"
+          ]
+        }
+      }
+    },
+    "/v1/presence/users": {
+      "post": {
+        "tags": [
+          "Presence"
+        ],
+        "summary": "Get Presence for a list of users",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userPresenceRequest",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Presence.Api.Models.Request.UserPresenceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Presence.Api.Models.Response.UserPresencesResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Presence:GetUserPresences"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Presence.Api.Models.Request.UserPresenceRequest": {
+      "description": "Get users presences request model",
+      "type": "object",
+      "properties": {
+        "userIds": {
+          "description": "list of userIds to get presence for",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Roblox.Presence.Api.Models.Response.UserPresencesResponse": {
+      "description": "User Presences Response model",
+      "type": "object",
+      "properties": {
+        "userPresences": {
+          "description": "A collection of User Presences",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Presence.Api.Models.Response.UserPresence"
+          }
+        }
+      }
+    },
+    "Roblox.Presence.Api.Models.Response.UserPresence": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "userPresenceType": {
+          "description": "User presence Type",
+          "enum": [
+            "Offline",
+            "Online",
+            "InGame",
+            "InStudio"
+          ],
+          "type": "string"
+        },
+        "lastLocation": {
+          "description": "user's last location",
+          "type": "string"
+        },
+        "placeId": {
+          "format": "int64",
+          "description": "place Id",
+          "type": "integer"
+        },
+        "rootPlaceId": {
+          "format": "int64",
+          "description": "Root place Id",
+          "type": "integer"
+        },
+        "gameId": {
+          "format": "uuid",
+          "description": "game Id",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "universeId": {
+          "format": "int64",
+          "description": "universe Id",
+          "type": "integer"
+        },
+        "userId": {
+          "format": "int64",
+          "description": "user Id",
+          "type": "integer"
+        },
+        "lastOnline": {
+          "format": "date-time",
+          "description": "last seen. {Roblox.Time.UtcInstant}",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Presence.Api.Models.Request.RegisterAppPresenceRequest": {
+      "description": "Request model to Register App Presence",
+      "type": "object",
+      "properties": {
+        "location": {
+          "description": "Gets or sets location",
+          "type": "string"
+        },
+        "placeId": {
+          "format": "int64",
+          "description": "Gets or sets placeId",
+          "type": "integer"
+        },
+        "disconnect": {
+          "description": "Gets or sets if session was disconnected or not",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object",
+      "properties": {}
+    }
+  }
+}

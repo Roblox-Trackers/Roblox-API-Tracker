@@ -1,0 +1,108 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "CdnProviders Api v1"
+  },
+  "host": "cdnproviders.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/cdnproviders/configuration": {
+      "get": {
+        "tags": [
+          "CdnProviders"
+        ],
+        "summary": "Gets an configuration for all CDNs",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessKey",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.CdnProviders.Api.CdnConfiguration]"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "CdnProviders:Configuration"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.CdnProviders.Api.CdnConfiguration]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.CdnProviders.Api.CdnConfiguration"
+          }
+        }
+      }
+    },
+    "Roblox.CdnProviders.Api.CdnConfiguration": {
+      "type": "object",
+      "properties": {
+        "cdnName": {
+          "type": "string"
+        },
+        "globalEnabled": {
+          "type": "boolean"
+        },
+        "domainsEnabled": {
+          "$ref": "#/definitions/Roblox.CdnProviders.Api.DomainsEnabled"
+        },
+        "marketWeights": {
+          "type": "object",
+          "additionalProperties": {
+            "format": "double",
+            "type": "number"
+          }
+        }
+      }
+    },
+    "Roblox.CdnProviders.Api.DomainsEnabled": {
+      "type": "object",
+      "properties": {
+        "css": {
+          "type": "boolean"
+        },
+        "js": {
+          "type": "boolean"
+        },
+        "images": {
+          "type": "boolean"
+        },
+        "thumbnails": {
+          "type": "boolean"
+        },
+        "assets": {
+          "type": "boolean"
+        },
+        "setup": {
+          "type": "boolean"
+        },
+        "static": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

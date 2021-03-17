@@ -1,0 +1,660 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1.0",
+    "title": "Chat Api v1.0"
+  },
+  "host": "chat.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1.0/party/get-current": {
+      "get": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.CurrentParty"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:GetCurrentParty"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/get-invites": {
+      "get": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:GetInvitedParties"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/get-parties-for-conversations": {
+      "get": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "conversationIds",
+            "in": "query",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:GetPartiesForConversations"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/create": {
+      "post": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.CreatePartyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:Create"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/invite": {
+      "post": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.InviteUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:InviteUser"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/join": {
+      "post": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.JoinPartyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.StatusResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:JoinParty"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/leave": {
+      "post": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:LeaveParty"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/remove-from-party": {
+      "post": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.RemoveFromPartyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:RemoveFromParty"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/take-leadership": {
+      "post": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.StatusResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:TakeLeadership"
+          ]
+        }
+      }
+    },
+    "/v1.0/party/update-user-device": {
+      "post": {
+        "tags": [
+          "Party"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.StatusResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Party:UpdatePartyDevice"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Chat.Api.Models.Party": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true,
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "ConversationId": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "CreatorUser": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser",
+          "readOnly": true
+        },
+        "LeaderUser": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser",
+          "readOnly": true
+        },
+        "PendingUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
+          },
+          "readOnly": true
+        },
+        "MemberUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
+          },
+          "readOnly": true
+        },
+        "GameId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true,
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "GameName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "GamePlaceId": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "GameSlotExpiry": {
+          "format": "date-time",
+          "type": "string",
+          "readOnly": true
+        },
+        "PartyType": {
+          "enum": [
+            "PlayTogether",
+            "General",
+            "Xbox"
+          ],
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.PartyUser": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CurrentParty": {
+      "type": "object",
+      "properties": {
+        "Party": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
+        },
+        "PartyingOnDeviceType": {
+          "type": "string"
+        },
+        "Id": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true,
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "ConversationId": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "CreatorUser": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser",
+          "readOnly": true
+        },
+        "LeaderUser": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser",
+          "readOnly": true
+        },
+        "PendingUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
+          },
+          "readOnly": true
+        },
+        "MemberUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
+          },
+          "readOnly": true
+        },
+        "GameId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true,
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "GameName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "GamePlaceId": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "GameSlotExpiry": {
+          "format": "date-time",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.JoinPartyRequest": {
+      "type": "object",
+      "properties": {
+        "partyId": {
+          "type": "string"
+        },
+        "autoFollowPartyLeader": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.StatusResponse": {
+      "type": "object",
+      "properties": {
+        "Success": {
+          "type": "boolean"
+        },
+        "StatusMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.PartyRequest": {
+      "type": "object",
+      "properties": {
+        "partyId": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RemoveFromPartyRequest": {
+      "type": "object",
+      "properties": {
+        "partyId": {
+          "type": "string"
+        },
+        "userId": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.InviteUserRequest": {
+      "type": "object",
+      "properties": {
+        "partyId": {
+          "type": "string"
+        },
+        "invitedUserId": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CreatePartyRequest": {
+      "type": "object",
+      "properties": {
+        "invitedUserIds": {
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "conversationId": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

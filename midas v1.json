@@ -1,0 +1,855 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Midas Api v1"
+  },
+  "host": "midas.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/platforms/android/purchases/complete": {
+      "get": {
+        "tags": [
+          "Android"
+        ],
+        "summary": "CompletePurchase",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "midasCallbackRequest.openid",
+            "in": "query",
+            "description": "Gets or sets open id. This was provided in token request",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.appid",
+            "in": "query",
+            "description": "Gets or sets app id. AKA \"offer id\" on midas",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.ts",
+            "in": "query",
+            "description": "Gets or sets unix timestamp",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.payitem",
+            "in": "query",
+            "description": "Gets or sets payitem. according to https://wiki.midas.qq.com/post/index/1/45/82/0,\r\nshould be a string in the form of x*p*num\r\nx being the Product ID\r\np being the Price for each of these products\r\nnum being the number to purchase",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.token",
+            "in": "query",
+            "description": "Gets or sets token for rendering the buy_goods interface",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.billno",
+            "in": "query",
+            "description": "Gets or sets billing number. Used for deduping shipping requests",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.version",
+            "in": "query",
+            "description": "Gets or sets OpenAPI version. For V3 of openAPI, should be \"v3\"",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.zoneid",
+            "in": "query",
+            "description": "Gets or sets zone id. AKA \"\u8d27\u5e01\u5206\u533aID\" or \"partition id\" on midas portal",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.providetype",
+            "in": "query",
+            "description": "Gets or sets ProvideType",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.amt",
+            "in": "query",
+            "description": "Gets or sets amount spent in terms of Q coin",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.appmeta",
+            "in": "query",
+            "description": "Gets or sets metadata that we set when we requested the token from WeChat",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.cftid",
+            "in": "query",
+            "description": "Gets or sets the cft id. CFT stands for \u8d22\u4ed8\u901a. Which is some other tencent payment method.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.channel_id",
+            "in": "query",
+            "description": "Gets or sets channel id.\r\nAccording to https://wiki.midas.qq.com/post/index/1/45/83/0, this should take the\r\nform of \"2001-android-2011-xxxx-wechat\" when pf is \"desktop_m_qq-2001-android-2011-xxxx\"",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.paychannelsubid",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.clientver",
+            "in": "query",
+            "description": "Gets or sets mobile client version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.payamt_coins",
+            "in": "query",
+            "description": "Gets or sets the amount of price that was paid for via Q points",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.pubacct_payamt_coins",
+            "in": "query",
+            "description": "Gets or sets the Amount of price discounted by voucher",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.product_id",
+            "in": "query",
+            "description": "Gets or sets the Amount of price discounted by voucher",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.bazinga",
+            "in": "query",
+            "description": "Gets or sets some random string. Looks like a salt for when we're hashing the payload to generate the sig",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.sig",
+            "in": "query",
+            "description": "Gets or sets signature generated with this request to confirm the identity of the request sender",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasCallback.MidasCallbackResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Android:CompletePurchase"
+          ]
+        }
+      }
+    },
+    "/v1/platforms/desktop/purchases/complete": {
+      "get": {
+        "tags": [
+          "Desktop"
+        ],
+        "summary": "Callback endpoint for Midas after it receives payment request and informs Roblox for product delivery.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "midasCallbackRequest.openid",
+            "in": "query",
+            "description": "Gets or sets open id. This was provided in token request",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.appid",
+            "in": "query",
+            "description": "Gets or sets app id. AKA \"offer id\" on midas",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.ts",
+            "in": "query",
+            "description": "Gets or sets unix timestamp",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.payitem",
+            "in": "query",
+            "description": "Gets or sets payitem. according to https://wiki.midas.qq.com/post/index/1/45/82/0,\r\nshould be a string in the form of x*p*num\r\nx being the Product ID\r\np being the Price for each of these products\r\nnum being the number to purchase",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.token",
+            "in": "query",
+            "description": "Gets or sets token for rendering the buy_goods interface",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.billno",
+            "in": "query",
+            "description": "Gets or sets billing number. Used for deduping shipping requests",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.version",
+            "in": "query",
+            "description": "Gets or sets OpenAPI version. For V3 of openAPI, should be \"v3\"",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.zoneid",
+            "in": "query",
+            "description": "Gets or sets zone id. AKA \"\u8d27\u5e01\u5206\u533aID\" or \"partition id\" on midas portal",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.providetype",
+            "in": "query",
+            "description": "Gets or sets ProvideType",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.amt",
+            "in": "query",
+            "description": "Gets or sets amount spent in terms of Q coin",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.appmeta",
+            "in": "query",
+            "description": "Gets or sets metadata that we set when we requested the token from WeChat",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.cftid",
+            "in": "query",
+            "description": "Gets or sets the cft id. CFT stands for \u8d22\u4ed8\u901a. Which is some other tencent payment method.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.channel_id",
+            "in": "query",
+            "description": "Gets or sets channel id.\r\nAccording to https://wiki.midas.qq.com/post/index/1/45/83/0, this should take the\r\nform of \"2001-android-2011-xxxx-wechat\" when pf is \"desktop_m_qq-2001-android-2011-xxxx\"",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.paychannelsubid",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.clientver",
+            "in": "query",
+            "description": "Gets or sets mobile client version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.payamt_coins",
+            "in": "query",
+            "description": "Gets or sets the amount of price that was paid for via Q points",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.pubacct_payamt_coins",
+            "in": "query",
+            "description": "Gets or sets the Amount of price discounted by voucher",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.product_id",
+            "in": "query",
+            "description": "Gets or sets the Amount of price discounted by voucher",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.bazinga",
+            "in": "query",
+            "description": "Gets or sets some random string. Looks like a salt for when we're hashing the payload to generate the sig",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.sig",
+            "in": "query",
+            "description": "Gets or sets signature generated with this request to confirm the identity of the request sender",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasCallback.MidasCallbackResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Desktop:Callback"
+          ]
+        }
+      }
+    },
+    "/v1/platforms/ios/purchases/complete": {
+      "get": {
+        "tags": [
+          "IOS"
+        ],
+        "summary": "CompletePurchase",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "midasCallbackRequest.openid",
+            "in": "query",
+            "description": "Gets or sets open id. This was provided in token request",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.appid",
+            "in": "query",
+            "description": "Gets or sets app id. AKA \"offer id\" on midas",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.ts",
+            "in": "query",
+            "description": "Gets or sets unix timestamp",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.payitem",
+            "in": "query",
+            "description": "Gets or sets payitem. according to https://wiki.midas.qq.com/post/index/1/45/82/0,\r\nshould be a string in the form of x*p*num\r\nx being the Product ID\r\np being the Price for each of these products\r\nnum being the number to purchase",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.token",
+            "in": "query",
+            "description": "Gets or sets token for rendering the buy_goods interface",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.billno",
+            "in": "query",
+            "description": "Gets or sets billing number. Used for deduping shipping requests",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.version",
+            "in": "query",
+            "description": "Gets or sets OpenAPI version. For V3 of openAPI, should be \"v3\"",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.zoneid",
+            "in": "query",
+            "description": "Gets or sets zone id. AKA \"\u8d27\u5e01\u5206\u533aID\" or \"partition id\" on midas portal",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.providetype",
+            "in": "query",
+            "description": "Gets or sets ProvideType",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.amt",
+            "in": "query",
+            "description": "Gets or sets amount spent in terms of Q coin",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.appmeta",
+            "in": "query",
+            "description": "Gets or sets metadata that we set when we requested the token from WeChat",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.cftid",
+            "in": "query",
+            "description": "Gets or sets the cft id. CFT stands for \u8d22\u4ed8\u901a. Which is some other tencent payment method.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.channel_id",
+            "in": "query",
+            "description": "Gets or sets channel id.\r\nAccording to https://wiki.midas.qq.com/post/index/1/45/83/0, this should take the\r\nform of \"2001-android-2011-xxxx-wechat\" when pf is \"desktop_m_qq-2001-android-2011-xxxx\"",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.paychannelsubid",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.clientver",
+            "in": "query",
+            "description": "Gets or sets mobile client version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.payamt_coins",
+            "in": "query",
+            "description": "Gets or sets the amount of price that was paid for via Q points",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.pubacct_payamt_coins",
+            "in": "query",
+            "description": "Gets or sets the Amount of price discounted by voucher",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.product_id",
+            "in": "query",
+            "description": "Gets or sets the Amount of price discounted by voucher",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.bazinga",
+            "in": "query",
+            "description": "Gets or sets some random string. Looks like a salt for when we're hashing the payload to generate the sig",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "midasCallbackRequest.sig",
+            "in": "query",
+            "description": "Gets or sets signature generated with this request to confirm the identity of the request sender",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasCallback.MidasCallbackResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "IOS:CompletePurchase"
+          ]
+        }
+      }
+    },
+    "/v1/platforms/android/purchases": {
+      "post": {
+        "tags": [
+          "Android"
+        ],
+        "summary": "Validates and gets token from Midas",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "midasPurchaseTokenRequest",
+            "in": "body",
+            "description": "midasPurchaseTokenRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasPurchaseToken.MidasMobilePurchaseTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasPurchaseToken.MidasPurchaseTokenResponse"
+            }
+          },
+          "400": {
+            "description": "2147483647: Unknown error."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          },
+          "404": {
+            "description": "20: Product does not exist."
+          },
+          "429": {
+            "description": "30: Rate limited."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Android:ValidateAndFetchPurchaseToken"
+          ]
+        }
+      }
+    },
+    "/v1/platforms/desktop/purchases": {
+      "post": {
+        "tags": [
+          "Desktop"
+        ],
+        "summary": "FetchPurchaseToken",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "midasPurchaseTokenRequest",
+            "in": "body",
+            "description": "midasPurchaseTokenRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasPurchaseToken.MidasPurchaseTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasPurchaseToken.MidasPurchaseTokenResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Desktop:RetrieveMidasPurchaseToken"
+          ]
+        }
+      }
+    },
+    "/v1/platforms/ios/purchases": {
+      "post": {
+        "tags": [
+          "IOS"
+        ],
+        "summary": "Validates and gets token from Midas",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "midasPurchaseTokenRequest",
+            "in": "body",
+            "description": "midasPurchaseTokenRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasPurchaseToken.MidasMobilePurchaseTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasPurchaseToken.MidasPurchaseTokenResponse"
+            }
+          },
+          "400": {
+            "description": "2147483647: Unknown error."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          },
+          "404": {
+            "description": "20: Product does not exist."
+          },
+          "429": {
+            "description": "30: Rate limited."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "IOS:ValidateAndFetchPurchaseToken"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Midas.Api.Models.MidasPurchaseToken.MidasMobilePurchaseTokenRequest": {
+      "description": "MidasMobilePurchaseTokenRequest",
+      "type": "object",
+      "properties": {
+        "mainProductCode": {
+          "description": "Gets or sets MainProductId",
+          "type": "string"
+        },
+        "midasPlatformId": {
+          "description": "Gets or sets MidasPlatformId(pf).\r\nThis parameter is only required for mobile and can be acquired from MSDK.",
+          "type": "string"
+        },
+        "midasPlatformKey": {
+          "description": "Gets or sets MidasPlatformKey(pfkey).\r\nThis parameter is only required for mobile and can be acquired from MSDK.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Midas.Api.Models.MidasPurchaseToken.MidasPurchaseTokenResponse": {
+      "description": "MidasPurchaseTokenResponse",
+      "type": "object",
+      "properties": {
+        "appId": {
+          "description": "Gets or sets App Id. AKA \"Offer Id\" on Midas portal",
+          "type": "string"
+        },
+        "pf": {
+          "description": "Gets or sets platform id.\r\nShould be website-xx for pc (where xx is our ver number)\r\nShould be mobile_wx-2001-android-xxxx or mobile_wx-2001-iap-xxxx for mobile\r\nSee https://wiki.midas.qq.com/post/index/1/59/47/0 (if you can read chinese)",
+          "type": "string"
+        },
+        "openId": {
+          "description": "Gets or sets Open Id. Get from wechat auth",
+          "type": "string"
+        },
+        "openKey": {
+          "description": "Gets or sets Open Id. Get from wechat auth",
+          "type": "string"
+        },
+        "sessionId": {
+          "description": "Gets or sets Session Id. Should be hy_gameid for wechat according to https://wiki.midas.qq.com/post/index/1/45/73/0#content_jump_4",
+          "type": "string"
+        },
+        "sessionType": {
+          "description": "Gets or sets Session Id. Should be wc_actoken for wechat according to https://wiki.midas.qq.com/post/index/1/45/73/0#content_jump_5",
+          "type": "string"
+        },
+        "goodsTokenUrl": {
+          "description": "Gets or sets formatted url for rendering the buy_goods interface. Url should include the token as a query string param",
+          "type": "string"
+        },
+        "token": {
+          "description": "Gets or sets token for rendering the buy_goods interface",
+          "type": "string"
+        },
+        "isSandboxEnvironment": {
+          "description": "Gets or sets a value indicating whether sandbox(true) or production(false) environment.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Midas.Api.Models.MidasCallback.MidasCallbackRequest": {
+      "description": "A model containing the params sent by Midas to enable shipping products",
+      "type": "object",
+      "properties": {
+        "openid": {
+          "description": "Gets or sets open id. This was provided in token request",
+          "type": "string"
+        },
+        "appid": {
+          "description": "Gets or sets app id. AKA \"offer id\" on midas",
+          "type": "string"
+        },
+        "ts": {
+          "description": "Gets or sets unix timestamp",
+          "type": "string"
+        },
+        "payitem": {
+          "description": "Gets or sets payitem. according to https://wiki.midas.qq.com/post/index/1/45/82/0,\r\nshould be a string in the form of x*p*num\r\nx being the Product ID\r\np being the Price for each of these products\r\nnum being the number to purchase",
+          "type": "string"
+        },
+        "token": {
+          "description": "Gets or sets token for rendering the buy_goods interface",
+          "type": "string"
+        },
+        "billno": {
+          "description": "Gets or sets billing number. Used for deduping shipping requests",
+          "type": "string"
+        },
+        "version": {
+          "description": "Gets or sets OpenAPI version. For V3 of openAPI, should be \"v3\"",
+          "type": "string"
+        },
+        "zoneid": {
+          "description": "Gets or sets zone id. AKA \"\u8d27\u5e01\u5206\u533aID\" or \"partition id\" on midas portal",
+          "type": "string"
+        },
+        "providetype": {
+          "description": "Gets or sets ProvideType",
+          "type": "string"
+        },
+        "amt": {
+          "description": "Gets or sets amount spent in terms of Q coin",
+          "type": "string"
+        },
+        "appmeta": {
+          "description": "Gets or sets metadata that we set when we requested the token from WeChat",
+          "type": "string"
+        },
+        "cftid": {
+          "description": "Gets or sets the cft id. CFT stands for \u8d22\u4ed8\u901a. Which is some other tencent payment method.",
+          "type": "string"
+        },
+        "channel_id": {
+          "description": "Gets or sets channel id.\r\nAccording to https://wiki.midas.qq.com/post/index/1/45/83/0, this should take the\r\nform of \"2001-android-2011-xxxx-wechat\" when pf is \"desktop_m_qq-2001-android-2011-xxxx\"",
+          "type": "string"
+        },
+        "paychannelsubid": {
+          "description": "",
+          "type": "string"
+        },
+        "clientver": {
+          "description": "Gets or sets mobile client version",
+          "type": "string"
+        },
+        "payamt_coins": {
+          "description": "Gets or sets the amount of price that was paid for via Q points",
+          "type": "string"
+        },
+        "pubacct_payamt_coins": {
+          "description": "Gets or sets the Amount of price discounted by voucher",
+          "type": "string"
+        },
+        "product_id": {
+          "description": "Gets or sets the Amount of price discounted by voucher",
+          "type": "string"
+        },
+        "bazinga": {
+          "description": "Gets or sets some random string. Looks like a salt for when we're hashing the payload to generate the sig",
+          "type": "string"
+        },
+        "sig": {
+          "description": "Gets or sets signature generated with this request to confirm the identity of the request sender",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Midas.Api.Models.MidasCallback.MidasCallbackResponse": {
+      "description": "MidasEndPaymentResponseModel",
+      "type": "object",
+      "properties": {
+        "ret": {
+          "description": "Gets or sets ReturnCode",
+          "type": "string"
+        },
+        "msg": {
+          "description": "Gets or sets Message",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Midas.Api.Models.MidasPurchaseToken.MidasPurchaseTokenRequest": {
+      "description": "MidasPurchaseTokenRequest",
+      "type": "object",
+      "properties": {
+        "mainProductId": {
+          "format": "int32",
+          "description": "Gets or sets MainProductId",
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

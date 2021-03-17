@@ -1,0 +1,132 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v2",
+    "title": "Followings Api v2"
+  },
+  "host": "followings.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v2/users/{userId}/universes": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Gets all universes followed by a user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data model containing map of (universe ID =&gt; follow date).",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Followings.Api.Models.FollowsByTypeResponse"
+            }
+          },
+          "403": {
+            "description": "User is not authorized for this action."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "UsersV2:GetUniversesFollowedByUserAsync"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "System.Threading.CancellationToken": {
+      "type": "object",
+      "properties": {
+        "IsCancellationRequested": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanBeCanceled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "WaitHandle": {
+          "$ref": "#/definitions/System.Threading.WaitHandle",
+          "readOnly": true
+        }
+      }
+    },
+    "System.Threading.WaitHandle": {
+      "type": "object",
+      "properties": {
+        "Handle": {
+          "type": "object"
+        },
+        "SafeWaitHandle": {
+          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
+        }
+      }
+    },
+    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
+      "type": "object",
+      "properties": {
+        "IsInvalid": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "IsClosed": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Followings.Api.Models.FollowsByTypeResponse": {
+      "description": "Data model containing collection of all followed sources of a specific type.",
+      "type": "object",
+      "properties": {
+        "followerType": {
+          "description": "Type of the follower entity.",
+          "enum": [
+            "User"
+          ],
+          "type": "string"
+        },
+        "followerId": {
+          "format": "int64",
+          "description": "ID of the follower entity.",
+          "type": "integer"
+        },
+        "sourceType": {
+          "description": "Type of the source entity.",
+          "enum": [
+            "Universe"
+          ],
+          "type": "string"
+        },
+        "followedSources": {
+          "description": "Followed sources: map of (source ID =&gt; follow date)",
+          "type": "object",
+          "additionalProperties": {
+            "format": "date-time",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

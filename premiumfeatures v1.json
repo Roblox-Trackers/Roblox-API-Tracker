@@ -1,0 +1,110 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "PremiumFeatures Api v1"
+  },
+  "host": "premiumfeatures.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/users/{userId}/premium-upsell-precheck": {
+      "get": {
+        "tags": [
+          "PremiumFeaturesUsers"
+        ],
+        "summary": "Premium upsell precheck",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "universeId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "placeId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PremiumFeaturesUsers:PremiumUpsellPrecheck"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/validate-membership": {
+      "get": {
+        "tags": [
+          "PremiumFeaturesUsers"
+        ],
+        "summary": "Get if a user has a Premium membership",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PremiumFeaturesUsers:GetIsPremiumUserForUser"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {}
+}
