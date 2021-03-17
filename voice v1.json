@@ -1,0 +1,13 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Voice Api v1"
+  },
+  "host": "voice.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {},
+  "definitions": {}
+}

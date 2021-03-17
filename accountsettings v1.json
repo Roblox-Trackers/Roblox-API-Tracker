@@ -1,0 +1,1883 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "AccountSettings Api v1"
+  },
+  "host": "accountsettings.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/account/settings/settings-groups": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Used by the site and mobile apps to determine titles and locations of\r\nsettings groups such as \"Notifications\" and \"Billing\"",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Response.SettingsGroupsResponse"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Accounts:GetSettingsGroups"
+          ]
+        }
+      }
+    },
+    "/v1/app-chat-privacy": {
+      "get": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Get a user's app chat privacy setting",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.AppChatPrivacyResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:GetAppChatPrivacy"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Updates a user's app chat privacy setting",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.AppChatPrivacyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The app chat privacy setting was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.InvalidSettingOption}"
+          },
+          "403": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.AccountLocked}\r\n            OR\r\n            {Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.SettingLockedCuratedGamesEnabled}\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:UpdateAppChatPrivacy"
+          ]
+        }
+      }
+    },
+    "/v1/content-restriction": {
+      "get": {
+        "tags": [
+          "ContentRestriction"
+        ],
+        "summary": "Gets the user's content restriction level.\r\nUser must be authenticated to perform the request.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Request.ContentRestrictions.GetContentRestrictionResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "ContentRestriction:GetContentRestrictionResponse"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "ContentRestriction"
+        ],
+        "summary": "Sets the user's content restriction level.\r\nUser must be authenticated and also the PIN needs to be unlocked to perform the request.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Request.ContentRestrictions.SetContentRestrictionLevelRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n0: PIN is locked."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "ContentRestriction:SetContentLevelRestriction"
+          ]
+        }
+      }
+    },
+    "/v1/email": {
+      "get": {
+        "tags": [
+          "Email"
+        ],
+        "summary": "Gets the authenticated user's email address and verified status",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Get user's email address and verified status successfully.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.EmailResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Email:GetEmail"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "Email"
+        ],
+        "summary": "Updates the authenticated user's email address",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestBody",
+            "in": "body",
+            "description": "The request body.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.UpdateEmailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user's email was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "8: Password is incorrect.\r\n9: Invalid email address."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n1: PIN is locked.\r\n3: There are too many accounts associated with this email address."
+          },
+          "409": {
+            "description": "4: This is already the current email."
+          },
+          "429": {
+            "description": "6: Too many attempts to update email. Please try again later.\r\n7: Too many attempts to send verification email. Please try again later."
+          },
+          "503": {
+            "description": "2: This feature is currently disabled. Please try again later."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Email:UpdateEmail"
+          ]
+        }
+      },
+      "patch": {
+        "tags": [
+          "Email"
+        ],
+        "summary": "Updates the authenticated user's email address",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestBody",
+            "in": "body",
+            "description": "The request body.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.UpdateEmailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user's email was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "8: Password is incorrect.\r\n9: Invalid email address."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n1: PIN is locked.\r\n3: There are too many accounts associated with this email address."
+          },
+          "409": {
+            "description": "4: This is already the current email."
+          },
+          "429": {
+            "description": "6: Too many attempts to update email. Please try again later.\r\n7: Too many attempts to send verification email. Please try again later."
+          },
+          "503": {
+            "description": "2: This feature is currently disabled. Please try again later."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Email:UpdateEmail"
+          ]
+        }
+      }
+    },
+    "/v1/game-chat-privacy": {
+      "get": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Get a user's game chat privacy setting",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.GameChatPrivacyResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:GetGameChatPrivacy"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Updates a user's game chat privacy setting",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.GameChatPrivacyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The game chat privacy setting was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.InvalidSettingOption}"
+          },
+          "403": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.AccountLocked}\r\n            OR\r\n            {Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.SettingLockedCuratedGamesEnabled}\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:UpdateGameChatPrivacy"
+          ]
+        }
+      }
+    },
+    "/v1/inventory-privacy": {
+      "get": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Get a user's inventory privacy setting",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.InventoryPrivacyResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:GetInventoryPrivacy"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Updates a user's inventory privacy setting",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.InventoryPrivacyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The inventory privacy setting was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.InventoryPrivacyUpdateResponse"
+            }
+          },
+          "400": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.AccountLocked}"
+          },
+          "403": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.InventoryHidingFeatureDisabled}\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:UpdateInventoryPrivacy"
+          ]
+        }
+      }
+    },
+    "/v1/privacy": {
+      "get": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Gets a user's privacy settings.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.PrivacyResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:GetPrivacySettings"
+          ]
+        }
+      },
+      "patch": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Updates a user's privacy settings.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "{Roblox.AccountSettings.Api.UpdatePrivacyRequest}",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.UpdatePrivacyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user's privacy settings were successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "3: The option for that setting is invalid or does not exist."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n1: The account is locked. Unlock the acount before performing the action.\r\n4: The user is not authorized to perform this operation."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:UpdatePrivacySettings"
+          ]
+        }
+      }
+    },
+    "/v1/privacy/info": {
+      "get": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Gets a user's privacy settings info.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.PrivacyInfoResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:GetPrivacySettingsInfo"
+          ]
+        }
+      }
+    },
+    "/v1/private-message-privacy": {
+      "get": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Get a user's private message privacy setting",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.PrivateMessagePrivacyResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:GetPrivateMessagePrivacy"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Updates a user's private message privacy setting",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.PrivateMessagePrivacyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The private message privacy setting was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.InvalidSettingOption}"
+          },
+          "403": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.AccountLocked}\r\n            OR\r\n            {Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.SettingLockedCuratedGamesEnabled}\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:UpdatePrivateMessagePrivacy"
+          ]
+        }
+      }
+    },
+    "/v1/themes/{consumerType}/{consumerId}": {
+      "get": {
+        "tags": [
+          "ThemeConfiguration"
+        ],
+        "summary": "returns the theme type for a specific consumer.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "consumerType",
+            "in": "path",
+            "description": "The consumer type",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "User"
+            ]
+          },
+          {
+            "name": "consumerId",
+            "in": "path",
+            "description": "The consumer's theme configuration to get. If the consumerType is User always return the AuthenticatedUser's theme type.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.ThemeConfigurationResponse"
+            }
+          },
+          "400": {
+            "description": "3: Invalid consumer type."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "ThemeConfiguration:GetThemesForUser"
+          ]
+        }
+      },
+      "patch": {
+        "tags": [
+          "ThemeConfiguration"
+        ],
+        "summary": "Modify the theme type for consumer.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "An {Roblox.AccountSettings.Api.ThemeConfigurationRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.ThemeConfigurationRequest"
+            }
+          },
+          {
+            "name": "consumerType",
+            "in": "path",
+            "description": "The consumer type",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "User"
+            ]
+          },
+          {
+            "name": "consumerId",
+            "in": "path",
+            "description": "The consumer's theme configuration to modify. If the consumerType is User always modify the AuthenticatedUser's theme type.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "2: Invalid theme type."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "ThemeConfiguration:ModifyThemeType"
+          ]
+        }
+      }
+    },
+    "/v1/themes/types": {
+      "get": {
+        "tags": [
+          "ThemeConfiguration"
+        ],
+        "summary": "returns all the enabled theme types.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[System.String]"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "ThemeConfiguration:GetThemeTypes"
+          ]
+        }
+      }
+    },
+    "/v1/trade-privacy": {
+      "get": {
+        "tags": [
+          "TradeSettings"
+        ],
+        "summary": "Get a user's trade privacy setting",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.TradePrivacyResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "TradeSettings:GetTradePrivacy"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "TradeSettings"
+        ],
+        "summary": "Updates a user's trade privacy setting",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.UpdateTradePrivacyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The trade privacy setting was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.TradePrivacyUpdateResponse"
+            }
+          },
+          "400": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.TradeSettingsErrors.InvalidTradePrivacy}"
+          },
+          "403": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.TradeSettingsErrors.AccountLocked}\r\n            OR\r\n            {Roblox.AccountSettings.Api.ResponseEnums.TradeSettingsErrors.UserCannotTrade}\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "TradeSettings:UpdateTradePrivacy"
+          ]
+        }
+      }
+    },
+    "/v1/trade-value": {
+      "get": {
+        "tags": [
+          "TradeSettings"
+        ],
+        "summary": "Get a user's trade quality filter setting",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.TradeValueResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "TradeSettings:GetTradeValue"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "TradeSettings"
+        ],
+        "summary": "Updates a user's trade quality filter setting",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.TradeValueRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The trade value setting was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.TradeSettingsErrors.InvalidTradeValue}"
+          },
+          "403": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.TradeSettingsErrors.AccountLocked}\r\n            OR\r\n            {Roblox.AccountSettings.Api.ResponseEnums.TradeSettingsErrors.UserCannotTrade}\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "TradeSettings:UpdateTradeValue"
+          ]
+        }
+      }
+    },
+    "/v1/user/screens/contact-upsell": {
+      "get": {
+        "tags": [
+          "AccountInfoSettings"
+        ],
+        "summary": "Determines if the contact (e.g. email or phone) upsell screen should be shown to the current user and gets data related to it",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Response.InfoSettings.ContactUpsellResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AccountInfoSettings:GetContactUpsellScreen"
+          ]
+        }
+      }
+    },
+    "/v1/xbox/is-username-valid": {
+      "get": {
+        "tags": [
+          "Xbox"
+        ],
+        "summary": "Determines whether the username requested is valid.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "The authorization header.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Signature",
+            "in": "header",
+            "description": "The signature header.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "request.username",
+            "in": "query",
+            "description": "The username to run the validation against.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.UsernameValidationResponse"
+            }
+          },
+          "403": {
+            "description": "If this endpoint was called with an authenticated user in context."
+          },
+          "400": {
+            "description": "If this endpoint was called with wrong arguments."
+          },
+          "500": {
+            "description": "If an unknown error has occured."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Xbox:IsUsernameValid"
+          ]
+        }
+      }
+    },
+    "/v1/email/verify": {
+      "post": {
+        "tags": [
+          "Email"
+        ],
+        "summary": "Send verify email to the authenticated user's email address",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.SendVerifyEmailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The verification email has been sent successfully.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "10: No email address is associated with the account."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n1: PIN is locked."
+          },
+          "409": {
+            "description": "5: The email is already verified."
+          },
+          "429": {
+            "description": "7: Too many attempts to send verification email. Please try again later."
+          },
+          "503": {
+            "description": "2: This feature is currently disabled. Please try again later."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Email:SendVerifyEmail"
+          ]
+        }
+      }
+    },
+    "/v1/promotion-channels": {
+      "post": {
+        "tags": [
+          "PromotionChannel"
+        ],
+        "summary": "Updates a user's promotion channels and their visibility settings on their profile",
+        "description": "If the url in the request is empty, it will delete the user's existing promotion channel of that type.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.UpdatePromotionChannelsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "1: The request was empty.\r\n11: The Facebook profile url is invalid.\r\n12: The Twitter handle is invalid.\r\n13: The YouTube url is invalid.\r\n14: The Twitch profile url is invalid."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n2: PIN is locked.\r\n3: Only users who are over twelve years of age may edit social network channels."
+          },
+          "429": {
+            "description": "4: Too many attempts. Please try again later."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PromotionChannel:UpdatePromotionChannelsAndPrivacySettings"
+          ]
+        }
+      }
+    },
+    "/v1/user/screens/contact-upsell/suppress": {
+      "post": {
+        "tags": [
+          "AccountInfoSettings"
+        ],
+        "summary": "Suppresses the ContactUpsell screen for the authenticated user",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "suppress",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AccountInfoSettings:SuppressContactUpsellScreen"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/block": {
+      "post": {
+        "tags": [
+          "BlockUser"
+        ],
+        "summary": "Blocks another user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID to block.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "2: Target user does not exist.\r\n3: Target user already blocked.\r\n4: User sending block request has reached their block limit."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request.\r\n1: User sending block request not logged in."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          },
+          "503": {
+            "description": "5: User blocking is disabled."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "BlockUser:BlockUser"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/unblock": {
+      "post": {
+        "tags": [
+          "BlockUser"
+        ],
+        "summary": "Unblocks a previously blocked user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID to unblock.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "2: Target user does not exist.\r\n6: Target user for unblock request is not currently blocked."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request.\r\n1: User sending block request not logged in."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          },
+          "503": {
+            "description": "5: User blocking is disabled."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "BlockUser:UnblockOtherUser"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.AccountSettings.Api.Models.Response.InfoSettings.ContactUpsellResponse": {
+      "description": "A class representing response for contact upsell screen",
+      "type": "object",
+      "properties": {
+        "upsellScreenType": {
+          "description": "Returns {Roblox.Web.Prompts.ContactUpsell.ContactUpsellType} to display",
+          "enum": [
+            "None",
+            "AddContactMethod",
+            "VerifyEmail",
+            "ContactFriendFinder",
+            "FreeHat",
+            "VerifyEmailFreeHat",
+            "AddContactMethodBanner",
+            "VerifyEmailBanner",
+            "AfterGamePlay",
+            "VerifyEmailAfterGamePlay"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object",
+      "properties": {}
+    },
+    "Roblox.AccountSettings.Api.Models.Response.SettingsGroupsResponse": {
+      "type": "object",
+      "properties": {
+        "Title": {
+          "description": "The text displayed to the user for the tab",
+          "type": "string"
+        },
+        "Url": {
+          "description": "The absolute Url of the page containing the corresponding group of settings",
+          "type": "string"
+        },
+        "Suffix": {
+          "description": "The url hash suffix",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.Models.Request.ContentRestrictions.SetContentRestrictionLevelRequest": {
+      "description": "API request to set content level restriction for a user.",
+      "type": "object",
+      "properties": {
+        "contentRestrictionLevel": {
+          "description": "Content restriction level to set.",
+          "enum": [
+            "NoRestrictions",
+            "Teen",
+            "PreTeen",
+            "Child"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.Models.Request.ContentRestrictions.GetContentRestrictionResponse": {
+      "description": "API response when getting the content restriction level.",
+      "type": "object",
+      "properties": {
+        "contentRestrictionLevel": {
+          "enum": [
+            "NoRestrictions",
+            "Teen",
+            "PreTeen",
+            "Child"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.EmailResponse": {
+      "description": "Response model for getting the user's email address and verified status",
+      "type": "object",
+      "properties": {
+        "emailAddress": {
+          "description": "The masked and formatted email address",
+          "type": "string"
+        },
+        "verified": {
+          "description": "The verified status of the email",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.UpdateEmailRequest": {
+      "description": "Request model for updating an email",
+      "type": "object",
+      "properties": {
+        "password": {
+          "description": "The user's password.",
+          "type": "string"
+        },
+        "emailAddress": {
+          "description": "The new email address to set.",
+          "type": "string"
+        },
+        "skipVerificationEmail": {
+          "description": "Should the email controller skip sending the verification email.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.SendVerifyEmailRequest": {
+      "description": "Request model for sending a verify email request",
+      "type": "object",
+      "properties": {
+        "freeItem": {
+          "description": "Whether the user will see messaging that they received a free item after verifying their email",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.PrivacyInfoResponse": {
+      "description": "Response model for getting the user's privacy settings info.",
+      "type": "object",
+      "properties": {
+        "isPhoneDiscoveryEnabled": {
+          "description": "Whether the phone discovery privacy setting is enabled.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.PrivacyResponse": {
+      "description": "Response model for getting the user's privacy settings.",
+      "type": "object",
+      "properties": {
+        "phoneDiscovery": {
+          "description": "The phone discovery privacy setting.",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.UpdatePrivacyRequest": {
+      "description": "Request model for privacy settings update",
+      "type": "object",
+      "properties": {
+        "phoneDiscovery": {
+          "description": "The desired privacy settings for the active user.",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.AppChatPrivacyResponse": {
+      "description": "Response model for getting the user's app chat privacy setting GET",
+      "type": "object",
+      "properties": {
+        "appChatPrivacy": {
+          "description": "The current app chat privacy setting for the current user",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.AppChatPrivacyRequest": {
+      "description": "Request model for app chat privacy setting update",
+      "type": "object",
+      "properties": {
+        "appChatPrivacy": {
+          "description": "The desired app chat privacy setting for the active user",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.GameChatPrivacyResponse": {
+      "description": "Response model for getting the user's game chat privacy settings",
+      "type": "object",
+      "properties": {
+        "gameChatPrivacy": {
+          "description": "The current game chat privacy setting for the current user",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.GameChatPrivacyRequest": {
+      "description": "Request model for game chat privacy setting update",
+      "type": "object",
+      "properties": {
+        "gameChatPrivacy": {
+          "description": "The desired game chat privacy setting for the active user",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.PrivateMessagePrivacyResponse": {
+      "description": "Response model for getting the user's private message privacy settings",
+      "type": "object",
+      "properties": {
+        "privateMessagePrivacy": {
+          "description": "The current private message privacy setting for the current user",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.PrivateMessagePrivacyRequest": {
+      "description": "Request model for private message privacy setting update",
+      "type": "object",
+      "properties": {
+        "privateMessagePrivacy": {
+          "description": "The desired private message privacy setting for the active user",
+          "enum": [
+            "All",
+            "TopFriends",
+            "Friends",
+            "NoOne",
+            "Disabled",
+            "Following",
+            "Followers"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.InventoryPrivacyResponse": {
+      "description": "Response model for getting the user's inventory privacy settings",
+      "type": "object",
+      "properties": {
+        "inventoryPrivacy": {
+          "description": "The current inventory privacy setting for the current user",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.InventoryPrivacyRequest": {
+      "description": "Request model for inventory privacy setting update",
+      "type": "object",
+      "properties": {
+        "inventoryPrivacy": {
+          "description": "The desired inventory privacy setting for the active user",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.InventoryPrivacyUpdateResponse": {
+      "description": "Response model for updating the user's inventory privacy settings",
+      "type": "object",
+      "properties": {
+        "inventoryPrivacy": {
+          "description": "The inventory privacy setting after updating",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        },
+        "tradePrivacy": {
+          "description": "The trade privacy setting after updating",
+          "enum": [
+            "Undefined",
+            "Disabled",
+            "NoOne",
+            "Friends",
+            "TopFriends",
+            "Following",
+            "Followers",
+            "All"
+          ],
+          "type": "string"
+        },
+        "privacySettingResponse": {
+          "description": "The response state after updating inventory privacy",
+          "enum": [
+            "Success",
+            "Conflict"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.UpdatePromotionChannelsRequest": {
+      "description": "Request model to update a user's promotion channels and privacy settings",
+      "type": "object",
+      "properties": {
+        "facebook": {
+          "description": "The Facebook url",
+          "type": "string"
+        },
+        "twitter": {
+          "description": "The Twitter handle",
+          "type": "string"
+        },
+        "youtube": {
+          "description": "The Youtube url",
+          "type": "string"
+        },
+        "twitch": {
+          "description": "The Twitch url",
+          "type": "string"
+        },
+        "socialNetworksVisibilityPrivacy": {
+          "description": "The privacy level type of the user's promotion channels",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[System.String]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.ThemeConfigurationResponse": {
+      "description": "Response model for get user's theme type",
+      "type": "object",
+      "properties": {
+        "themeType": {
+          "description": "theme Type",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.ThemeConfigurationRequest": {
+      "description": "Response model for get user's theme type",
+      "type": "object",
+      "properties": {
+        "themeType": {
+          "description": "theme Type",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.TradePrivacyResponse": {
+      "description": "Response model for getting the user's trade privacy settings",
+      "type": "object",
+      "properties": {
+        "tradePrivacy": {
+          "description": "The current trade privacy setting for the current user",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.UpdateTradePrivacyRequest": {
+      "description": "Request model for trade privacy setting update",
+      "type": "object",
+      "properties": {
+        "tradePrivacy": {
+          "description": "The desired trade privacy setting for the active user",
+          "enum": [
+            "Undefined",
+            "Disabled",
+            "NoOne",
+            "Friends",
+            "TopFriends",
+            "Following",
+            "Followers",
+            "All"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.TradePrivacyUpdateResponse": {
+      "description": "Response model for updating the user's trade privacy settings",
+      "type": "object",
+      "properties": {
+        "tradePrivacy": {
+          "description": "The trade privacy setting after updating",
+          "enum": [
+            "Undefined",
+            "Disabled",
+            "NoOne",
+            "Friends",
+            "TopFriends",
+            "Following",
+            "Followers",
+            "All"
+          ],
+          "type": "string"
+        },
+        "inventoryPrivacy": {
+          "description": "The inventory privacy setting after updating",
+          "enum": [
+            "NoOne",
+            "Friends",
+            "FriendsAndFollowing",
+            "FriendsFollowingAndFollowers",
+            "AllAuthenticatedUsers",
+            "AllUsers"
+          ],
+          "type": "string"
+        },
+        "privacySettingResponse": {
+          "description": "The response state after updating trade privacy",
+          "enum": [
+            "Success",
+            "Conflict"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.TradeValueResponse": {
+      "description": "Response model for getting the user's trade value settings",
+      "type": "object",
+      "properties": {
+        "tradeValue": {
+          "description": "The current trade value setting for the current user",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.TradeValueRequest": {
+      "description": "Request model for trade value setting update",
+      "type": "object",
+      "properties": {
+        "tradeValue": {
+          "description": "The desired trade value setting for the active user",
+          "enum": [
+            "Undefined",
+            "None",
+            "Low",
+            "Medium",
+            "High"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.Models.UsernameValidationRequest": {
+      "description": "A request model for username validation",
+      "type": "object",
+      "properties": {
+        "username": {
+          "description": "The username to run the validation against.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.Models.UsernameValidationResponse": {
+      "description": "A class representing response for Username validation",
+      "type": "object",
+      "properties": {
+        "isValid": {
+          "description": "Returns true if  the username is valid.",
+          "type": "boolean"
+        },
+        "errorMessage": {
+          "description": "Gets the error message.",
+          "type": "string"
+        },
+        "errorCode": {
+          "description": "Gets the error code.",
+          "enum": [
+            "UserNameValid",
+            "UserNameAlreadyInUseErrorCode",
+            "UserNameModerationErrorCode",
+            "UserNameLengthErrorCode",
+            "UserNameStartEndUnderscoreErrorCode",
+            "UserNameAtMostUnderscoreErrorCode",
+            "UserNameNoSpaceErrorCode",
+            "UserNameAllowedCharErrorCode",
+            "UnknownErrorCode",
+            "UsernameNull",
+            "UsernameContainsPii",
+            "InvalidBirthDateForUsername",
+            "UsernameContainsReservedUsername"
+          ],
+          "type": "string"
+        }
+      }
+    }
+  }
+}

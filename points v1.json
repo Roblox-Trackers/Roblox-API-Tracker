@@ -1,0 +1,74 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Points Api v1"
+  },
+  "host": "points.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/universes/{universeId}/users/{userId}/all-time": {
+      "get": {
+        "tags": [
+          "Points"
+        ],
+        "summary": "Gets a user's all-time points balance from an universe.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe's id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user's id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Points.Api.GetAllTimePointBalanceResponse"
+            }
+          },
+          "404": {
+            "description": "1: The universe is invalid.\r\n2: The user is invalid."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Points:GetAllTimePointBalance"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Points.Api.GetAllTimePointBalanceResponse": {
+      "description": "Response model for getting a user's all-time score.",
+      "type": "object",
+      "properties": {
+        "allTimeScore": {
+          "format": "int64",
+          "description": "The user's current all-time score.",
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

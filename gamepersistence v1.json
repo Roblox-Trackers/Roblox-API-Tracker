@@ -1,0 +1,13 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "GamePersistence Api v1"
+  },
+  "host": "gamepersistence.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {},
+  "definitions": {}
+}

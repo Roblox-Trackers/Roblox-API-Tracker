@@ -1,0 +1,1932 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v2",
+    "title": "Chat Api v2"
+  },
+  "host": "chat.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v2/chat-settings": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "For every authenticated user, the clients hit this endpoint to get the chat related settings. Example : Chat is enabled or not",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatSettingsResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetChatSettings"
+          ]
+        }
+      }
+    },
+    "/v2/get-conversations": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Gets conversations for the conversationIds specified in the parameters",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "conversationIds",
+            "in": "query",
+            "description": "Ids of the conversations to be returned",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Chat.Api.Models.Conversation"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetConversations"
+          ]
+        }
+      }
+    },
+    "/v2/get-messages": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Gets messages corresponding to the given conversationId",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "conversationId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "exclusiveStartMessageId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatMessage"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetMessages"
+          ]
+        }
+      }
+    },
+    "/v2/get-rollout-settings": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Gets the rollout settings for requested feature",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "featureNames",
+            "in": "query",
+            "description": "string array to request feature rollout settings",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.RolloutSettingsResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetRolloutSettings"
+          ]
+        }
+      }
+    },
+    "/v2/get-unread-conversation-count": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Gets the count of unread conversations",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.UnreadConversationCountResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetUnreadConversationCount"
+          ]
+        }
+      }
+    },
+    "/v2/get-unread-conversations": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Gets a list of unread conversations",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Chat.Api.Models.Conversation"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "deprecated": true,
+        "properties": {
+          "internal": false,
+          "obsoleteMessage": null,
+          "metricIds": [
+            "Chat:GetUnreadConversations"
+          ]
+        }
+      }
+    },
+    "/v2/get-unread-messages": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Gets the unread messages for the conversationIds specified in the parameters",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "conversationIds",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Chat.Api.Models.MultigetConversationMessagesResponse"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetUnreadMessages"
+          ]
+        }
+      }
+    },
+    "/v2/get-user-conversations": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Gets all conversations associated with the logged-in User",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Chat.Api.Models.Conversation"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetUserConversations"
+          ]
+        }
+      }
+    },
+    "/v2/metadata": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Get Chat metadata.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatMetadataResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetMetadata"
+          ]
+        }
+      }
+    },
+    "/v2/multi-get-latest-messages": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Gets latest messages corresponding to the given list of conversation Ids",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "conversationIds",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Chat.Api.Models.MultigetConversationMessagesResponse"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:GetLatestMessages"
+          ]
+        }
+      }
+    },
+    "/v2/add-to-conversation": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Adds users to an existing conversation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.AddUsersToConversationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.AddUserToConversationResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:AddUsersToConversation"
+          ]
+        }
+      }
+    },
+    "/v2/mark-as-read": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Mark the specified conversation messages as read",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.MarkAsReadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.MarkAsReadResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:MarkAsRead"
+          ]
+        }
+      }
+    },
+    "/v2/mark-as-seen": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Mark the specified conversation messages as seen",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.MarkAsSeenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.MarkAsSeenResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:MarkAsSeen"
+          ]
+        }
+      }
+    },
+    "/v2/remove-from-conversation": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Removes a user from an existing conversation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.RemoveUserFromConversationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.RemoveUserFromConversationResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:RemoveUserFromConversation"
+          ]
+        }
+      }
+    },
+    "/v2/rename-group-conversation": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Renames the title of an existing conversation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.RenameGroupConversationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.RenameConversationResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:RenameGroupConversation"
+          ]
+        }
+      }
+    },
+    "/v2/reset-conversation-universe": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Removes universe associated with a conversation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.ResetConversationUniverseRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.UserVisibleStatusResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:ResetConversationUniverse"
+          ]
+        }
+      }
+    },
+    "/v2/send-game-link-message": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.SendGameLinkChatMessageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.SendLinkChatResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:SendGameLinkMessage"
+          ]
+        }
+      }
+    },
+    "/v2/send-message": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Sends a chat message",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.SendPlainTextChatMessageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.SendPlainTextChatMessageResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:SendPlainTextChatMessage"
+          ]
+        }
+      }
+    },
+    "/v2/set-conversation-universe": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Adds or updates universe associated with a conversation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.SetConversationUniverseRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.UserVisibleStatusResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:SetConversationUniverse"
+          ]
+        }
+      }
+    },
+    "/v2/start-cloud-edit-conversation": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Creates a new cloud edit conversation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.CreateCloudEditConversationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.StartNewConversationResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:CreateCloudEditConversation"
+          ]
+        }
+      }
+    },
+    "/v2/start-group-conversation": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Creates a new group conversation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.CreateGroupConversationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.StartNewConversationResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:CreateGroupConversation"
+          ]
+        }
+      }
+    },
+    "/v2/start-one-to-one-conversation": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Creates a new one-on-one conversation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.CreateOneToOneConversationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.StartNewConversationResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:CreateOneToOneConversation"
+          ]
+        }
+      }
+    },
+    "/v2/update-user-typing-status": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Updates the status for whether a user is typing currently",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.UpdateUserTypingStatusRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Chat.Api.Models.UserVisibleStatusResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Chat:UpdateUserTypingStatus"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Chat.Api.Models.UnreadConversationCountResponse": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.Conversation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "description": "Chat conversation Id",
+          "type": "integer"
+        },
+        "title": {
+          "description": "Chat conversation title",
+          "type": "string"
+        },
+        "initiator": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatParticipant",
+          "description": "Conversation initiator entity"
+        },
+        "hasUnreadMessages": {
+          "description": "Does the conversation have any unread messages",
+          "type": "boolean"
+        },
+        "participants": {
+          "description": "Participants involved in the conversation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatParticipant"
+          }
+        },
+        "conversationType": {
+          "description": "Type of the conversation",
+          "enum": [
+            "OneToOneConversation",
+            "MultiUserConversation",
+            "CloudEditConversation"
+          ],
+          "type": "string"
+        },
+        "conversationTitle": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationTitle",
+          "description": "Specifies if the conversation title is generated by default."
+        },
+        "lastUpdated": {
+          "format": "date-time",
+          "description": "Specifies the datetime when the conversation was last updated",
+          "type": "string"
+        },
+        "conversationUniverse": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationUniverse",
+          "description": "Specifies the universe associated with the conversation"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ChatParticipant": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Type of a chat participant",
+          "enum": [
+            "User",
+            "System"
+          ],
+          "type": "string"
+        },
+        "targetId": {
+          "format": "int64",
+          "description": "Id of the chat participant",
+          "type": "integer"
+        },
+        "name": {
+          "description": "Name of the chat participant",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "display name of the chat participant",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ConversationTitle": {
+      "type": "object",
+      "properties": {
+        "titleForViewer": {
+          "description": "Specifies the title for the conversation specific to the viewer",
+          "type": "string"
+        },
+        "isDefaultTitle": {
+          "description": "Specifies if the title displayed for the user is generated as a default title in the backend or was custom assigned by the user.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ConversationUniverse": {
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "format": "int64",
+          "description": "Id corresponding to the universe",
+          "type": "integer"
+        },
+        "rootPlaceId": {
+          "format": "int64",
+          "description": "Id Corresponding to the root place of the universe",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MultigetConversationMessagesResponse": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Conversation Id to get multiple conversations",
+          "type": "integer"
+        },
+        "chatMessages": {
+          "description": "Chat messages associated with the conversation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatMessage"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ChatMessage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Id of the chat message",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "senderType": {
+          "description": "Type of the chat message sender",
+          "enum": [
+            "User",
+            "System"
+          ],
+          "type": "string"
+        },
+        "sent": {
+          "format": "date-time",
+          "description": "The dateTime when the chat message was sent",
+          "type": "string"
+        },
+        "read": {
+          "description": "Is the chat message read",
+          "type": "boolean"
+        },
+        "messageType": {
+          "description": "Type of the chat message",
+          "enum": [
+            "PlainText",
+            "Link",
+            "EventBased"
+          ],
+          "type": "string"
+        },
+        "decorators": {
+          "description": "Decorators for the chat message",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "senderTargetId": {
+          "format": "int64",
+          "description": "Id of the entity that has sent the chat message",
+          "type": "integer"
+        },
+        "content": {
+          "description": "The chat mesage itself",
+          "type": "string"
+        },
+        "link": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.Link",
+          "description": "The link chat message"
+        },
+        "eventBased": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.EventBased",
+          "description": "The eventBased chat message"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.Link": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The chat message link type",
+          "enum": [
+            "Game"
+          ],
+          "type": "string"
+        },
+        "game": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.GameLink",
+          "description": "The game link model"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.EventBased": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The chat message event type",
+          "enum": [
+            "SetConversationUniverse"
+          ],
+          "type": "string"
+        },
+        "setConversationUniverse": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.SetConversationUniverseEventBased",
+          "description": "The set conversation universe event based model"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.GameLink": {
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "format": "int64",
+          "description": "The universeId for game link chat message",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SetConversationUniverseEventBased": {
+      "type": "object",
+      "properties": {
+        "actorUserId": {
+          "format": "int64",
+          "description": "The UserId for the user who setConversationUniverse",
+          "type": "integer"
+        },
+        "universeId": {
+          "format": "int64",
+          "description": "The universeId for SetConversationUniverse EventBased ChatMessage",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SendPlainTextChatMessageRequest": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "The message to be sent.",
+          "type": "string"
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation Id to send mesage to.",
+          "type": "integer"
+        },
+        "decorators": {
+          "description": "The decorators to attach to the new message.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SendPlainTextChatMessageResponse": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "description": "The actual chat message that was being sent",
+          "type": "string"
+        },
+        "filteredForReceivers": {
+          "description": "Was the chat message filtered based on the receivers of the message",
+          "type": "boolean"
+        },
+        "messageId": {
+          "description": "Id of the chat message being sent",
+          "type": "string"
+        },
+        "sent": {
+          "format": "date-time",
+          "description": "DateTime of when the message was sent",
+          "type": "string"
+        },
+        "messageType": {
+          "description": "Type of the chat message being sent",
+          "enum": [
+            "PlainText",
+            "Link",
+            "EventBased"
+          ],
+          "type": "string"
+        },
+        "resultType": {
+          "description": "Status of the response",
+          "enum": [
+            "Success",
+            "Moderated",
+            "TextTooLong",
+            "NoRealtimeConnection"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SendGameLinkChatMessageRequest": {
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "format": "int64",
+          "description": "The message to be sent.",
+          "type": "integer"
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation Id to send mesage to.",
+          "type": "integer"
+        },
+        "decorators": {
+          "description": "The decorators to attach to the new message.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SendLinkChatResponse": {
+      "type": "object",
+      "properties": {
+        "chatMessageLinkType": {
+          "enum": [
+            "Game"
+          ],
+          "type": "string"
+        },
+        "messageId": {
+          "description": "Id of the chat message being sent",
+          "type": "string"
+        },
+        "sent": {
+          "format": "date-time",
+          "description": "DateTime of when the message was sent",
+          "type": "string"
+        },
+        "messageType": {
+          "description": "Type of the chat message being sent",
+          "enum": [
+            "PlainText",
+            "Link",
+            "EventBased"
+          ],
+          "type": "string"
+        },
+        "resultType": {
+          "description": "Status of the response",
+          "enum": [
+            "Success",
+            "Moderated",
+            "TextTooLong",
+            "NoRealtimeConnection"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MarkAsReadRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "the conversation id to be marked as read.",
+          "type": "integer"
+        },
+        "endMessageId": {
+          "description": "The end message id string.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MarkAsReadResponse": {
+      "type": "object",
+      "properties": {
+        "resultType": {
+          "description": "Status of the response",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MarkAsSeenRequest": {
+      "type": "object",
+      "properties": {
+        "conversationsToMarkSeen": {
+          "description": "The conversation ids to be marked as seen.",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MarkAsSeenResponse": {
+      "type": "object",
+      "properties": {
+        "resultType": {
+          "description": "Status of the response",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CreateCloudEditConversationRequest": {
+      "type": "object",
+      "properties": {
+        "placeId": {
+          "format": "int64",
+          "description": "Place id to create a Cloud edit conversation.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.StartNewConversationResponse": {
+      "type": "object",
+      "properties": {
+        "conversation": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.Conversation",
+          "description": "The newly created conversation"
+        },
+        "rejectedParticipants": {
+          "description": "List of chat participants who were rejected to be part of the associated conversation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.RejectedChatParticipant"
+          }
+        },
+        "resultType": {
+          "description": "Status of the response",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RejectedChatParticipant": {
+      "type": "object",
+      "properties": {
+        "rejectedReason": {
+          "description": "Reason as to why the chat participant was rejected to be a part of the conversation",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of a chat participant",
+          "enum": [
+            "User",
+            "System"
+          ],
+          "type": "string"
+        },
+        "targetId": {
+          "format": "int64",
+          "description": "Id of the chat participant",
+          "type": "integer"
+        },
+        "name": {
+          "description": "Name of the chat participant",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "display name of the chat participant",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CreateGroupConversationRequest": {
+      "type": "object",
+      "properties": {
+        "participantUserIds": {
+          "description": "Array of user id to create a group conversation with.",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "title": {
+          "description": "Title of the new group conversation.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CreateOneToOneConversationRequest": {
+      "type": "object",
+      "properties": {
+        "participantUserId": {
+          "format": "int64",
+          "description": "Participant user id to create 1-1 conversation.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.AddUsersToConversationRequest": {
+      "type": "object",
+      "properties": {
+        "participantUserIds": {
+          "description": "Array of user ids to be added to the conversation.",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation id",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.AddUserToConversationResponse": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Conversation Id to add a new user to",
+          "type": "integer"
+        },
+        "rejectedParticipants": {
+          "description": "List of rejected chat participants",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.RejectedChatParticipant"
+          }
+        },
+        "resultType": {
+          "description": "Status of the response",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RemoveUserFromConversationRequest": {
+      "type": "object",
+      "properties": {
+        "participantUserId": {
+          "format": "int64",
+          "description": "Participant user id to be removed from the conversation.",
+          "type": "integer"
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation id.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RemoveUserFromConversationResponse": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Id of the conversation to remove a user from",
+          "type": "integer"
+        },
+        "resultType": {
+          "description": "Status of the response",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RenameGroupConversationRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation id to rename the conversation.",
+          "type": "integer"
+        },
+        "newTitle": {
+          "description": "New title for the conversation.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RenameConversationResponse": {
+      "type": "object",
+      "properties": {
+        "conversationTitle": {
+          "description": "New conversation title after rename",
+          "type": "string"
+        },
+        "resultType": {
+          "description": "Status of the response",
+          "enum": [
+            "Success",
+            "Moderated",
+            "TextTooLong"
+          ],
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationTitle",
+          "description": "The title object after rename"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ChatSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "chatEnabled": {
+          "description": "Is chat enabled for the user",
+          "type": "boolean"
+        },
+        "isActiveChatUser": {
+          "description": "Was the Last ChatMessage Sent within the last x days or the account was created in the last x days?\r\nNote: user is active by default unless he does not chat for more than x days after account creation",
+          "type": "boolean"
+        },
+        "isConnectTabEnabled": {
+          "description": "Is Connect Tab Enabled for this user",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.UpdateUserTypingStatusRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "The Conversation id in which user is typing.",
+          "type": "integer"
+        },
+        "isTyping": {
+          "description": "isTyping flag to indicate if user has started typing or stopped.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.UserVisibleStatusResponse": {
+      "type": "object",
+      "properties": {
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RolloutSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "rolloutFeatures": {
+          "description": "List of rollout features",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.RolloutSettingModel"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RolloutSettingModel": {
+      "type": "object",
+      "properties": {
+        "featureName": {
+          "description": "Feature name strings for rollout settings",
+          "enum": [
+            "LuaChat",
+            "ConversationUniverse",
+            "PlayTogether",
+            "Party",
+            "GameLink",
+            "OldPlayTogether"
+          ],
+          "type": "string"
+        },
+        "isRolloutEnabled": {
+          "description": "Is the feature enabled to be rolledout",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SetConversationUniverseRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Conversation id to add universe to",
+          "type": "integer"
+        },
+        "universeId": {
+          "format": "int64",
+          "description": "ConversationUniverse id to be added to the conversation",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ResetConversationUniverseRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Conversation id to remove universe from",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ChatMetadataResponse": {
+      "description": "Chat Metadata Response Model",
+      "type": "object",
+      "properties": {
+        "isChatEnabledByPrivacySetting": {
+          "enum": [
+            "Disabled",
+            "Enabled",
+            "Unavailable"
+          ],
+          "type": "string"
+        },
+        "languageForPrivacySettingUnavailable": {
+          "type": "string"
+        },
+        "maxConversationTitleLength": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfMembersForPartyChrome": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partyChromeDisplayTimeStampInterval": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "signalRDisconnectionResponseInMilliseconds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typingInChatFromSenderThrottleMs": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typingInChatForReceiverExpirationMs": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "relativeValueToRecordUiPerformance": {
+          "format": "double",
+          "type": "number"
+        },
+        "isChatDataFromLocalStorageEnabled": {
+          "type": "boolean"
+        },
+        "chatDataFromLocalStorageExpirationSeconds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isUsingCacheToLoadFriendsInfoEnabled": {
+          "type": "boolean"
+        },
+        "cachedDataFromLocalStorageExpirationMS": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "senderTypesForUnknownMessageTypeError": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isInvalidMessageTypeFallbackEnabled": {
+          "type": "boolean"
+        },
+        "isRespectingMessageTypeEnabled": {
+          "type": "boolean"
+        },
+        "validMessageTypesWhiteList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "shouldRespectConversationHasUnreadMessageToMarkAsRead": {
+          "type": "boolean"
+        },
+        "isVoiceChatForClientSideEnabled": {
+          "type": "boolean"
+        },
+        "isAliasChatForClientSideEnabled": {
+          "type": "boolean"
+        },
+        "isPlayTogetherForGameCardsEnabled": {
+          "type": "boolean"
+        },
+        "isRoactChatEnabled": {
+          "type": "boolean"
+        },
+        "isConnectTabEnabled": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

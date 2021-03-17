@@ -1,0 +1,659 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v2",
+    "title": "Games Api v2"
+  },
+  "host": "games.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v2/games/{universeId}/media": {
+      "get": {
+        "tags": [
+          "Games"
+        ],
+        "summary": "Get the game media data",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The id of the universe we get media data from.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get the game media data successfully.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Games.GameMediaItemResponseV2]"
+            }
+          },
+          "400": {
+            "description": "3: The universe's root place is invalid."
+          },
+          "404": {
+            "description": "2: The requested universe does not exist."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GamesV2:GetGameMediaData"
+          ]
+        }
+      }
+    },
+    "/v2/groups/{groupId}/games": {
+      "get": {
+        "tags": [
+          "Games"
+        ],
+        "summary": "Gets games created by the specified group.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The group Id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "accessFilter",
+            "in": "query",
+            "description": "Filtering option via access level.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "All",
+              "Public",
+              "Private"
+            ]
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "The order the results are sorted in.",
+            "required": false,
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50,
+              100
+            ]
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The paging cursor for the previous or next page.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Games.GameResponseV2]"
+            }
+          },
+          "500": {
+            "description": "0: Compliance Context service is unavailable."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GamesV2:GetGroupGames"
+          ]
+        }
+      }
+    },
+    "/v2/groups/{groupId}/gamesV2": {
+      "get": {
+        "tags": [
+          "Games"
+        ],
+        "summary": "Gets games created by the specified group. This will replace V1 after validation. Note that this can only used for public/all universes.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The group Id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "accessFilter",
+            "in": "query",
+            "description": "Filtering option via access level.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "All",
+              "Public",
+              "Private"
+            ]
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "The order the results are sorted in.",
+            "required": false,
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50,
+              100
+            ]
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The paging cursor for the previous or next page.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Games.GameResponseV2]"
+            }
+          },
+          "500": {
+            "description": "0: Compliance Context service is unavailable."
+          },
+          "501": {
+            "description": "1: Code path is not Implemented."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GamesV2:GetGroupGamesV2"
+          ]
+        }
+      }
+    },
+    "/v2/users/{userId}/favorite/games": {
+      "get": {
+        "tags": [
+          "Games"
+        ],
+        "summary": "Gets users favorite games.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user Id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "accessFilter",
+            "in": "query",
+            "description": "Filtering option via access level.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "All",
+              "Public",
+              "Private"
+            ]
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "The order the results are sorted in.",
+            "required": false,
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50
+            ]
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The paging cursor for the previous or next page.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Games.GameResponseV2]"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GamesV2:GetUserFavoriteGames"
+          ]
+        }
+      }
+    },
+    "/v2/users/{userId}/games": {
+      "get": {
+        "tags": [
+          "Games"
+        ],
+        "summary": "Gets games created by the specified user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user Id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "accessFilter",
+            "in": "query",
+            "description": "Filtering option via access level.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "All",
+              "Public",
+              "Private"
+            ]
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "The order the results are sorted in.",
+            "required": false,
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50
+            ]
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The paging cursor for the previous or next page.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Games.GameResponseV2]"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GamesV2:GetUserGames"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int32]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int32]",
+          "readOnly": true
+        },
+        "CursorRecipe": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int32]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "enum": [
+            "Asc",
+            "Desc"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "enum": [
+            "Forward",
+            "Backward"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Games.GameResponseV2]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Responses.Games.GameResponseV2"
+          }
+        }
+      }
+    },
+    "Roblox.Web.Responses.Games.GameResponseV2": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "creator": {
+          "$ref": "#/definitions/Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Platform.Core.CreatorType]"
+        },
+        "rootPlace": {
+          "$ref": "#/definitions/Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Platform.Assets.AssetType]"
+        },
+        "created": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "updated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "placeVisits": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Platform.Core.CreatorType]": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "type": {
+          "enum": [
+            "User",
+            "Group"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Platform.Assets.AssetType]": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "type": {
+          "enum": [
+            "Image",
+            "TShirt",
+            "Audio",
+            "Mesh",
+            "Lua",
+            "HTML",
+            "Text",
+            "Hat",
+            "Place",
+            "Model",
+            "Shirt",
+            "Pants",
+            "Decal",
+            "Avatar",
+            "Head",
+            "Face",
+            "Gear",
+            "Badge",
+            "GroupEmblem",
+            "Animation",
+            "Arms",
+            "Legs",
+            "Torso",
+            "RightArm",
+            "LeftArm",
+            "LeftLeg",
+            "RightLeg",
+            "Package",
+            "YouTubeVideo",
+            "GamePass",
+            "App",
+            "Code",
+            "Plugin",
+            "SolidModel",
+            "MeshPart",
+            "HairAccessory",
+            "FaceAccessory",
+            "NeckAccessory",
+            "ShoulderAccessory",
+            "FrontAccessory",
+            "BackAccessory",
+            "WaistAccessory",
+            "ClimbAnimation",
+            "DeathAnimation",
+            "FallAnimation",
+            "IdleAnimation",
+            "JumpAnimation",
+            "RunAnimation",
+            "SwimAnimation",
+            "WalkAnimation",
+            "PoseAnimation",
+            "LocalizationTableManifest",
+            "LocalizationTableTranslation",
+            "EmoteAnimation",
+            "Video",
+            "TexturePack"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int64]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]",
+          "readOnly": true
+        },
+        "CursorRecipe": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "enum": [
+            "Asc",
+            "Desc"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "enum": [
+            "Forward",
+            "Backward"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Games.GameMediaItemResponseV2]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Responses.Games.GameMediaItemResponseV2"
+          }
+        }
+      }
+    },
+    "Roblox.Web.Responses.Games.GameMediaItemResponseV2": {
+      "type": "object",
+      "properties": {
+        "assetTypeId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "assetType": {
+          "type": "string"
+        },
+        "imageId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "videoHash": {
+          "type": "string"
+        },
+        "videoTitle": {
+          "type": "string"
+        },
+        "approved": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

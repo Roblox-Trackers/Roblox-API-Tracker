@@ -1,0 +1,3835 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Billing Api v1"
+  },
+  "host": "billing.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/already-purchased-failure/info": {
+      "get": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Get the informtion needed to populate purchase failure page",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.FailurePageInfoResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Payments:GetFailurePageInfo"
+          ]
+        }
+      }
+    },
+    "/v1/developer-exchange-metadata": {
+      "get": {
+        "tags": [
+          "DeveloperExchange"
+        ],
+        "summary": "Get devex welcome page metadata",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.GetWelcomeDevexPageMetaDataResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "DeveloperExchange:GetWelcomeDevexPageMetaData"
+          ]
+        }
+      }
+    },
+    "/v1/developer-exchange-rate": {
+      "get": {
+        "tags": [
+          "DeveloperExchange"
+        ],
+        "summary": "Get conversion rate from Robux to USD",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.GetDevexRateResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "DeveloperExchange:GetDevexRate"
+          ]
+        }
+      }
+    },
+    "/v1/gamecard/metadata": {
+      "get": {
+        "tags": [
+          "Gamecard"
+        ],
+        "summary": "Get metadata for game card redemption page",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.GameCardMetadataResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Gamecard:GetMetadata"
+          ]
+        }
+      }
+    },
+    "/v1/gamecard/userdata": {
+      "get": {
+        "tags": [
+          "Gamecard"
+        ],
+        "summary": "Get user data for game card redemption page",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Gamecard:GetUserData"
+          ]
+        }
+      }
+    },
+    "/v1/luobu-developer-exchange/balance": {
+      "get": {
+        "tags": [
+          "LuobuDeveloperExchange"
+        ],
+        "summary": "Get Luobu Developer Exchange Balance",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.GetLuobuDevexBalanceResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "LuobuDeveloperExchange:GetLuobuDevExBalance"
+          ]
+        }
+      }
+    },
+    "/v1/luobu-developer-exchange/eligibility": {
+      "get": {
+        "tags": [
+          "LuobuDeveloperExchange"
+        ],
+        "summary": "Get Luobu Developer Exchange Eligibility",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.GetLuobuDevexEligibilityResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "LuobuDeveloperExchange:GetLuobuDevExEligibility"
+          ]
+        }
+      }
+    },
+    "/v1/luobu-developer-exchange/latest-request-status": {
+      "get": {
+        "tags": [
+          "LuobuDeveloperExchange"
+        ],
+        "summary": "Get Luobu Developer Exchange Latest-request-status",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.GetLuobuLatestRequestStatusResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "LuobuDeveloperExchange:GetLuobuLatestRequestStatus"
+          ]
+        }
+      }
+    },
+    "/v1/paymentmethods": {
+      "get": {
+        "tags": [
+          "PaymentMethods"
+        ],
+        "summary": "Returns payment methods available to the user",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "ap",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.PaymentMethodsResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PaymentMethods:PaymentMethods"
+          ]
+        }
+      }
+    },
+    "/v1/paymentmethods/{paymentMethod}": {
+      "get": {
+        "tags": [
+          "PaymentMethods"
+        ],
+        "summary": "Redirects user to the selected payment method page",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "paymentMethod",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ap",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.GetPaymentMethodPageResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PaymentMethods:ProcessPaymentMethods"
+          ]
+        }
+      }
+    },
+    "/v1/payments/credit/metadata": {
+      "get": {
+        "tags": [
+          "CreditPayments"
+        ],
+        "summary": "Get the metadata for Credit Payments view",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "ap",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.CreditPaymentMetadataResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "CreditPayments:GetCreditPaymentViewMetadata"
+          ]
+        }
+      }
+    },
+    "/v1/payments/vantiv/metadata": {
+      "get": {
+        "tags": [
+          "VantivPayments"
+        ],
+        "summary": "Get the metadata for Vantiv Payment view",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "vantivPaymentMetadataRequest.productId",
+            "in": "query",
+            "description": "Product ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "vantivPaymentMetadataRequest.paymentMethod",
+            "in": "query",
+            "description": "Payment method",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "AppleAppStore",
+              "Boku",
+              "Check",
+              "Credit",
+              "PayPalCreditCard",
+              "GooglePlayStore",
+              "InComm",
+              "Mail",
+              "Paypal",
+              "Rixty",
+              "RixtyPin",
+              "LiveGamer",
+              "RobloxGiveaway",
+              "AmazonStore",
+              "XboxStore",
+              "Wallie",
+              "WindowsStore",
+              "VantivToken",
+              "XsollaOXXO",
+              "XsollaBoleto",
+              "XsollaSOFORT",
+              "XsollaPaysafe",
+              "XsollaCreditDebitCards",
+              "XsollaAmazonPay",
+              "XsollaPayPal",
+              "XsollaOther",
+              "MidasWeChatDesktop",
+              "MidasWeChatAndroid",
+              "MidasWeChatApple",
+              "XsollaKoreaCreditDebitCards",
+              "Undefined"
+            ]
+          },
+          {
+            "name": "vantivPaymentMetadataRequest.selectedUpsellProductId",
+            "in": "query",
+            "description": "Upsell Product ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.VantivPaymentMetadataResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "VantivPayments:GetVantivViewMetaData"
+          ]
+        }
+      }
+    },
+    "/v1/payments/xsolla/metadata": {
+      "get": {
+        "tags": [
+          "XsollaPayments"
+        ],
+        "summary": "Get the metadata for Xsolla Payment view",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "xsollaPaymentMetadataRequest.productId",
+            "in": "query",
+            "description": "Product ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "xsollaPaymentMetadataRequest.paymentMethod",
+            "in": "query",
+            "description": "Payment method",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "AppleAppStore",
+              "Boku",
+              "Check",
+              "Credit",
+              "PayPalCreditCard",
+              "GooglePlayStore",
+              "InComm",
+              "Mail",
+              "Paypal",
+              "Rixty",
+              "RixtyPin",
+              "LiveGamer",
+              "RobloxGiveaway",
+              "AmazonStore",
+              "XboxStore",
+              "Wallie",
+              "WindowsStore",
+              "VantivToken",
+              "XsollaOXXO",
+              "XsollaBoleto",
+              "XsollaSOFORT",
+              "XsollaPaysafe",
+              "XsollaCreditDebitCards",
+              "XsollaAmazonPay",
+              "XsollaPayPal",
+              "XsollaOther",
+              "MidasWeChatDesktop",
+              "MidasWeChatAndroid",
+              "MidasWeChatApple",
+              "XsollaKoreaCreditDebitCards",
+              "Undefined"
+            ]
+          },
+          {
+            "name": "xsollaPaymentMetadataRequest.selectedUpsellProductId",
+            "in": "query",
+            "description": "Upsell Product ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.XsollaPaymentMetadataResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "XsollaPayments:GetXsollaPaymentViewMetadata"
+          ]
+        }
+      }
+    },
+    "/v1/toys/redeem/metadata": {
+      "get": {
+        "tags": [
+          "Redeem"
+        ],
+        "summary": "Get metadata for redeem toy code page",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.RedeemToyMetadataResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Redeem:GetRedeemToyMetadata"
+          ]
+        }
+      }
+    },
+    "/v1/user/payments": {
+      "get": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Retrive the payment history for Authenticated user",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sorted by paymentDate",
+            "required": false,
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50,
+              100
+            ]
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The paging cursor for the previous or next page.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Billing.Api.PaymentResponse]"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Payments:GetUserPaymentHistory"
+          ]
+        }
+      }
+    },
+    "/v1/amazon/purchase": {
+      "post": {
+        "tags": [
+          "Amazon"
+        ],
+        "summary": "Perform a purchase and grant desired product.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "amazonStorePurchaseModel",
+            "in": "body",
+            "description": "Amazon Store Purchase Model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.AmazonStorePurchaseModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "Service was unable to validate receiptId."
+          },
+          "401": {
+            "description": "Unauthorized to make request.\r\n0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Amazon:Purchase"
+          ]
+        }
+      }
+    },
+    "/v1/amazon/validate": {
+      "post": {
+        "tags": [
+          "Amazon"
+        ],
+        "summary": "Validate a ProductId before making a purchase.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "validateModel",
+            "in": "body",
+            "description": "Product Id for example: com.roblox.client.bc1month, com.roblox.client.tbc1month, ...",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.ValidateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "Service has thrown an uknown exception."
+          },
+          "401": {
+            "description": "Unauthorized to make request. Auth cookie is needed\r\n0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "Unauthorized to make request. XSRF token is needed.\r\n0: Token Validation Failed"
+          },
+          "404": {
+            "description": "{validateModel} is invalid."
+          },
+          "429": {
+            "description": "Service has been rate limited to user."
+          },
+          "503": {
+            "description": "Service has been turned off. Header response will include Retry-After in seconds."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Amazon:Validate"
+          ]
+        }
+      }
+    },
+    "/v1/apple/purchase": {
+      "post": {
+        "tags": [
+          "Apple"
+        ],
+        "summary": "Perform a purchase and grant desired product.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "appleStorePurchaseModel",
+            "in": "body",
+            "description": "Apple Purchase Model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.AppleStorePurchaseModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "Service has thrown an uknown exception."
+          },
+          "401": {
+            "description": "Unauthorized to make request.\r\n0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Apple:Purchase"
+          ]
+        }
+      }
+    },
+    "/v1/apple/validate": {
+      "post": {
+        "tags": [
+          "Apple"
+        ],
+        "summary": "Validate a ProductId before making a purchase.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "validateModel",
+            "in": "body",
+            "description": "Product Id for example: com.roblox.client.bc1month, com.roblox.client.tbc1month, ...",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.ValidateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "Service has thrown an uknown exception."
+          },
+          "401": {
+            "description": "Unauthorized to make request. Auth cookie is needed\r\n0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "Unauthorized to make request. XSRF token is needed.\r\n0: Token Validation Failed"
+          },
+          "404": {
+            "description": "{validateModel} is invalid."
+          },
+          "429": {
+            "description": "Service has been rate limited to user."
+          },
+          "503": {
+            "description": "Service has been turned off. Header response will include Retry-After in seconds."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Apple:Validate"
+          ]
+        }
+      }
+    },
+    "/v1/developer-exchange-request": {
+      "post": {
+        "tags": [
+          "DeveloperExchange"
+        ],
+        "summary": "Submit Devex request",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.SubmitDevexRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.SubmitDevexResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "DeveloperExchange:SubmitDevex"
+          ]
+        }
+      }
+    },
+    "/v1/digital-codes/redeem": {
+      "post": {
+        "tags": [
+          "DigitalCodes"
+        ],
+        "summary": "Redeem gift card with redemption code. Can include additional redemption code types in future",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "redemptionModel",
+            "in": "body",
+            "description": "Redemption code input by user for redemption",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.DigitalCodeRedemptionModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "DigitalCodes:Redeem"
+          ]
+        }
+      }
+    },
+    "/v1/gamecard/redeem": {
+      "post": {
+        "tags": [
+          "Gamecard"
+        ],
+        "summary": "Redeem gamecards for assets and credits",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "redemptionRequest",
+            "in": "body",
+            "description": "request that contains pincode to redeem",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.GamecardRedemptionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.GamecardRedemptionResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Gamecard:Redeem"
+          ]
+        }
+      }
+    },
+    "/v1/gamecard/reverse": {
+      "post": {
+        "tags": [
+          "Gamecard"
+        ],
+        "summary": "Reverse a game card that was already redeemed",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "pin and userid of user who redeemed pin",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.GamecardReversalRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Gamecard:Reverse"
+          ]
+        }
+      }
+    },
+    "/v1/google/purchase": {
+      "post": {
+        "tags": [
+          "Google"
+        ],
+        "summary": "Perform a purchase and grant desired product.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "purchaseModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.GooglePlayPurchaseModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "Service was unable to validate receiptId."
+          },
+          "401": {
+            "description": "Unauthorized to make request.\r\n0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Google:Purchase"
+          ]
+        }
+      }
+    },
+    "/v1/google/validate": {
+      "post": {
+        "tags": [
+          "Google"
+        ],
+        "summary": "Validate a ProductId before making a purchase.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "validateModel",
+            "in": "body",
+            "description": "Product Id for example: com.roblox.client.bc1month, com.roblox.client.tbc1month, ...",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.ValidateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "Service has thrown an unknown exception."
+          },
+          "401": {
+            "description": "Unauthorized to make request. Auth cookie is needed\r\n0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "Unauthorized to make request. XSRF token is needed.\r\n0: Token Validation Failed"
+          },
+          "404": {
+            "description": "{validateModel} is invalid."
+          },
+          "429": {
+            "description": "Service has been rate limited to user."
+          },
+          "503": {
+            "description": "Service has been turned off. Header response will include Retry-After in seconds."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Google:Validate"
+          ]
+        }
+      }
+    },
+    "/v1/luobu-developer-exchange/request": {
+      "post": {
+        "tags": [
+          "LuobuDeveloperExchange"
+        ],
+        "summary": "Send Luobu Developer Exchange Request",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.SubmitLuobuDevexRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.SubmitLuobuDevexResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "LuobuDeveloperExchange:SubmitLuobuDevEx"
+          ]
+        }
+      }
+    },
+    "/v1/metrics/incrementcounterbyagent": {
+      "post": {
+        "tags": [
+          "Metrics"
+        ],
+        "summary": "Increment a counter based on user agent",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.IncrementUserAgentCounterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Metrics:IncrementEphemeralCounterByUserAgent"
+          ]
+        }
+      }
+    },
+    "/v1/notifications/xsolla": {
+      "post": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Webhook for Xsolla",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "xsollaNotificationModel",
+            "in": "body",
+            "description": "Xsolla notification model that contains the information about the webhook.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.XsollaNotificationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "Service was unable to validate the request is coming from Xsolla."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Notifications:Notify"
+          ]
+        }
+      }
+    },
+    "/v1/payments/checkout/success": {
+      "post": {
+        "tags": [
+          "CheckoutSuccess"
+        ],
+        "summary": "increment a counter based on user agent",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "saleId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "gc",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "checkoutSessionId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.SuccessModel"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "CheckoutSuccess:Success"
+          ]
+        }
+      }
+    },
+    "/v1/payments/credit/checkout": {
+      "post": {
+        "tags": [
+          "CreditPayments"
+        ],
+        "summary": "Get the metadata for Credit Payments view",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "creditPaymentCheckoutRequest",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.CreditPaymentCheckoutRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.CreditPaymentCheckoutResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "CreditPayments:CreditCheckout"
+          ]
+        }
+      }
+    },
+    "/v1/payments/paypal/paymentResult": {
+      "post": {
+        "tags": [
+          "PaypalPayment"
+        ],
+        "summary": "increment a counter based on user agent",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.PaypalPaymentResultResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PaypalPayment:FinalizePayment"
+          ]
+        }
+      }
+    },
+    "/v1/payments/vantiv/checkout": {
+      "post": {
+        "tags": [
+          "VantivPayments"
+        ],
+        "summary": "Submit Vantiv payment",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "vantivPaymentRequest",
+            "in": "body",
+            "description": "submit payment with user credit infomation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.VantivPaymentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.VantivPaymentResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "VantivPayments:CheckoutWithVantivCreditCard"
+          ]
+        }
+      }
+    },
+    "/v1/payments/xsolla/iframe-token": {
+      "post": {
+        "tags": [
+          "XsollaPayments"
+        ],
+        "summary": "Get the Xsolla iframe token",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "xsollaIframeRequest",
+            "in": "body",
+            "description": "Xsolla iframe request model that contains the information about the webhook.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.XsollaIframeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.XsollaPaymentIframeTokenModel"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "XsollaPayments:RetriveXsollaIframeToken"
+          ]
+        }
+      }
+    },
+    "/v1/payments/xsolla/incrementcounterbyagent": {
+      "post": {
+        "tags": [
+          "XsollaPayments"
+        ],
+        "summary": "increment a counter based on user agent",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "counterPrefix",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "XsollaPayments:IncrementEphemeralCounterByUserAgent"
+          ]
+        }
+      }
+    },
+    "/v1/promocodes/redeem": {
+      "post": {
+        "tags": [
+          "Redeem"
+        ],
+        "summary": "Redeem promotion code",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "promoCodeRequest",
+            "in": "body",
+            "description": "Promotion code redemption request model that contains the information about the code.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.PromoCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.PromoCodeResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Redeem:RedeemPromoCode"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Api.Billing.Models.ValidateModel": {
+      "description": "A model containing information about validation",
+      "type": "object",
+      "properties": {
+        "productId": {
+          "description": "Internal Product Id",
+          "type": "string"
+        },
+        "currency": {
+          "description": "Currency Code e.g. \"USD\", \"PHP\", \"CAD\"",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object",
+      "properties": {}
+    },
+    "Roblox.Api.Billing.Models.AmazonStorePurchaseModel": {
+      "description": "A model containing information about making a purchase through Amazon store",
+      "type": "object",
+      "properties": {
+        "receiptId": {
+          "description": "ReceiptId",
+          "type": "string"
+        },
+        "amazonUserId": {
+          "description": "UserId",
+          "type": "string"
+        },
+        "isRetry": {
+          "description": "Is the purchase a Retry",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.AppleStorePurchaseModel": {
+      "description": "A model containing information about making a purchase through Apple store",
+      "type": "object",
+      "properties": {
+        "productId": {
+          "description": "ProductId",
+          "type": "string"
+        },
+        "receipt": {
+          "description": "Receipt",
+          "type": "string"
+        },
+        "isRetry": {
+          "description": "Is the purchase a Retry",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.SuccessModel": {
+      "description": "Checkout Success Model",
+      "type": "object",
+      "properties": {
+        "redirectUrl": {
+          "description": "Redirect url",
+          "type": "string"
+        },
+        "boughtProducts": {
+          "description": "Bought products",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Platform.Billing.ProductDisplayModel"
+          }
+        },
+        "saleId": {
+          "format": "int32",
+          "description": "Sale Id",
+          "type": "integer"
+        },
+        "listPriceTotal": {
+          "format": "double",
+          "description": "ListPriceTotal",
+          "type": "number"
+        },
+        "isGiftCard": {
+          "description": "IsGiftCard",
+          "type": "boolean"
+        },
+        "isRedeemedGiftCard": {
+          "description": "IsRedeemedGiftCard",
+          "type": "boolean"
+        },
+        "giftCardRedemptionCode": {
+          "description": "GiftCard Redemption Code",
+          "type": "string"
+        },
+        "giftCardDownLoadUrl": {
+          "type": "string"
+        },
+        "isCakePixelEmbeddedOnPaymentSuccessPages": {
+          "description": "Is Cake Pixel Embedded On Payment Success Pages",
+          "type": "boolean"
+        },
+        "cakeTrackingSource": {
+          "description": "Cake Tracking Source",
+          "type": "string"
+        },
+        "robloxSupportUrl": {
+          "description": "Roblox Support Url",
+          "type": "string"
+        },
+        "currencyType": {
+          "description": "Currency Type",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Platform.Billing.ProductDisplayModel": {
+      "type": "object",
+      "properties": {
+        "ProductId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "DurationTitle": {
+          "type": "string"
+        },
+        "Price": {
+          "format": "double",
+          "type": "number"
+        },
+        "IsCurrentPremiumFeature": {
+          "type": "boolean"
+        },
+        "PremiumFeatureId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Rank": {
+          "enum": [
+            "None",
+            "BC",
+            "TBC",
+            "OBC"
+          ],
+          "type": "string"
+        },
+        "IsDisabled": {
+          "type": "boolean"
+        },
+        "Expiration": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "IsRenewable": {
+          "type": "boolean"
+        },
+        "RenewOrExpireText": {
+          "type": "string"
+        },
+        "ImageFile": {
+          "type": "string"
+        },
+        "PriceText": {
+          "type": "string"
+        },
+        "GiftcardShoppingCartProductId": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.CreditPaymentMetadataResponse": {
+      "description": "Metadata response model for Credit Payment page",
+      "type": "object",
+      "properties": {
+        "viewModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.CreditPaymentViewModel",
+          "description": "View model"
+        },
+        "redirectionUrl": {
+          "description": "Redirection url",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.CreditPaymentViewModel": {
+      "description": "View Model for Credit Payments page",
+      "type": "object",
+      "properties": {
+        "selectedProduct": {
+          "$ref": "#/definitions/Roblox.Platform.Billing.ProductDisplayModel",
+          "description": "Selected product"
+        },
+        "availableCredit": {
+          "format": "double",
+          "description": "Available credit",
+          "type": "number"
+        },
+        "totalDue": {
+          "format": "double",
+          "description": "Total due",
+          "type": "number"
+        },
+        "balance": {
+          "format": "double",
+          "description": "Balance",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.CreditPaymentCheckoutRequest": {
+      "description": "Request sent to Billing Api from external service or javascript to purchase product via credit payment",
+      "type": "object",
+      "properties": {
+        "productId": {
+          "format": "int32",
+          "description": "Product Id",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.CreditPaymentCheckoutResponse": {
+      "description": "Response model for Credit payments page checkout",
+      "type": "object",
+      "properties": {
+        "isSuccess": {
+          "description": "Whether the checkout was a success",
+          "type": "boolean"
+        },
+        "redirectionUrl": {
+          "description": "Redirection url",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.GetDevexRateResponse": {
+      "description": "GetDevexRateResponse",
+      "type": "object",
+      "properties": {
+        "rate": {
+          "format": "double",
+          "description": "The Exchange Rate",
+          "type": "number"
+        },
+        "currency-code": {
+          "description": "Currency to Exchange to",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.SubmitDevexRequest": {
+      "description": "SubmitDevexRequest",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "Gets or sets FirstName",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Gets or sets LastName",
+          "type": "string"
+        },
+        "emailAddress": {
+          "description": "Gets or sets EmailAddress",
+          "type": "string"
+        },
+        "password": {
+          "description": "Gets or sets Password",
+          "type": "string"
+        },
+        "robuxAmount": {
+          "format": "int64",
+          "description": "Gets or sets RobuxAmount",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.SubmitDevexResponse": {
+      "description": "SubmitDevexResponse",
+      "type": "object",
+      "properties": {}
+    },
+    "Roblox.Api.Billing.Models.Response.GetWelcomeDevexPageMetaDataResponse": {
+      "description": "Get WelcomeDevex Page MetaData Response",
+      "type": "object",
+      "properties": {
+        "redirectUrl": {
+          "description": "Redirect url",
+          "type": "string"
+        },
+        "meetsMembershipRequirements": {
+          "description": "Meets membership requirements",
+          "type": "boolean"
+        },
+        "emailIsVerified": {
+          "description": "Email is verified",
+          "type": "boolean"
+        },
+        "minRobuxToCashOut": {
+          "description": "min robux To cashOut",
+          "type": "string"
+        },
+        "canProceedToCashout": {
+          "description": "Can proceed to cashout",
+          "type": "boolean"
+        },
+        "hasCurrencyOperationError": {
+          "description": "Has currency operation error",
+          "type": "boolean"
+        },
+        "currencyOperationErrorMessage": {
+          "description": "Currency operation error message",
+          "type": "string"
+        },
+        "robloxDevExHelpFullUrl": {
+          "description": "Get more developer exchange information url",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.DigitalCodeRedemptionModel": {
+      "description": "A model containing information about redeeming a digital code",
+      "type": "object",
+      "properties": {
+        "redemptionCode": {
+          "description": "Redemption Code",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.GamecardRedemptionRequest": {
+      "description": "Request sent to Billing Api from external service or javascript to redeem a gamecard",
+      "type": "object",
+      "properties": {
+        "pinCode": {
+          "description": "The Game Card's Pin Code",
+          "type": "string"
+        },
+        "captchaToken": {
+          "type": "string"
+        },
+        "captchaProvider": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.GamecardRedemptionResponse": {
+      "description": "Response sent back from the Billing Api",
+      "type": "object",
+      "properties": {
+        "balance": {
+          "description": "Amount remaining on the balance after redeeming the gamecard",
+          "type": "string"
+        },
+        "redeemedCredit": {
+          "format": "double",
+          "description": "Redeemed credit",
+          "type": "number"
+        },
+        "grantedRobux": {
+          "description": "Granted Robux after redeem",
+          "type": "string"
+        },
+        "successMsg": {
+          "description": "Message if successful",
+          "type": "string"
+        },
+        "successSubText": {
+          "description": "Success SubText",
+          "type": "string"
+        },
+        "bonusMsg": {
+          "description": "Bonus Message. Renders to front end",
+          "type": "string"
+        },
+        "itemName": {
+          "description": "Granted item name",
+          "type": "string"
+        },
+        "itemId": {
+          "format": "int64",
+          "description": "Granted item ID",
+          "type": "integer"
+        },
+        "itemType": {
+          "description": "Granted item Type",
+          "type": "string"
+        },
+        "itemTypeDisplayName": {
+          "description": "Item Display Name",
+          "type": "string"
+        },
+        "creatorName": {
+          "description": "Granted item Creator Name",
+          "type": "string"
+        },
+        "error": {
+          "description": "Error Header",
+          "type": "string"
+        },
+        "errorMsg": {
+          "description": "Error Message",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.GamecardReversalRequest": {
+      "description": "Request sent to Billing Api from external service or javascript to reverse a gamecard",
+      "type": "object",
+      "properties": {
+        "PinCode": {
+          "description": "The Game Card's Pin Code",
+          "type": "string"
+        },
+        "UserId": {
+          "format": "int64",
+          "description": "The user who allegedly redeemed the pin code",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.GameCardMetadataResponse": {
+      "description": "Game card metadata response model",
+      "type": "object",
+      "properties": {
+        "IsConvertCreditFlowEnabled": {
+          "description": "True if convert credit flow is enabled",
+          "type": "boolean"
+        },
+        "PinPlaceholder": {
+          "description": "Placeholder for pin code",
+          "type": "string"
+        },
+        "GiftCardCodeLength": {
+          "format": "int32",
+          "description": "Gift card code length",
+          "type": "integer"
+        },
+        "GameCardCodeLength": {
+          "format": "int32",
+          "description": "Game card code length",
+          "type": "integer"
+        },
+        "IsEventStreamEnabled": {
+          "description": "Enable event streaming",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.GooglePlayPurchaseModel": {
+      "description": "A model containing information about making a purchase through Google Play",
+      "type": "object",
+      "properties": {
+        "packageName": {
+          "description": "Package Name",
+          "type": "string"
+        },
+        "productId": {
+          "description": "ProductId",
+          "type": "string"
+        },
+        "token": {
+          "description": "Token",
+          "type": "string"
+        },
+        "isRetry": {
+          "description": "Is the purchase a Retry",
+          "type": "boolean"
+        },
+        "orderId": {
+          "description": "The Order Id",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.GetLuobuDevexBalanceResponse": {
+      "description": "GetLuobuDevexBalanceResponse",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "format": "double",
+          "description": "Amount",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.GetLuobuLatestRequestStatusResponse": {
+      "description": "GetLuobuLatestRequestStatusResponse",
+      "type": "object",
+      "properties": {
+        "date": {
+          "format": "date-time",
+          "description": "Status Date",
+          "type": "string"
+        },
+        "status": {
+          "description": "Status",
+          "enum": [
+            "None",
+            "Pending",
+            "Completed",
+            "Rejected",
+            "Unknown"
+          ],
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.GetLuobuDevexEligibilityResponse": {
+      "description": "GetLuobuDevexEligibilityResponse",
+      "type": "object",
+      "properties": {
+        "eligibility": {
+          "description": "Eligibility",
+          "enum": [
+            "Eligible",
+            "InsufficientBalance",
+            "RecentRequest",
+            "InsufficientAge",
+            "Unknown"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.SubmitLuobuDevexRequest": {
+      "description": "SubmitDevexRequest",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "Gets or sets FirstName",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Gets or sets LastName",
+          "type": "string"
+        },
+        "email": {
+          "description": "Gets or sets EmailAddress",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.SubmitLuobuDevexResponse": {
+      "description": "SubmitLuobuDevexResponse",
+      "type": "object",
+      "properties": {}
+    },
+    "Roblox.Api.Billing.Models.Requests.IncrementUserAgentCounterRequest": {
+      "description": "Request sent to Billing Api to increment a counter based on user agent",
+      "type": "object",
+      "properties": {
+        "CounterPrefix": {
+          "description": "Counter Prefix",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.XsollaNotificationRequest": {
+      "description": "A model containing information about Xsolla Notification",
+      "type": "object",
+      "properties": {
+        "notification_type": {
+          "description": "Type of notification.",
+          "type": "string"
+        },
+        "purchase": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.PurchaseRequest",
+          "description": "Object containing purchase details."
+        },
+        "user": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.UserRequest",
+          "description": "User details (object)"
+        },
+        "transaction": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.TransactionRequest",
+          "description": "Transaction details (object)."
+        },
+        "payment_details": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.PaymentDetailsRequest",
+          "description": "Payment details (object)."
+        },
+        "subscription": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.SubscriptionRequest",
+          "description": "Subscription details (object)"
+        },
+        "refund_details": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.RefundRequest",
+          "description": "Refund details (object)."
+        },
+        "custom_parameters": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.Requests.Xsolla.CustomParametersRequest",
+          "description": "Custom Parameters (object)"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.PurchaseRequest": {
+      "description": "Object containing purchase details.",
+      "type": "object",
+      "properties": {
+        "virtual_currency": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.VirtualCurrencyRequest",
+          "description": "Virtual currency to purchase (object)."
+        },
+        "virtual_items": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.VirtualItemsRequest",
+          "description": "Object with data about the virtual items in purchase."
+        },
+        "checkout": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.CheckoutRequest",
+          "description": "Object with data about the checkout."
+        },
+        "subscription": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.SubscriptionRequest",
+          "description": "Object with data about the subscription in purchase."
+        },
+        "total": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.TotalRequest",
+          "description": "Total price of purchase (object). Required."
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.UserRequest": {
+      "description": "User details (object)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "User ID. Required.",
+          "type": "string"
+        },
+        "ip": {
+          "description": "User IP address.",
+          "type": "string"
+        },
+        "phone": {
+          "description": "User phone.",
+          "type": "string"
+        },
+        "email": {
+          "description": "User email.",
+          "type": "string"
+        },
+        "country": {
+          "description": "User country. ISO 3166 country code.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.TransactionRequest": {
+      "description": "Transaction details (object). Required.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "description": "Transaction ID.",
+          "type": "integer"
+        },
+        "external_id": {
+          "description": "Transaction external ID.",
+          "type": "string"
+        },
+        "payment_date": {
+          "format": "date-time",
+          "description": "Date of payment.",
+          "type": "string"
+        },
+        "payment_method": {
+          "format": "int32",
+          "description": "Payment method identifier.",
+          "type": "integer"
+        },
+        "dry_run": {
+          "format": "int32",
+          "description": "Test transaction.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.PaymentDetailsRequest": {
+      "description": "Payment details (object).",
+      "type": "object",
+      "properties": {
+        "payment": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.PaymentRequest",
+          "description": "Amount paid by the user (object)."
+        },
+        "payment_method_sum": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.PaymentMethodSumRequest",
+          "description": "Amount debited from the payment system."
+        },
+        "xsolla_balance_sum": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.XsollaBalanceSumRequest",
+          "description": "A model containing information about amount debited from Xsolla balance."
+        },
+        "payout": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.PayoutRequest",
+          "description": "Payout details (object)."
+        },
+        "xsolla_fee": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.XsollaFeeRequest",
+          "description": "A model containing information about Xsolla Fee"
+        },
+        "payment_method_fee": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.PaymentMethodFeeRequest",
+          "description": "Payment system fee."
+        },
+        "vat": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.VatRequest",
+          "description": "VAT details (object; EU only)."
+        },
+        "sales_tax": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.SalesTaxRequest",
+          "description": "Sales tax (object; USA only)."
+        },
+        "payout_currency_rate": {
+          "description": "Exchange rate between payment and payout currencies.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.SubscriptionRequest": {
+      "description": "Subscription request (object).",
+      "type": "object",
+      "properties": {
+        "subscription_id": {
+          "format": "int64",
+          "description": "Subscription ID.",
+          "type": "integer"
+        },
+        "plan_id": {
+          "description": "Plan ID.",
+          "type": "string"
+        },
+        "product_id": {
+          "description": "Product ID.",
+          "type": "string"
+        },
+        "date_create": {
+          "format": "date-time",
+          "description": "Date of creation.",
+          "type": "string"
+        },
+        "date_next_charge": {
+          "format": "date-time",
+          "description": "Date of ending subscription.",
+          "type": "string"
+        },
+        "currency": {
+          "description": "Currency of the purchase. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Price.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.RefundRequest": {
+      "description": "Refund details (object).",
+      "type": "object",
+      "properties": {
+        "code": {
+          "format": "int32",
+          "description": "Refund code.",
+          "type": "integer"
+        },
+        "reason": {
+          "description": "Reason.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.Xsolla.CustomParametersRequest": {
+      "description": "Custom Parameters provided as part of request to the webhook endpoint\r\nMust be kept in sync with {!:Roblox.Billing.Client.Model.XsollaPaymentUiTokenRequestModel}",
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "payment_method": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "account_id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "checkout_session_id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "main_product": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "main_product_price": {
+          "format": "double",
+          "type": "number"
+        },
+        "upsell_product": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "upsell_product_price": {
+          "format": "double",
+          "type": "number"
+        },
+        "total_price": {
+          "format": "double",
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "transaction_time": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ip_address": {
+          "type": "string"
+        },
+        "price_country_id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "user_agent": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.VirtualCurrencyRequest": {
+      "description": "Virtual currency to purchase (object).",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Virtual currency name.",
+          "type": "string"
+        },
+        "quantity": {
+          "format": "int32",
+          "description": "Quantity.",
+          "type": "integer"
+        },
+        "currency": {
+          "description": "Currency of the purchase. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Price in real currency.",
+          "type": "number"
+        },
+        "sku": {
+          "description": "Virtual currency package SKU (if set for the virtual currency package).",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.VirtualItemsRequest": {
+      "description": "A model containing information about the virtual items in purchase.",
+      "type": "object",
+      "properties": {
+        "items": {
+          "description": "Item data (array).",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Billing.Models.ItemRequest"
+          }
+        },
+        "currency": {
+          "description": "Currency of the purchase. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Purchase amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.CheckoutRequest": {
+      "description": "Total price of Checkout (object).",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency of the purchase. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Price.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.TotalRequest": {
+      "description": "Total price of purchase (object).",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency of the purchase. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Price.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.PaymentRequest": {
+      "description": "Amount paid by the user (object).",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.PaymentMethodSumRequest": {
+      "description": "Amount debited from the payment system.",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency.Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.XsollaBalanceSumRequest": {
+      "description": "A model containing information about amount debited from Xsolla balance.",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.PayoutRequest": {
+      "description": "Payout details (object).",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.XsollaFeeRequest": {
+      "description": "A model containing information about Xsolla Fee",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.PaymentMethodFeeRequest": {
+      "description": "Payment system fee.",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.VatRequest": {
+      "description": "VAT details (object; EU only).",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.SalesTaxRequest": {
+      "description": "Sales tax (object; USA only).",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "Currency. Three-letter currency code per ISO 4217.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "description": "Amount.",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.ItemRequest": {
+      "description": "Item data",
+      "type": "object",
+      "properties": {
+        "sku": {
+          "description": "Item ID.",
+          "type": "string"
+        },
+        "amount": {
+          "format": "int32",
+          "description": "Item quantity.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.PaymentMethodsResponse": {
+      "description": "PaymentMethodsResponse",
+      "type": "object",
+      "properties": {
+        "redirectUrl": {
+          "description": "Url where user should continue payment flow",
+          "type": "string"
+        },
+        "selectedProduct": {
+          "$ref": "#/definitions/Roblox.Platform.Billing.ProductDisplayModel",
+          "description": "Selected product"
+        },
+        "loggedIn": {
+          "description": "Whether user is logged in",
+          "type": "boolean"
+        },
+        "currentCredit": {
+          "format": "double",
+          "description": "User's current credit balance",
+          "type": "number"
+        },
+        "paymentMethodsVisibility": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.PaymentMethodsVisibility",
+          "description": "Whether Roblox credit payment method should be displayed"
+        },
+        "isStarcodeV2Enabled": {
+          "description": "Whether StarcodeV2 is enabled",
+          "type": "boolean"
+        },
+        "allowCreditForRenewingPurchases": {
+          "description": "Whether credit is allowed for renewing purchases",
+          "type": "boolean"
+        },
+        "isU13FraudMessageV2Enabled": {
+          "description": "Whether under 13 fraud message V2 is enabled for user",
+          "type": "boolean"
+        },
+        "isParentalAuthorization13To17Enabled": {
+          "description": "Whether parental authorization for first purchase of 13-17 users is enabled",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.PaymentMethodsVisibility": {
+      "description": "PaymentMethodsVisibility",
+      "type": "object",
+      "properties": {
+        "isRobloxCreditVisible": {
+          "description": "Whether Roblox credit payment method should be displayed",
+          "type": "boolean"
+        },
+        "isCreditCardVisible": {
+          "description": "Whether credit card payment method should be displayed",
+          "type": "boolean"
+        },
+        "isPaypalVisible": {
+          "description": "Whether Paypal payment method should be displayed",
+          "type": "boolean"
+        },
+        "isXsollaOxxoVisible": {
+          "description": "Whether XsollaOxxo payment method should be displayed",
+          "type": "boolean"
+        },
+        "isXsollaSofortVisible": {
+          "description": "Whether XsollaSofort payment method should be displayed",
+          "type": "boolean"
+        },
+        "isXsollaBoletoVisible": {
+          "description": "Whether XsollaBoleto payment method should be displayed",
+          "type": "boolean"
+        },
+        "isXsollaCreditCardVisible": {
+          "description": "Whether XsollaCreditCard payment method should be displayed",
+          "type": "boolean"
+        },
+        "isAmazonPayVisible": {
+          "description": "Whether AmazonPay payment method should be displayed",
+          "type": "boolean"
+        },
+        "isXsollaPayPalVisible": {
+          "description": "Whether XsollaPayPal payment method should be displayed",
+          "type": "boolean"
+        },
+        "isXsollaOtherVisible": {
+          "description": "Whether other Xsolla payment method should be displayed",
+          "type": "boolean"
+        },
+        "isXsollaKoreaCreditCardVisible": {
+          "description": "Whether Xsolla Korea Credit Card payment method should be displayed via credit/debit method",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.GetPaymentMethodPageResponse": {
+      "description": "GetPaymentMethodPageResponse",
+      "type": "object",
+      "properties": {
+        "location": {
+          "description": "Location",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int32]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int32]",
+          "readOnly": true
+        },
+        "CursorRecipe": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int32]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "enum": [
+            "Asc",
+            "Desc"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "enum": [
+            "Forward",
+            "Backward"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Billing.Api.PaymentResponse]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Billing.Api.PaymentResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Billing.Api.PaymentResponse": {
+      "type": "object",
+      "properties": {
+        "paymentDate": {
+          "format": "date-time",
+          "description": "The date for this payment transaction be processed",
+          "type": "string"
+        },
+        "products": {
+          "description": "The list of products that associated with this payment",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Billing.Api.PurchasedProductResponse"
+          }
+        },
+        "money": {
+          "$ref": "#/definitions/Roblox.Platform.BillingV2.Core.Money",
+          "description": "The amount for this payment transaction, this include the price and currency information"
+        },
+        "paymentProviderType": {
+          "description": "Payment provider type in payment",
+          "enum": [
+            "AppleAppStore",
+            "Boku",
+            "Check",
+            "Credit",
+            "PayPalCreditCard",
+            "GooglePlayStore",
+            "InComm",
+            "Mail",
+            "Paypal",
+            "Rixty",
+            "RixtyPin",
+            "LiveGamer",
+            "RobloxGiveaway",
+            "AmazonStore",
+            "XboxStore",
+            "Wallie",
+            "WindowsStore",
+            "VantivToken",
+            "XsollaOXXO",
+            "XsollaBoleto",
+            "XsollaSOFORT",
+            "XsollaPaysafe",
+            "XsollaCreditDebitCards",
+            "XsollaAmazonPay",
+            "XsollaPayPal",
+            "XsollaOther",
+            "MidasWeChatDesktop",
+            "MidasWeChatAndroid",
+            "MidasWeChatApple",
+            "XsollaKoreaCreditDebitCards",
+            "Undefined"
+          ],
+          "type": "string"
+        },
+        "creditCardType": {
+          "description": "The type of credit card that used in this payment",
+          "enum": [
+            "Visa",
+            "MasterCard",
+            "Discover",
+            "AmericanExpress"
+          ],
+          "type": "string"
+        },
+        "cardNumber": {
+          "description": "The masked credit card number that used in this payment",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Billing.Api.PurchasedProductResponse": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name for the product been purchased",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Platform.BillingV2.Core.Money": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "USDAmount": {
+          "format": "double",
+          "type": "number"
+        },
+        "Currency": {
+          "$ref": "#/definitions/Roblox.Platform.BillingV2.Core.Currency"
+        }
+      }
+    },
+    "Roblox.Platform.BillingV2.Core.Currency": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "CurrencyType": {
+          "enum": [
+            "USD",
+            "CAD",
+            "GBP",
+            "EUR",
+            "DZD",
+            "AUD",
+            "BDT",
+            "BOB",
+            "BRL",
+            "BGN",
+            "CLP",
+            "CNY",
+            "COP",
+            "CRC",
+            "HRK",
+            "CZK",
+            "DKK",
+            "EGP",
+            "GHS",
+            "HKD",
+            "HUF",
+            "INR",
+            "IDR",
+            "ILS",
+            "JPY",
+            "KZT",
+            "KES",
+            "LBP",
+            "MOP",
+            "MYR",
+            "MXN",
+            "MAD",
+            "NZD",
+            "NGN",
+            "NOK",
+            "PKR",
+            "PEN",
+            "PHP",
+            "PLN",
+            "QAR",
+            "RON",
+            "RUB",
+            "SAR",
+            "SGD",
+            "ZAR",
+            "KRW",
+            "LKR",
+            "SEK",
+            "CHF",
+            "TWD",
+            "TZS",
+            "THB",
+            "TRY",
+            "UAH",
+            "AED",
+            "VND"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "CurrencyName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "CurrencySymbol": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.FailurePageInfoResponse": {
+      "description": "Failure page help link",
+      "type": "object",
+      "properties": {
+        "robloxSupportUrl": {
+          "description": "Roblox support url",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.PaypalPaymentResultResponse": {
+      "description": "Paypal payment response model",
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "Success payment",
+          "type": "boolean"
+        },
+        "isRetry": {
+          "description": "Retry flag",
+          "type": "boolean"
+        },
+        "errorCode": {
+          "format": "int32",
+          "description": "Success payment",
+          "type": "integer"
+        },
+        "errorMsg": {
+          "description": "error message",
+          "type": "string"
+        },
+        "redirectLink": {
+          "description": "redirect link",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.PromoCodeRequest": {
+      "description": "Request sent to Billing Api from external service or javascript to redeem a promotion code",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The promotion code",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.PromoCodeResponse": {
+      "description": "Promotion code redemption response model",
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "True if successful",
+          "type": "boolean"
+        },
+        "errorMsg": {
+          "description": "Message if there is any error",
+          "type": "string"
+        },
+        "successMsg": {
+          "description": "Message if successful",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.RedeemToyMetadataResponse": {
+      "description": "Redeem toy page metadata",
+      "type": "object",
+      "properties": {
+        "codeLength": {
+          "format": "int32",
+          "description": "Required length for toy code",
+          "type": "integer"
+        },
+        "howToRedeemToysCodeVideoId": {
+          "description": "YouTube video ID for how to redeem toy video",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.VantivPaymentMetadataRequest": {
+      "description": "A model containing information required to get metadata for Vantiv Payment view",
+      "type": "object",
+      "properties": {
+        "ProductId": {
+          "format": "int32",
+          "description": "Product ID",
+          "type": "integer"
+        },
+        "paymentMethod": {
+          "description": "Payment method",
+          "enum": [
+            "AppleAppStore",
+            "Boku",
+            "Check",
+            "Credit",
+            "PayPalCreditCard",
+            "GooglePlayStore",
+            "InComm",
+            "Mail",
+            "Paypal",
+            "Rixty",
+            "RixtyPin",
+            "LiveGamer",
+            "RobloxGiveaway",
+            "AmazonStore",
+            "XboxStore",
+            "Wallie",
+            "WindowsStore",
+            "VantivToken",
+            "XsollaOXXO",
+            "XsollaBoleto",
+            "XsollaSOFORT",
+            "XsollaPaysafe",
+            "XsollaCreditDebitCards",
+            "XsollaAmazonPay",
+            "XsollaPayPal",
+            "XsollaOther",
+            "MidasWeChatDesktop",
+            "MidasWeChatAndroid",
+            "MidasWeChatApple",
+            "XsollaKoreaCreditDebitCards",
+            "Undefined"
+          ],
+          "type": "string"
+        },
+        "selectedUpsellProductId": {
+          "format": "int32",
+          "description": "Upsell Product ID",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.VantivPaymentMetadataResponse": {
+      "description": "Metadata response model for Vantiv Payment page",
+      "type": "object",
+      "properties": {
+        "viewModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.VantivPaymentViewModel",
+          "description": "View model"
+        },
+        "redirectLink": {
+          "description": "Redirection link",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.VantivPaymentViewModel": {
+      "description": "View Model for Vantiv Payment page",
+      "type": "object",
+      "properties": {
+        "paymentProviderType": {
+          "description": "Payment provider type",
+          "enum": [
+            "AppleAppStore",
+            "Boku",
+            "Check",
+            "Credit",
+            "PayPalCreditCard",
+            "GooglePlayStore",
+            "InComm",
+            "Mail",
+            "Paypal",
+            "Rixty",
+            "RixtyPin",
+            "LiveGamer",
+            "RobloxGiveaway",
+            "AmazonStore",
+            "XboxStore",
+            "Wallie",
+            "WindowsStore",
+            "VantivToken",
+            "XsollaOXXO",
+            "XsollaBoleto",
+            "XsollaSOFORT",
+            "XsollaPaysafe",
+            "XsollaCreditDebitCards",
+            "XsollaAmazonPay",
+            "XsollaPayPal",
+            "XsollaOther",
+            "MidasWeChatDesktop",
+            "MidasWeChatAndroid",
+            "MidasWeChatApple",
+            "XsollaKoreaCreditDebitCards",
+            "Undefined"
+          ],
+          "type": "string"
+        },
+        "selectedProduct": {
+          "$ref": "#/definitions/Roblox.Platform.Billing.ProductDisplayModel",
+          "description": "Selected product"
+        },
+        "selectedProductBcVersion": {
+          "$ref": "#/definitions/Roblox.Platform.Billing.ProductDisplayModel",
+          "description": "Selected Bc version product"
+        },
+        "robuxBcBonus": {
+          "format": "int32",
+          "description": "Robux Bc bonus",
+          "type": "integer"
+        },
+        "selectedUpsellProductId": {
+          "format": "int32",
+          "description": "Selected upsell product Id",
+          "type": "integer"
+        },
+        "dataViewModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.PaymentDataViewModel",
+          "description": "Data view model"
+        },
+        "userBillingInfo": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.UserBillingInfoModel",
+          "description": "User Section Info"
+        },
+        "creditCard": {
+          "$ref": "#/definitions/Roblox.Platform.Billing.CreditCard",
+          "description": "CreditCard"
+        },
+        "vantivIframeViewModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.VantivIframeViewModel",
+          "description": "VantivIframeViewModel"
+        },
+        "displayDoublePurchase": {
+          "description": "DisplayDoublePurchase",
+          "type": "boolean"
+        },
+        "doublePurchaseConfirmed": {
+          "description": "DoublePurchaseConfirmed",
+          "type": "boolean"
+        },
+        "isKountEnabled": {
+          "description": "IsKountEnabled",
+          "type": "boolean"
+        },
+        "kountNoIFrameEnabled": {
+          "description": "KountNoIFrameEnabled",
+          "type": "boolean"
+        },
+        "kountScriptSDKUrl": {
+          "description": "KountScriptSDKUrl",
+          "type": "string"
+        },
+        "kountUrl": {
+          "description": "KountUrl",
+          "type": "string"
+        },
+        "kountSessionId": {
+          "description": "KountSessionId",
+          "type": "string"
+        },
+        "isVantivThreatMetrixEnabled": {
+          "description": "IsVantivThreatMetrixEnabled",
+          "type": "boolean"
+        },
+        "vantivThreatMetrixScriptUrl": {
+          "description": "VantivThreatMetrixScriptUrl",
+          "type": "string"
+        },
+        "vantivThreatMetrixIframeUrl": {
+          "description": "VantivThreatMetrixIframeUrl",
+          "type": "string"
+        },
+        "vantivThreatMetrixSessionId": {
+          "description": "VantivThreatMetrixSessionId",
+          "type": "string"
+        },
+        "vantivPaymentAbTestVariationValue": {
+          "format": "int32",
+          "description": "VantivPaymentAbTestVariationValue",
+          "type": "integer"
+        },
+        "isIframeLoadingForVantivEnabled": {
+          "description": "IsIframeLoadingForVantivEnabled",
+          "type": "boolean"
+        },
+        "iframeLoadingTimeOutForVantiv": {
+          "format": "int32",
+          "description": "IframeLoadingTimeOutForVantiv",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.PaymentDataViewModel": {
+      "description": "A model containing payment data",
+      "type": "object",
+      "properties": {
+        "isDesktopLocalPricingEnabled": {
+          "description": "Is desktop local pricing enabled",
+          "type": "boolean"
+        },
+        "countryCurrencyTypeId": {
+          "format": "int32",
+          "description": "Country Currency Type Id",
+          "type": "integer"
+        },
+        "selectedProductPrice": {
+          "format": "double",
+          "description": "SelectedProductPrice",
+          "type": "number"
+        },
+        "currencyTypeId": {
+          "format": "int32",
+          "description": "CurrencyTypeId",
+          "type": "integer"
+        },
+        "currency": {
+          "$ref": "#/definitions/Roblox.Platform.BillingV2.Core.Currency",
+          "description": "Currency"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.UserBillingInfoModel": {
+      "description": "View Model for user section",
+      "type": "object",
+      "properties": {
+        "countries": {
+          "description": "Countries",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Billing.Models.CountryViewModel"
+          }
+        },
+        "firstName": {
+          "description": "First Name",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Countries",
+          "type": "string"
+        },
+        "address1": {
+          "description": "Address 1:",
+          "type": "string"
+        },
+        "address2": {
+          "description": "Address 2:",
+          "type": "string"
+        },
+        "city": {
+          "description": "City",
+          "type": "string"
+        },
+        "state": {
+          "description": "State, only validate when Country is US, it will happen in the UpgradesControllers",
+          "type": "string"
+        },
+        "zip": {
+          "description": "Zip",
+          "type": "string"
+        },
+        "country": {
+          "description": "Country",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email",
+          "type": "string"
+        },
+        "phone": {
+          "description": "Phone",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Platform.Billing.CreditCard": {
+      "type": "object",
+      "properties": {
+        "Number": {
+          "type": "string"
+        },
+        "CardType": {
+          "enum": [
+            "Visa",
+            "MasterCard",
+            "Discover",
+            "AmericanExpress"
+          ],
+          "type": "string"
+        },
+        "SecurityCode": {
+          "type": "string"
+        },
+        "ExpirationMonth": {
+          "type": "string"
+        },
+        "ExpirationYear": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.VantivIframeViewModel": {
+      "description": "Metadata response model for Vantiv Iframe",
+      "type": "object",
+      "properties": {
+        "eprotectClientJsSource": {
+          "description": "Gets the eprotect client javascript source.",
+          "type": "string",
+          "readOnly": true
+        },
+        "eprotectId": {
+          "description": "Gets the unique eProtect identifier assigned from Vantiv.",
+          "type": "string",
+          "readOnly": true
+        },
+        "cssFilename": {
+          "description": "Gets the style sheet filename excluding the \".css\".",
+          "type": "string",
+          "readOnly": true
+        },
+        "reportGroup": {
+          "description": "Gets the report group that under which this transaction will be displayed in Vantiv iQ Reporting and Analytics.",
+          "type": "string",
+          "readOnly": true
+        },
+        "timeoutInMilliseconds": {
+          "format": "int32",
+          "description": "Gets the number of milliseconds before a transaction times out and the timeout callback is invoked.",
+          "type": "integer",
+          "readOnly": true
+        },
+        "orderId": {
+          "description": "Gets the merchant-assigned value representing the order. Max length is 25 characters.",
+          "type": "string",
+          "readOnly": true
+        },
+        "paypageRegistrationId": {
+          "description": "PaypageRegistrationId",
+          "type": "string"
+        },
+        "maskedCreditCardInfoModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.MaskedCreditCardInfoModel",
+          "description": "maskedCreditCardInfoModel"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.CountryViewModel": {
+      "description": "A model containing information about Country",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Code",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "isSelected": {
+          "description": "IsSelected",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.MaskedCreditCardInfoModel": {
+      "description": "Metadata response model for Vantiv MaskedCreditCardInfoModel",
+      "type": "object",
+      "properties": {
+        "firstSix": {
+          "description": "First six\r\n[RegularExpression(@\"\\d{6}\")]",
+          "type": "string"
+        },
+        "lastFour": {
+          "description": "Last four\r\n[RegularExpression(@\"\\d{4}\")]",
+          "type": "string"
+        },
+        "expirationMonth": {
+          "format": "int32",
+          "description": "Expiration month\r\n[Range(1, 12)]",
+          "type": "integer"
+        },
+        "expirationYear": {
+          "format": "int32",
+          "description": "Expiration year",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.VantivPaymentRequest": {
+      "description": "Metadata response model for Vantiv Payment page",
+      "type": "object",
+      "properties": {
+        "paypageRegistrationId": {
+          "description": "PaypageRegistrationId",
+          "type": "string"
+        },
+        "maskedCreditCardInfoModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.MaskedCreditCardInfoModel",
+          "description": "Masked Credit Card Info Model"
+        },
+        "kountSessionIdentifier": {
+          "type": "string"
+        },
+        "vantivThreatMetrixIdentifier": {
+          "type": "string"
+        },
+        "firstName": {
+          "description": "First Name",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Countries",
+          "type": "string"
+        },
+        "address1": {
+          "description": "Address 1:",
+          "type": "string"
+        },
+        "address2": {
+          "description": "Address 2:",
+          "type": "string"
+        },
+        "city": {
+          "description": "City",
+          "type": "string"
+        },
+        "state": {
+          "description": "State, only validate when Country is US, it will happen in the UpgradesControllers",
+          "type": "string"
+        },
+        "zip": {
+          "description": "Zip",
+          "type": "string"
+        },
+        "country": {
+          "description": "Country",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email",
+          "type": "string"
+        },
+        "phone": {
+          "description": "Phone",
+          "type": "string"
+        },
+        "mainProduct": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.ProductModel",
+          "description": "Main product"
+        },
+        "upsellProduct": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.ProductModel",
+          "description": "UpsellProduct"
+        },
+        "expectedPrice": {
+          "format": "double",
+          "description": "ExpectedPrice",
+          "type": "number"
+        },
+        "isDoublePurchaseConfirmed": {
+          "description": "IsDoublePurchaseConfirmed",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.ProductModel": {
+      "description": "Product model",
+      "type": "object",
+      "properties": {
+        "productId": {
+          "format": "int32",
+          "description": "Product Id",
+          "type": "integer"
+        },
+        "expectedPrice": {
+          "format": "double",
+          "description": "Expected price",
+          "type": "number"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.VantivPaymentResponse": {
+      "description": "Metadata response model for Vantiv Payment page",
+      "type": "object",
+      "properties": {
+        "isSuccess": {
+          "description": "IsSuccess",
+          "type": "boolean"
+        },
+        "redirectLink": {
+          "description": "Redirection link",
+          "type": "string"
+        },
+        "errorMessage": {
+          "description": "ErrorMessage",
+          "type": "string"
+        },
+        "viewModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.VantivPaymentViewModel",
+          "description": "View model"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.XsollaIframeRequest": {
+      "type": "object",
+      "properties": {
+        "mainProductId": {
+          "format": "int32",
+          "description": "The product id of the main item that user purchased",
+          "type": "integer"
+        },
+        "upsellProductId": {
+          "format": "int32",
+          "description": "The product id of the upsell item that user purchased",
+          "type": "integer"
+        },
+        "paymentProviderType": {
+          "description": "The payment provider type for this purchase request",
+          "type": "string"
+        },
+        "verifiedEmailOrPhone": {
+          "description": "The flag shows if the user already has phone or email verified",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.XsollaPaymentIframeTokenModel": {
+      "description": "Xsolla payment Iframe Token response model",
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "success": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Requests.XsollaPaymentMetadataRequest": {
+      "description": "A model containing information required to get metadata for Xsolla Payment view",
+      "type": "object",
+      "properties": {
+        "ProductId": {
+          "format": "int32",
+          "description": "Product ID",
+          "type": "integer"
+        },
+        "paymentMethod": {
+          "description": "Payment method",
+          "enum": [
+            "AppleAppStore",
+            "Boku",
+            "Check",
+            "Credit",
+            "PayPalCreditCard",
+            "GooglePlayStore",
+            "InComm",
+            "Mail",
+            "Paypal",
+            "Rixty",
+            "RixtyPin",
+            "LiveGamer",
+            "RobloxGiveaway",
+            "AmazonStore",
+            "XboxStore",
+            "Wallie",
+            "WindowsStore",
+            "VantivToken",
+            "XsollaOXXO",
+            "XsollaBoleto",
+            "XsollaSOFORT",
+            "XsollaPaysafe",
+            "XsollaCreditDebitCards",
+            "XsollaAmazonPay",
+            "XsollaPayPal",
+            "XsollaOther",
+            "MidasWeChatDesktop",
+            "MidasWeChatAndroid",
+            "MidasWeChatApple",
+            "XsollaKoreaCreditDebitCards",
+            "Undefined"
+          ],
+          "type": "string"
+        },
+        "selectedUpsellProductId": {
+          "format": "int32",
+          "description": "Upsell Product ID",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.XsollaPaymentMetadataResponse": {
+      "description": "Metadata response model for Xsolla Payment page",
+      "type": "object",
+      "properties": {
+        "viewModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.XsollaPaymentViewModel",
+          "description": "View model"
+        },
+        "redirectionModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.RedirectionModel",
+          "description": "Redirection model"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.XsollaPaymentViewModel": {
+      "description": "View Model for Xsolla Payment page",
+      "type": "object",
+      "properties": {
+        "paymentProviderType": {
+          "description": "Payment provider type",
+          "enum": [
+            "AppleAppStore",
+            "Boku",
+            "Check",
+            "Credit",
+            "PayPalCreditCard",
+            "GooglePlayStore",
+            "InComm",
+            "Mail",
+            "Paypal",
+            "Rixty",
+            "RixtyPin",
+            "LiveGamer",
+            "RobloxGiveaway",
+            "AmazonStore",
+            "XboxStore",
+            "Wallie",
+            "WindowsStore",
+            "VantivToken",
+            "XsollaOXXO",
+            "XsollaBoleto",
+            "XsollaSOFORT",
+            "XsollaPaysafe",
+            "XsollaCreditDebitCards",
+            "XsollaAmazonPay",
+            "XsollaPayPal",
+            "XsollaOther",
+            "MidasWeChatDesktop",
+            "MidasWeChatAndroid",
+            "MidasWeChatApple",
+            "XsollaKoreaCreditDebitCards",
+            "Undefined"
+          ],
+          "type": "string"
+        },
+        "selectedProduct": {
+          "$ref": "#/definitions/Roblox.Platform.Billing.ProductDisplayModel",
+          "description": "Selected product"
+        },
+        "selectedProductBcVersion": {
+          "$ref": "#/definitions/Roblox.Platform.Billing.ProductDisplayModel",
+          "description": "Selected Bc version product"
+        },
+        "selectedUpsellProductId": {
+          "format": "int32",
+          "description": "Selected upsell product Id",
+          "type": "integer"
+        },
+        "xsollaPaymentUIToken": {
+          "description": "Xsolla payment UI token",
+          "type": "string"
+        },
+        "xsollaValidOrigin": {
+          "description": "Xsolla valid origin",
+          "type": "string"
+        },
+        "incrementCounterUrl": {
+          "description": "Increment counter url",
+          "type": "string"
+        },
+        "isXsollaBoleto": {
+          "description": "True if payment method is Xsolla Boleto",
+          "type": "boolean"
+        },
+        "xsollaPaymentUIUrl": {
+          "description": "Xsolla payment UI url",
+          "type": "string"
+        },
+        "robloxSupportUrl": {
+          "description": "Roblox support url",
+          "type": "string"
+        },
+        "xsollaSupportUrl": {
+          "description": "Xsolla support url",
+          "type": "string"
+        },
+        "isXsollaPaypalIframeEnabled": {
+          "description": "Xsolla Paypal Iframe settings",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.RedirectionModel": {
+      "description": "A model containing information about redirection",
+      "type": "object",
+      "properties": {
+        "redirectionUrl": {
+          "description": "Redirection url",
+          "type": "string"
+        },
+        "redirectionParams": {
+          "description": "Paramerters sent to redirection url",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

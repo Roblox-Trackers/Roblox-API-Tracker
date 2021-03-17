@@ -1,0 +1,239 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Translations Api v1"
+  },
+  "host": "translations.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/translations": {
+      "get": {
+        "tags": [
+          "Translations"
+        ],
+        "summary": "Get the translations JSON files url of a specific consumer type for all locales.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "consumerType",
+            "in": "query",
+            "description": "The consumer type.",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "AndroidApp",
+              "IOSApp",
+              "Web",
+              "LuaApp",
+              "Xbox",
+              "WinBootstrapper",
+              "MacBootstrapper",
+              "RobloxInGameContent",
+              "Studio"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Translations.Api.TranslationsResponse]"
+            }
+          },
+          "400": {
+            "description": "2: Consumer type not supported"
+          },
+          "404": {
+            "description": "3: Translations do not exist"
+          },
+          "503": {
+            "description": "4: Feature disabled"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Translations:GetTranslationsByConsumerType"
+          ]
+        }
+      }
+    },
+    "/v1/translations/{locale}": {
+      "get": {
+        "tags": [
+          "Translations"
+        ],
+        "summary": "Get the translations JSON file url of a specific consumer type and a specific locale.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "path",
+            "description": "The locale code.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "consumerType",
+            "in": "query",
+            "description": "The consumer type.",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "AndroidApp",
+              "IOSApp",
+              "Web",
+              "LuaApp",
+              "Xbox",
+              "WinBootstrapper",
+              "MacBootstrapper",
+              "RobloxInGameContent",
+              "Studio"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Translations.Api.TranslationsResponse"
+            }
+          },
+          "400": {
+            "description": "1: Invalid locale\r\n2: Consumer type not supported"
+          },
+          "404": {
+            "description": "3: Translations do not exist"
+          },
+          "503": {
+            "description": "4: Feature disabled"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Translations:GetTranslationsByLocaleAndConsumerType"
+          ]
+        }
+      }
+    },
+    "/v1/translations/language-resources": {
+      "get": {
+        "tags": [
+          "Translations"
+        ],
+        "summary": "Get translated content given consumerType, contentNamespace, localeCode and a list of keys",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "consumerType",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "AndroidApp",
+              "IOSApp",
+              "Web",
+              "LuaApp",
+              "Xbox",
+              "WinBootstrapper",
+              "MacBootstrapper",
+              "RobloxInGameContent",
+              "Studio"
+            ]
+          },
+          {
+            "name": "contentNamespace",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keys",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "localeCode",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "1: Invalid locale\r\n2: Consumer type not supported"
+          },
+          "404": {
+            "description": "3: Translations do not exist"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Translations:GetTranslatedContentInContentNamespace"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Translations.Api.TranslationsResponse": {
+      "description": "Translations response model",
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "locale": {
+          "description": "The locale of the translations",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Translations.Api.TranslationsResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Translations.Api.TranslationsResponse"
+          }
+        }
+      }
+    }
+  }
+}
