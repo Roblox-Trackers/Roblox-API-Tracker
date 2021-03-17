@@ -1982,8 +1982,8 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
+            "ValidUsername",
             "ModerationError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
