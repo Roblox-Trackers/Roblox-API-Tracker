@@ -1594,10 +1594,10 @@
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
             "ValidPassword",
-            "WeakPasswordError",
             "ShortPasswordError",
-            "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
+            "PasswordSameAsUsernameError",
+            "WeakPasswordError",
             "DumbStringsError"
           ],
           "type": "string"
@@ -1982,15 +1982,15 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
+            "ValidUsername",
+            "ContainsPiiError",
             "ModerationError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",
-            "ContainsPiiError",
             "ContainsReservedUsernameError"
           ],
           "type": "string"
