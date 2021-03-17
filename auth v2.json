@@ -1595,10 +1595,10 @@
           "enum": [
             "ValidPassword",
             "ShortPasswordError",
-            "DumbStringsError",
-            "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
-            "WeakPasswordError"
+            "WeakPasswordError",
+            "PasswordSameAsUsernameError",
+            "DumbStringsError"
           ],
           "type": "string"
         },
@@ -1983,14 +1983,14 @@
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
             "AlreadyInUseError",
-            "ModerationError",
             "ValidUsername",
+            "ModerationError",
+            "ContainsPiiError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",
-            "ContainsPiiError",
             "ContainsReservedUsernameError"
           ],
           "type": "string"
