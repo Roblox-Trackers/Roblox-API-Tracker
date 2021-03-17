@@ -1001,42 +1001,6 @@
         }
       }
     },
-    "/v1/games/omni-recommendations-metadata": {
-      "get": {
-        "tags": [
-          "Games"
-        ],
-        "summary": "Endpoint for omni recommendations metadata",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "model.contents",
-            "in": "query",
-            "description": "List of Contents with type being requested.",
-            "required": false,
-            "type": "array"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Games.Api.Models.Response.OmniRecommendationsMetaDataResponse"
-            }
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Games:GetOmniRecommendationsMetadata"
-          ]
-        }
-      }
-    },
     "/v1/games/recommendations/algorithm/{algorithmName}": {
       "get": {
         "tags": [
@@ -2765,7 +2729,7 @@
       }
     },
     "Roblox.Games.Api.Models.Response.OmniRecommendationsResponse": {
-      "description": "Response model for OmniRecommendations",
+      "description": "Response model for games search",
       "type": "object",
       "properties": {
         "Sorts": {
@@ -2800,6 +2764,10 @@
       "properties": {
         "ContentType": {
           "description": "Gets or sets ContentType",
+          "enum": [
+            "Invalid",
+            "Game"
+          ],
           "type": "string"
         },
         "ResponseModel": {
@@ -2812,51 +2780,6 @@
       "description": "Container to hold different type of responses",
       "type": "object",
       "properties": {}
-    },
-    "Roblox.Games.Api.Models.Request.OmniRecommendationsMetaDataRequest": {
-      "description": "Omni recommendations metadata request model.",
-      "type": "object",
-      "properties": {
-        "Contents": {
-          "description": "List of Contents with type being requested.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationMetadataRequestContentModel"
-          }
-        }
-      }
-    },
-    "Roblox.Games.Api.Models.OmniRecommendationMetadataRequestContentModel": {
-      "description": "Model for omni recommendation content metadata request",
-      "type": "object",
-      "properties": {
-        "ContentType": {
-          "description": "Gets or sets content type",
-          "enum": [
-            "Invalid",
-            "Game"
-          ],
-          "type": "string"
-        },
-        "ContentId": {
-          "format": "int64",
-          "description": "Gets or sets content id",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Games.Api.Models.Response.OmniRecommendationsMetaDataResponse": {
-      "description": "Model for OmniRecommendationsMetaData response",
-      "type": "object",
-      "properties": {
-        "RecommendationList": {
-          "description": "Gets or sets recommendations",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationDataModel"
-          }
-        }
-      }
     },
     "Roblox.Games.Api.VipServerUpdateRequest": {
       "description": "Request model to update a VIP server.",
