@@ -1171,10 +1171,6 @@
         "isAvatarWearingApiCallsLockingOnFrontendEnabled": {
           "description": "Does the frontend lock avatar editor input until the wearing call returns",
           "type": "boolean"
-        },
-        "isOutfitHandlingOnFrontendEnabled": {
-          "description": "Does the frontend lock avatar editor input until the wearing call returns",
-          "type": "boolean"
         }
       }
     },
