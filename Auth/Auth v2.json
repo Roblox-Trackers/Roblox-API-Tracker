@@ -97,7 +97,59 @@
         "properties": {
           "internal": false,
           "metricIds": [
-            "Credentials:CanSendCredentialsVerificationMessage"
+            "Credentials:CanSendCredentialsVerificationMessageFromUri"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "Credentials"
+        ],
+        "summary": "Checks if it is possible to send a verification message for the provided credentials.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "Request model with a credential value, type, and password.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Authentication.Api.Models.SendCredentialsVerificationMessageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Authentication.Api.Models.CanSendCredentialsVerificationMessageResponse"
+            }
+          },
+          "400": {
+            "description": "0: An unexpected error occurred.\r\n1: Credential value and password are required. Please try again."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          },
+          "429": {
+            "description": "2: Too many attempts. Please wait a bit."
+          },
+          "503": {
+            "description": "5: Credentials verification operation is unavailable. Please try again later."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Credentials:CanSendCredentialsVerificationMessageFromBody"
           ]
         }
       }
@@ -1595,8 +1647,8 @@
           "enum": [
             "ValidPassword",
             "ShortPasswordError",
-            "WeakPasswordError",
             "PasswordSameAsUsernameError",
+            "WeakPasswordError",
             "ForbiddenPasswordError",
             "DumbStringsError"
           ],
@@ -1982,11 +2034,11 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
+            "ValidUsername",
             "ModerationError",
-            "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
+            "InvalidLengthError",
             "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",

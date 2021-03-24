@@ -695,6 +695,10 @@
         "midasPlatformKey": {
           "description": "Gets or sets MidasPlatformKey(pfkey).\r\nThis parameter is only required for mobile and can be acquired from MSDK.",
           "type": "string"
+        },
+        "midasOpenKey": {
+          "description": "Gets or sets MidasOpenKey.\r\nThis parameter is required to retrieve the PaymentUIToken.\r\nThese source of these values differ based on the platform the users signed on from.\r\nQQ uses pay_token, WeChat uses access_token",
+          "type": "string"
         }
       }
     },

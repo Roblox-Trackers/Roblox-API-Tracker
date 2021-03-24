@@ -2729,10 +2729,6 @@
           "description": "Whether credit is allowed for renewing purchases",
           "type": "boolean"
         },
-        "isU13FraudMessageV2Enabled": {
-          "description": "Whether under 13 fraud message V2 is enabled for user",
-          "type": "boolean"
-        },
         "isParentalAuthorization13To17Enabled": {
           "description": "Whether parental authorization for first purchase of 13-17 users is enabled",
           "type": "boolean"
