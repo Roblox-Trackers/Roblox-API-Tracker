@@ -569,7 +569,16 @@
             "LocalizationTableTranslation",
             "EmoteAnimation",
             "Video",
-            "TexturePack"
+            "TexturePack",
+            "TShirtAccessory",
+            "ShirtAccessory",
+            "PantsAccessory",
+            "JacketAccessory",
+            "SweaterAccessory",
+            "ShortsAccessory",
+            "LeftShoeAccessory",
+            "RightShoeAccessory",
+            "DressSkirtAccessory"
           ],
           "type": "string",
           "readOnly": true
