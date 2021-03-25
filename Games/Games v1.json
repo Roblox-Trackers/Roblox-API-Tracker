@@ -2438,6 +2438,10 @@
         "gameRating": {
           "$ref": "#/definitions/Roblox.Contentratingsservice.V1.Rating",
           "description": "Game Rating structure"
+        },
+        "isFavoritedByUser": {
+          "description": "Is this game favorited by user.",
+          "type": "boolean"
         }
       }
     },
