@@ -1144,11 +1144,17 @@
             "description": "The thumbnail size, formatted widthxheight",
             "required": false,
             "type": "string",
-            "default": "50x50",
+            "default": "48x48",
             "enum": [
+              "48x48",
               "50x50",
               "60x60",
-              "75x75"
+              "75x75",
+              "100x100",
+              "150x150",
+              "180x180",
+              "352x352",
+              "420x420"
             ]
           },
           {
@@ -1434,17 +1440,17 @@
           "type": "string",
           "readOnly": true
         },
-        "ThumbnailFormatID": {
-          "format": "int32",
-          "type": "integer",
-          "readOnly": true
-        },
         "IsCircular": {
           "type": "boolean",
           "readOnly": true
         },
         "FileExtension": {
           "type": "string",
+          "readOnly": true
+        },
+        "ThumbnailFormatID": {
+          "format": "int32",
+          "type": "integer",
           "readOnly": true
         },
         "MimeType": {
