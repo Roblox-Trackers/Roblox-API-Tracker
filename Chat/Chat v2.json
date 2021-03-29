@@ -1911,9 +1911,6 @@
         "shouldRespectConversationHasUnreadMessageToMarkAsRead": {
           "type": "boolean"
         },
-        "isVoiceChatForClientSideEnabled": {
-          "type": "boolean"
-        },
         "isAliasChatForClientSideEnabled": {
           "type": "boolean"
         },
@@ -1921,9 +1918,6 @@
           "type": "boolean"
         },
         "isRoactChatEnabled": {
-          "type": "boolean"
-        },
-        "isConnectTabEnabled": {
           "type": "boolean"
         }
       }
