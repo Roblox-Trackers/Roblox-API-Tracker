@@ -1653,7 +1653,7 @@
             }
           },
           "400": {
-            "description": "8: The creator of this game has disabled private servers for this game.\r\n32: You do not have enough funds available to renew the subscription for this private server."
+            "description": "8: The creator of this game has disabled private servers for this game."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
