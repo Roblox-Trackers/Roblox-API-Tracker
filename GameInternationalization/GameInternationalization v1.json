@@ -403,7 +403,7 @@
         "tags": [
           "SupportedLanguages"
         ],
-        "summary": "Get UniverseDisplayInfo automatic translation settings.",
+        "summary": "Get UniverseDisplayInfo automatic translation settings..",
         "consumes": [],
         "produces": [
           "application/json",
@@ -639,14 +639,14 @@
           {
             "name": "languageCode",
             "in": "path",
-            "description": "The language code.",
+            "description": "",
             "required": true,
             "type": "string"
           },
           {
             "name": "enableUniverseDisplayInfoAutomaticTranslation",
             "in": "body",
-            "description": "Whether to enable automatic translation for universe display info.",
+            "description": "",
             "required": true,
             "schema": {
               "type": "boolean"
