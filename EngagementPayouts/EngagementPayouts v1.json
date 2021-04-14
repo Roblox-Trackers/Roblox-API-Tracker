@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "EngagementPayouts Api v1"
+  },
+  "host": "engagementpayouts.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/universe-payout-history": {
+      "get": {
+        "tags": [
+          "The"
+        ],
+        "summary": "Gets the engagement payout history for a specific universe and a given date range, specified by start and end dates.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "query",
+            "description": "The ID of the universe in question.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "The first date in the range, specified as yyyy-MM-dd.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The last date in the range, specified as yyyy-MM-dd.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.EngagementPayouts.Api.PayoutResponseModel"
+              }
+            }
+          },
+          "400": {
+            "description": "1: InvalidUniverseId\r\n2: InvalidStartDate\r\n3: InvalidEndDate\r\n4: InvalidDateRange\r\n5: Forbidden\r\n6: TooManyDays"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "The:GetUniversePayoutHistory"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.EngagementPayouts.Api.PayoutResponseModel": {
+      "description": "A model for payout responses",
+      "type": "object",
+      "properties": {
+        "engagementScore": {
+          "format": "double",
+          "description": "Gets the engagement score",
+          "type": "number",
+          "readOnly": true
+        },
+        "payoutInRobux": {
+          "format": "int64",
+          "description": "Gets the payout in Robux",
+          "type": "integer",
+          "readOnly": true
+        },
+        "payoutType": {
+          "description": "Gets the payout type",
+          "type": "string",
+          "readOnly": true
+        },
+        "eligibilityType": {
+          "description": "Gets the eligibility type",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}
