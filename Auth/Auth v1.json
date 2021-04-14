@@ -997,6 +997,51 @@
         }
       }
     },
+    "/v1/identity-verification/login": {
+      "post": {
+        "tags": [
+          "IdentityVerification"
+        ],
+        "summary": "Endpoint for login with identity verification",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Authentication.Api.Models.Request.IdentityVerificationLoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n1: Invalid login ticket.\r\n2: Invalid result token.\r\n3: Invalid user.\r\n4: Authentication failure."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "IdentityVerification:Login"
+          ]
+        }
+      }
+    },
     "/v1/login": {
       "post": {
         "tags": [
@@ -1598,6 +1643,10 @@
         "twoStepVerificationData": {
           "$ref": "#/definitions/Roblox.Authentication.Api.Models.TwoStepVerificationSentResponse",
           "description": "TwoStepVerification data if applicable"
+        },
+        "identityVerificationLoginTicket": {
+          "description": "IdentityVerificationLoginTicket if applicable",
+          "type": "string"
         }
       }
     },
@@ -1685,6 +1734,20 @@
         }
       }
     },
+    "Roblox.Authentication.Api.Models.Request.IdentityVerificationLoginRequest": {
+      "description": "Request model for identity verification  login",
+      "type": "object",
+      "properties": {
+        "loginTicket": {
+          "description": "The IdentityVerificationLoginTicket",
+          "type": "string"
+        },
+        "resultToken": {
+          "description": "The IdentityVerificationResultToken",
+          "type": "string"
+        }
+      }
+    },
     "Roblox.Authentication.Api.Models.MetadataResponse": {
       "description": "The metadata response",
       "type": "object",
@@ -1735,10 +1798,10 @@
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
             "ValidPassword",
-            "WeakPasswordError",
             "ShortPasswordError",
-            "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
+            "WeakPasswordError",
+            "PasswordSameAsUsernameError",
             "DumbStringsError"
           ],
           "type": "string"
@@ -2149,9 +2212,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
-            "AlreadyInUseError",
             "ModerationError",
+            "AlreadyInUseError",
+            "ValidUsername",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
