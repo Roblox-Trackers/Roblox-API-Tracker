@@ -375,6 +375,37 @@
         }
       }
     },
+    "/v1/payments/paypal/metadata": {
+      "get": {
+        "tags": [
+          "PaypalPayment"
+        ],
+        "summary": "Get the metadata for Paypal Payment view",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Billing.Models.Response.PaypalPaymentMetadataResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PaypalPayment:GetPaypalPaymentViewData"
+          ]
+        }
+      }
+    },
     "/v1/payments/vantiv/metadata": {
       "get": {
         "tags": [
@@ -2728,10 +2759,6 @@
         "allowCreditForRenewingPurchases": {
           "description": "Whether credit is allowed for renewing purchases",
           "type": "boolean"
-        },
-        "isParentalAuthorization13To17Enabled": {
-          "description": "Whether parental authorization for first purchase of 13-17 users is enabled",
-          "type": "boolean"
         }
       }
     },
@@ -3034,6 +3061,34 @@
       "properties": {
         "robloxSupportUrl": {
           "description": "Roblox support url",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.Response.PaypalPaymentMetadataResponse": {
+      "description": "Metadata response model for Paypal Payment page",
+      "type": "object",
+      "properties": {
+        "viewModel": {
+          "$ref": "#/definitions/Roblox.Api.Billing.Models.PaypalPaymentViewModel",
+          "description": "View model"
+        }
+      }
+    },
+    "Roblox.Api.Billing.Models.PaypalPaymentViewModel": {
+      "description": "View Model for Paypal Payment page",
+      "type": "object",
+      "properties": {
+        "isKountEnabled": {
+          "description": "IsKountEnabled",
+          "type": "boolean"
+        },
+        "kountScriptSDKUrl": {
+          "description": "KountScriptSDKUrl",
+          "type": "string"
+        },
+        "kountSessionId": {
+          "description": "KountSessionId",
           "type": "string"
         }
       }
