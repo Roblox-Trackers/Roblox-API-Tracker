@@ -1093,8 +1093,10 @@
             "description": "0: Authorization has been denied for this request."
           }
         },
+        "deprecated": true,
         "properties": {
           "internal": false,
+          "obsoleteMessage": "Please do not use this endpoint.",
           "metricIds": [
             "Games:Recommendations"
           ]
