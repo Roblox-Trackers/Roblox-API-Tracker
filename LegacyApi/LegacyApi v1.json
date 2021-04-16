@@ -1,0 +1,946 @@
+{
+  "x-generator": "NSwag v12.0.3.0 (NJsonSchema v9.12.5.0 (Newtonsoft.Json v11.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "Roblox ApiProxy Swagger Documentation",
+    "description": "Roblox ApiProxy Swagger",
+    "version": "1.0.0"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/assets/{id:long}/versions": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Retrieves asset information for the specified asset ID.  The authenticated user must be able to manage the asset.",
+        "operationId": "Assets_Versions",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the asset.",
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "placeId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the place.",
+            "format": "int64",
+            "x-nullable": true
+          },
+          {
+            "type": "integer",
+            "name": "page",
+            "in": "query",
+            "description": "(Optional)The page to retrieve.",
+            "format": "int32",
+            "default": 1,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "[{\n    \"Id\":536133191,\n    \"AssetId\":226132918,\n    \"VersionNumber\":3,\n    \"RawContentId\":2619739106,\n    \"ParentAssetVersionId\":536132109,\n    \"CreatorType\":1,\n    \"CreatorTargetId\":80502178,\n    \"CreatingUniverseId\":null,\n    \"Created\":\"2015-07-13T11:51:12.9073098-05:00\",\n    \"Updated\":\"2015-07-13T11:51:12.9073098-05:00\"\n}]",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/assets/award-badge": {
+      "post": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Award a badge to a user.",
+        "operationId": "Assets_AwardBadge",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user.",
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "badgeId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the badge.",
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "placeId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the place.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{userName} won {badgeCreatorName}'s \"{badgeName}\" award! (if successful)",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/my/balance": {
+      "get": {
+        "tags": [
+          "Currency"
+        ],
+        "summary": "Returns the Robux and Ticket balances for the currently authenticated user.",
+        "operationId": "Currency_GetBalance",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"robux\":10\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/users/{userId:long}/friends": {
+      "get": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Retrieves a paged list of friends for the specified user.",
+        "operationId": "Friends_GetFriends",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user.",
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "page",
+            "in": "query",
+            "description": "(Optional) The page to retrieve.",
+            "format": "int32",
+            "default": 1,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "[{\n\"Id\":12345678,\n\"Username\":\"user\",\n\"AvatarUri\":\"\",\n\"AvatarFinal\":true,\n\"IsOnline\":true\n}]",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/user/accept-friend-request": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Accept a friend request.",
+        "operationId": "Friends_AcceptFriendRequest",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "requesterUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the requester.",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/decline-friend-request": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Decline a friend request.",
+        "operationId": "Friends_DeclineFriendRequest",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "requesterUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the requester.",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/request-friendship": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Send a friend request to the specified user.",
+        "operationId": "Friends_RequestFriendship",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "recipientUserId",
+            "in": "query",
+            "required": true,
+            "description": "The userId of the recipient.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/get-friendship-count": {
+      "get": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Get number of friends.",
+        "operationId": "Friends_GetFriendshipCount",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "(Optional)The ID of the user, or the ID of the autheticated user if not provided.",
+            "format": "int64",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\", \n\"count\":10\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/unfriend": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "UnFriend a user",
+        "operationId": "Friends_UnFriend",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "friendUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the friend.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/follow": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Follow a particular user",
+        "operationId": "Friends_Follow",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "followedUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user to follow.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/unfollow": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "UnFollow a particular user",
+        "operationId": "Friends_UnFollow",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "followedUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the followed user.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/users/{userId:long}/groups": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Lists a user's groups.",
+        "operationId": "Groups_GetGroups",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "[{\n    \"Id\": 696519,\n    \"Name\": \"Orinthians\",\n    \"EmblemId\": 135321582,\n    \"EmblemUrl\": \"http://www.roblox.com/asset/?id=135321582\",\n    \"Rank\": 254,\n    \"Role\": \"Council\",\n    \"IsInClan\": false,\n    \"IsPrimary\": false\n}, {\n    \"Id\": 679727,\n    \"Name\": \"ROBLOX Community Staff and Forum Users\",\n    \"EmblemId\": 90708870,\n    \"EmblemUrl\": \"http://www.roblox.com/asset/?id=90708870\",\n    \"Rank\": 245,\n    \"Role\": \"Other Staff\",\n    \"IsInClan\": false,\n    \"IsPrimary\": false\n}]",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Retrieves information for the specified group ID.",
+        "operationId": "Groups_GetGroupInfo",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "groupId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the group.",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n    \"Name\":\"Group name\",\n    \"Id\":1234567,\n    \"Owner\":\n    {\n       \"Name\":\"owner\",\n       \"Id\":12345678\n    },\n    \"EmblemUrl\":\"http://www.roblox.com/asset/?id=12345678\",\n    \"Description\":\"\",\n    \"Roles\":[{\"Name\":\"Panem Citizens\",\"Rank\":1}]\n}",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/allies": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Retrieves a paged list of allied groups.",
+        "operationId": "Groups_GetAllies",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "groupId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the group",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "page",
+            "in": "query",
+            "description": "(Optional) The page to retrieve.",
+            "format": "int32",
+            "default": 1,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"Groups\":\n[\n{\"Name\":\"\",\n \"Id\":123456,\n \"Owner\":{\n   \"Name\":\"\",\n   \"Id\":23456789\n  },\n  \"EmblemUrl\":\"http://www.roblox.com/asset/?id=189284884\",\n  \"Description\":\"\",\n  \"Roles\":[{\"Name\":\"Advisor\",\"Rank\":1}]\n }\n],\n\"FinalPage\":true\n            }",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/enemies": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Retrieves a paged list of enemy groups.",
+        "operationId": "Groups_GetEnemies",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "groupId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the group",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "page",
+            "in": "query",
+            "description": "(Optional) The page to retrieve.",
+            "format": "int32",
+            "default": 1,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"Groups\":\n[\n{\"Name\":\"\",\n \"Id\":123456,\n \"Owner\":{\n   \"Name\":\"\",\n   \"Id\":23456789\n  },\n  \"EmblemUrl\":\"http://www.roblox.com/asset/?id=189284884\",\n  \"Description\":\"\",\n  \"Roles\":[{\"Name\":\"Advisor\",\"Rank\":1}]\n }\n],\n\"FinalPage\":true\n            }",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/incoming-items/counts": {
+      "get": {
+        "tags": [
+          "IncomingItems"
+        ],
+        "summary": "Get number of incoming items.",
+        "operationId": "IncomingItems_GetCounts",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\"unreadMessageCount\": 1, \"friendRequestsCount\": 2}",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/productinfo": {
+      "get": {
+        "tags": [
+          "Marketplace"
+        ],
+        "summary": "Returns the product info for the specified asset.",
+        "operationId": "Marketplace_GetProductInfo",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "assetId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the asset.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n    \"TargetId\":123456789,\n    \"ProductType\":\"User Product\",\n    \"AssetId\":123456789,\n    \"ProductId\":24870409,\n    \"Name\":\"Hat\",\n    \"Description\":\"\",\n    \"AssetTypeId\":8,\n    \"Creator\":{\"Id\":1,\"Name\":\"ROBLOX\"},\n    \"IconImageAssetId\":0,\n    \"Created\":\"2015-06-25T20:07:49.147Z\",\n    \"Updated\":\"2015-07-11T20:07:51.863Z\",\n    \"PriceInRobux\":350,\n    \"PriceInTickets\":null,\n    \"Sales\":0,\n    \"IsNew\":true,\n    \"IsForSale\":true,\n    \"IsPublicDomain\":false,\n    \"IsLimited\":false,\n    \"IsLimitedUnique\":false,\n    \"Remaining\":null,\n    \"MinimumMembershipLevel\":0,\n    \"ContentRatingTypeId\":0\n}",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/game-pass-product-info": {
+      "get": {
+        "tags": [
+          "Marketplace"
+        ],
+        "summary": "Returns the product info for the specified game pass.",
+        "operationId": "Marketplace_GetGamePassProductInfo",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "gamePassId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the asset.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n    \"TargetId\":123456789,\n    \"ProductType\":\"Game Pass\",\n    \"AssetId\":123456789,\n    \"ProductId\":24870409,\n    \"Name\":\"Hat\",\n    \"Description\":\"\",\n    \"AssetTypeId\":8,\n    \"Creator\":{\"Id\":1,\"Name\":\"ROBLOX\"},\n    \"IconImageAssetId\":0,\n    \"Created\":\"2015-06-25T20:07:49.147Z\",\n    \"Updated\":\"2015-07-11T20:07:51.863Z\",\n    \"PriceInRobux\":350,\n    \"PriceInTickets\":null,\n    \"Sales\":0,\n    \"IsNew\":true,\n    \"IsForSale\":true,\n    \"IsPublicDomain\":false,\n    \"IsLimited\":false,\n    \"IsLimitedUnique\":false,\n    \"Remaining\":null,\n    \"MinimumMembershipLevel\":0,\n    \"ContentRatingTypeId\":0\n}",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/ownership/hasasset": {
+      "get": {
+        "tags": [
+          "Ownership"
+        ],
+        "summary": "Checks if a user owns the specified asset.",
+        "operationId": "Ownership_HasAsset",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user.",
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "assetId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the asset.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "true/false",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/reference/deviceinfo": {
+      "get": {
+        "tags": [
+          "Reference"
+        ],
+        "summary": "Get device info.",
+        "operationId": "Reference_DeviceInfoJson",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"PlatformType\": \"platform name\",\n\"DeviceType\": \"device type\",\n\"OperatingSystemType\": \"OS type\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/userblock/block": {
+      "post": {
+        "tags": [
+          "UserBlock"
+        ],
+        "summary": "Block a user; prevent communication between the current user and the user specified.",
+        "operationId": "UserBlock_BlockUser",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "UserId of the user to be blocked",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/userblock/unblock": {
+      "post": {
+        "tags": [
+          "UserBlock"
+        ],
+        "summary": "Unblock a user; allow communication between the current user and the user specified.",
+        "operationId": "UserBlock_UnblockUser",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "UserId of the user to be unblocked",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/users/{userId:long}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Retrieves user information for the specified user ID.",
+        "operationId": "Users_GetUser",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"Id\": 12345678,\n\"Username\": \"user name\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/users/get-by-username": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Retrieves user information for the specified username.",
+        "operationId": "Users_GetUserByUserName",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "description": "The name of the user.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\"Id\": 12345678, \"Username\":\"user name\"}",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId:long}/canmanage/{assetId:long}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Returns whether the user can manage a given asset.",
+        "operationId": "Users_CanManage",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user.",
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "assetId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the asset.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"Success\": true, \n\"CanManage\": false\n}",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/windows/v1/report-purchase": {
+      "post": {
+        "tags": [
+          "Windows"
+        ],
+        "summary": "After a purchase has been made with the Windows Store, validates the receipt and grants the user the products.",
+        "operationId": "Windows_ProcessWindowsStorePurchase",
+        "parameters": [
+          {
+            "name": "transactionIds",
+            "in": "body",
+            "required": true,
+            "description": "A list of transactionIds that are contained in the , which need to be granted.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "guid"
+              }
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "receipt",
+            "in": "query",
+            "required": true,
+            "description": "The receipt from the purchase or the app. Used to verify purchase authenticity.",
+            "x-nullable": true
+          },
+          {
+            "type": "boolean",
+            "name": "isRetry",
+            "in": "query",
+            "description": "Whether the purchase is a retry.",
+            "default": false,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "If Windows Store purchasing is not enabled, returns a status code 404 Not Found result.\n\nIf the user is not authenticated, returns a status code 401 Unauthorized result.\n\nIf the purchases succeeded OR the purchases corresponding to the transactionIds has already been granted, returns a status code 200 OK result.\nA combination of transactions that have been granted and transactions that are successfully granted will also return 200 OK.\n\nIf granting the purchase failed due to an unexpected error, returns a status code 500 Error result.\nIf granting the purchase failed due to a verification problem, returns a status code 403 Forbidden result.\nIn either case, the response also contains a JSON object in the following format:\n\n{\n    status : \"Failure\",\n    errors : [\n        {\n            message: \"Sorry, an unexpected error occurred. Please try again later.\",\n            code: 0\n        }\n    ]\n}\n\nwhere there is exactly one error and the code is one of the following:\n0 - Unexpected error\n1 - Verification failed",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GroupMembershipModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "EmblemId",
+        "Rank",
+        "IsPrimary",
+        "IsInClan"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "EmblemUrl": {
+          "type": "string"
+        },
+        "EmblemId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Role": {
+          "type": "string"
+        },
+        "IsPrimary": {
+          "type": "boolean"
+        },
+        "IsInClan": {
+          "type": "boolean"
+        }
+      }
+    },
+    "IGroupMembership": {
+      "type": "object",
+      "x-abstract": true,
+      "additionalProperties": false
+    }
+  }
+}
