@@ -728,7 +728,7 @@
             "description": "0: Authorization has been denied for this request."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n23: Insufficient permissions to complete the request.\r\n28: Group has paid out too recently. Please wait and try again."
+            "description": "0: Token Validation Failed\r\n23: Insufficient permissions to complete the request.\r\n28: Group has paid out too recently. Please wait and try again.\r\n35: 2-Step Verification is required to make further transactions. Go to Settings > Security to complete 2-Step Verification."
           },
           "503": {
             "description": "22: The feature is disabled."
@@ -2159,9 +2159,6 @@
           },
           "400": {
             "description": "4: User is invalid or does not exist."
-          },
-          "404": {
-            "description": "3: The user specified does not have a primary group."
           }
         },
         "properties": {
@@ -2260,7 +2257,7 @@
             "description": "0: Authorization has been denied for this request."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n17: You are not authorized to change the owner of this group."
+            "description": "0: Token Validation Failed\r\n17: You are not authorized to change the owner of this group.\r\n25: 2-Step Verification is required to make further transactions. Go to Settings > Security to complete 2-Step Verification."
           }
         },
         "properties": {
@@ -2369,7 +2366,7 @@
             "description": "0: Authorization has been denied for this request."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n12: Insufficient Robux funds.\r\n28: Group has paid out too recently. Please wait and try again."
+            "description": "0: Token Validation Failed\r\n12: Insufficient Robux funds.\r\n28: Group has paid out too recently. Please wait and try again.\r\n35: 2-Step Verification is required to make further transactions. Go to Settings > Security to complete 2-Step Verification."
           },
           "503": {
             "description": "22: The feature is disabled."
@@ -3351,7 +3348,7 @@
             "description": "0: Authorization has been denied for this request."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n4: You do not have permission to manage this member.\r\n24: You cannot perform this action with a locked pin."
+            "description": "0: Token Validation Failed\r\n4: You do not have permission to manage this member.\r\n24: You cannot perform this action with a locked pin.\r\n25: 2-Step Verification is required to make further transactions. Go to Settings > Security to complete 2-Step Verification."
           },
           "503": {
             "description": "18: The operation is temporarily unavailable. Please try again later."
@@ -4291,6 +4288,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "ShowFriendsGroupsSort": {
+          "description": "Whether or not the Friends' Groups sort should show for the authenticated user",
+          "type": "boolean"
         }
       }
     },
