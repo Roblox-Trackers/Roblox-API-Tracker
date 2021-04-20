@@ -534,7 +534,7 @@
             }
           },
           "400": {
-            "description": "2: The account revert ticket is not valid\r\n3: Password is not valid\r\n4: Passwords do not match\r\n5: Password cannot be used"
+            "description": "2: The account revert ticket is not valid\r\n3: Password is not valid\r\n4: Passwords do not match\r\n5: Password cannot be used\r\n8: The account security ticket is expired."
           },
           "403": {
             "description": "0: Token Validation Failed"
@@ -1797,12 +1797,12 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "ValidPassword",
             "ShortPasswordError",
+            "ValidPassword",
             "ForbiddenPasswordError",
-            "WeakPasswordError",
             "PasswordSameAsUsernameError",
-            "DumbStringsError"
+            "DumbStringsError",
+            "WeakPasswordError"
           ],
           "type": "string"
         },
@@ -2212,15 +2212,15 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
+            "ValidUsername",
             "AlreadyInUseError",
             "ModerationError",
-            "ValidUsername",
-            "ContainsPiiError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",
+            "ContainsPiiError",
             "ContainsReservedUsernameError"
           ],
           "type": "string"
