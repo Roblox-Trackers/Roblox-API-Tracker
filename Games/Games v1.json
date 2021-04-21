@@ -983,6 +983,13 @@
             "description": "Id to specify a session",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "model.mockUserKey",
+            "in": "query",
+            "description": "UserKey for mock a user, to validate a specific user's recommendation result",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -2550,7 +2557,8 @@
             "UnderReview",
             "PurchaseRequired",
             "AccountRestricted",
-            "TemporarilyUnavailable"
+            "TemporarilyUnavailable",
+            "PlaceHasNoPublishedVersion"
           ],
           "type": "string"
         },
@@ -2767,6 +2775,10 @@
         "SessionId": {
           "description": "Id to specify a session",
           "type": "string"
+        },
+        "MockUserKey": {
+          "description": "UserKey for mock a user, to validate a specific user's recommendation result",
+          "type": "string"
         }
       }
     },
@@ -2779,6 +2791,24 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationsSortModel"
+          }
+        },
+        "ContentMetaData": {
+          "description": "Content MetaData",
+          "type": "object",
+          "properties": {
+            "Invalid": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            },
+            "Game": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            }
           }
         }
       }
@@ -2800,6 +2830,11 @@
         }
       }
     },
+    "Roblox.Games.Api.Models.OmniRecommendationResponseModel": {
+      "description": "Container to hold different type of responses",
+      "type": "object",
+      "properties": {}
+    },
     "Roblox.Games.Api.Models.OmniRecommendationDataModel": {
       "description": "Model for sort contents returned from multiget game lists",
       "type": "object",
@@ -2808,16 +2843,12 @@
           "description": "Gets or sets ContentType",
           "type": "string"
         },
-        "ResponseModel": {
-          "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel",
-          "description": "Gets or sets ResponseModel"
+        "ContentId": {
+          "format": "int64",
+          "description": "Gets or sets Content Id",
+          "type": "integer"
         }
       }
-    },
-    "Roblox.Games.Api.Models.OmniRecommendationResponseModel": {
-      "description": "Container to hold different type of responses",
-      "type": "object",
-      "properties": {}
     },
     "Roblox.Games.Api.Models.Request.OmniRecommendationsMetaDataRequest": {
       "description": "Omni recommendations metadata request model.",
@@ -2859,8 +2890,22 @@
           "description": "Gets or sets recommendations",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationDataModel"
+            "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationMetaDataModel"
           }
+        }
+      }
+    },
+    "Roblox.Games.Api.Models.OmniRecommendationMetaDataModel": {
+      "description": "Model for OmniRecommendation with MetaData",
+      "type": "object",
+      "properties": {
+        "ContentType": {
+          "description": "Gets or sets ContentType",
+          "type": "string"
+        },
+        "ContentMetaData": {
+          "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel",
+          "description": "Gets or sets MetaData"
         }
       }
     },
