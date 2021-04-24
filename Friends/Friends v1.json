@@ -213,7 +213,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Users.UserResponseV2]"
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Friends.Api.FriendRequestResponse]"
             }
           },
           "400": {
@@ -558,6 +558,18 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "userSort",
+            "in": "query",
+            "description": "Specifies how to sort the returned friends.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Alphabetical",
+              "StatusAlphabetical",
+              "StatusFrequents"
+            ]
           }
         ],
         "responses": {
@@ -1473,9 +1485,24 @@
           "description": "Whether the user is online.",
           "type": "boolean"
         },
+        "presenceType": {
+          "description": "Where the user is online.",
+          "enum": [
+            "Offline",
+            "Online",
+            "InGame",
+            "InStudio"
+          ],
+          "type": "string"
+        },
         "isDeleted": {
           "description": "Whether the user is deleted.",
           "type": "boolean"
+        },
+        "friendFrequentRank": {
+          "format": "int32",
+          "description": "Frequents value for the user.",
+          "type": "integer"
         },
         "description": {
           "type": "string"
@@ -1729,7 +1756,7 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Users.UserResponseV2]": {
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Friends.Api.FriendRequestResponse]": {
       "type": "object",
       "properties": {
         "previousPageCursor": {
@@ -1741,14 +1768,19 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Web.Responses.Users.UserResponseV2"
+            "$ref": "#/definitions/Roblox.Friends.Api.FriendRequestResponse"
           }
         }
       }
     },
-    "Roblox.Web.Responses.Users.UserResponseV2": {
+    "Roblox.Friends.Api.FriendRequestResponse": {
+      "description": "A response model representing a friend request.",
       "type": "object",
       "properties": {
+        "friendRequest": {
+          "$ref": "#/definitions/Roblox.Friends.Api.FriendRequest",
+          "description": "Friend request"
+        },
         "description": {
           "type": "string"
         },
@@ -1768,6 +1800,27 @@
         },
         "displayName": {
           "type": "string"
+        }
+      }
+    },
+    "Roblox.Friends.Api.FriendRequest": {
+      "description": "A response model representing a friend request.",
+      "type": "object",
+      "properties": {
+        "sentAt": {
+          "format": "date-time",
+          "description": "When the friend request was sent.",
+          "type": "string"
+        },
+        "senderId": {
+          "format": "int64",
+          "description": "The sender user Id.",
+          "type": "integer"
+        },
+        "sourceUniverseId": {
+          "format": "int64",
+          "description": "The source universe Id which the request was sent in.",
+          "type": "integer"
         }
       }
     },
@@ -1838,6 +1891,10 @@
           "readOnly": true
         },
         "isFriendsUserDataStoreCacheEnabled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "isSortFriendsInApiExperimentEnabled": {
           "type": "boolean",
           "readOnly": true
         },
