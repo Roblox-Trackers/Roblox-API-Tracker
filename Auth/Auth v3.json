@@ -47,7 +47,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+              "$ref": "#/definitions/Roblox.Authentication.Api.Models.TwoStepVerificationV3LoginResponse"
             }
           },
           "400": {
@@ -85,9 +85,15 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+    "Roblox.Authentication.Api.Models.TwoStepVerificationV3LoginResponse": {
+      "description": "The response model of TwoStepVerificationV3Login",
       "type": "object",
-      "properties": {}
+      "properties": {
+        "identityVerificationLoginTicket": {
+          "description": "IdentityVerificationLoginTicket if applicable",
+          "type": "string"
+        }
+      }
     }
   }
 }
