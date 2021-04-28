@@ -1008,42 +1008,6 @@
         }
       }
     },
-    "/v1/games/omni-recommendations-metadata": {
-      "get": {
-        "tags": [
-          "Games"
-        ],
-        "summary": "Endpoint for omni recommendations metadata",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "model.contents",
-            "in": "query",
-            "description": "List of Contents with type being requested.",
-            "required": false,
-            "type": "array"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Games.Api.Models.Response.OmniRecommendationsMetaDataResponse"
-            }
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Games:GetOmniRecommendationsMetadata"
-          ]
-        }
-      }
-    },
     "/v1/games/recommendations/algorithm/{algorithmName}": {
       "get": {
         "tags": [
@@ -1421,6 +1385,51 @@
           "internal": false,
           "metricIds": [
             "VipServers:UpdateVipServer"
+          ]
+        }
+      }
+    },
+    "/v1/games/omni-recommendations-metadata": {
+      "post": {
+        "tags": [
+          "Games"
+        ],
+        "summary": "Endpoint for omni recommendations metadata",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Games.Api.Models.Request.OmniRecommendationsMetadataRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Games.Api.Models.Response.OmniRecommendationsMetadataResponse"
+            }
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Games:GetOmniRecommendationsMetadata"
           ]
         }
       }
@@ -2793,8 +2802,8 @@
             "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationsSortModel"
           }
         },
-        "ContentMetaData": {
-          "description": "Content MetaData",
+        "ContentMetadata": {
+          "description": "Content Meta data",
           "type": "object",
           "properties": {
             "Invalid": {
@@ -2850,7 +2859,7 @@
         }
       }
     },
-    "Roblox.Games.Api.Models.Request.OmniRecommendationsMetaDataRequest": {
+    "Roblox.Games.Api.Models.Request.OmniRecommendationsMetadataRequest": {
       "description": "Omni recommendations metadata request model.",
       "type": "object",
       "properties": {
@@ -2858,54 +2867,32 @@
           "description": "List of Contents with type being requested.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationMetadataRequestContentModel"
+            "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationDataModel"
           }
         }
       }
     },
-    "Roblox.Games.Api.Models.OmniRecommendationMetadataRequestContentModel": {
-      "description": "Model for omni recommendation content metadata request",
-      "type": "object",
-      "properties": {
-        "ContentType": {
-          "description": "Gets or sets content type",
-          "enum": [
-            "Invalid",
-            "Game"
-          ],
-          "type": "string"
-        },
-        "ContentId": {
-          "format": "int64",
-          "description": "Gets or sets content id",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Games.Api.Models.Response.OmniRecommendationsMetaDataResponse": {
+    "Roblox.Games.Api.Models.Response.OmniRecommendationsMetadataResponse": {
       "description": "Model for OmniRecommendationsMetaData response",
       "type": "object",
       "properties": {
-        "RecommendationList": {
-          "description": "Gets or sets recommendations",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationMetaDataModel"
+        "ContentMetadata": {
+          "description": "Content Metadata",
+          "type": "object",
+          "properties": {
+            "Invalid": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            },
+            "Game": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            }
           }
-        }
-      }
-    },
-    "Roblox.Games.Api.Models.OmniRecommendationMetaDataModel": {
-      "description": "Model for OmniRecommendation with MetaData",
-      "type": "object",
-      "properties": {
-        "ContentType": {
-          "description": "Gets or sets ContentType",
-          "type": "string"
-        },
-        "ContentMetaData": {
-          "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel",
-          "description": "Gets or sets MetaData"
         }
       }
     },

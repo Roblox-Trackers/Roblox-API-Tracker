@@ -109,6 +109,34 @@
         }
       }
     },
+    "/v1/badges/metadata": {
+      "get": {
+        "tags": [
+          "Badges"
+        ],
+        "summary": "Gets metadata about the badges system.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Badges.Api.BadgeMetadataResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Badges:GetMetadata"
+          ]
+        }
+      }
+    },
     "/v1/universes/{universeId}/badges": {
       "get": {
         "tags": [
@@ -179,6 +207,87 @@
           "internal": false,
           "metricIds": [
             "Badges:GetBadgesByAwarder"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "Badges"
+        ],
+        "summary": "Creates a new badge.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The ID of the universe to create the badge for.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request.name",
+            "in": "formData",
+            "description": "The badge name.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "request.description",
+            "in": "formData",
+            "description": "The badge description.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "request.paymentSourceType",
+            "in": "formData",
+            "description": "Whether or not to pay for the badge with user funds, or group funds.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "User",
+              "Group"
+            ]
+          },
+          {
+            "name": "request.files",
+            "in": "formData",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Responses.Badges.BadgeResponseV2"
+            }
+          },
+          "400": {
+            "description": "11: The badge icon is invalid.\r\n14: Invalid badge name.\r\n15: Invalid badge description.\r\n16: Payment source is invalid."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n6: Text moderated.\r\n12: You do not have permission to manage this game's badges.\r\n17: Insufficient funds."
+          },
+          "404": {
+            "description": "3: The game is invalid or does not exist."
+          },
+          "429": {
+            "description": "13: Too many requests, try again later."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Badges:CreateBadge"
           ]
         }
       }
@@ -444,6 +553,27 @@
         }
       }
     },
+    "Roblox.Badges.Api.BadgeMetadataResponse": {
+      "description": "Metadata about badges.",
+      "type": "object",
+      "properties": {
+        "badgeCreationPrice": {
+          "format": "int64",
+          "description": "The cost in Robux for creating a new badge.",
+          "type": "integer"
+        },
+        "maxBadgeNameLength": {
+          "format": "int32",
+          "description": "The max length for a badge name.",
+          "type": "integer"
+        },
+        "maxBadgeDescriptionLength": {
+          "format": "int32",
+          "description": "The max length for a badge description.",
+          "type": "integer"
+        }
+      }
+    },
     "Roblox.Badges.Api.BadgeResponse": {
       "description": "A response containing badge information.",
       "type": "object",
@@ -609,66 +739,93 @@
         }
       }
     },
-    "Roblox.Paging.ExclusiveStartKeyCursor[Roblox.Platform.Badges.AwardedBadgeIdentifier]": {
+    "Roblox.Badges.Api.CreateBadgeRequest": {
+      "description": "Request parameters required for creating a badge.",
       "type": "object",
       "properties": {
-        "key": {
-          "$ref": "#/definitions/Roblox.Platform.Badges.AwardedBadgeIdentifier"
+        "name": {
+          "description": "The badge name.",
+          "type": "string"
         },
-        "sortOrder": {
+        "description": {
+          "description": "The badge description.",
+          "type": "string"
+        },
+        "paymentSourceType": {
+          "description": "Whether or not to pay for the badge with user funds, or group funds.",
           "enum": [
-            "Asc",
-            "Desc"
+            "User",
+            "Group"
           ],
           "type": "string"
         },
-        "pagingDirection": {
-          "enum": [
-            "Forward",
-            "Backward"
-          ],
-          "type": "string"
-        },
-        "pageNumber": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "discriminator": {
-          "type": "string"
-        },
-        "count": {
-          "format": "int32",
-          "type": "integer"
+        "files": {
+          "description": "The badge icon.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Roblox.Web.WebApi.FormData.IUploadedFile"
+          },
+          "readOnly": true
         }
       }
     },
-    "Roblox.Platform.Badges.AwardedBadgeIdentifier": {
+    "Roblox.Web.WebApi.FormData.IUploadedFile": {
       "type": "object",
       "properties": {
-        "id": {
+        "Name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "Stream": {
+          "$ref": "#/definitions/System.IO.Stream",
+          "readOnly": true
+        },
+        "ContentEncoding": {
+          "enum": [
+            "None",
+            "GZip",
+            "Deflate"
+          ],
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "System.IO.Stream": {
+      "type": "object",
+      "properties": {
+        "CanRead": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanSeek": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanTimeout": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanWrite": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "Length": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "Position": {
           "format": "int64",
           "type": "integer"
         },
-        "awardDateTime": {
-          "format": "date-time",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Badges.BadgeResponseV2]": {
-      "type": "object",
-      "properties": {
-        "previousPageCursor": {
-          "type": "string"
+        "ReadTimeout": {
+          "format": "int32",
+          "type": "integer"
         },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Web.Responses.Badges.BadgeResponseV2"
-          }
+        "WriteTimeout": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -736,6 +893,69 @@
         "name": {
           "type": "string",
           "readOnly": true
+        }
+      }
+    },
+    "Roblox.Paging.ExclusiveStartKeyCursor[Roblox.Platform.Badges.AwardedBadgeIdentifier]": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/Roblox.Platform.Badges.AwardedBadgeIdentifier"
+        },
+        "sortOrder": {
+          "enum": [
+            "Asc",
+            "Desc"
+          ],
+          "type": "string"
+        },
+        "pagingDirection": {
+          "enum": [
+            "Forward",
+            "Backward"
+          ],
+          "type": "string"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "discriminator": {
+          "type": "string"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Platform.Badges.AwardedBadgeIdentifier": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "awardDateTime": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Badges.BadgeResponseV2]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Responses.Badges.BadgeResponseV2"
+          }
         }
       }
     }
