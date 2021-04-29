@@ -2796,11 +2796,16 @@
       "type": "object",
       "properties": {
         "Sorts": {
-          "description": "sorts",
+          "description": "Sorts",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationsSortModel"
           }
+        },
+        "SortsExpirationTime": {
+          "format": "int64",
+          "description": "Sorts Expiration Time",
+          "type": "integer"
         },
         "ContentMetadata": {
           "description": "Content Meta data",
