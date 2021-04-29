@@ -30,12 +30,55 @@
           },
           "401": {
             "description": "User isn't authenticated.\r\n0: Authorization has been denied for this request.\r\n0: User is unauthorized to process the request."
+          },
+          "501": {
+            "description": "API is not implemented.\r\n1: Page is not available or not implemented."
           }
         },
         "properties": {
           "internal": false,
           "metricIds": [
             "UserModeration:GetNotApproved"
+          ]
+        }
+      }
+    },
+    "/v1/not-approved/reactivate": {
+      "post": {
+        "tags": [
+          "UserModeration"
+        ],
+        "summary": "Post the acceptance of terms of service of an authenticated but moderated user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Returns an empty response.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.UserModeration.Api.Models.Response.SetAllPunishmentAcknowledgmentResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid punishment for acknowledgment.\r\n2: Invalid punishment for acknowledgment."
+          },
+          "401": {
+            "description": "User isn't authenticated.\r\n0: Authorization has been denied for this request.\r\n0: User is unauthorized to process the request."
+          },
+          "501": {
+            "description": "API is not implemented.\r\n1: Page is not available or not implemented."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "UserModeration:PostNotApprovedReactivate"
           ]
         }
       }
@@ -93,6 +136,10 @@
           "type": "string"
         }
       }
+    },
+    "Roblox.UserModeration.Api.Models.Response.SetAllPunishmentAcknowledgmentResponse": {
+      "type": "object",
+      "properties": {}
     }
   }
 }
