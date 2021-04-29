@@ -2830,11 +2830,6 @@
           "description": "Gets or sets Topic",
           "type": "string"
         },
-        "TopicId": {
-          "format": "int64",
-          "description": "Gets or sets Topic Id",
-          "type": "integer"
-        },
         "RecommendationList": {
           "description": "Gets or sets Topic",
           "type": "array",
