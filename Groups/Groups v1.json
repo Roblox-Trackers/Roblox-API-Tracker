@@ -3731,9 +3731,6 @@
           "format": "int64",
           "type": "integer"
         },
-        "shout": {
-          "$ref": "#/definitions/Roblox.Web.Responses.Groups.GroupShoutResponse"
-        },
         "created": {
           "format": "date-time",
           "type": "string"
@@ -3741,42 +3738,6 @@
       }
     },
     "Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Web.Responses.Groups.GroupOwnerType]": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "type": {
-          "enum": [
-            "User"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "name": {
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Web.Responses.Groups.GroupShoutResponse": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "type": "string"
-        },
-        "poster": {
-          "$ref": "#/definitions/Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Web.Responses.Groups.GroupShoutPosterType]"
-        },
-        "created": {
-          "format": "date-time",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Web.Responses.Groups.GroupShoutPosterType]": {
       "type": "object",
       "properties": {
         "id": {
