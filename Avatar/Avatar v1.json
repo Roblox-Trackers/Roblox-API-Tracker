@@ -254,9 +254,6 @@
           },
           "403": {
             "description": "3: Cannot wear Delayed Release Asset\r\n4: Cannot wear the specified asset"
-          },
-          "429": {
-            "description": "1: Too many requests"
           }
         },
         "properties": {
@@ -314,9 +311,6 @@
           },
           "403": {
             "description": "3: Cannot wear Delayed Release Asset\r\n4: Cannot wear the specified asset"
-          },
-          "429": {
-            "description": "1: Too many requests"
           }
         },
         "properties": {
@@ -816,9 +810,6 @@
           },
           "403": {
             "description": "0: Token Validation Failed"
-          },
-          "429": {
-            "description": "4: The flood limit has been exceeded."
           },
           "500": {
             "description": "2: Failed to wear asset."
