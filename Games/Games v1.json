@@ -2704,12 +2704,6 @@
           "format": "int32",
           "type": "integer"
         },
-        "playerTokens": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "fps": {
           "format": "double",
           "type": "number"
@@ -2801,10 +2795,6 @@
       "description": "Response model for OmniRecommendations",
       "type": "object",
       "properties": {
-        "PageType": {
-          "description": "PageType",
-          "type": "string"
-        },
         "Sorts": {
           "description": "Sorts",
           "type": "array",
