@@ -2704,12 +2704,6 @@
           "format": "int32",
           "type": "integer"
         },
-        "playerTokens": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "fps": {
           "format": "double",
           "type": "number"
