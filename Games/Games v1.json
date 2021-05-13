@@ -1693,6 +1693,68 @@
           ]
         }
       }
+    },
+    "/v1/vip-servers/{id}/voicesettings": {
+      "patch": {
+        "tags": [
+          "VipServers"
+        ],
+        "summary": "Update voice settings for a private server.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The VIP Server ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The {Roblox.Games.Api.VipServerUpdateVoiceSettingsRequest}",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Games.Api.VipServerUpdateVoiceSettingsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Games.Api.VipServerVoiceSettingsResponse"
+            }
+          },
+          "400": {
+            "description": "8: The creator of this game has disabled private servers for this game."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n2: You are not the owner of this private server.\r\n33: You are not eligible for voice chat."
+          },
+          "404": {
+            "description": "1: The private server is invalid or does not exist."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "VipServers:UpdateVipServerVoiceSettings"
+          ]
+        }
+      }
     }
   },
   "definitions": {
@@ -2966,6 +3028,10 @@
         "permissions": {
           "$ref": "#/definitions/Roblox.Games.Api.VipServerPermissionsResponse",
           "description": "Server permissions"
+        },
+        "voiceSettings": {
+          "$ref": "#/definitions/Roblox.Games.Api.VipServerVoiceSettingsResponse",
+          "description": "Voice chat settings"
         }
       }
     },
@@ -3054,6 +3120,15 @@
         }
       }
     },
+    "Roblox.Games.Api.VipServerVoiceSettingsResponse": {
+      "description": "Contains voice settings of a vip server",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
     "Roblox.Games.Api.PlaceResponse": {
       "description": "Response model for a VIP server place",
       "type": "object",
@@ -3096,6 +3171,14 @@
           "format": "int64",
           "description": "Price",
           "type": "integer"
+        }
+      }
+    },
+    "Roblox.Games.Api.VipServerUpdateVoiceSettingsRequest": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
         }
       }
     },
