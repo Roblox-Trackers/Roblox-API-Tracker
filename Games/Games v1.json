@@ -2867,10 +2867,6 @@
           "description": "PageType",
           "type": "string"
         },
-        "RequestId": {
-          "description": "RequestId",
-          "type": "string"
-        },
         "Sorts": {
           "description": "Sorts",
           "type": "array",
