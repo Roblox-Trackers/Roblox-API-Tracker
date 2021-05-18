@@ -25,7 +25,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Api.Avatar.Models.AvatarModelV2"
+              "$ref": "#/definitions/Roblox.Api.Avatar.Models.AvatarModel"
             }
           },
           "401": {
@@ -375,7 +375,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Api.Avatar.Models.AvatarModelV2"
+              "$ref": "#/definitions/Roblox.Api.Avatar.Models.AvatarModel"
             }
           },
           "400": {
@@ -1296,7 +1296,7 @@
         }
       }
     },
-    "Roblox.Api.Avatar.Models.AvatarModelV2": {
+    "Roblox.Api.Avatar.Models.AvatarModel": {
       "description": "A model containing details about an avatar",
       "type": "object",
       "properties": {
@@ -1316,7 +1316,7 @@
         "assets": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModelV2"
+            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModel"
           }
         },
         "defaultShirtApplied": {
@@ -1324,12 +1324,6 @@
         },
         "defaultPantsApplied": {
           "type": "boolean"
-        },
-        "emotes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Avatar.Models.EmoteResponseModel"
-          }
         }
       }
     },
@@ -1392,8 +1386,8 @@
         }
       }
     },
-    "Roblox.Api.Avatar.Models.AssetModelV2": {
-      "description": "A model containing details about an asset\r\n- V2: adds CurrentVersionId, AssetMetaModel",
+    "Roblox.Api.Avatar.Models.AssetModel": {
+      "description": "A model containing details about an asset",
       "type": "object",
       "properties": {
         "id": {
@@ -1405,33 +1399,6 @@
         },
         "assetType": {
           "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetTypeModel"
-        },
-        "currentVersionId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "meta": {
-          "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetMetaModelV1"
-        }
-      }
-    },
-    "Roblox.Api.Avatar.Models.EmoteResponseModel": {
-      "description": "Response object representing a user's emote",
-      "type": "object",
-      "properties": {
-        "assetId": {
-          "format": "int64",
-          "description": "The asset id of the emote",
-          "type": "integer"
-        },
-        "assetName": {
-          "description": "The name of the emote",
-          "type": "string"
-        },
-        "position": {
-          "format": "int32",
-          "description": "The position the emote is equipped to",
-          "type": "integer"
         }
       }
     },
@@ -1445,24 +1412,6 @@
         },
         "name": {
           "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Avatar.Models.AssetMetaModelV1": {
-      "description": "Exhaustive model denoting all possible metadata fields of an asset",
-      "type": "object",
-      "properties": {
-        "order": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "puffiness": {
-          "format": "float",
-          "type": "number"
-        },
-        "version": {
-          "format": "int32",
-          "type": "integer"
         }
       }
     },
@@ -1507,7 +1456,7 @@
         "invalidAssets": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModelV1"
+            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModel"
           }
         },
         "invalidAssetIds": {
@@ -1519,22 +1468,6 @@
         },
         "success": {
           "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Avatar.Models.AssetModelV1": {
-      "description": "A model containing details about an asset",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "assetType": {
-          "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetTypeModel"
         }
       }
     },
@@ -1617,7 +1550,7 @@
         "assets": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModelV1"
+            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModel"
           }
         },
         "bodyColors": {
