@@ -9,37 +9,6 @@
     "https"
   ],
   "paths": {
-    "/v1/account/settings/metadata": {
-      "get": {
-        "tags": [
-          "Accounts"
-        ],
-        "summary": "Returns metadata used by the accountsettings page",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.AccountsSettingsMetadataModel"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Accounts:GetAccountsSettingsMetadata"
-          ]
-        }
-      }
-    },
     "/v1/account/settings/settings-groups": {
       "get": {
         "tags": [
@@ -1422,16 +1391,6 @@
         "Suffix": {
           "description": "The url hash suffix",
           "type": "string"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.Models.AccountsSettingsMetadataModel": {
-      "description": "A model containing website metadata for avatars",
-      "type": "object",
-      "properties": {
-        "IsAccountsRestrictionsSpamBugFixEnabled": {
-          "description": "Whether or not account restrictions spam bug fix is enabled",
-          "type": "boolean"
         }
       }
     },
