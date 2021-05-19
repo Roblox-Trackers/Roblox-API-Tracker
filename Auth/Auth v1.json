@@ -1624,6 +1624,9 @@
           "description": "Credentials password.",
           "type": "string"
         },
+        "captchaId": {
+          "type": "string"
+        },
         "captchaToken": {
           "type": "string"
         },
@@ -1763,6 +1766,9 @@
         },
         "IsAccountRecoveryPromptEnabled": {
           "type": "boolean"
+        },
+        "IsContactMethodRequiredAtSignup": {
+          "type": "boolean"
         }
       }
     },
@@ -1797,12 +1803,12 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "ShortPasswordError",
             "ValidPassword",
+            "ShortPasswordError",
             "ForbiddenPasswordError",
+            "WeakPasswordError",
             "PasswordSameAsUsernameError",
-            "DumbStringsError",
-            "WeakPasswordError"
+            "DumbStringsError"
           ],
           "type": "string"
         },
@@ -1982,6 +1988,9 @@
         },
         "identityVerificationResultToken": {
           "description": "IdentityVerificationResultToken",
+          "type": "string"
+        },
+        "captchaId": {
           "type": "string"
         },
         "captchaToken": {
@@ -2215,12 +2224,12 @@
             "ValidUsername",
             "AlreadyInUseError",
             "ModerationError",
+            "ContainsPiiError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",
-            "ContainsPiiError",
             "ContainsReservedUsernameError"
           ],
           "type": "string"

@@ -1362,6 +1362,9 @@
           "description": "Credentials password.",
           "type": "string"
         },
+        "captchaId": {
+          "type": "string"
+        },
         "captchaToken": {
           "type": "string"
         },
@@ -1501,6 +1504,9 @@
         },
         "IsAccountRecoveryPromptEnabled": {
           "type": "boolean"
+        },
+        "IsContactMethodRequiredAtSignup": {
+          "type": "boolean"
         }
       }
     },
@@ -1529,6 +1535,9 @@
         },
         "target": {
           "description": "The target to send the forgot password message",
+          "type": "string"
+        },
+        "captchaId": {
           "type": "string"
         },
         "captchaToken": {
@@ -1903,6 +1912,9 @@
         },
         "identityVerificationResultToken": {
           "description": "IdentityVerificationResultToken",
+          "type": "string"
+        },
+        "captchaId": {
           "type": "string"
         },
         "captchaToken": {
