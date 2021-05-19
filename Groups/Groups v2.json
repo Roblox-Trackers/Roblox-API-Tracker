@@ -511,9 +511,6 @@
           "description": "The wall post body",
           "type": "string"
         },
-        "captchaId": {
-          "type": "string"
-        },
         "captchaToken": {
           "type": "string"
         },
