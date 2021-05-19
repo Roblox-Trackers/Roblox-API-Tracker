@@ -3854,6 +3854,14 @@
         "areGroupGamesVisible": {
           "description": "Whether games are publicly visible.",
           "type": "boolean"
+        },
+        "isGroupNameChangeEnabled": {
+          "description": "If the group name change feature is enabled for this group.",
+          "type": "boolean"
+        },
+        "canChangeGroupName": {
+          "description": "If the group can currently change it's name.",
+          "type": "boolean"
         }
       }
     },
@@ -4042,6 +4050,10 @@
         "isGroupDetailsPolicyEnabled": {
           "description": "If set to true, group details will respect GUAC policies for group details\r\n            \r\nIf set to false, group details will not respect GUAC policies",
           "type": "boolean"
+        },
+        "showPreviousGroupNames": {
+          "description": "Whether or not we should show previous names of this group",
+          "type": "boolean"
         }
       }
     },
@@ -4068,6 +4080,11 @@
         "isDefaultEmblemPolicyEnabled": {
           "description": "If set to true, default group emblem policies handled by GUAC will be enabled\r\n            \r\nIf set to false, default group emblem policies will not be enabled",
           "type": "boolean"
+        },
+        "groupNameChangeCooldownInDays": {
+          "format": "int32",
+          "description": "The cooldown for group name changes in days",
+          "type": "integer"
         }
       }
     },
@@ -4444,6 +4461,9 @@
       "description": "A request model for joining group.",
       "type": "object",
       "properties": {
+        "captchaId": {
+          "type": "string"
+        },
         "captchaToken": {
           "type": "string"
         },
@@ -5132,6 +5152,9 @@
       "properties": {
         "body": {
           "description": "The wall post body",
+          "type": "string"
+        },
+        "captchaId": {
           "type": "string"
         },
         "captchaToken": {
