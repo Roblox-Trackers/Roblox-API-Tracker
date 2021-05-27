@@ -1650,6 +1650,10 @@
         "identityVerificationLoginTicket": {
           "description": "IdentityVerificationLoginTicket if applicable",
           "type": "string"
+        },
+        "isBanned": {
+          "description": "Return if user is banned",
+          "type": "boolean"
         }
       }
     },
@@ -1769,6 +1773,9 @@
         },
         "IsContactMethodRequiredAtSignup": {
           "type": "boolean"
+        },
+        "IsUserAgreementsSignupIntegrationEnabled": {
+          "type": "boolean"
         }
       }
     },
@@ -1805,9 +1812,9 @@
           "enum": [
             "ValidPassword",
             "ShortPasswordError",
-            "ForbiddenPasswordError",
             "WeakPasswordError",
             "PasswordSameAsUsernameError",
+            "ForbiddenPasswordError",
             "DumbStringsError"
           ],
           "type": "string"
@@ -2221,10 +2228,10 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
-            "ModerationError",
             "ContainsPiiError",
+            "ValidUsername",
+            "ModerationError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",

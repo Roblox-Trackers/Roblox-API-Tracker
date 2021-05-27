@@ -1388,6 +1388,10 @@
         "identityVerificationLoginTicket": {
           "description": "IdentityVerificationLoginTicket if applicable",
           "type": "string"
+        },
+        "isBanned": {
+          "description": "Return if user is banned",
+          "type": "boolean"
         }
       }
     },
@@ -1506,6 +1510,9 @@
           "type": "boolean"
         },
         "IsContactMethodRequiredAtSignup": {
+          "type": "boolean"
+        },
+        "IsUserAgreementsSignupIntegrationEnabled": {
           "type": "boolean"
         }
       }
