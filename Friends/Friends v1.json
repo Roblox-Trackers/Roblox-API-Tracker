@@ -1173,7 +1173,11 @@
           "Friends"
         ],
         "summary": "Creates the following between a user and user with {targetUserId}",
-        "consumes": [],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
         "produces": [
           "application/json",
           "text/json"
@@ -1186,6 +1190,15 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "captchaTokenRequest",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Captcha.Models.Request.CaptchaTokenRequest"
+            }
           }
         ],
         "responses": {
@@ -1672,6 +1685,20 @@
         "isCaptchaRequired": {
           "description": "Captcha is set to true if captcha is required from user to perform action",
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Web.Captcha.Models.Request.CaptchaTokenRequest": {
+      "type": "object",
+      "properties": {
+        "captchaId": {
+          "type": "string"
+        },
+        "captchaToken": {
+          "type": "string"
+        },
+        "captchaProvider": {
+          "type": "string"
         }
       }
     },
