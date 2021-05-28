@@ -2251,7 +2251,7 @@
             }
           },
           "400": {
-            "description": "1: The group is invalid or does not exist.\r\n3: The user is invalid or does not exist.\r\n15: User is not a member of the group.\r\n16: The user does not have the necessary level of premium membership.\r\n24: You cannot perform this action with a locked pin."
+            "description": "1: The group is invalid or does not exist.\r\n3: The user is invalid or does not exist.\r\n15: User is not a member of the group.\r\n16: The user does not have the necessary level of premium membership."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -3348,7 +3348,7 @@
             "description": "0: Authorization has been denied for this request."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n4: You do not have permission to manage this member.\r\n24: You cannot perform this action with a locked pin.\r\n25: 2-Step Verification is required to make further transactions. Go to Settings > Security to complete 2-Step Verification."
+            "description": "0: Token Validation Failed\r\n4: You do not have permission to manage this member.\r\n25: 2-Step Verification is required to make further transactions. Go to Settings > Security to complete 2-Step Verification."
           },
           "503": {
             "description": "18: The operation is temporarily unavailable. Please try again later."
