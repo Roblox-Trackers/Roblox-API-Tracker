@@ -1065,6 +1065,9 @@
         },
         "isUserBlockEndpointsUpdated": {
           "type": "boolean"
+        },
+        "isIDVerificationEnabled": {
+          "type": "boolean"
         }
       }
     },
