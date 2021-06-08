@@ -544,7 +544,7 @@
         "tags": [
           "Avatar"
         ],
-        "summary": "Puts the asset on the authenticated user's avatar.",
+        "summary": "Puts the asset on the authenticated user's avatar.\r\n- Flagged as obsolete, does not support layered clothing meta params",
         "consumes": [],
         "produces": [
           "application/json",
@@ -776,7 +776,7 @@
         "tags": [
           "Avatar"
         ],
-        "summary": "Sets the avatar's current assets to the list",
+        "summary": "Sets the avatar's current assets to the list\r\n- Flagged as obsolete, does not support layered clothing meta params",
         "description": "Only allows items that you own, are not expired, and are wearable asset types.\r\nAny assets being worn before this method is called are automatically removed.",
         "consumes": [
           "application/json",
@@ -904,7 +904,7 @@
             "description": "The updated outfit",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Roblox.Api.Avatar.Models.OutfitUpdateModel"
+              "$ref": "#/definitions/Roblox.Api.Avatar.Models.OutfitUpdateModelV1"
             }
           }
         ],
@@ -1009,7 +1009,7 @@
             "description": "The new outfit",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Roblox.Api.Avatar.Models.OutfitUpdateModel"
+              "$ref": "#/definitions/Roblox.Api.Avatar.Models.OutfitUpdateModelV1"
             }
           }
         ],
@@ -1072,7 +1072,7 @@
             "description": "The updated outfit",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Roblox.Api.Avatar.Models.OutfitUpdateModel"
+              "$ref": "#/definitions/Roblox.Api.Avatar.Models.OutfitUpdateModelV1"
             }
           }
         ],
@@ -1507,7 +1507,7 @@
         "invalidAssets": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModelV1"
+            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModelV2"
           }
         },
         "invalidAssetIds": {
@@ -1519,22 +1519,6 @@
         },
         "success": {
           "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Avatar.Models.AssetModelV1": {
-      "description": "A model containing details about an asset",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "assetType": {
-          "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetTypeModel"
         }
       }
     },
@@ -1578,7 +1562,7 @@
       "type": "object",
       "properties": {}
     },
-    "Roblox.Api.Avatar.Models.OutfitUpdateModel": {
+    "Roblox.Api.Avatar.Models.OutfitUpdateModelV1": {
       "description": "A model containing details needed to update or create an outfit",
       "type": "object",
       "properties": {
@@ -1617,7 +1601,7 @@
         "assets": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModelV1"
+            "$ref": "#/definitions/Roblox.Api.Avatar.Models.AssetModelV2"
           }
         },
         "bodyColors": {
