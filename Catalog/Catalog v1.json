@@ -887,7 +887,8 @@
             "type": "string",
             "enum": [
               "BodyParts",
-              "AvatarAnimations"
+              "AvatarAnimations",
+              "Shoes"
             ]
           },
           {
@@ -1467,7 +1468,8 @@
           "description": "The {Roblox.Platform.Bundles.Core.BundleType} serialized if item is a bundle.",
           "enum": [
             "BodyParts",
-            "AvatarAnimations"
+            "AvatarAnimations",
+            "Shoes"
           ],
           "type": "string"
         },
