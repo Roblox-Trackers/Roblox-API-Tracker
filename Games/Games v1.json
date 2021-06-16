@@ -2883,11 +2883,6 @@
           "description": "Sorts Expiration Time",
           "type": "integer"
         },
-        "SortsRefreshInterval": {
-          "format": "int64",
-          "description": "Sorts Refresh Interval",
-          "type": "integer"
-        },
         "ContentMetadata": {
           "description": "Content Meta data",
           "type": "object",
@@ -2921,12 +2916,8 @@
           "description": "Gets or sets Topic Id",
           "type": "integer"
         },
-        "TreatmentType": {
-          "description": "Gets or sets Treatment type",
-          "type": "string"
-        },
         "RecommendationList": {
-          "description": "Gets or sets Recommendation List",
+          "description": "Gets or sets Topic",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationDataModel"
