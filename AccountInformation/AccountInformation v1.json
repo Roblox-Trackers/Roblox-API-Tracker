@@ -75,7 +75,7 @@
             }
           },
           "400": {
-            "description": "1: User not found.\r\n4: The birthdate provided is invalid."
+            "description": "1: User not found.\r\n4: The birthdate provided is invalid.\r\n8: Password is incorrect."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -984,6 +984,10 @@
           "format": "int32",
           "description": "The birth year",
           "type": "integer"
+        },
+        "password": {
+          "description": "Password",
+          "type": "string"
         }
       }
     },
@@ -1067,6 +1071,9 @@
           "type": "boolean"
         },
         "isIDVerificationEnabled": {
+          "type": "boolean"
+        },
+        "isPasswordRequiredForAgingDown": {
           "type": "boolean"
         }
       }
