@@ -1776,6 +1776,12 @@
         },
         "IsUserAgreementsSignupIntegrationEnabled": {
           "type": "boolean"
+        },
+        "IsRetypePasswordRequired": {
+          "type": "boolean"
+        },
+        "ArePasswordFieldsPlaintext": {
+          "type": "boolean"
         }
       }
     },
@@ -2228,15 +2234,15 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "AlreadyInUseError",
-            "ContainsPiiError",
             "ValidUsername",
+            "AlreadyInUseError",
             "ModerationError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",
+            "ContainsPiiError",
             "ContainsReservedUsernameError"
           ],
           "type": "string"

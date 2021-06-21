@@ -1514,6 +1514,12 @@
         },
         "IsUserAgreementsSignupIntegrationEnabled": {
           "type": "boolean"
+        },
+        "IsRetypePasswordRequired": {
+          "type": "boolean"
+        },
+        "ArePasswordFieldsPlaintext": {
+          "type": "boolean"
         }
       }
     },
