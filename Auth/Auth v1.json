@@ -1776,12 +1776,6 @@
         },
         "IsUserAgreementsSignupIntegrationEnabled": {
           "type": "boolean"
-        },
-        "IsRetypePasswordRequired": {
-          "type": "boolean"
-        },
-        "ArePasswordFieldsPlaintext": {
-          "type": "boolean"
         }
       }
     },
@@ -1817,8 +1811,8 @@
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
             "ValidPassword",
-            "ShortPasswordError",
             "WeakPasswordError",
+            "ShortPasswordError",
             "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
             "DumbStringsError"
