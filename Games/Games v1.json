@@ -1988,6 +1988,10 @@
         "gameDescription": {
           "description": "Provide all necessary information which helps analytics for improvement, for example, the algorithm, dataset version, position, etc..",
           "type": "string"
+        },
+        "genre": {
+          "description": "The game genre display name",
+          "type": "string"
         }
       }
     },
@@ -2067,6 +2071,11 @@
         "displayName": {
           "description": "Game sort display name",
           "type": "string"
+        },
+        "gameSetTypeId": {
+          "format": "int32",
+          "description": "Game sort id",
+          "type": "integer"
         },
         "gameSetTargetId": {
           "format": "int64",
