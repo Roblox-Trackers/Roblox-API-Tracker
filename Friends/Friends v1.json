@@ -1913,7 +1913,11 @@
         "isNearbyUpsellEnabled": {
           "type": "boolean"
         },
-        "isFriendsFilterExperimentEnabled": {
+        "isFriendsFilterBarEnabled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "isFriendsPageSortExperimentEnabled": {
           "type": "boolean",
           "readOnly": true
         },
