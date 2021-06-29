@@ -102,6 +102,7 @@
         "followerType": {
           "description": "Type of the follower entity.",
           "enum": [
+            "Invalid",
             "User"
           ],
           "type": "string"
@@ -114,6 +115,7 @@
         "sourceType": {
           "description": "Type of the source entity.",
           "enum": [
+            "Invalid",
             "Universe"
           ],
           "type": "string"
