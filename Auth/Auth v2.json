@@ -1520,6 +1520,9 @@
         },
         "ArePasswordFieldsPlaintext": {
           "type": "boolean"
+        },
+        "IsKoreaIdVerificationEnabled": {
+          "type": "boolean"
         }
       }
     },
@@ -2041,7 +2044,8 @@
           "enum": [
             "Unknown",
             "Login",
-            "RobuxSpend"
+            "RobuxSpend",
+            "ItemTrade"
           ],
           "type": "string"
         }
@@ -2072,7 +2076,8 @@
           "enum": [
             "Unknown",
             "Login",
-            "RobuxSpend"
+            "RobuxSpend",
+            "ItemTrade"
           ],
           "type": "string"
         }

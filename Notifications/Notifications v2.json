@@ -1534,7 +1534,8 @@
               "ConversationUniverseChanged",
               "TeamCreateInvite",
               "GameUpdate",
-              "DeveloperMetricsAvailable"
+              "DeveloperMetricsAvailable",
+              "GroupJoinRequestAccepted"
             ],
             "type": "string"
           }
@@ -1570,7 +1571,8 @@
             "ConversationUniverseChanged",
             "TeamCreateInvite",
             "GameUpdate",
-            "DeveloperMetricsAvailable"
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted"
           ],
           "type": "string"
         },
@@ -1710,7 +1712,8 @@
             "ConversationUniverseChanged",
             "TeamCreateInvite",
             "GameUpdate",
-            "DeveloperMetricsAvailable"
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted"
           ],
           "type": "string"
         },
@@ -1746,7 +1749,8 @@
             "ConversationUniverseChanged",
             "TeamCreateInvite",
             "GameUpdate",
-            "DeveloperMetricsAvailable"
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted"
           ],
           "type": "string"
         },
@@ -1778,7 +1782,8 @@
             "ConversationUniverseChanged",
             "TeamCreateInvite",
             "GameUpdate",
-            "DeveloperMetricsAvailable"
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted"
           ],
           "type": "string"
         }
@@ -1821,7 +1826,8 @@
             "ConversationUniverseChanged",
             "TeamCreateInvite",
             "GameUpdate",
-            "DeveloperMetricsAvailable"
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted"
           ],
           "type": "string"
         },
@@ -2351,7 +2357,8 @@
             "ConversationUniverseChanged",
             "TeamCreateInvite",
             "GameUpdate",
-            "DeveloperMetricsAvailable"
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted"
           ],
           "type": "string"
         },

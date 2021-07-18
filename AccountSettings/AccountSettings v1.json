@@ -1068,6 +1068,86 @@
         }
       }
     },
+    "/v1/visibility-privacy": {
+      "get": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Get a user's visibility privacy setting",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.VisibilityPrivacyResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:GetVisibilityPrivacy"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "PrivacySettings"
+        ],
+        "summary": "Updates a user's visibility privacy setting",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.VisibilityPrivacyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The visibility privacy setting was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.InvalidSettingOption}"
+          },
+          "403": {
+            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.AccountLocked}\r\n            OR\r\n            {Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.SettingLockedCuratedGamesEnabled}\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "PrivacySettings:UpdateVisibilityPrivacy"
+          ]
+        }
+      }
+    },
     "/v1/xbox/is-username-valid": {
       "get": {
         "tags": [
@@ -1712,6 +1792,28 @@
             "Conflict"
           ],
           "type": "string"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.VisibilityPrivacyResponse": {
+      "description": "Response model for getting the user's visibility privacy settings",
+      "type": "object",
+      "properties": {
+        "visibilityPrivacy": {
+          "format": "int32",
+          "description": "The current visibility setting for the current user",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.VisibilityPrivacyRequest": {
+      "description": "Request model for visibility privacy setting update",
+      "type": "object",
+      "properties": {
+        "visibilityPrivacy": {
+          "format": "int32",
+          "description": "The desired visibility setting for the current user",
+          "type": "integer"
         }
       }
     },

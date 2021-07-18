@@ -1166,6 +1166,18 @@
         "isOutfitHandlingOnFrontendEnabled": {
           "description": "Does the frontend lock avatar editor input until the wearing call returns",
           "type": "boolean"
+        },
+        "isJustinUiChangesEnabled": {
+          "description": "Determines whether a bunch of UI improvements are released",
+          "type": "boolean"
+        },
+        "isCategoryReorgEnabled": {
+          "description": "Determines whether Category Reorg is released",
+          "type": "boolean"
+        },
+        "LCEnabledInEditorAndCatalog": {
+          "description": "Flag for both web UI and App, name is fixed due to sharing, do not change",
+          "type": "boolean"
         }
       }
     },

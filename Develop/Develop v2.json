@@ -154,13 +154,13 @@
             }
           },
           "400": {
-            "description": "1: The universe does not exist.\r\n3: Invalid UniverseAvatarType.\r\n4: Invalid UniverseScaleType.\r\n5: Invalid UniverseAnimationType.\r\n6: Invalid UniverseCollisionType.\r\n7: New universe name or description has been rejected.\r\n8: New universe name is too long.\r\n10: Invalid UniverseBodyType.\r\n11: Invalid UniverseJointPositioningType.\r\n12: The universe has no root place.\r\n13: At least one playable device must be provided.\r\n15: Price is required when isForSale is true.\r\n16: This game cannot be offered for sale because it is not public.\r\n17: This game cannot be offered for sale because it has private servers enabled.\r\n18: The game price is outside of the allowed range.\r\n19: Invalid genre.\r\n20: The request body is missing.\r\n21: Invalid device type.\r\n22: Invalid asset type.\r\n23: Invalid value, the min must be less than or equal to the max\r\n24: Invalid scale value"
+            "description": "1: The universe does not exist.\r\n3: Invalid UniverseAvatarType.\r\n4: Invalid UniverseScaleType.\r\n5: Invalid UniverseAnimationType.\r\n6: Invalid UniverseCollisionType.\r\n7: New universe name or description has been rejected.\r\n8: New universe name is too long.\r\n10: Invalid UniverseBodyType.\r\n11: Invalid UniverseJointPositioningType.\r\n12: The universe has no root place.\r\n13: At least one playable device must be provided.\r\n15: Price is required when isForSale is true.\r\n16: This game cannot be offered for sale because it is not public.\r\n17: This game cannot be offered for sale because it has private servers enabled.\r\n18: The game price is outside of the allowed range.\r\n19: Invalid genre.\r\n20: The request body is missing.\r\n21: Invalid device type.\r\n22: Invalid asset type.\r\n23: Invalid value, the min must be less than or equal to the max\r\n24: Invalid scale value\r\n28: OptIn/Out Regions Not Supported.\r\n29: Luobu app terms of service user agreement is missing."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n2: You are not authorized to configure this universe.\r\n14: You are not authorized to sell games."
+            "description": "0: Token Validation Failed\r\n2: You are not authorized to configure this universe.\r\n14: You are not authorized to sell games.\r\n30: Unknown error while updating Opt in out region."
           },
           "409": {
             "description": "9: Failed to shutdown all intances of game after changing AvatarType. The change has been reverted."
@@ -414,6 +414,28 @@
         "permissions": {
           "$ref": "#/definitions/Roblox.Api.Develop.Models.UniversePluginPermissions",
           "description": "Plugin permissions for third party.\r\nCurrently, this is a part of configuration, but will be separated into permission system in the future."
+        },
+        "optInRegions": {
+          "description": "A list of opt in region.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "Unknown",
+              "China"
+            ],
+            "type": "string"
+          }
+        },
+        "optOutRegions": {
+          "description": "A list of opt out region.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "Unknown",
+              "China"
+            ],
+            "type": "string"
+          }
         }
       }
     },
@@ -490,6 +512,12 @@
         "privateServerPrice": {
           "format": "int64",
           "type": "integer"
+        },
+        "optInRegions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseModerationPolicyStatus"
+          }
         },
         "id": {
           "format": "int64",
@@ -610,6 +638,24 @@
         "permissions": {
           "$ref": "#/definitions/Roblox.Api.Develop.Models.UniversePluginPermissions",
           "description": "Plugin permissions for third party.\r\nCurrently, this is a part of configuration, but will be separated into permission system in the future."
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UniverseModerationPolicyStatus": {
+      "description": "Represents a universe moderation policy status",
+      "type": "object",
+      "properties": {
+        "region": {
+          "description": "The region policy label",
+          "enum": [
+            "Unknown",
+            "China"
+          ],
+          "type": "string"
+        },
+        "status": {
+          "description": "The status of the universe",
+          "type": "string"
         }
       }
     }

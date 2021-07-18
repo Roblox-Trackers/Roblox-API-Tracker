@@ -3410,7 +3410,7 @@
             }
           },
           "400": {
-            "description": "1: The group is invalid or does not exist.\r\n2: The roleset is invalid or does not exist.\r\n3: The user is invalid or does not exist.\r\n23: You cannot change your own role."
+            "description": "1: The group is invalid or does not exist.\r\n2: The roleset is invalid or does not exist.\r\n3: The user is invalid or does not exist.\r\n23: You cannot change your own role.\r\n26: You cannot change the user's role to the same role."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."

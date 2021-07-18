@@ -807,6 +807,13 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "model.sessionId",
+            "in": "query",
+            "description": "SessionId",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -2261,6 +2268,10 @@
           "format": "int32",
           "description": "SortPosition",
           "type": "integer"
+        },
+        "sessionId": {
+          "description": "SessionId",
+          "type": "string"
         }
       }
     },
@@ -2478,6 +2489,14 @@
             "type": "string"
           }
         },
+        "isGenreEnforced": {
+          "description": "The game allows place to be copied",
+          "type": "boolean"
+        },
+        "copyingAllowed": {
+          "description": "The game allows place to be copied",
+          "type": "boolean"
+        },
         "playing": {
           "format": "int64",
           "description": "Current player count of the game",
@@ -2524,6 +2543,10 @@
           "description": "The game genre display name",
           "type": "string"
         },
+        "isAllGenre": {
+          "description": "Is this game all genre.",
+          "type": "boolean"
+        },
         "gameRating": {
           "$ref": "#/definitions/Roblox.Contentratingsservice.V1.Rating",
           "description": "Game Rating structure"
@@ -2531,6 +2554,11 @@
         "isFavoritedByUser": {
           "description": "Is this game favorited by user.",
           "type": "boolean"
+        },
+        "favoritedCount": {
+          "format": "int64",
+          "description": "Game number of favorites.",
+          "type": "integer"
         }
       }
     },
@@ -2550,6 +2578,10 @@
         "type": {
           "description": "The game creator type",
           "type": "string"
+        },
+        "isRNVAccount": {
+          "description": "The game creator account is Luobu Real Name Verified",
+          "type": "boolean"
         }
       }
     },

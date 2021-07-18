@@ -1782,6 +1782,9 @@
         },
         "ArePasswordFieldsPlaintext": {
           "type": "boolean"
+        },
+        "IsKoreaIdVerificationEnabled": {
+          "type": "boolean"
         }
       }
     },
@@ -1816,9 +1819,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
+            "ShortPasswordError",
             "ValidPassword",
             "WeakPasswordError",
-            "ShortPasswordError",
             "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
             "DumbStringsError"
@@ -2153,7 +2156,8 @@
           "enum": [
             "Unknown",
             "Login",
-            "RobuxSpend"
+            "RobuxSpend",
+            "ItemTrade"
           ],
           "type": "string"
         }
@@ -2184,7 +2188,8 @@
           "enum": [
             "Unknown",
             "Login",
-            "RobuxSpend"
+            "RobuxSpend",
+            "ItemTrade"
           ],
           "type": "string"
         }
@@ -2234,8 +2239,8 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ModerationError",
             "AlreadyInUseError",
+            "ModerationError",
             "ValidUsername",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",

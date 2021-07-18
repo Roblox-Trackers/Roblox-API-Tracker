@@ -237,6 +237,42 @@
         }
       }
     },
+    "/v1/users/{userId}/categories": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "Return inventory categories for a user",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Inventory.Api.InventoryCategoriesModel"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Inventory:GetCategories"
+          ]
+        }
+      }
+    },
     "/v1/users/{userId}/inventory/{assetType}": {
       "get": {
         "tags": [
@@ -626,6 +662,68 @@
           "description": "The instance id of the item if applicable",
           "type": "integer",
           "readOnly": true
+        }
+      }
+    },
+    "Roblox.Inventory.Api.InventoryCategoriesModel": {
+      "description": "Model class that contains the categories of the Inventory page",
+      "type": "object",
+      "properties": {
+        "categories": {
+          "description": "Categories to show up in Inventory page",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Inventory.Api.AssetsExplorerCategoryModel"
+          }
+        }
+      }
+    },
+    "Roblox.Inventory.Api.AssetsExplorerCategoryModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "categoryType": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Inventory.Api.AssetsExplorerCategoryItemModel"
+          }
+        }
+      }
+    },
+    "Roblox.Inventory.Api.AssetsExplorerCategoryItemModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "filter": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "AssetType",
+            "Outfit",
+            "Set"
+          ],
+          "type": "string"
+        },
+        "categoryType": {
+          "type": "string"
         }
       }
     }
