@@ -9,6 +9,50 @@
     "https"
   ],
   "paths": {
+    "/v1/assets/upload": {
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "summary": "Uploads new asset/s for the user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "uploadAssetRequest.files",
+            "in": "formData",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - It should include the \"config.json\" file with the dictionary format for filename, item name and item description for all uploaded item files in the request\r\n            {\"apple\":{\"type\":\"Image\",\"name\":\"Apple\",\"description\":\"Its a fruit\"},\r\n            \"banana\":{\"type\":\"Hair Accessory\",\"name\":\"Fruit Hat\",\"description\":\"Its a fruit hat\"}}.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Publish.Api.UploadAssetResponse"
+            }
+          },
+          "400": {
+            "description": "2: The request model formdata was null\r\n3: The request content is missing config json file\r\n4: The request has invalid config\r\n5: The request files does not match the config"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n1: You do not have permission to create this item"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Items:UploadAssets"
+          ]
+        }
+      }
+    },
     "/v1/audio": {
       "post": {
         "tags": [
@@ -469,6 +513,115 @@
           "format": "int64",
           "description": "The target Id of the uploaded item.",
           "type": "integer"
+        }
+      }
+    },
+    "Roblox.Publish.Api.UploadItemRequest": {
+      "description": "A request model for uploading an item.",
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Roblox.Web.WebApi.FormData.IUploadedFile"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebApi.FormData.IUploadedFile": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "Stream": {
+          "$ref": "#/definitions/System.IO.Stream",
+          "readOnly": true
+        },
+        "ContentEncoding": {
+          "enum": [
+            "None",
+            "GZip",
+            "Deflate"
+          ],
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "System.IO.Stream": {
+      "type": "object",
+      "properties": {
+        "CanRead": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanSeek": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanTimeout": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanWrite": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "Length": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "Position": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "ReadTimeout": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "WriteTimeout": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Publish.Api.UploadAssetResponse": {
+      "type": "object",
+      "properties": {
+        "AssetDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Publish.Api.AssetResponseDetails"
+          }
+        }
+      }
+    },
+    "Roblox.Publish.Api.AssetResponseDetails": {
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "assetFileName": {
+          "type": "string"
+        },
+        "uploadAssetError": {
+          "enum": [
+            "None",
+            "InvalidAssetName",
+            "InvalidAssetDescription",
+            "InvalidAssetType",
+            "InappropriateText",
+            "WrongFileExtension",
+            "AssetTypeNotAllowed",
+            "UserDoesNotHavePermissionToUpload"
+          ],
+          "type": "string"
         }
       }
     }
