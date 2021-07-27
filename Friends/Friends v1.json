@@ -673,49 +673,6 @@
         }
       }
     },
-    "/v1/users/{userId}/friends/recommendations": {
-      "get": {
-        "tags": [
-          "Friends"
-        ],
-        "summary": "Get Friend Recommendations for a user, based on the recommendation source they're in an experiment for",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "description": "The user Id to get the friend recommendations for.",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Friends.Api.FriendRequestResponse]"
-            }
-          },
-          "400": {
-            "description": "1: The target user is invalid or does not exist."
-          },
-          "403": {
-            "description": "1: The target user is invalid or does not exist."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Friends:GetFriendRecommendations"
-          ]
-        }
-      }
-    },
     "/v1/users/{userId}/friends/statuses": {
       "get": {
         "tags": [
@@ -1659,71 +1616,6 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Friends.Api.FriendRequestResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Friends.Api.FriendRequestResponse"
-          }
-        }
-      }
-    },
-    "Roblox.Friends.Api.FriendRequestResponse": {
-      "description": "A response model representing a friend request.",
-      "type": "object",
-      "properties": {
-        "friendRequest": {
-          "$ref": "#/definitions/Roblox.Friends.Api.FriendRequest",
-          "description": "Friend request"
-        },
-        "description": {
-          "type": "string"
-        },
-        "created": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "isBanned": {
-          "type": "boolean"
-        },
-        "externalAppDisplayName": {
-          "type": "string"
-        },
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "displayName": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Friends.Api.FriendRequest": {
-      "description": "A response model representing a friend request.",
-      "type": "object",
-      "properties": {
-        "sentAt": {
-          "format": "date-time",
-          "description": "When the friend request was sent.",
-          "type": "string"
-        },
-        "senderId": {
-          "format": "int64",
-          "description": "The sender user Id.",
-          "type": "integer"
-        },
-        "sourceUniverseId": {
-          "format": "int64",
-          "description": "The source universe Id which the request was sent in.",
-          "type": "integer"
-        }
-      }
-    },
     "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Friends.Api.FriendStatusResponse]": {
       "type": "object",
       "properties": {
@@ -1910,6 +1802,60 @@
           "items": {
             "$ref": "#/definitions/Roblox.Friends.Api.FriendRequestResponse"
           }
+        }
+      }
+    },
+    "Roblox.Friends.Api.FriendRequestResponse": {
+      "description": "A response model representing a friend request.",
+      "type": "object",
+      "properties": {
+        "friendRequest": {
+          "$ref": "#/definitions/Roblox.Friends.Api.FriendRequest",
+          "description": "Friend request"
+        },
+        "description": {
+          "type": "string"
+        },
+        "created": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isBanned": {
+          "type": "boolean"
+        },
+        "externalAppDisplayName": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Friends.Api.FriendRequest": {
+      "description": "A response model representing a friend request.",
+      "type": "object",
+      "properties": {
+        "sentAt": {
+          "format": "date-time",
+          "description": "When the friend request was sent.",
+          "type": "string"
+        },
+        "senderId": {
+          "format": "int64",
+          "description": "The sender user Id.",
+          "type": "integer"
+        },
+        "sourceUniverseId": {
+          "format": "int64",
+          "description": "The source universe Id which the request was sent in.",
+          "type": "integer"
         }
       }
     },

@@ -358,6 +358,9 @@
           "429": {
             "description": "14: You are sending too many trade requests. Please slow down and try again later."
           },
+          "502": {
+            "description": "0: An unknown error occured."
+          },
           "503": {
             "description": "5: Trading system is unavailable"
           }
@@ -463,6 +466,9 @@
           },
           "429": {
             "description": "14: You are sending too many trade requests. Please slow down and try again later."
+          },
+          "502": {
+            "description": "0: An unknown error occured."
           },
           "503": {
             "description": "5: Trading system is unavailable"
