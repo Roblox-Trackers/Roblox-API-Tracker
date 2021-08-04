@@ -981,7 +981,8 @@
             "enum": [
               "Invalid",
               "Home",
-              "Games"
+              "Games",
+              "Avatars"
             ]
           },
           {
@@ -1237,6 +1238,60 @@
           "internal": false,
           "metricIds": [
             "Votes:MultiUniversePlayabilityStatus"
+          ]
+        }
+      }
+    },
+    "/v1/private-servers": {
+      "get": {
+        "tags": [
+          "VipServers"
+        ],
+        "summary": "Get private servers from private server ids",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "privateServersRequest.privateServerIds",
+            "in": "query",
+            "description": "list of private server ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Games.Api.PrivateServersResponse"
+            }
+          },
+          "400": {
+            "description": "34: Invalid request, private server ids cannot be null.\r\n35: Guest users are not allowed."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "404": {
+            "description": "4: The universe does not exist."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "VipServers:GetPrivateServers"
           ]
         }
       }
@@ -2886,7 +2941,8 @@
           "enum": [
             "Invalid",
             "Home",
-            "Games"
+            "Games",
+            "Avatars"
           ],
           "type": "string"
         },
@@ -2940,6 +2996,24 @@
               }
             },
             "Game": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            },
+            "Avatar": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            },
+            "Genre": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            },
+            "Player": {
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
@@ -3023,6 +3097,24 @@
               }
             },
             "Game": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            },
+            "Avatar": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            },
+            "Genre": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
+              }
+            },
+            "Player": {
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/Roblox.Games.Api.Models.OmniRecommendationResponseModel"
@@ -3293,6 +3385,33 @@
         "canInvite": {
           "description": "Sufficient permissions to invite user",
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Games.Api.PrivateServersRequest": {
+      "description": "Request to get private server information of given ids",
+      "type": "object",
+      "properties": {
+        "privateServerIds": {
+          "description": "list of private server ids",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Roblox.Games.Api.PrivateServersResponse": {
+      "description": "User Presences Response model",
+      "type": "object",
+      "properties": {
+        "privateServerResponses": {
+          "description": "A collection of game server responses",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Responses.Games.GameServerResponse"
+          }
         }
       }
     },

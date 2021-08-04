@@ -1671,6 +1671,7 @@
           "enum": [
             "Unknown",
             "PlayerSearch",
+            "QrCode",
             "InGame",
             "UserProfile",
             "QqContactImporter",
