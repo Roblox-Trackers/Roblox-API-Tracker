@@ -568,6 +568,9 @@
     "Roblox.Web.Captcha.Models.Request.CaptchaTokenRequest": {
       "type": "object",
       "properties": {
+        "captchaId": {
+          "type": "string"
+        },
         "captchaToken": {
           "type": "string"
         },
