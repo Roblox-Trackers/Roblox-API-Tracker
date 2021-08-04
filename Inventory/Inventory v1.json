@@ -261,7 +261,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Inventory.Api.CategoriesModel"
+              "$ref": "#/definitions/Roblox.Inventory.Api.InventoryCategoriesModel"
             }
           }
         },
@@ -269,42 +269,6 @@
           "internal": false,
           "metricIds": [
             "Inventory:GetCategories"
-          ]
-        }
-      }
-    },
-    "/v1/users/{userId}/categories/favorites": {
-      "get": {
-        "tags": [
-          "Inventory"
-        ],
-        "summary": "Return favorites categories for a user",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Inventory.Api.CategoriesModel"
-            }
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Inventory:GetFavoritesCategories"
           ]
         }
       }
@@ -701,12 +665,12 @@
         }
       }
     },
-    "Roblox.Inventory.Api.CategoriesModel": {
-      "description": "Model class that contains the categories of the Inventory or Favorites page",
+    "Roblox.Inventory.Api.InventoryCategoriesModel": {
+      "description": "Model class that contains the categories of the Inventory page",
       "type": "object",
       "properties": {
         "categories": {
-          "description": "Categories to show up in Inventory or Favorites page",
+          "description": "Categories to show up in Inventory page",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Roblox.Inventory.Api.AssetsExplorerCategoryModel"
