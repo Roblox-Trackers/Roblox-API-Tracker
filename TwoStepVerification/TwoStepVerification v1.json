@@ -519,7 +519,7 @@
             }
           },
           "400": {
-            "description": "2: The user ID is invalid."
+            "description": "2: The user ID is invalid.\r\n3: The email is invalid."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
