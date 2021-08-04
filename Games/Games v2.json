@@ -450,43 +450,34 @@
       }
     },
     "Roblox.Web.Responses.Games.GameResponseV2": {
-      "description": "A response model representing a game.",
       "type": "object",
       "properties": {
         "id": {
           "format": "int64",
-          "description": "The game (universe) Id.",
           "type": "integer"
         },
         "name": {
-          "description": "The game name.",
           "type": "string"
         },
         "description": {
-          "description": "The game description.",
           "type": "string"
         },
         "creator": {
-          "$ref": "#/definitions/Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Platform.Core.CreatorType]",
-          "description": "Who created the game."
+          "$ref": "#/definitions/Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Platform.Core.CreatorType]"
         },
         "rootPlace": {
-          "$ref": "#/definitions/Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Platform.Assets.AssetType]",
-          "description": "The root place of the game."
+          "$ref": "#/definitions/Roblox.Web.Responses.RelatedEntityTypeResponse[Roblox.Platform.Assets.AssetType]"
         },
         "created": {
           "format": "date-time",
-          "description": "When the game was created.",
           "type": "string"
         },
         "updated": {
           "format": "date-time",
-          "description": "When the game was last updated.",
           "type": "string"
         },
         "placeVisits": {
           "format": "int64",
-          "description": "The number of place visits for this game.",
           "type": "integer"
         }
       }
@@ -649,33 +640,26 @@
       }
     },
     "Roblox.Web.Responses.Games.GameMediaItemResponseV2": {
-      "description": "Response model for getting the game media item",
       "type": "object",
       "properties": {
         "assetTypeId": {
           "format": "int64",
-          "description": "The media item type id",
           "type": "integer"
         },
         "assetType": {
-          "description": "The media item type, Image or YouTubeVideo",
           "type": "string"
         },
         "imageId": {
           "format": "int64",
-          "description": "The media item image id",
           "type": "integer"
         },
         "videoHash": {
-          "description": "The media item video hash",
           "type": "string"
         },
         "videoTitle": {
-          "description": "The video title for video items.",
           "type": "string"
         },
         "approved": {
-          "description": "The media item is approved or not",
           "type": "boolean"
         }
       }
