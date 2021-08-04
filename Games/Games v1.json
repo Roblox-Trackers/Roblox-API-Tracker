@@ -1248,27 +1248,23 @@
           "VipServers"
         ],
         "summary": "Get private servers from private server ids",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
-        ],
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "privateServersRequest.privateServerIds",
+            "name": "privateServerIds",
             "in": "query",
-            "description": "list of private server ids",
-            "required": false,
+            "description": "",
+            "required": true,
             "type": "array",
             "items": {
               "type": "integer",
               "format": "int64"
             },
-            "collectionFormat": "multi"
+            "collectionFormat": "csv"
           }
         ],
         "responses": {
@@ -2847,6 +2843,7 @@
       }
     },
     "Roblox.Web.Responses.Games.GameServerResponse": {
+      "description": "Game server list response model.",
       "type": "object",
       "properties": {
         "id": {
@@ -3385,20 +3382,6 @@
         "canInvite": {
           "description": "Sufficient permissions to invite user",
           "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Games.Api.PrivateServersRequest": {
-      "description": "Request to get private server information of given ids",
-      "type": "object",
-      "properties": {
-        "privateServerIds": {
-          "description": "list of private server ids",
-          "type": "array",
-          "items": {
-            "format": "int64",
-            "type": "integer"
-          }
         }
       }
     },
