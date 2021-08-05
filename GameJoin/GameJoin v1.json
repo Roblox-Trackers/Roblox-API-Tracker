@@ -45,6 +45,9 @@
           "400": {
             "description": "-1: An unknown error occurred."
           },
+          "403": {
+            "description": "1: Request is not authorized from specified origin.\r\n2: User is invalid or does not exist."
+          },
           "429": {
             "description": "3: Too many requests, please slow down."
           }
@@ -93,6 +96,9 @@
           "400": {
             "description": "-1: An unknown error occurred."
           },
+          "403": {
+            "description": "1: Request is not authorized from specified origin.\r\n2: User is invalid or does not exist."
+          },
           "429": {
             "description": "3: Too many requests, please slow down."
           }
@@ -139,6 +145,9 @@
           },
           "400": {
             "description": "-1: An unknown error occurred."
+          },
+          "403": {
+            "description": "1: Request is not authorized from specified origin.\r\n2: User is invalid or does not exist."
           },
           "429": {
             "description": "3: Too many requests, please slow down."
@@ -188,6 +197,9 @@
           "400": {
             "description": "-1: An unknown error occurred."
           },
+          "403": {
+            "description": "1: Request is not authorized from specified origin.\r\n2: User is invalid or does not exist."
+          },
           "429": {
             "description": "3: Too many requests, please slow down."
           }
@@ -235,6 +247,9 @@
           },
           "400": {
             "description": "-1: An unknown error occurred."
+          },
+          "403": {
+            "description": "1: Request is not authorized from specified origin.\r\n2: User is invalid or does not exist."
           },
           "429": {
             "description": "3: Too many requests, please slow down."
@@ -284,6 +299,9 @@
           "400": {
             "description": "-1: An unknown error occurred."
           },
+          "403": {
+            "description": "1: Request is not authorized from specified origin.\r\n2: User is invalid or does not exist."
+          },
           "429": {
             "description": "3: Too many requests, please slow down."
           }
@@ -331,6 +349,9 @@
           },
           "400": {
             "description": "-1: An unknown error occurred."
+          },
+          "403": {
+            "description": "1: Request is not authorized from specified origin.\r\n2: User is invalid or does not exist."
           },
           "429": {
             "description": "3: Too many requests, please slow down."
