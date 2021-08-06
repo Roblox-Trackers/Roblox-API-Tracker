@@ -1164,10 +1164,10 @@
             }
           },
           "400": {
-            "description": "Bad request\r\n16: User agreement ids are null."
+            "description": "Bad request"
           },
           "500": {
-            "description": "Internal server error\r\n15: Insert acceptances failed."
+            "description": "Internal server error"
           },
           "503": {
             "description": "Service unavailable"
@@ -1819,9 +1819,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "ShortPasswordError",
             "ValidPassword",
             "WeakPasswordError",
+            "ShortPasswordError",
             "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
             "DumbStringsError"
@@ -2239,15 +2239,15 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ModerationError",
             "ValidUsername",
             "AlreadyInUseError",
-            "TooManyUnderscoresError",
-            "ContainsPiiError",
+            "ModerationError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
+            "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",
+            "ContainsPiiError",
             "ContainsReservedUsernameError"
           ],
           "type": "string"

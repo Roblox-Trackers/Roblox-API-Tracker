@@ -1041,10 +1041,10 @@
             }
           },
           "400": {
-            "description": "Bad request\r\n16: User agreement ids are null."
+            "description": "Bad request"
           },
           "500": {
-            "description": "Internal server error\r\n15: Insert acceptances failed."
+            "description": "Internal server error"
           },
           "503": {
             "description": "Service unavailable"
