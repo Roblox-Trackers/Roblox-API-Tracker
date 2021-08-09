@@ -1362,6 +1362,14 @@
           "description": "Credentials password.",
           "type": "string"
         },
+        "securityQuestionSessionId": {
+          "description": "Session ID for security questions challenge.",
+          "type": "string"
+        },
+        "securityQuestionRedemptionToken": {
+          "description": "Redemption token for security questions challenge.",
+          "type": "string"
+        },
         "captchaId": {
           "type": "string"
         },

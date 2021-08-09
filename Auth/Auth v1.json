@@ -1624,6 +1624,14 @@
           "description": "Credentials password.",
           "type": "string"
         },
+        "securityQuestionSessionId": {
+          "description": "Session ID for security questions challenge.",
+          "type": "string"
+        },
+        "securityQuestionRedemptionToken": {
+          "description": "Redemption token for security questions challenge.",
+          "type": "string"
+        },
         "captchaId": {
           "type": "string"
         },
@@ -1819,11 +1827,11 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "ValidPassword",
+            "ForbiddenPasswordError",
             "ShortPasswordError",
+            "ValidPassword",
             "WeakPasswordError",
             "PasswordSameAsUsernameError",
-            "ForbiddenPasswordError",
             "DumbStringsError"
           ],
           "type": "string"
@@ -2239,8 +2247,8 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
+            "ValidUsername",
             "ModerationError",
             "ContainsPiiError",
             "InvalidLengthError",
