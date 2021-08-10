@@ -285,7 +285,7 @@
             }
           },
           "400": {
-            "description": "2: The trade cannot be found or you are not authorized to view it.\r\n3: The trade is inactive.\r\n4: You are not authorized to modify this trade.\r\n6: Trade needs to be confirmed by the other party.\r\n6: Trade needs to be confirmed by the other party.\r\n7: The user cannot trade. See field for whether the user who cannot trade is the sender or receiver.\r\n23: The trade reaches Two Step Verification thresholds and the user has not verified in the past time threshold."
+            "description": "2: The trade cannot be found or you are not authorized to view it.\r\n3: The trade is inactive.\r\n4: You are not authorized to modify this trade.\r\n6: Trade needs to be confirmed by the other party.\r\n6: Trade needs to be confirmed by the other party.\r\n7: The user cannot trade. See field for whether the user who cannot trade is the sender or receiver."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -456,7 +456,7 @@
             }
           },
           "400": {
-            "description": "7: The user cannot trade. See field for whether the user who cannot trade is the sender or receiver.\r\n8: The trade request should include offers.\r\n9: Invalid number of trade offers.\r\n10: Invalid trade partner. See field for whether the invalid partner is the sender or receiver.\r\n11: Cannot add negative Robux amounts to a trade.\r\n12: One or more userAssets are invalid. See fieldData for details.\r\n13: Invalid number of userAssets in one side of the trade.\r\n15: The trade is unbalanced.\r\n16: Trade value ratio is not sufficient.\r\n17: You have insufficient Robux to make this offer.\r\n18: Too many Robux in one side of the offer. See field for whether the side is the sender or receiver.\r\n19: Unknown error while processing the trade.\r\n21: Cannot trade with yourself.\r\n22: User's privacy settings are too strict to allow trading. See field for whether the user is the sender or receiver.\r\n23: The trade reaches Two Step Verification thresholds and the user has not verified in the past time threshold."
+            "description": "7: The user cannot trade. See field for whether the user who cannot trade is the sender or receiver.\r\n8: The trade request should include offers.\r\n9: Invalid number of trade offers.\r\n10: Invalid trade partner. See field for whether the invalid partner is the sender or receiver.\r\n11: Cannot add negative Robux amounts to a trade.\r\n12: One or more userAssets are invalid. See fieldData for details.\r\n13: Invalid number of userAssets in one side of the trade.\r\n15: The trade is unbalanced.\r\n16: Trade value ratio is not sufficient.\r\n17: You have insufficient Robux to make this offer.\r\n18: Too many Robux in one side of the offer. See field for whether the side is the sender or receiver.\r\n19: Unknown error while processing the trade.\r\n21: Cannot trade with yourself.\r\n22: User's privacy settings are too strict to allow trading. See field for whether the user is the sender or receiver."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -797,8 +797,7 @@
             "SenderCannotTrade",
             "ReceiverCannotTrade",
             "SenderPrivacyTooStrict",
-            "UsersCannotTrade",
-            "TradeAccepterNeedsFriction"
+            "UsersCannotTrade"
           ],
           "type": "string"
         }
