@@ -590,6 +590,83 @@
         }
       }
     },
+    "/v1/groups/{groupId}/name-history": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Gets the Group's name change history.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The id of the group.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "The order the results are sorted in.",
+            "required": false,
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50,
+              100
+            ]
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The paging cursor for the previous or next page.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Groups.Api.Models.Response.GroupNameHistoryResponseItem]"
+            }
+          },
+          "400": {
+            "description": "1: Group is invalid or does not exist."
+          },
+          "403": {
+            "description": "23: Insufficient permissions to complete the request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Groups:GetGroupNameHistory"
+          ]
+        }
+      }
+    },
     "/v1/groups/{groupId}/payout-restriction": {
       "get": {
         "tags": [
@@ -2999,6 +3076,72 @@
         }
       }
     },
+    "/v1/groups/{groupId}/name": {
+      "patch": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Updates the group's name.",
+        "description": "This endpoint will charge Robux for the group rename.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The id of the group the user is in.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The {Roblox.Groups.Api.UpdateGroupNameRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Groups.Api.UpdateGroupNameRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Groups.Api.UpdateGroupNameResponse"
+            }
+          },
+          "400": {
+            "description": "1: Group is invalid or does not exist.\r\n13: The name is invalid.\r\n19: The name is too long.\r\n20: The name has been taken."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n12: Insufficient Robux funds.\r\n14: The name is moderated.\r\n23: Insufficient permissions to complete the request."
+          },
+          "413": {
+            "description": "0: Unknown error."
+          },
+          "429": {
+            "description": "17: Too many requests."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Groups:UpdateGroupName"
+          ]
+        }
+      }
+    },
     "/v1/groups/{groupId}/rolesets/{rolesetId}": {
       "delete": {
         "tags": [
@@ -3812,6 +3955,25 @@
         }
       }
     },
+    "Roblox.Groups.Api.UpdateGroupNameRequest": {
+      "description": "A request model for setting a name for the group",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The group name being set.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Groups.Api.UpdateGroupNameResponse": {
+      "type": "object",
+      "properties": {
+        "newName": {
+          "description": "The new description returned",
+          "type": "string"
+        }
+      }
+    },
     "Roblox.Groups.Api.UpdateGroupDescriptionRequest": {
       "description": "A request model for setting a description for the group",
       "type": "object",
@@ -3884,6 +4046,77 @@
         "areGroupGamesVisible": {
           "description": "Whether games are publicly visible.",
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int64]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]",
+          "readOnly": true
+        },
+        "CursorRecipe": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "enum": [
+            "Asc",
+            "Desc"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "enum": [
+            "Forward",
+            "Backward"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Groups.Api.Models.Response.GroupNameHistoryResponseItem]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Groups.Api.Models.Response.GroupNameHistoryResponseItem"
+          }
+        }
+      }
+    },
+    "Roblox.Groups.Api.Models.Response.GroupNameHistoryResponseItem": {
+      "description": "A group name history response model",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The group name before the change",
+          "type": "string"
+        },
+        "created": {
+          "format": "date-time",
+          "description": "Date the name change was applied",
+          "type": "string"
         }
       }
     },
@@ -4270,45 +4503,6 @@
         "ShowFriendsGroupsSort": {
           "description": "Whether or not the Friends' Groups sort should show for the authenticated user",
           "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int64]": {
-      "type": "object",
-      "properties": {
-        "ExclusiveStartKeyInfo": {
-          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]",
-          "readOnly": true
-        },
-        "CursorRecipe": {
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]": {
-      "type": "object",
-      "properties": {
-        "SortOrder": {
-          "enum": [
-            "Asc",
-            "Desc"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "PagingDirection": {
-          "enum": [
-            "Forward",
-            "Backward"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "Count": {
-          "format": "int32",
-          "type": "integer",
-          "readOnly": true
         }
       }
     },
