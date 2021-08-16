@@ -933,7 +933,7 @@
             "description": "3: Request was empty.\r\n9: The target type is invalid.\r\n10: The target is invalid.\r\n12: The user is invalid."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n18: Captcha is required."
+            "description": "0: Token Validation Failed\r\n18: Captcha is required.\r\n23: Authenticate with Luobu instead."
           },
           "429": {
             "description": "2: Too many attempts. Please try again later."
