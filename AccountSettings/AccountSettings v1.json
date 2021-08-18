@@ -1512,6 +1512,19 @@
         "IsAccountsRestrictionsSpamBugFixEnabled": {
           "description": "Whether or not account restrictions spam bug fix is enabled",
           "type": "boolean"
+        },
+        "MaximumParentalControlsMonthlySpendLimitInUSD": {
+          "format": "int32",
+          "description": "The max amount a user can enter as their monthly spending limit in USD",
+          "type": "integer"
+        },
+        "IsParentalMonthlyLimitInUIEnabled": {
+          "description": "Enables/disables the section in the account parental controls page where you can set the monthly spend limit",
+          "type": "boolean"
+        },
+        "IsParentalNotificationSettingsInUIEnabled": {
+          "description": "Enables/disables the section in the account parental controls page where you can set the parental notifications settings",
+          "type": "boolean"
         }
       }
     },
