@@ -496,7 +496,11 @@
           "Authenticator"
         ],
         "summary": "Initiates enabling authenticator-based two step verification for the specified user.",
-        "consumes": [],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
         "produces": [
           "application/json",
           "text/json"
@@ -509,6 +513,15 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The {Roblox.TwoStepVerification.Api.EnableAuthenticatorRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableAuthenticatorRequest"
+            }
           }
         ],
         "responses": {
@@ -519,7 +532,7 @@
             }
           },
           "400": {
-            "description": "2: The user ID is invalid.\r\n3: The email is invalid."
+            "description": "2: The user ID is invalid.\r\n3: The email is invalid.\r\n4: The password is invalid."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -582,7 +595,7 @@
             }
           },
           "400": {
-            "description": "2: The user ID is invalid.\r\n10: The two step verification challenge code is invalid.\r\n12: Invalid setup token."
+            "description": "2: The user ID is invalid.\r\n4: The password is invalid.\r\n10: The two step verification challenge code is invalid.\r\n12: Invalid setup token."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -673,7 +686,11 @@
           "Email"
         ],
         "summary": "Enables two step verification via email for the specified user.",
-        "consumes": [],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
         "produces": [
           "application/json",
           "text/json"
@@ -686,6 +703,15 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableEmailTwoStepVerificationRequest"
+            }
           }
         ],
         "responses": {
@@ -696,7 +722,7 @@
             }
           },
           "400": {
-            "description": "3: The email is invalid."
+            "description": "3: The email is invalid.\r\n4: The password is invalid."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -850,6 +876,16 @@
     }
   },
   "definitions": {
+    "Roblox.TwoStepVerification.Api.EnableAuthenticatorRequest": {
+      "description": "Request parameters for enabling authenticator two step verification.",
+      "type": "object",
+      "properties": {
+        "password": {
+          "description": "The user's password.",
+          "type": "string"
+        }
+      }
+    },
     "Roblox.TwoStepVerification.Api.EnableAuthenticatorResponse": {
       "description": "Response parameters for initiating enabling authenticator-based two step verification.",
       "type": "object",
@@ -878,6 +914,10 @@
         },
         "code": {
           "description": "The code from the authenticator app.",
+          "type": "string"
+        },
+        "password": {
+          "description": "The user's password.",
           "type": "string"
         }
       }
@@ -978,6 +1018,16 @@
         }
       }
     },
+    "Roblox.TwoStepVerification.Api.EnableEmailTwoStepVerificationRequest": {
+      "description": "Request parameters for enabling email two step verification.",
+      "type": "object",
+      "properties": {
+        "password": {
+          "description": "The user's password.",
+          "type": "string"
+        }
+      }
+    },
     "Roblox.TwoStepVerification.Api.SendCodeRequest": {
       "description": "Request parameters for sending a two step verification code.",
       "type": "object",
@@ -1028,6 +1078,14 @@
         "authenticatorHelpSiteAddress": {
           "description": "Address of the help site provided to users to help them with authenticator.",
           "type": "string"
+        },
+        "isPasswordRequiredForEnablingAuthenticator": {
+          "description": "Whether or not a password is required for enabling authenticator.",
+          "type": "boolean"
+        },
+        "isPasswordRequiredForEnablingEmailTwoStepVerification": {
+          "description": "Whether or not a password is required for enabling email 2sv.",
+          "type": "boolean"
         }
       }
     },
