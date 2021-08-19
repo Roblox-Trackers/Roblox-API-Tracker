@@ -124,6 +124,7 @@
           {
             "name": "joinPlayTogetherGameRequest",
             "in": "body",
+            "description": "The {Roblox.GameJoin.Api.JoinPlayTogetherGameRequest} in JSON format",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.GameJoin.Api.JoinPlayTogetherGameRequest"
@@ -363,6 +364,7 @@
           {
             "name": "teamCreateRequest",
             "in": "body",
+            "description": "The {Roblox.GameJoin.Api.TeamCreateRequest} in JSON format",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.GameJoin.Api.TeamCreateRequest"
