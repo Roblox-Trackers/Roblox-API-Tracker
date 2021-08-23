@@ -609,6 +609,10 @@
         },
         "AlternateName": {
           "type": "string"
+        },
+        "EncryptedUserScore": {
+          "format": "byte",
+          "type": "string"
         }
       }
     },
