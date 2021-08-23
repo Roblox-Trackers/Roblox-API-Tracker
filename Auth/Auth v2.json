@@ -1531,6 +1531,9 @@
         },
         "IsKoreaIdVerificationEnabled": {
           "type": "boolean"
+        },
+        "IsLoginTwoStepVerificationModalEnabled": {
+          "type": "boolean"
         }
       }
     },
