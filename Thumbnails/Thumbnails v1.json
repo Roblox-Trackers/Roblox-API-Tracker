@@ -1144,11 +1144,17 @@
             "description": "The thumbnail size, formatted widthxheight",
             "required": false,
             "type": "string",
-            "default": "50x50",
+            "default": "48x48",
             "enum": [
+              "48x48",
               "50x50",
               "60x60",
-              "75x75"
+              "75x75",
+              "100x100",
+              "150x150",
+              "180x180",
+              "352x352",
+              "420x420"
             ]
           },
           {
@@ -1434,11 +1440,6 @@
           "type": "string",
           "readOnly": true
         },
-        "ThumbnailFormatID": {
-          "format": "int32",
-          "type": "integer",
-          "readOnly": true
-        },
         "IsCircular": {
           "type": "boolean",
           "readOnly": true
@@ -1498,6 +1499,10 @@
           "description": "The thumbnail target id",
           "type": "integer"
         },
+        "token": {
+          "description": "Alternative ase token used to identify a thumbnail",
+          "type": "string"
+        },
         "alias": {
           "description": "Alternative string used to identify a thumbnail\r\ninstead of targetId",
           "type": "string"
@@ -1524,6 +1529,10 @@
         },
         "size": {
           "description": "The thumbnail size",
+          "type": "string"
+        },
+        "format": {
+          "description": "The thumbnail format",
           "type": "string"
         },
         "isCircular": {
