@@ -210,6 +210,10 @@
         "multiGetContactsMaxSize": {
           "format": "int32",
           "type": "integer"
+        },
+        "multiGetContactsCacheTTLinMS": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
