@@ -1586,6 +1586,9 @@
           "type": "boolean",
           "readOnly": true
         },
+        "shouldDisplayFriendRequestContext": {
+          "type": "boolean"
+        },
         "userName": {
           "type": "string"
         },

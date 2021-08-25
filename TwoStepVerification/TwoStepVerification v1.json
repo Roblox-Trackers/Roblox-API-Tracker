@@ -1086,6 +1086,10 @@
         "isPasswordRequiredForEnablingEmailTwoStepVerification": {
           "description": "Whether or not a password is required for enabling email 2sv.",
           "type": "boolean"
+        },
+        "isUsingTwoStepWebviewComponent": {
+          "description": "Whether or not we're using the new 2sv webview component or the manual pop up",
+          "type": "boolean"
         }
       }
     },
