@@ -673,6 +673,16 @@
         "releaseConfiguration": {
           "$ref": "#/definitions/Roblox.ItemConfiguration.Api.ReleaseConfigurationResponseModel",
           "description": "Gets or sets the release configuration for the asset"
+        },
+        "created": {
+          "format": "date-time",
+          "description": "Date asset was created",
+          "type": "string"
+        },
+        "updated": {
+          "format": "date-time",
+          "description": "Date asset was created",
+          "type": "string"
         }
       }
     },
