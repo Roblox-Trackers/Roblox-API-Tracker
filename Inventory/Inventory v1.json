@@ -508,122 +508,6 @@
           ]
         }
       }
-    },
-    "/v1/collections/items/{itemType}/{itemTargetId}": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Adds an item to the appropriate collection",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "itemType",
-            "in": "path",
-            "description": "Type of the item (ie. Asset, Bundle)",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "Asset",
-              "GamePass",
-              "Badge",
-              "Bundle"
-            ]
-          },
-          {
-            "name": "itemTargetId",
-            "in": "path",
-            "description": "ID of the item",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "400": {
-            "description": "1: The item type does not exist.\r\n2: The asset does not exist.\r\n3: The bundle does not exist."
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed\r\n4: You don't own the specified item.\r\n5: Assets of this type are not allowed in collections.\r\n6: Items of this type are not allowed in collections.\r\n7: The item is already in the collection.\r\n9: The collection is full."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Collections:AddItemToCollection"
-          ]
-        }
-      },
-      "delete": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Removes an item to the appropriate collection",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "itemType",
-            "in": "path",
-            "description": "Type of the item (ie. Asset, Bundle)",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "Asset",
-              "GamePass",
-              "Badge",
-              "Bundle"
-            ]
-          },
-          {
-            "name": "itemTargetId",
-            "in": "path",
-            "description": "ID of the item",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "400": {
-            "description": "1: The item type does not exist.\r\n2: The asset does not exist.\r\n3: The bundle does not exist."
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed\r\n8: The item is not in the collection."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Collections:RemoveItemFromCollection"
-          ]
-        }
-      }
     }
   },
   "definitions": {
@@ -639,10 +523,6 @@
           }
         }
       }
-    },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object",
-      "properties": {}
     },
     "Roblox.Inventory.Api.Models.CanViewInventoryResponse": {
       "type": "object",
