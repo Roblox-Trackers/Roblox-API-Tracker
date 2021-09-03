@@ -1832,10 +1832,10 @@
           "enum": [
             "ValidPassword",
             "ShortPasswordError",
-            "DumbStringsError",
             "ForbiddenPasswordError",
             "WeakPasswordError",
-            "PasswordSameAsUsernameError"
+            "PasswordSameAsUsernameError",
+            "DumbStringsError"
           ],
           "type": "string"
         },
@@ -2168,7 +2168,8 @@
             "Unknown",
             "Login",
             "RobuxSpend",
-            "ItemTrade"
+            "ItemTrade",
+            "Resale"
           ],
           "type": "string"
         }
@@ -2200,7 +2201,8 @@
             "Unknown",
             "Login",
             "RobuxSpend",
-            "ItemTrade"
+            "ItemTrade",
+            "Resale"
           ],
           "type": "string"
         }
@@ -2252,8 +2254,8 @@
           "enum": [
             "ValidUsername",
             "AlreadyInUseError",
-            "ContainsPiiError",
             "ModerationError",
+            "ContainsPiiError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
