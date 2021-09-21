@@ -1508,6 +1508,13 @@
           "format": "int64",
           "description": "The source universe Id which the request was sent in.",
           "type": "integer"
+        },
+        "mutualFriendsList": {
+          "description": "mutualFriendsList",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -1585,9 +1592,6 @@
         "isSortFriendsInApiExperimentEnabled": {
           "type": "boolean",
           "readOnly": true
-        },
-        "shouldDisplayFriendRequestContext": {
-          "type": "boolean"
         },
         "userName": {
           "type": "string"
