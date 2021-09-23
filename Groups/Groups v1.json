@@ -3125,7 +3125,10 @@
             "description": "0: Authorization has been denied for this request."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n12: Insufficient Robux funds.\r\n14: The name is moderated.\r\n23: Insufficient permissions to complete the request."
+            "description": "0: Token Validation Failed\r\n12: Insufficient Robux funds.\r\n14: The name is moderated.\r\n23: Insufficient permissions to complete the request.\r\n38: Your account must be verified in order to change your group's name.\r\n39: The group ownership was changed too recently."
+          },
+          "409": {
+            "description": "36: The name was changed too recently."
           },
           "413": {
             "description": "0: Unknown error."
@@ -4020,10 +4023,6 @@
         "isGroupNameChangeEnabled": {
           "description": "If the group name change feature is enabled for this group.",
           "type": "boolean"
-        },
-        "canChangeGroupName": {
-          "description": "If the group can currently change it's name.",
-          "type": "boolean"
         }
       }
     },
@@ -4306,6 +4305,10 @@
           "$ref": "#/definitions/Roblox.Groups.Api.RoleConfigurationResponse",
           "description": "The role configuration response"
         },
+        "groupNameChangeConfiguration": {
+          "$ref": "#/definitions/Roblox.Groups.Api.GroupNameChangeConfigurationResponse",
+          "description": "The group name change configuration response"
+        },
         "isPremiumPayoutsEnabled": {
           "description": "The configuration of premium payouts shows in Group Revenue Summary page",
           "type": "boolean"
@@ -4313,11 +4316,6 @@
         "isDefaultEmblemPolicyEnabled": {
           "description": "If set to true, default group emblem policies handled by GUAC will be enabled\r\n            \r\nIf set to false, default group emblem policies will not be enabled",
           "type": "boolean"
-        },
-        "groupNameChangeCooldownInDays": {
-          "format": "int32",
-          "description": "The cooldown for group name changes in days",
-          "type": "integer"
         }
       }
     },
@@ -4398,6 +4396,26 @@
         }
       }
     },
+    "Roblox.Groups.Api.GroupNameChangeConfigurationResponse": {
+      "type": "object",
+      "properties": {
+        "cost": {
+          "format": "int64",
+          "description": "The cost of renaming a group",
+          "type": "integer"
+        },
+        "cooldownInDays": {
+          "format": "int32",
+          "description": "The cooldown for group name changes in days",
+          "type": "integer"
+        },
+        "ownershipCooldownInDays": {
+          "format": "int32",
+          "description": "The ownership cooldown for group name changes in days",
+          "type": "integer"
+        }
+      }
+    },
     "Roblox.Paging.StartIndexCursor": {
       "type": "object",
       "properties": {
@@ -4452,6 +4470,9 @@
         "memberCount": {
           "format": "int32",
           "type": "integer"
+        },
+        "previousName": {
+          "type": "string"
         },
         "publicEntryAllowed": {
           "type": "boolean"
