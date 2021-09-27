@@ -412,7 +412,8 @@
               "ShortsAccessory",
               "LeftShoeAccessory",
               "RightShoeAccessory",
-              "DressSkirtAccessory"
+              "DressSkirtAccessory",
+              "MeshHiddenSurfaceRemoval"
             ]
           },
           {
