@@ -610,8 +610,11 @@
         "AlternateName": {
           "type": "string"
         },
-        "EncryptedUserScore": {
+        "RandomSeed1": {
           "format": "byte",
+          "type": "string"
+        },
+        "ClientPublicKeyData": {
           "type": "string"
         }
       }
