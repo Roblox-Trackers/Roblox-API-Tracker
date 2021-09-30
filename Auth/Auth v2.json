@@ -1534,6 +1534,9 @@
         },
         "IsLoginTwoStepVerificationModalEnabled": {
           "type": "boolean"
+        },
+        "IsSignupButtonGreenColorEnabled": {
+          "type": "boolean"
         }
       }
     },

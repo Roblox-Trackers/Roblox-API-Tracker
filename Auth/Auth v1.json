@@ -1796,6 +1796,9 @@
         },
         "IsLoginTwoStepVerificationModalEnabled": {
           "type": "boolean"
+        },
+        "IsSignupButtonGreenColorEnabled": {
+          "type": "boolean"
         }
       }
     },
@@ -1830,12 +1833,12 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "ValidPassword",
             "ShortPasswordError",
+            "ValidPassword",
             "ForbiddenPasswordError",
+            "DumbStringsError",
             "WeakPasswordError",
-            "PasswordSameAsUsernameError",
-            "DumbStringsError"
+            "PasswordSameAsUsernameError"
           ],
           "type": "string"
         },
@@ -2252,9 +2255,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
             "ModerationError",
+            "ValidUsername",
             "ContainsPiiError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
