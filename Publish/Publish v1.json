@@ -43,7 +43,7 @@
             }
           },
           "400": {
-            "description": "3: The request did not contain a file to be uploaded.\r\n4: The file in the request is too large.\r\n5: The duration of the audio file is too long.\r\n8: The file type is not supported.\r\n9: The file is corrupted\r\n11: Missing permissions to spend group funds.\r\n14: The user/group does not have suffiecient funds to publish.\r\n14: The user/group does not have suffiecient funds to publish.\r\n15: The audio file has already been reviewed and rejected.\r\n18: Too many requests. Try again later.\r\n20: Error while trying to purchase the product.\r\n22: The file size estimation error was greater than the acceptable margin of error.\r\n23: The duration estimation error was greater than the acceptable margin of error."
+            "description": "3: The request did not contain a file to be uploaded.\r\n4: The file in the request is too large.\r\n5: The duration of the audio file is too long.\r\n8: The file type is not supported.\r\n9: The file is corrupted\r\n11: Missing permissions to spend group funds.\r\n14: The user/group does not have suffiecient funds to publish.\r\n14: The user/group does not have suffiecient funds to publish.\r\n15: The audio file has already been reviewed and rejected.\r\n18: Too many requests. Try again later.\r\n20: Error while trying to purchase the product.\r\n22: The file size estimation error was greater than the acceptable margin of error.\r\n23: The duration estimation error was greater than the acceptable margin of error.\r\n24: Asset privacy is invalid."
           },
           "401": {
             "description": "0: Authorization has been denied for this request.\r\n1: The request did not include an authorization."
@@ -438,6 +438,14 @@
           "format": "double",
           "description": "Estimated duration of the audio file in seconds.",
           "type": "number"
+        },
+        "assetPrivacy": {
+          "description": "The asset privacy of the audio asset.",
+          "enum": [
+            "Private",
+            "Public"
+          ],
+          "type": "string"
         }
       }
     },
