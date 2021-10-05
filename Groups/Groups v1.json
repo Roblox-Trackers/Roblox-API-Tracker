@@ -2866,6 +2866,9 @@
           "403": {
             "description": "0: Token Validation Failed\r\n10: User must have builders club membership.\r\n11: User is in maximum number of groups.\r\n12: Insufficient Robux funds.\r\n14: The name is moderated."
           },
+          "409": {
+            "description": "37: The name was in use too recently."
+          },
           "413": {
             "description": "0: Unknown error."
           },
@@ -3128,7 +3131,7 @@
             "description": "0: Token Validation Failed\r\n12: Insufficient Robux funds.\r\n14: The name is moderated.\r\n23: Insufficient permissions to complete the request.\r\n38: Your account must be verified in order to change your group's name.\r\n39: The group ownership was changed too recently."
           },
           "409": {
-            "description": "36: The name was changed too recently."
+            "description": "36: The name was changed too recently.\r\n37: The name was in use too recently."
           },
           "413": {
             "description": "0: Unknown error."

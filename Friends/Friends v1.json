@@ -88,6 +88,12 @@
         ],
         "parameters": [
           {
+            "name": "fetchMutualFriends",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "sortOrder",
             "in": "query",
             "description": "Sorted by friend request updated time with default descending sort order",
