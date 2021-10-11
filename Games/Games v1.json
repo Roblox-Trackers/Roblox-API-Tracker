@@ -1933,6 +1933,19 @@
           "format": "int64",
           "description": "The game pass price",
           "type": "integer"
+        },
+        "sellerName": {
+          "description": "The seller's display name",
+          "type": "string"
+        },
+        "sellerId": {
+          "format": "int64",
+          "description": "The seller's ID",
+          "type": "integer"
+        },
+        "isOwned": {
+          "description": "Is an owned game pass",
+          "type": "boolean"
         }
       }
     },
