@@ -1794,9 +1794,6 @@
         "IsKoreaIdVerificationEnabled": {
           "type": "boolean"
         },
-        "IsLoginTwoStepVerificationModalEnabled": {
-          "type": "boolean"
-        },
         "IsSignupButtonGreenColorEnabled": {
           "type": "boolean"
         }
@@ -1833,12 +1830,12 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "ShortPasswordError",
             "ValidPassword",
-            "ForbiddenPasswordError",
-            "DumbStringsError",
+            "ShortPasswordError",
             "WeakPasswordError",
-            "PasswordSameAsUsernameError"
+            "PasswordSameAsUsernameError",
+            "ForbiddenPasswordError",
+            "DumbStringsError"
           ],
           "type": "string"
         },
@@ -2256,8 +2253,8 @@
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
             "AlreadyInUseError",
-            "ModerationError",
             "ValidUsername",
+            "ModerationError",
             "ContainsPiiError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
