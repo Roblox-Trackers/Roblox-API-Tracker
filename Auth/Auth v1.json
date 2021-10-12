@@ -1794,9 +1794,6 @@
         "IsKoreaIdVerificationEnabled": {
           "type": "boolean"
         },
-        "IsLoginTwoStepVerificationModalEnabled": {
-          "type": "boolean"
-        },
         "IsSignupButtonGreenColorEnabled": {
           "type": "boolean"
         }
@@ -2255,9 +2252,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
             "ModerationError",
+            "ValidUsername",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
