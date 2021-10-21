@@ -125,6 +125,40 @@
         }
       }
     },
+    "/v1/locales/supported-locales-for-creators": {
+      "get": {
+        "tags": [
+          "Locale"
+        ],
+        "summary": "Get full list of supported locales for creators sorted by the Native Name property, regardless of where the creator is from",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Locale.Api.SupportedLocalesResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized\r\n0: Authorization has been denied for this request."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Locale:GetSupportedLocalesForCreators"
+          ]
+        }
+      }
+    },
     "/v1/locales/user-locale": {
       "get": {
         "tags": [
