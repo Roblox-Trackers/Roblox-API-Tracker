@@ -186,10 +186,8 @@
             "description": "1: Invalid user"
           }
         },
-        "deprecated": true,
         "properties": {
           "internal": false,
-          "obsoleteMessage": null,
           "metricIds": [
             "UserStatus:GetUserStatus"
           ]
@@ -250,10 +248,8 @@
             "description": "5: Service unavailable"
           }
         },
-        "deprecated": true,
         "properties": {
           "internal": false,
-          "obsoleteMessage": null,
           "metricIds": [
             "UserStatus:UpdateUserStatus"
           ]
