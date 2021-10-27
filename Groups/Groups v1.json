@@ -4802,6 +4802,10 @@
         "groupEconomyPermissions": {
           "$ref": "#/definitions/Roblox.Groups.Api.GroupEconomyPermissionsModel",
           "description": "Group economy permissions"
+        },
+        "groupOpenCloudPermissions": {
+          "$ref": "#/definitions/Roblox.Groups.Api.GroupOpenCloudPermissionsModel",
+          "description": "Group Open Cloud permissions"
         }
       }
     },
@@ -4901,6 +4905,19 @@
         }
       }
     },
+    "Roblox.Groups.Api.GroupOpenCloudPermissionsModel": {
+      "type": "object",
+      "properties": {
+        "useCloudAuthentication": {
+          "description": "Permission to create and use API keys on the group's resources.",
+          "type": "boolean"
+        },
+        "administerCloudAuthentication": {
+          "description": "Permission to administer all of the group's API keys.",
+          "type": "boolean"
+        }
+      }
+    },
     "Roblox.Groups.Api.ChangeOwnerRequest": {
       "description": "A request model for changing the group owner.",
       "type": "object",
@@ -4988,6 +5005,12 @@
               "type": "boolean"
             },
             "ManageGroupGames": {
+              "type": "boolean"
+            },
+            "UseCloudAuthentication": {
+              "type": "boolean"
+            },
+            "AdministerCloudAuthentication": {
               "type": "boolean"
             }
           }
