@@ -603,7 +603,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Midas.Api.Models.MidasPurchaseToken.MidasPurchaseTokenResponse"
+              "$ref": "#/definitions/Roblox.Midas.Api.Models.IMidasResponse"
             }
           },
           "401": {
@@ -854,6 +854,10 @@
           "type": "integer"
         }
       }
+    },
+    "Roblox.Midas.Api.Models.IMidasResponse": {
+      "type": "object",
+      "properties": {}
     }
   }
 }
