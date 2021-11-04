@@ -588,6 +588,8 @@
             "LeftShoeAccessory",
             "RightShoeAccessory",
             "DressSkirtAccessory",
+            "FontFamily",
+            "FontFace",
             "MeshHiddenSurfaceRemoval"
           ],
           "type": "string",
