@@ -2611,10 +2611,6 @@
           "description": "Is this game all genre.",
           "type": "boolean"
         },
-        "gameRating": {
-          "$ref": "#/definitions/Roblox.Contentratingsservice.V1.Rating",
-          "description": "Game Rating structure"
-        },
         "isFavoritedByUser": {
           "description": "Is this game favorited by user.",
           "type": "boolean"
@@ -2646,71 +2642,6 @@
         "isRNVAccount": {
           "description": "The game creator account is Luobu Real Name Verified",
           "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Contentratingsservice.V1.Rating": {
-      "type": "object",
-      "properties": {
-        "RatingCountryCode": {
-          "type": "string"
-        },
-        "RatingProvider": {
-          "type": "string"
-        },
-        "RatingInformation": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Contentratingsservice.V1.RatingInformation"
-          },
-          "readOnly": true
-        },
-        "RatingProviderUrl": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Contentratingsservice.V1.RatingInformation": {
-      "type": "object",
-      "properties": {
-        "RatingValue": {
-          "type": "string"
-        },
-        "RatingDescriptors": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "readOnly": true
-        },
-        "InteractiveElements": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "readOnly": true
-        },
-        "MetainfoValues": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "Invalid",
-              "HasLootBoxes",
-              "HasInGameTrading",
-              "IsUsingLootBoxApi",
-              "IsUsingInGameTradingApi",
-              "HasAllowedExternalLinkReferences",
-              "IsUsingAllowedExternalLinkReferencesApi"
-            ],
-            "type": "string"
-          },
-          "readOnly": true
-        },
-        "ImageUrl": {
-          "type": "string"
-        },
-        "RatingValueDescription": {
-          "type": "string"
         }
       }
     },
