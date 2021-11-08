@@ -138,6 +138,8 @@
               "LeftShoeAccessory",
               "RightShoeAccessory",
               "DressSkirtAccessory",
+              "FontFamily",
+              "FontFace",
               "MeshHiddenSurfaceRemoval"
             ]
           },
@@ -402,6 +404,8 @@
               "LeftShoeAccessory",
               "RightShoeAccessory",
               "DressSkirtAccessory",
+              "FontFamily",
+              "FontFace",
               "MeshHiddenSurfaceRemoval"
             ]
           },
