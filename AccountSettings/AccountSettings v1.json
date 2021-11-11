@@ -1301,7 +1301,7 @@
             }
           },
           "400": {
-            "description": "1: The request was empty.\r\n11: The Facebook profile url is invalid.\r\n12: The Twitter handle is invalid.\r\n13: The YouTube url is invalid.\r\n14: The Twitch profile url is invalid.\r\n15: The Guilded profile url is invalid."
+            "description": "1: The request was empty.\r\n11: The Facebook profile url is invalid.\r\n12: The Twitter handle is invalid.\r\n13: The YouTube url is invalid.\r\n14: The Twitch profile url is invalid."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -1848,10 +1848,6 @@
         },
         "twitch": {
           "description": "The Twitch url",
-          "type": "string"
-        },
-        "guilded": {
-          "description": "The Guilded url",
           "type": "string"
         },
         "socialNetworksVisibilityPrivacy": {
