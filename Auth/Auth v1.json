@@ -1776,6 +1776,9 @@
         "IsEmailUpsellAtLogoutEnabled": {
           "type": "boolean"
         },
+        "ShouldFetchEmailUpsellIXPValuesAtLogout": {
+          "type": "boolean"
+        },
         "IsAccountRecoveryPromptEnabled": {
           "type": "boolean"
         },
@@ -1830,12 +1833,12 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
+            "DumbStringsError",
             "ValidPassword",
             "WeakPasswordError",
             "ShortPasswordError",
             "PasswordSameAsUsernameError",
-            "ForbiddenPasswordError",
-            "DumbStringsError"
+            "ForbiddenPasswordError"
           ],
           "type": "string"
         },
@@ -2252,9 +2255,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
+            "ValidUsername",
             "AlreadyInUseError",
             "ModerationError",
-            "ValidUsername",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",

@@ -1514,6 +1514,9 @@
         "IsEmailUpsellAtLogoutEnabled": {
           "type": "boolean"
         },
+        "ShouldFetchEmailUpsellIXPValuesAtLogout": {
+          "type": "boolean"
+        },
         "IsAccountRecoveryPromptEnabled": {
           "type": "boolean"
         },
