@@ -88,12 +88,6 @@
         ],
         "parameters": [
           {
-            "name": "fetchMutualFriends",
-            "in": "query",
-            "required": false,
-            "type": "boolean"
-          },
-          {
             "name": "sortOrder",
             "in": "query",
             "description": "Sorted by friend request updated time with default descending sort order",
@@ -1471,6 +1465,13 @@
           "$ref": "#/definitions/Roblox.Friends.Api.FriendRequest",
           "description": "Friend request"
         },
+        "mutualFriendsList": {
+          "description": "mutualFriendsList",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "description": {
           "type": "string"
         },
@@ -1514,13 +1515,6 @@
           "format": "int64",
           "description": "The source universe Id which the request was sent in.",
           "type": "integer"
-        },
-        "mutualFriendsList": {
-          "description": "mutualFriendsList",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     },
