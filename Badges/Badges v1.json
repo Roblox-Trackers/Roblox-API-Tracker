@@ -526,6 +526,47 @@
       "type": "object",
       "properties": {}
     },
+    "System.Threading.CancellationToken": {
+      "type": "object",
+      "properties": {
+        "IsCancellationRequested": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanBeCanceled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "WaitHandle": {
+          "$ref": "#/definitions/System.Threading.WaitHandle",
+          "readOnly": true
+        }
+      }
+    },
+    "System.Threading.WaitHandle": {
+      "type": "object",
+      "properties": {
+        "Handle": {
+          "type": "object"
+        },
+        "SafeWaitHandle": {
+          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
+        }
+      }
+    },
+    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
+      "type": "object",
+      "properties": {
+        "IsInvalid": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "IsClosed": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
     "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Badges.Api.BadgeAwardResponse]": {
       "type": "object",
       "properties": {
@@ -688,12 +729,11 @@
         }
       }
     },
-    "Roblox.Paging.ExclusiveStartKeyCursor[System.Nullable[System.Int64]]": {
+    "Roblox.Paging.ExclusiveStartKeyCursor[System.String]": {
       "type": "object",
       "properties": {
         "key": {
-          "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "sortOrder": {
           "enum": [
@@ -893,52 +933,6 @@
         "name": {
           "type": "string",
           "readOnly": true
-        }
-      }
-    },
-    "Roblox.Paging.ExclusiveStartKeyCursor[Roblox.Platform.Badges.AwardedBadgeIdentifier]": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/Roblox.Platform.Badges.AwardedBadgeIdentifier"
-        },
-        "sortOrder": {
-          "enum": [
-            "Asc",
-            "Desc"
-          ],
-          "type": "string"
-        },
-        "pagingDirection": {
-          "enum": [
-            "Forward",
-            "Backward"
-          ],
-          "type": "string"
-        },
-        "pageNumber": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "discriminator": {
-          "type": "string"
-        },
-        "count": {
-          "format": "int32",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Platform.Badges.AwardedBadgeIdentifier": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "awardDateTime": {
-          "format": "date-time",
-          "type": "string"
         }
       }
     },
