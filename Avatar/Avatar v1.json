@@ -127,6 +127,9 @@
           },
           "400": {
             "description": "1: The specified userOutfitId is invalid.\r\n2: The outfit for the specified userOutfit is invalid."
+          },
+          "403": {
+            "description": "3: The requester does not have access to the details for the given user outfit."
           }
         },
         "properties": {
