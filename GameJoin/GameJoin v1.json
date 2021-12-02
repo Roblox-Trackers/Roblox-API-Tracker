@@ -402,6 +402,12 @@
       "description": "Request model for game join.",
       "type": "object",
       "properties": {
+        "gameJoinAttemptId": {
+          "format": "uuid",
+          "description": "The GameJoin Attempt Id for this game join request",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
         "placeId": {
           "format": "int64",
           "description": "The Place Id for the game join request",
@@ -655,6 +661,12 @@
           "type": "string",
           "example": "00000000-0000-0000-0000-000000000000"
         },
+        "gameJoinAttemptId": {
+          "format": "uuid",
+          "description": "The GameJoin Attempt Id for this game join request",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
         "placeId": {
           "format": "int64",
           "description": "The Place Id for the game join request",
@@ -695,6 +707,12 @@
           "description": "link code for join private game request",
           "type": "string"
         },
+        "gameJoinAttemptId": {
+          "format": "uuid",
+          "description": "The GameJoin Attempt Id for this game join request",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
         "placeId": {
           "format": "int64",
           "description": "The Place Id for the game join request",
@@ -730,6 +748,12 @@
         "accessCode": {
           "description": "access code for join private game request",
           "type": "string"
+        },
+        "gameJoinAttemptId": {
+          "format": "uuid",
+          "description": "The GameJoin Attempt Id for this game join request",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
         },
         "placeId": {
           "format": "int64",
@@ -767,6 +791,12 @@
           "format": "int64",
           "description": "User Id for join private game request",
           "type": "integer"
+        },
+        "gameJoinAttemptId": {
+          "format": "uuid",
+          "description": "The GameJoin Attempt Id for this game join request",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
         },
         "placeId": {
           "format": "int64",
@@ -806,6 +836,12 @@
           "type": "string",
           "example": "00000000-0000-0000-0000-000000000000"
         },
+        "gameJoinAttemptId": {
+          "format": "uuid",
+          "description": "The GameJoin Attempt Id for this game join request",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
         "placeId": {
           "format": "int64",
           "description": "The Place Id for the game join request",
@@ -838,6 +874,12 @@
       "description": "Request model for create team .",
       "type": "object",
       "properties": {
+        "gameJoinAttemptId": {
+          "format": "uuid",
+          "description": "The GameJoin Attempt Id for this game join request",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
         "placeId": {
           "format": "int64",
           "description": "The Place Id for the game join request",
@@ -893,6 +935,12 @@
           "format": "int64",
           "description": "conversation id for requesting play together game",
           "type": "integer"
+        },
+        "gameJoinAttemptId": {
+          "format": "uuid",
+          "description": "The GameJoin Attempt Id for this game join request",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
         },
         "placeId": {
           "format": "int64",
