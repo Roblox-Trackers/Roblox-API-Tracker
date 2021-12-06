@@ -175,6 +175,64 @@
         }
       }
     },
+    "/v1/game-passes/{gamePassId}/icon": {
+      "post": {
+        "tags": [
+          "GamePass"
+        ],
+        "summary": "Overwrites a game pass icon with a new one.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "gamePassId",
+            "in": "path",
+            "description": "The game pass Id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request.files",
+            "in": "formData",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Publish.Api.UploadResponse"
+            }
+          },
+          "400": {
+            "description": "2: File not present in request."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n5: You do not have permission to manage this item."
+          },
+          "404": {
+            "description": "4: Target item is invalid or does not exist."
+          },
+          "429": {
+            "description": "3: You're uploading too much, please wait and try again later."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GamePass:UploadGamePassIcon"
+          ]
+        }
+      }
+    },
     "/v1/games/{gameId}/thumbnail/image": {
       "post": {
         "tags": [
