@@ -3452,31 +3452,39 @@
       }
     },
     "Roblox.Web.Responses.Plugins.PluginResponse": {
+      "description": "Represents information about a plugin.",
       "type": "object",
       "properties": {
         "id": {
           "format": "int64",
+          "description": "The plugin Id.",
           "type": "integer"
         },
         "name": {
+          "description": "The plugin name.",
           "type": "string"
         },
         "description": {
+          "description": "The plugin description.",
           "type": "string"
         },
         "commentsEnabled": {
+          "description": "Whether or not the plugin allows comments to be posted.",
           "type": "boolean"
         },
         "versionId": {
           "format": "int64",
+          "description": "plugin version id",
           "type": "integer"
         },
         "created": {
           "format": "date-time",
+          "description": "The time the plugin was created.",
           "type": "string"
         },
         "updated": {
           "format": "date-time",
+          "description": "The last time the plugin was updated.",
           "type": "string"
         }
       }
