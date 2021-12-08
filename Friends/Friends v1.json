@@ -1589,8 +1589,9 @@
           "type": "boolean",
           "readOnly": true
         },
-        "isSortFriendsInApiExperimentEnabled": {
-          "type": "boolean",
+        "frequentFriendSortRollout": {
+          "format": "int32",
+          "type": "integer",
           "readOnly": true
         },
         "userName": {
