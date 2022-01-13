@@ -1391,16 +1391,16 @@
             }
           },
           "400": {
-            "description": "2: Target user does not exist.\r\n3: Target user already blocked.\r\n4: User sending block request has reached their block limit."
+            "description": "3: InvalidTarget\r\n4: TargetAlreadyBlocked\r\n5: BlockLimitExceeded"
           },
           "401": {
-            "description": "0: Authorization has been denied for this request.\r\n1: User sending block request not logged in."
+            "description": "0: Authorization has been denied for this request.\r\n2: UserNotLoggedIn"
           },
           "403": {
             "description": "0: Token Validation Failed"
           },
           "503": {
-            "description": "5: User blocking is disabled."
+            "description": "6: BlockingDisabled"
           }
         },
         "properties": {
@@ -1440,16 +1440,16 @@
             }
           },
           "400": {
-            "description": "2: Target user does not exist.\r\n6: Target user for unblock request is not currently blocked."
+            "description": "3: InvalidTarget\r\n4: TargetAlreadyUnblocked"
           },
           "401": {
-            "description": "0: Authorization has been denied for this request.\r\n1: User sending block request not logged in."
+            "description": "0: Authorization has been denied for this request.\r\n2: UserNotLoggedIn"
           },
           "403": {
             "description": "0: Token Validation Failed"
           },
           "503": {
-            "description": "5: User blocking is disabled."
+            "description": "6: BlockingDisabled"
           }
         },
         "properties": {
