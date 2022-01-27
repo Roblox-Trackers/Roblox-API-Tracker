@@ -1181,10 +1181,6 @@
         "LCEnabledInEditorAndCatalog": {
           "description": "Flag for both web UI and App, name is fixed due to sharing, do not change",
           "type": "boolean"
-        },
-        "isLCCompletelyEnabled": {
-          "description": "Useful for the time between enabling Jackets for most users and\r\nall LC types for everyone, meanwhile Soothsayers need all types\r\nat all times",
-          "type": "boolean"
         }
       }
     },
