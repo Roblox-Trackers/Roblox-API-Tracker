@@ -56,7 +56,7 @@
     "/v1/games/{placeId}/servers/{serverType}": {
       "get": {
         "tags": [
-          "Games"
+          "GameInstances"
         ],
         "summary": "Get the game server list",
         "consumes": [],
@@ -83,17 +83,6 @@
               "Public",
               "Friend",
               "VIP"
-            ]
-          },
-          {
-            "name": "sortOrder",
-            "in": "query",
-            "description": "The order the results are sorted in.",
-            "required": false,
-            "type": "string",
-            "default": "Asc",
-            "enum": [
-              "Asc"
             ]
           },
           {
@@ -136,7 +125,7 @@
         "properties": {
           "internal": false,
           "metricIds": [
-            "Games:GetServerList"
+            "GameInstances:GetServerList"
           ]
         }
       }
@@ -1851,6 +1840,125 @@
         }
       }
     },
+    "Roblox.Paging.StartIndexCursor": {
+      "type": "object",
+      "properties": {
+        "startIndex": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "discriminator": {
+          "type": "string"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Games.GameServerResponse]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Responses.Games.GameServerResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.Responses.Games.GameServerResponse": {
+      "description": "Game server list response model.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "The game server ID.",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "maxPlayers": {
+          "format": "int32",
+          "description": "The max number of players allowed to enter the server at the same time.",
+          "type": "integer"
+        },
+        "playing": {
+          "format": "int32",
+          "description": "The number of players actively in the server.",
+          "type": "integer"
+        },
+        "playerTokens": {
+          "description": "The thumbnail tokens for all the players in the server.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "players": {
+          "description": "The players in the server.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Games.Api.GameServerPlayerResponse"
+          }
+        },
+        "fps": {
+          "format": "double",
+          "description": "The current frames per second the server is running at.",
+          "type": "number"
+        },
+        "ping": {
+          "format": "int32",
+          "description": "The game server ping time (measured in milliseconds).",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The name of the private server.",
+          "type": "string"
+        },
+        "vipServerId": {
+          "format": "int64",
+          "description": "The private server ID.",
+          "type": "integer"
+        },
+        "accessCode": {
+          "format": "uuid",
+          "description": "The private server access code.",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "ownerUserId": {
+          "format": "int64",
+          "description": "The user ID of the private server owner.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Games.Api.GameServerPlayerResponse": {
+      "description": "A response model representing a game server player.",
+      "type": "object",
+      "properties": {
+        "playerToken": {
+          "description": "The thumbnail token for the player.",
+          "type": "string"
+        },
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      }
+    },
     "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int64]": {
       "type": "object",
       "properties": {
@@ -2766,72 +2874,6 @@
         "approved": {
           "description": "The media item is approved or not",
           "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Games.GameServerResponse]": {
-      "type": "object",
-      "properties": {
-        "previousPageCursor": {
-          "type": "string"
-        },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Web.Responses.Games.GameServerResponse"
-          }
-        }
-      }
-    },
-    "Roblox.Web.Responses.Games.GameServerResponse": {
-      "description": "Game server list response model.",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "maxPlayers": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "playing": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "playerTokens": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "fps": {
-          "format": "double",
-          "type": "number"
-        },
-        "ping": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "vipServerId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "accessCode": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "ownerUserId": {
-          "format": "int64",
-          "type": "integer"
         }
       }
     },
