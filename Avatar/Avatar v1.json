@@ -259,10 +259,8 @@
             "description": "3: Cannot wear Delayed Release Asset\r\n4: Cannot wear the specified asset"
           }
         },
-        "deprecated": true,
         "properties": {
           "internal": false,
-          "obsoleteMessage": null,
           "metricIds": [
             "TryOn:TryOn2D"
           ]
@@ -318,10 +316,8 @@
             "description": "3: Cannot wear Delayed Release Asset\r\n4: Cannot wear the specified asset"
           }
         },
-        "deprecated": true,
         "properties": {
           "internal": false,
-          "obsoleteMessage": null,
           "metricIds": [
             "TryOn:TryOn3D"
           ]
@@ -348,10 +344,8 @@
             }
           }
         },
-        "deprecated": true,
         "properties": {
           "internal": false,
-          "obsoleteMessage": null,
           "metricIds": [
             "TryOn:GetTryOnMetadata"
           ]
