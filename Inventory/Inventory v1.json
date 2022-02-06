@@ -38,8 +38,10 @@
             }
           }
         },
+        "deprecated": true,
         "properties": {
           "internal": false,
+          "obsoleteMessage": "Packages have been migrated to bundles. Use catalog.roblox.com/v1/bundles/{bundleId}/details",
           "metricIds": [
             "Assets:GetPackageAssets"
           ]
