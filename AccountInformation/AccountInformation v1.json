@@ -1105,6 +1105,10 @@
           "format": "int32",
           "description": "Verification Code Length",
           "type": "integer"
+        },
+        "canBypassPasswordForPhoneUpdate": {
+          "description": "Whether user needs to provide password to update their phone numbers",
+          "type": "boolean"
         }
       }
     },
