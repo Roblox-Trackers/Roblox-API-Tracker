@@ -1570,6 +1570,10 @@
         "verified": {
           "description": "The verified status of the email",
           "type": "boolean"
+        },
+        "canBypassPasswordForEmailUpdate": {
+          "description": "Whether password is required for updating email",
+          "type": "boolean"
         }
       }
     },
