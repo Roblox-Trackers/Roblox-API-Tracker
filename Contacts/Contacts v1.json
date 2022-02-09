@@ -94,6 +94,60 @@
         }
       }
     },
+    "/v1/user/set-pending-tag": {
+      "post": {
+        "tags": [
+          "UserTag"
+        ],
+        "summary": "Sets the pending tag for a user",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "The pending tag receiving userId and the pending tag itself",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Contacts.Api.Request.SetUserTagRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Contacts.Api.Response.SetUserTagResponseModel"
+            }
+          },
+          "400": {
+            "description": "2: The target user is invalid or does not exist.\r\n4: Invalid parameters.\r\n6: The userTag is too long."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n5: The user cannot tag themselves."
+          },
+          "429": {
+            "description": "10: The flood limit has been exceeded."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "UserTag:SetPendingTag"
+          ]
+        }
+      }
+    },
     "/v1/user/tag": {
       "post": {
         "tags": [
