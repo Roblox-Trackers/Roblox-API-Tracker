@@ -618,37 +618,6 @@
         }
       }
     },
-    "/v1/privacy/info": {
-      "get": {
-        "tags": [
-          "PrivacySettings"
-        ],
-        "summary": "Gets a user's privacy settings info.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.PrivacyInfoResponse"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "PrivacySettings:GetPrivacySettingsInfo"
-          ]
-        }
-      }
-    },
     "/v1/private-message-privacy": {
       "get": {
         "tags": [
@@ -1601,16 +1570,6 @@
       "properties": {
         "freeItem": {
           "description": "Whether the user will see messaging that they received a free item after verifying their email",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.PrivacyInfoResponse": {
-      "description": "Response model for getting the user's privacy settings info.",
-      "type": "object",
-      "properties": {
-        "isPhoneDiscoveryEnabled": {
-          "description": "Whether the phone discovery privacy setting is enabled.",
           "type": "boolean"
         }
       }

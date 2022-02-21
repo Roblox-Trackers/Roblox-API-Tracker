@@ -4902,6 +4902,10 @@
         "viewGroupPayouts": {
           "description": "Manage group games permission",
           "type": "boolean"
+        },
+        "viewAnalytics": {
+          "description": "Permission to view universe analytics from the creator dashboard.",
+          "type": "boolean"
         }
       }
     },
@@ -5011,6 +5015,9 @@
               "type": "boolean"
             },
             "AdministerCloudAuthentication": {
+              "type": "boolean"
+            },
+            "ViewUniverseAnalytics": {
               "type": "boolean"
             }
           }

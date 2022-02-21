@@ -1932,10 +1932,9 @@
           "type": "string",
           "example": "00000000-0000-0000-0000-000000000000"
         },
-        "ownerUserId": {
-          "format": "int64",
-          "description": "The user ID of the private server owner.",
-          "type": "integer"
+        "owner": {
+          "$ref": "#/definitions/Roblox.Web.Responses.Users.SkinnyUserResponse",
+          "description": "The private server owner."
         }
       }
     },
@@ -1947,6 +1946,21 @@
           "description": "The thumbnail token for the player.",
           "type": "string"
         },
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.Responses.Users.SkinnyUserResponse": {
+      "type": "object",
+      "properties": {
         "id": {
           "format": "int64",
           "type": "integer"
@@ -2638,6 +2652,14 @@
           "description": "The game description",
           "type": "string"
         },
+        "sourceName": {
+          "description": "The game name in the source language, if different from the returned name.",
+          "type": "string"
+        },
+        "sourceDescription": {
+          "description": "The game description in the source language, if different from the returned description.",
+          "type": "string"
+        },
         "creator": {
           "$ref": "#/definitions/Roblox.Games.Api.Models.Response.GameCreator",
           "description": "The game creator info"
@@ -2773,7 +2795,8 @@
             "PurchaseRequired",
             "AccountRestricted",
             "TemporarilyUnavailable",
-            "PlaceHasNoPublishedVersion"
+            "PlaceHasNoPublishedVersion",
+            "ComplianceBlocked"
           ],
           "type": "string"
         },
@@ -3269,21 +3292,6 @@
         },
         "name": {
           "description": "Place name",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.Responses.Users.SkinnyUserResponse": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "displayName": {
           "type": "string"
         }
       }

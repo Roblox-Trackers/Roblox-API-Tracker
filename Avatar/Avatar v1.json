@@ -814,6 +814,9 @@
               "$ref": "#/definitions/Roblox.Api.Avatar.Models.WearResponseModel"
             }
           },
+          "400": {
+            "description": "3: Invalid assetId"
+          },
           "401": {
             "description": "0: Authorization has been denied for this request."
           },
