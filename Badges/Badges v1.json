@@ -255,6 +255,14 @@
             ]
           },
           {
+            "name": "request.expectedCost",
+            "in": "formData",
+            "description": "User expected cost of a badge.",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
             "name": "request.files",
             "in": "formData",
             "required": false,
@@ -269,7 +277,7 @@
             }
           },
           "400": {
-            "description": "11: The badge icon is invalid.\r\n14: Invalid badge name.\r\n15: Invalid badge description.\r\n16: Payment source is invalid."
+            "description": "11: The badge icon is invalid.\r\n14: Invalid badge name.\r\n15: Invalid badge description.\r\n16: Payment source is invalid.\r\n18: Expected badge cost is different from the actual badge cost."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -288,6 +296,47 @@
           "internal": false,
           "metricIds": [
             "Badges:CreateBadge"
+          ]
+        }
+      }
+    },
+    "/v1/universes/{universeId}/free-badges-quota": {
+      "get": {
+        "tags": [
+          "Badges"
+        ],
+        "summary": "Gets the number of free badges left for the current UTC day by their awarding game.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe Id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "404": {
+            "description": "3: The game is invalid or does not exist."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Badges:GetFreeBadgesQuotaByAwarder"
           ]
         }
       }
@@ -806,6 +855,11 @@
             "$ref": "#/definitions/Roblox.Web.WebApi.FormData.IUploadedFile"
           },
           "readOnly": true
+        },
+        "expectedCost": {
+          "format": "int64",
+          "description": "User expected cost of a badge.",
+          "type": "integer"
         }
       }
     },
