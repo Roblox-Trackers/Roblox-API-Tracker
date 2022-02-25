@@ -5017,7 +5017,7 @@
             "AdministerCloudAuthentication": {
               "type": "boolean"
             },
-            "ViewUniverseAnalytics": {
+            "ViewAnalytics": {
               "type": "boolean"
             }
           }

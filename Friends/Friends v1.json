@@ -1123,6 +1123,10 @@
           "description": "Whether or not a user is following userId in FriendsController.FollowingExists",
           "type": "boolean"
         },
+        "isFollowed": {
+          "description": "Whether or not a user is followed by userId in FriendsController.FollowingExists",
+          "type": "boolean"
+        },
         "userId": {
           "format": "int64",
           "description": "The userId being potentially followed",
@@ -1163,8 +1167,8 @@
           "description": "Whether the user is deleted.",
           "type": "boolean"
         },
-        "friendFrequentRank": {
-          "format": "int32",
+        "friendFrequentScore": {
+          "format": "int64",
           "description": "Frequents value for the user.",
           "type": "integer"
         },
