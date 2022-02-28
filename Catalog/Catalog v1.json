@@ -1031,6 +1031,57 @@
           ]
         }
       }
+    },
+    "/v1/catalog/sponsored-items/details": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "Returns list of sponsored item details",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "{Roblox.Catalog.Api.MultigetSponsoredItemDetailsRequestModel}",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Catalog.Api.MultigetSponsoredItemDetailsRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Catalog.Api.CatalogSearchDetailedResponseItem]"
+            }
+          },
+          "400": {
+            "description": "2: Invalid count"
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n7: User is unauthorized."
+          },
+          "429": {
+            "description": "8: The flood limit has been exceeded."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Catalog:GetSponsoredItemDetails"
+          ]
+        }
+      }
     }
   },
   "definitions": {
@@ -1605,6 +1656,44 @@
         "offSaleDeadline": {
           "format": "date-time",
           "description": "When the item will go off sale, if the item has an off deadline.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Catalog.Api.MultigetSponsoredItemDetailsRequestModel": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "format": "int32",
+          "description": "Count of desired result set.",
+          "type": "integer"
+        },
+        "catalogCategoryType": {
+          "description": "Category type for catalog",
+          "enum": [
+            "Accessories",
+            "All",
+            "AvatarAnimations",
+            "BodyParts",
+            "Clothing",
+            "Collectibles",
+            "Featured",
+            "Gear",
+            "CommunityCreations",
+            "Premium",
+            "Recommended",
+            "LayeredClothing",
+            "Characters"
+          ],
+          "type": "string"
+        },
+        "placementLocation": {
+          "description": "PlacementLocation enum originating from Ads system.",
+          "enum": [
+            "Undefined",
+            "GameSort",
+            "CatalogSort"
+          ],
           "type": "string"
         }
       }
