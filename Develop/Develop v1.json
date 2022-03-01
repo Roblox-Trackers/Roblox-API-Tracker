@@ -2010,107 +2010,6 @@
         }
       }
     },
-    "/v1/user/studiodata": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Retrieves a JSON object from persistant storage.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "clientKey",
-            "in": "query",
-            "description": "A Key to find this data under. Optional.",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "204": {
-            "description": "No data was found.",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "User:GetUserStudioData"
-          ]
-        }
-      },
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Saves a JSON object to persistent storage.",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "in": "body",
-            "description": "The data.",
-            "required": true,
-            "schema": {
-              "type": "object"
-            }
-          },
-          {
-            "name": "clientKey",
-            "in": "query",
-            "description": "A Key to save this data under. Optional.",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiSuccessResponse"
-            }
-          },
-          "400": {
-            "description": "No data was sent or the data could not be parsed as JSON"
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed"
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "User:SetUserStudioData"
-          ]
-        }
-      }
-    },
     "/v1/user/teamcreate/memberships": {
       "get": {
         "tags": [
@@ -4605,14 +4504,6 @@
         "GameName": {
           "type": "string",
           "readOnly": true
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiSuccessResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
         }
       }
     }
