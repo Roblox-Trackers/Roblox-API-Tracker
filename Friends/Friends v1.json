@@ -1172,6 +1172,11 @@
           "description": "Frequents value for the user.",
           "type": "integer"
         },
+        "friendFrequentRank": {
+          "format": "int64",
+          "description": "Frequents rank for the user.",
+          "type": "integer"
+        },
         "description": {
           "type": "string"
         },
