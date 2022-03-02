@@ -9,6 +9,65 @@
     "https"
   ],
   "paths": {
+    "/v1/asset-quotas": {
+      "get": {
+        "tags": [
+          "AssetQuotas"
+        ],
+        "summary": "List asset quotas of the given resource type and asset type.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "resourceType",
+            "in": "query",
+            "description": "Resource type of the asset quota",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "assetType",
+            "in": "query",
+            "description": "Asset type of the asset quota",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "useDummyData",
+            "in": "query",
+            "description": "Use dummy data for testing. This is for internal use only",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Publish.Api.AssetQuotasResponse"
+            }
+          },
+          "400": {
+            "description": "7: The asset type is not appropriate for this request.\r\n8: The resource type is not appropriate for this request."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "500": {
+            "description": "0: Reserved for base level errors. Do not use in your endpoint directly, do not document."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetQuotas:ListAssetQuotasAsync"
+          ]
+        }
+      }
+    },
     "/v1/audio": {
       "post": {
         "tags": [
@@ -293,6 +352,84 @@
     }
   },
   "definitions": {
+    "System.Threading.CancellationToken": {
+      "type": "object",
+      "properties": {
+        "IsCancellationRequested": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanBeCanceled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "WaitHandle": {
+          "$ref": "#/definitions/System.Threading.WaitHandle",
+          "readOnly": true
+        }
+      }
+    },
+    "System.Threading.WaitHandle": {
+      "type": "object",
+      "properties": {
+        "Handle": {
+          "type": "object"
+        },
+        "SafeWaitHandle": {
+          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
+        }
+      }
+    },
+    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
+      "type": "object",
+      "properties": {
+        "IsInvalid": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "IsClosed": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Publish.Api.AssetQuotasResponse": {
+      "description": "Response model for asset quotas.",
+      "type": "object",
+      "properties": {
+        "quotas": {
+          "description": "A list of quotas.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Publish.Api.AssetQuota"
+          }
+        }
+      }
+    },
+    "Roblox.Publish.Api.AssetQuota": {
+      "description": "Model for asset quota.",
+      "type": "object",
+      "properties": {
+        "duration": {
+          "description": "Duration type of the quota.",
+          "type": "string"
+        },
+        "usage": {
+          "format": "int64",
+          "description": "Current usage of the quota.",
+          "type": "integer"
+        },
+        "capacity": {
+          "format": "int64",
+          "description": "Capacity of the quota.",
+          "type": "integer"
+        },
+        "expirationTime": {
+          "description": "Expiration time of current usage limit.",
+          "type": "string"
+        }
+      }
+    },
     "Roblox.Publish.Api.VerifyAudioRequest": {
       "description": "Request model to publish an audio asset.",
       "type": "object",
