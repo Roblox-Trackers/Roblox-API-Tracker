@@ -1037,7 +1037,7 @@
         "tags": [
           "Catalog"
         ],
-        "summary": "Returns list of sponsored item details",
+        "summary": "In development: https://jira.rbx.com/browse/VP-3283.\r\nTemporarily returns hardcoded (settings) data for FE development, and will be deleted after finished.\r\nReturns list of sponsored item details.",
         "consumes": [
           "application/json",
           "text/json",
