@@ -1833,12 +1833,12 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "DumbStringsError",
+            "ShortPasswordError",
+            "ForbiddenPasswordError",
             "ValidPassword",
             "WeakPasswordError",
-            "ShortPasswordError",
             "PasswordSameAsUsernameError",
-            "ForbiddenPasswordError"
+            "DumbStringsError"
           ],
           "type": "string"
         },
@@ -2172,7 +2172,8 @@
             "Login",
             "RobuxSpend",
             "ItemTrade",
-            "Resale"
+            "Resale",
+            "PasswordReset"
           ],
           "type": "string"
         }
@@ -2205,7 +2206,8 @@
             "Login",
             "RobuxSpend",
             "ItemTrade",
-            "Resale"
+            "Resale",
+            "PasswordReset"
           ],
           "type": "string"
         }
@@ -2255,15 +2257,15 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
+            "ValidUsername",
+            "ContainsPiiError",
             "ModerationError",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",
-            "ContainsPiiError",
             "ContainsReservedUsernameError"
           ],
           "type": "string"
