@@ -2060,8 +2060,7 @@
             "Login",
             "RobuxSpend",
             "ItemTrade",
-            "Resale",
-            "PasswordReset"
+            "Resale"
           ],
           "type": "string"
         }
@@ -2094,8 +2093,7 @@
             "Login",
             "RobuxSpend",
             "ItemTrade",
-            "Resale",
-            "PasswordReset"
+            "Resale"
           ],
           "type": "string"
         }
