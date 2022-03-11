@@ -1724,6 +1724,14 @@
         "passwordRepeated": {
           "description": "The new password repeated",
           "type": "string"
+        },
+        "twoStepVerificationChallengeId": {
+          "description": "The 2SV challenge ID (when redeeming a solved 2SV challenge).",
+          "type": "string"
+        },
+        "twoStepVerificationToken": {
+          "description": "The 2SV verification token (when redeeming a solved 2SV challenge).",
+          "type": "string"
         }
       }
     },
