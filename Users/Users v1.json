@@ -154,6 +154,112 @@
         }
       }
     },
+    "/v1/users/{userId}/status": {
+      "get": {
+        "tags": [
+          "UserStatus"
+        ],
+        "summary": "Gets a user's status.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Users.Api.UserStatusResponse"
+            }
+          },
+          "400": {
+            "description": "1: Invalid user"
+          }
+        },
+        "deprecated": true,
+        "properties": {
+          "internal": false,
+          "obsoleteMessage": null,
+          "metricIds": [
+            "UserStatus:GetUserStatus"
+          ]
+        }
+      },
+      "patch": {
+        "tags": [
+          "UserStatus"
+        ],
+        "summary": "Updates the user's status.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Users.Api.SetUserStatusRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Users.Api.UserStatusResponse"
+            }
+          },
+          "400": {
+            "description": "2: Invalid request\r\n3: Blank status"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n1: Invalid user"
+          },
+          "429": {
+            "description": "4: Floodchecked"
+          },
+          "503": {
+            "description": "5: Service unavailable"
+          }
+        },
+        "deprecated": true,
+        "properties": {
+          "internal": false,
+          "obsoleteMessage": null,
+          "metricIds": [
+            "UserStatus:UpdateUserStatus"
+          ]
+        }
+      }
+    },
     "/v1/users/{userId}/username-history": {
       "get": {
         "tags": [
@@ -725,6 +831,22 @@
           "type": "string"
         },
         "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Users.Api.SetUserStatusRequest": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Users.Api.UserStatusResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
           "type": "string"
         }
       }
