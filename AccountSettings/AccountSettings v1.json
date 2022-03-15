@@ -1037,6 +1037,37 @@
         }
       }
     },
+    "/v1/users/get-blocked-users": {
+      "get": {
+        "tags": [
+          "BlockUser"
+        ],
+        "summary": "Gets all blocked users.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Response.GetBlockedUsersResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "BlockUser:GetBlockedUsers"
+          ]
+        }
+      }
+    },
     "/v1/visibility-privacy": {
       "get": {
         "tags": [
@@ -1360,16 +1391,16 @@
             }
           },
           "400": {
-            "description": "3: InvalidTarget\r\n4: TargetAlreadyBlocked\r\n5: BlockLimitExceeded"
+            "description": "0: Target user does not exist.\r\n1: Target user already blocked.\r\n2: User sending block request has reached their block limit."
           },
           "401": {
-            "description": "0: Authorization has been denied for this request.\r\n2: UserNotLoggedIn"
+            "description": "0: Authorization has been denied for this request.\r\n7: User is not logged in."
           },
           "403": {
             "description": "0: Token Validation Failed"
           },
           "503": {
-            "description": "6: BlockingDisabled"
+            "description": "3: User blocking is disabled.\r\n8: The request failed internally. Please try again later."
           }
         },
         "properties": {
@@ -1409,16 +1440,16 @@
             }
           },
           "400": {
-            "description": "3: InvalidTarget\r\n4: TargetAlreadyUnblocked"
+            "description": "0: Target user does not exist.\r\n4: Target user for unblock request is not currently blocked."
           },
           "401": {
-            "description": "0: Authorization has been denied for this request.\r\n2: UserNotLoggedIn"
+            "description": "0: Authorization has been denied for this request.\r\n7: User is not logged in."
           },
           "403": {
             "description": "0: Token Validation Failed"
           },
           "503": {
-            "description": "6: BlockingDisabled"
+            "description": "3: User blocking is disabled.\r\n8: The request failed internally. Please try again later."
           }
         },
         "properties": {
@@ -1494,6 +1525,19 @@
         "IsParentalNotificationSettingsInUIEnabled": {
           "description": "Enables/disables the section in the account parental controls page where you can set the parental notifications settings",
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.Models.Response.GetBlockedUsersResponse": {
+      "type": "object",
+      "properties": {
+        "blockedUserIds": {
+          "description": "The list of userIds the user has blocked",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
         }
       }
     },
