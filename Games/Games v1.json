@@ -86,6 +86,17 @@
             ]
           },
           {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "The sort order of the servers.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "The amount of results per request.",
@@ -1167,7 +1178,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Games.Api.Models.Response.GameSortsResponse"
             }
@@ -2525,6 +2536,20 @@
           "items": {
             "$ref": "#/definitions/Roblox.Games.Api.Models.Response.GameResponseModel"
           }
+        },
+        "esDebugInfo": {
+          "$ref": "#/definitions/Roblox.Games.Api.Models.Response.ElasticSearchDebugInfoModel",
+          "description": "ElasticSearch Debug Info (for debugging purposes only)."
+        }
+      }
+    },
+    "Roblox.Games.Api.Models.Response.ElasticSearchDebugInfoModel": {
+      "description": "ElasticSearch debug info for games search.",
+      "type": "object",
+      "properties": {
+        "esQuery": {
+          "description": "Gets or sets the ElasticSearch query that was used to fetch the search results.",
+          "type": "string"
         }
       }
     },
@@ -2575,6 +2600,14 @@
         },
         "description": {
           "description": "Place description",
+          "type": "string"
+        },
+        "sourceName": {
+          "description": "Place name in source language",
+          "type": "string"
+        },
+        "sourceDescription": {
+          "description": "Place description in source language",
           "type": "string"
         },
         "url": {
