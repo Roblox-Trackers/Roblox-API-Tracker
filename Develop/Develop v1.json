@@ -1948,6 +1948,51 @@
         }
       }
     },
+    "/v1/user/{userId}/canmanage/{assetId}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Returns whether the user can manage a given asset.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The ID of the user.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "The ID of the asset.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "User:CanManage"
+          ]
+        }
+      }
+    },
     "/v1/user/groups/canmanage": {
       "get": {
         "tags": [
