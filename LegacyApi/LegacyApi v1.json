@@ -57,8 +57,7 @@
               "type": "file"
             }
           }
-        },
-        "deprecated": true
+        }
       }
     },
     "/assets/award-badge": {
@@ -843,8 +842,7 @@
               "type": "file"
             }
           }
-        },
-        "depreated": true
+        }
       }
     },
     "/windows/v1/report-purchase": {
