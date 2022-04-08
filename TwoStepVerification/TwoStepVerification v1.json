@@ -937,6 +937,10 @@
         "password": {
           "description": "The user's password.",
           "type": "string"
+        },
+        "reauthenticationToken": {
+          "description": "A re-authentication token redeemable for any password check.",
+          "type": "string"
         }
       }
     },
