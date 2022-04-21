@@ -422,40 +422,6 @@
         }
       }
     },
-    "/v1/trades/expire-outdated": {
-      "post": {
-        "tags": [
-          "Trades"
-        ],
-        "summary": "Expires Outdated Inbound Trades for User",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed"
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Trades:ExpireOutdatedTradesForUser"
-          ]
-        }
-      }
-    },
     "/v1/trades/send": {
       "post": {
         "tags": [
