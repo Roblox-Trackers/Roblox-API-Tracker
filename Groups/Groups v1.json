@@ -4683,6 +4683,12 @@
       "description": "A request model for joining group.",
       "type": "object",
       "properties": {
+        "sessionId": {
+          "type": "string"
+        },
+        "redemptionToken": {
+          "type": "string"
+        },
         "captchaId": {
           "type": "string"
         },
