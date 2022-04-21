@@ -1,0 +1,1201 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v2",
+    "title": "Asset Delivery Api v2"
+  },
+  "host": "assetdelivery.roblox.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v2/alias/{alias}": {
+      "get": {
+        "tags": [
+          "AssetFetch"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "alias",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "AssetType",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skipSigningScripts",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "clientInsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "scriptinsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "modulePlaceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "serverplaceid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "expectedAssetType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItemV2"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetFetchV2:GetAssetByAssetNameAndUniverseId"
+          ]
+        }
+      }
+    },
+    "/v2/asset": {
+      "get": {
+        "tags": [
+          "AssetFetch"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "AssetType",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "userAssetId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "assetVersionId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "universeId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "clientInsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "scriptinsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "modulePlaceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "serverplaceid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "assetName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "hash",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "marAssetHash",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "marCheckSum",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expectedAssetType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skipSigningScripts",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "permissionContext",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItemV2"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetFetchV2:GetAsset"
+          ]
+        }
+      }
+    },
+    "/v2/assetHash/{hash}": {
+      "get": {
+        "tags": [
+          "AssetFetch"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "AssetType",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skipSigningScripts",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "clientInsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "scriptinsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "modulePlaceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "serverplaceid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "expectedAssetType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItemV2"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetFetchV2:GetAssetByHash"
+          ]
+        }
+      }
+    },
+    "/v2/assetId/{assetId}": {
+      "get": {
+        "tags": [
+          "AssetFetch"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "AssetType",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skipSigningScripts",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "clientInsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "scriptinsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "modulePlaceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "serverplaceid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "expectedAssetType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItemV2"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetFetchV2:GetAssetbyId"
+          ]
+        }
+      }
+    },
+    "/v2/assetId/{assetId}/version/{version}": {
+      "get": {
+        "tags": [
+          "AssetFetch"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "AssetType",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skipSigningScripts",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "clientInsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "scriptinsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "modulePlaceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "serverplaceid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "expectedAssetType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItemV2"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetFetchV2:GetAssetByVersionAndId"
+          ]
+        }
+      }
+    },
+    "/v2/assetVersionId/{assetVersionId}": {
+      "get": {
+        "tags": [
+          "AssetFetch"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "assetVersionId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "AssetType",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skipSigningScripts",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "clientInsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "scriptinsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "modulePlaceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "serverplaceid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "expectedAssetType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItemV2"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetFetchV2:GetAssetByVersionId"
+          ]
+        }
+      }
+    },
+    "/v2/marAssetHash/{marAssetHash}/marCheckSum/{marCheckSum}": {
+      "get": {
+        "tags": [
+          "AssetFetch"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "marAssetHash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "marCheckSum",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "AssetType",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skipSigningScripts",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "clientInsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "scriptinsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "modulePlaceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "serverplaceid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "expectedAssetType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItem"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetFetchV2:GetAssetByMarAssetHashAndMarCheckSum"
+          ]
+        }
+      }
+    },
+    "/v2/userAssetId/{userAssetId}": {
+      "get": {
+        "tags": [
+          "AssetFetch"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userAssetId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "AssetType",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-AssetFormat",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "skipSigningScripts",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "clientInsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "scriptinsert",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "modulePlaceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "serverplaceid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "expectedAssetType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItemV2"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetFetchV2:GetAssetByUserAssetId"
+          ]
+        }
+      }
+    },
+    "/v2/assets/batch": {
+      "post": {
+        "tags": [
+          "Batch"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "assetRequestItems",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Web.Assets.BatchAssetRequestItem"
+              }
+            }
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Roblox-Browser-Asset-Request",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItemV2"
+              }
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "BatchV2:AssetBatch"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Web.Assets.IAssetResponseItemV2": {
+      "type": "object",
+      "properties": {
+        "Locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Assets.AssetFormatLocation"
+          }
+        },
+        "Errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Assets.IAssetItemError"
+          }
+        },
+        "RequestId": {
+          "type": "string"
+        },
+        "IsHashDynamic": {
+          "type": "boolean"
+        },
+        "IsCopyrightProtected": {
+          "type": "boolean"
+        },
+        "IsArchived": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "AssetTypeId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Web.Assets.AssetFormatLocation": {
+      "type": "object",
+      "properties": {
+        "assetFormat": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.Assets.IAssetItemError": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Message": {
+          "type": "string"
+        },
+        "CustomErrorCode": {
+          "enum": [
+            "UnknownError",
+            "NoPermissionToAsset"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.Assets.IAssetResponseItem": {
+      "type": "object",
+      "properties": {
+        "Location": {
+          "type": "string"
+        },
+        "Errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Assets.IAssetItemError"
+          }
+        },
+        "RequestId": {
+          "type": "string"
+        },
+        "IsHashDynamic": {
+          "type": "boolean"
+        },
+        "IsCopyrightProtected": {
+          "type": "boolean"
+        },
+        "IsArchived": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.Assets.BatchAssetRequestItem": {
+      "type": "object",
+      "properties": {
+        "assetName": {
+          "type": "string"
+        },
+        "assetType": {
+          "type": "string"
+        },
+        "clientInsert": {
+          "type": "boolean"
+        },
+        "placeId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "scriptInsert": {
+          "type": "boolean"
+        },
+        "serverPlaceId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "universeId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "accept": {
+          "type": "string"
+        },
+        "encoding": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "userAssetId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "assetId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "version": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "assetVersionId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "modulePlaceId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "assetFormat": {
+          "type": "string"
+        },
+        "roblox-assetFormat": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
