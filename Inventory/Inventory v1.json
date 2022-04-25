@@ -476,7 +476,7 @@
           {
             "name": "itemType",
             "in": "path",
-            "description": "Type of the item in question (ie. Asset, GamePass)",
+            "description": "Type of the item in question (ie. Asset, GamePass, Badge, Bundle)",
             "required": true,
             "type": "string",
             "enum": [
@@ -513,6 +513,67 @@
           "internal": false,
           "metricIds": [
             "Inventory:GetInventoryItems"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/items/{itemType}/{itemTargetId}/is-owned": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "Gets whether a user owns an item of type {itemType} with id {itemTargetId}.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID of the user in question",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "itemType",
+            "in": "path",
+            "description": "Type of the item in question (ie. Asset, GamePass, Badge, Bundle)",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Asset",
+              "GamePass",
+              "Badge",
+              "Bundle"
+            ]
+          },
+          {
+            "name": "itemTargetId",
+            "in": "path",
+            "description": "ID of the item in question",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "400": {
+            "description": "1: The specified user does not exist!\r\n5: The specified game pass does not exist! Are you using the new game pass ID?\r\n6: The specified item type does not exist.\r\n7: The specified Asset does not exist!\r\n10: The specified asset is not a badge!\r\n12: The specified bundle does not exist!"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Inventory:UserOwnsItem"
           ]
         }
       }
