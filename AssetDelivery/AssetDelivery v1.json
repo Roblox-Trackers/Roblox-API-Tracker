@@ -1092,7 +1092,8 @@
         "CustomErrorCode": {
           "enum": [
             "UnknownError",
-            "NoPermissionToAsset"
+            "NoPermissionToAsset",
+            "AssetPermissionCheckFailed"
           ],
           "type": "string"
         }
