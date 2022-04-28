@@ -1275,13 +1275,16 @@
             }
           },
           "400": {
-            "description": "34: Invalid request, private server ids cannot be null.\r\n35: Guest users are not allowed."
+            "description": "8: The creator of this game has disabled private servers for this game.\r\n34: Invalid request, private server ids cannot be null.\r\n35: Guest users are not allowed."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
           },
+          "403": {
+            "description": "2: You are not the owner of this private server."
+          },
           "404": {
-            "description": "4: The universe does not exist."
+            "description": "1: The private server is invalid or does not exist.\r\n4: The universe does not exist."
           }
         },
         "properties": {
@@ -1373,7 +1376,7 @@
             "description": "2: You are not the owner of this private server."
           },
           "404": {
-            "description": "1: The private server is invalid or does not exist."
+            "description": "1: The private server is invalid or does not exist.\r\n4: The universe does not exist."
           }
         },
         "properties": {
@@ -1433,7 +1436,7 @@
             "description": "0: Token Validation Failed\r\n2: You are not the owner of this private server.\r\n11: You cannot activate a cancelled private server.\r\n12: The game must not be Friends Only to allow private servers.\r\n13: Join Link can be generated only for active private servers."
           },
           "404": {
-            "description": "1: The private server is invalid or does not exist."
+            "description": "1: The private server is invalid or does not exist.\r\n4: The universe does not exist."
           },
           "429": {
             "description": "3: Please wait a few minutes before configuring your private server again."
@@ -1676,7 +1679,7 @@
             "description": "0: Token Validation Failed\r\n2: You are not the owner of this private server."
           },
           "404": {
-            "description": "1: The private server is invalid or does not exist."
+            "description": "1: The private server is invalid or does not exist.\r\n4: The universe does not exist."
           }
         },
         "properties": {
@@ -1738,7 +1741,7 @@
             "description": "0: Token Validation Failed\r\n2: You are not the owner of this private server.\r\n21: You may not configure a cancelled private server. Please renew your subscription before configuring."
           },
           "404": {
-            "description": "1: The private server is invalid or does not exist."
+            "description": "1: The private server is invalid or does not exist.\r\n4: The universe does not exist."
           },
           "429": {
             "description": "3: Please wait a few minutes before configuring your private server again."
