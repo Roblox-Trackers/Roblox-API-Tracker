@@ -1788,16 +1788,7 @@
         "IsUserAgreementsSignupIntegrationEnabled": {
           "type": "boolean"
         },
-        "IsRetypePasswordRequired": {
-          "type": "boolean"
-        },
-        "ArePasswordFieldsPlaintext": {
-          "type": "boolean"
-        },
         "IsKoreaIdVerificationEnabled": {
-          "type": "boolean"
-        },
-        "IsSignupButtonGreenColorEnabled": {
           "type": "boolean"
         }
       }
@@ -1836,9 +1827,9 @@
             "ShortPasswordError",
             "ForbiddenPasswordError",
             "ValidPassword",
+            "DumbStringsError",
             "WeakPasswordError",
-            "PasswordSameAsUsernameError",
-            "DumbStringsError"
+            "PasswordSameAsUsernameError"
           ],
           "type": "string"
         },
@@ -2173,7 +2164,8 @@
             "RobuxSpend",
             "ItemTrade",
             "Resale",
-            "PasswordReset"
+            "PasswordReset",
+            "RevertAccount"
           ],
           "type": "string"
         }
@@ -2207,7 +2199,8 @@
             "RobuxSpend",
             "ItemTrade",
             "Resale",
-            "PasswordReset"
+            "PasswordReset",
+            "RevertAccount"
           ],
           "type": "string"
         }
@@ -2258,14 +2251,14 @@
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
             "AlreadyInUseError",
-            "ValidUsername",
-            "ContainsPiiError",
             "ModerationError",
+            "ValidUsername",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
             "ContainsSpacesError",
             "InvalidCharactersError",
+            "ContainsPiiError",
             "ContainsReservedUsernameError"
           ],
           "type": "string"

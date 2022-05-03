@@ -1526,16 +1526,7 @@
         "IsUserAgreementsSignupIntegrationEnabled": {
           "type": "boolean"
         },
-        "IsRetypePasswordRequired": {
-          "type": "boolean"
-        },
-        "ArePasswordFieldsPlaintext": {
-          "type": "boolean"
-        },
         "IsKoreaIdVerificationEnabled": {
-          "type": "boolean"
-        },
-        "IsSignupButtonGreenColorEnabled": {
           "type": "boolean"
         }
       }
@@ -2069,7 +2060,8 @@
             "RobuxSpend",
             "ItemTrade",
             "Resale",
-            "PasswordReset"
+            "PasswordReset",
+            "RevertAccount"
           ],
           "type": "string"
         }
@@ -2103,7 +2095,8 @@
             "RobuxSpend",
             "ItemTrade",
             "Resale",
-            "PasswordReset"
+            "PasswordReset",
+            "RevertAccount"
           ],
           "type": "string"
         }
