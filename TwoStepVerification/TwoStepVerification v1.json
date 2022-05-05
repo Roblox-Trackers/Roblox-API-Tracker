@@ -49,7 +49,8 @@
               "RobuxSpend",
               "ItemTrade",
               "Resale",
-              "PasswordReset"
+              "PasswordReset",
+              "RevertAccount"
             ]
           }
         ],
@@ -108,7 +109,8 @@
               "RobuxSpend",
               "ItemTrade",
               "Resale",
-              "PasswordReset"
+              "PasswordReset",
+              "RevertAccount"
             ]
           }
         ],
@@ -269,7 +271,7 @@
           {
             "name": "request",
             "in": "body",
-            "description": "The {Roblox.TwoStepVerification.Api.SendCodeRequest}.",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.SendCodeRequest}.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.TwoStepVerification.Api.SendCodeRequest"
@@ -331,7 +333,7 @@
           {
             "name": "request",
             "in": "body",
-            "description": "The {Roblox.TwoStepVerification.Api.VerifyCodeRequest}.",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.VerifyCodeRequest}.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.TwoStepVerification.Api.VerifyCodeRequest"
@@ -425,6 +427,130 @@
           "internal": false,
           "metricIds": [
             "RecoveryCodes:VerifyCode"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/challenges/sms/send-code": {
+      "post": {
+        "tags": [
+          "SMS"
+        ],
+        "summary": "Sends a two step verification code via SMS for the specified user.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.SendCodeRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.SendCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "1: Invalid challenge ID.\r\n9: The two step verification configuration is invalid for this action."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n2: The user ID is invalid."
+          },
+          "429": {
+            "description": "5: Too many requests."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SMS:SendCode"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/challenges/sms/verify": {
+      "post": {
+        "tags": [
+          "SMS"
+        ],
+        "summary": "Verifies a two step verification challenge with a code sent via SMS.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.VerifyCodeRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.VerifyCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.VerifyCodeResponse"
+            }
+          },
+          "400": {
+            "description": "1: Invalid challenge ID.\r\n2: The user ID is invalid.\r\n10: The two step verification challenge code is invalid."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          },
+          "429": {
+            "description": "5: Too many requests."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SMS:VerifyCode"
           ]
         }
       }
@@ -746,6 +872,133 @@
         }
       }
     },
+    "/v1/users/{userId}/configuration/sms/disable": {
+      "post": {
+        "tags": [
+          "SMS"
+        ],
+        "summary": "Disables two step verification via SMS for the specified user.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.DisableTwoStepVerificationRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.DisableTwoStepVerificationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "4: The password is invalid."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n2: The user ID is invalid.\r\n6: The account pin is locked.\r\n8: The user is not allowed to perform the requested action."
+          },
+          "429": {
+            "description": "5: Too many requests."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SMS:DisableTwoStepVerification"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/configuration/sms/enable": {
+      "post": {
+        "tags": [
+          "SMS"
+        ],
+        "summary": "Enables two step verification via SMS for the specified user.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.EnableSMSTwoStepVerificationRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableSMSTwoStepVerificationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "4: The password is invalid.\r\n15: The phone number is invalid."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n2: The user ID is invalid.\r\n6: The account pin is locked."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance.\r\n8: The user is not allowed to perform the requested action."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SMS:EnableTwoStepVerification"
+          ]
+        }
+      }
+    },
     "/v1/users/{userId}/recovery-codes/clear": {
       "post": {
         "tags": [
@@ -960,7 +1213,8 @@
             "RobuxSpend",
             "ItemTrade",
             "Resale",
-            "PasswordReset"
+            "PasswordReset",
+            "RevertAccount"
           ],
           "type": "string"
         },
@@ -1054,7 +1308,8 @@
             "RobuxSpend",
             "ItemTrade",
             "Resale",
-            "PasswordReset"
+            "PasswordReset",
+            "RevertAccount"
           ],
           "type": "string"
         }
@@ -1158,6 +1413,16 @@
         "created": {
           "format": "date-time",
           "description": "The date time the recovery codes were generated at.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.TwoStepVerification.Api.EnableSMSTwoStepVerificationRequest": {
+      "description": "Request parameters for enabling email two step verification.",
+      "type": "object",
+      "properties": {
+        "password": {
+          "description": "The user's password.",
           "type": "string"
         }
       }
