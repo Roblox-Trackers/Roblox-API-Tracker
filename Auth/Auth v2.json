@@ -1849,6 +1849,14 @@
         "Ticket": {
           "description": "ticket guid",
           "type": "string"
+        },
+        "TwoStepVerificationChallengeId": {
+          "description": "The 2SV challenge ID (when redeeming a solved 2SV challenge).",
+          "type": "string"
+        },
+        "TwoStepVerificationToken": {
+          "description": "The 2SV verification token (when redeeming a solved 2SV challenge).",
+          "type": "string"
         }
       }
     },
