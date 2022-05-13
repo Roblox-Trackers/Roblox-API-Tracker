@@ -364,7 +364,7 @@
             }
           },
           "400": {
-            "description": "2: Invalid Phone Number\r\n3: Phone Number Already Associated"
+            "description": "2: Invalid Phone Number\r\n3: Phone Number Already Associated\r\n8: Invalid Phone Number Type"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
