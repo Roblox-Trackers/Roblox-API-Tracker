@@ -540,6 +540,9 @@
         "SuperSafeChat": {
           "type": "boolean"
         },
+        "FlexibleChatEnabled": {
+          "type": "boolean"
+        },
         "CharacterAppearance": {
           "type": "string"
         },
