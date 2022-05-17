@@ -3557,12 +3557,6 @@
               "items": {
                 "$ref": "#/definitions/Roblox.Api.Develop.Models.DeveloperProductRevenue"
               }
-            },
-            "VR": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Roblox.Api.Develop.Models.DeveloperProductRevenue"
-              }
             }
           }
         }
@@ -4081,8 +4075,7 @@
               "Computer",
               "Phone",
               "Tablet",
-              "Console",
-              "VR"
+              "Console"
             ],
             "type": "string"
           }
@@ -4192,8 +4185,7 @@
               "Computer",
               "Phone",
               "Tablet",
-              "Console",
-              "VR"
+              "Console"
             ],
             "type": "string"
           }
