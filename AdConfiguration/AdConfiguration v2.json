@@ -88,6 +88,44 @@
         }
       }
     },
+    "/v2/sponsored-campaigns/eligible-asset-type-ids": {
+      "get": {
+        "tags": [
+          "SponsoredCampaign"
+        ],
+        "summary": "Get all asset type IDs that are eligible to be sponsored.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "int32",
+                "type": "integer"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "10: Insufficient permissions."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SponsoredCampaignV2:GetEligibleAssetTypeIds"
+          ]
+        }
+      }
+    },
     "/v2/sponsored-games": {
       "get": {
         "tags": [
@@ -484,8 +522,8 @@
         "campaignTargetType": {
           "description": "The type of the campaign target",
           "enum": [
-            "Universe",
             "Undefined",
+            "Universe",
             "Asset"
           ],
           "type": "string"
@@ -545,7 +583,8 @@
             "GameSort",
             "AvatarShop",
             "ItemDetails",
-            "HomePage"
+            "HomePage",
+            "Billboard300x250"
           ],
           "type": "string"
         },
