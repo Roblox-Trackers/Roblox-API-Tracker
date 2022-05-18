@@ -8,6 +8,52 @@
   "schemes": [
     "https"
   ],
-  "paths": {},
-  "definitions": {}
+  "paths": {
+    "/v1/user/currency": {
+      "get": {
+        "tags": [
+          "Currency"
+        ],
+        "summary": "Gets currency for the authenticated user.",
+        "description": "Currency can only be retrieved for the authenticated user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.Responses.Economy.CurrencyResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "1: The user is invalid."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Currency:GetAuthenticatedUserCurrency"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Roblox.Web.Responses.Economy.CurrencyResponse": {
+      "type": "object",
+      "properties": {
+        "robux": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    }
+  }
 }
