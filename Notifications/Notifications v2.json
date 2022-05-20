@@ -1535,7 +1535,8 @@
               "TeamCreateInvite",
               "GameUpdate",
               "DeveloperMetricsAvailable",
-              "GroupJoinRequestAccepted"
+              "GroupJoinRequestAccepted",
+              "Sendr"
             ],
             "type": "string"
           }
@@ -1572,7 +1573,8 @@
             "TeamCreateInvite",
             "GameUpdate",
             "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted"
+            "GroupJoinRequestAccepted",
+            "Sendr"
           ],
           "type": "string"
         },
@@ -1713,7 +1715,8 @@
             "TeamCreateInvite",
             "GameUpdate",
             "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted"
+            "GroupJoinRequestAccepted",
+            "Sendr"
           ],
           "type": "string"
         },
@@ -1750,7 +1753,8 @@
             "TeamCreateInvite",
             "GameUpdate",
             "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted"
+            "GroupJoinRequestAccepted",
+            "Sendr"
           ],
           "type": "string"
         },
@@ -1783,7 +1787,8 @@
             "TeamCreateInvite",
             "GameUpdate",
             "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted"
+            "GroupJoinRequestAccepted",
+            "Sendr"
           ],
           "type": "string"
         }
@@ -1827,7 +1832,8 @@
             "TeamCreateInvite",
             "GameUpdate",
             "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted"
+            "GroupJoinRequestAccepted",
+            "Sendr"
           ],
           "type": "string"
         },
@@ -1851,6 +1857,10 @@
           "format": "int64",
           "description": "Count of events corresponding to the group of notification stream entry",
           "type": "integer"
+        },
+        "content": {
+          "description": "Content object for sendr notification stream entry",
+          "type": "object"
         }
       }
     },
@@ -2358,7 +2368,8 @@
             "TeamCreateInvite",
             "GameUpdate",
             "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted"
+            "GroupJoinRequestAccepted",
+            "Sendr"
           ],
           "type": "string"
         },
