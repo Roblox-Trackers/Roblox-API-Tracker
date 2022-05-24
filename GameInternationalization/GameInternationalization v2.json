@@ -147,8 +147,7 @@
             "bs_ba",
             "sr_rs",
             "sv_se",
-            "zh_cjv",
-            "ar_001"
+            "zh_cjv"
           ],
           "type": "string"
         },
