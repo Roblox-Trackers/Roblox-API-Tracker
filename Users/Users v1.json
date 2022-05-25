@@ -259,6 +259,99 @@
         }
       }
     },
+    "/v1/users/authenticated/age-bracket": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Gets the age bracket of the authenticated user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Users.Api.UserAgeBracketResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Users:GetAuthenticatedUserAgeBracket"
+          ]
+        }
+      }
+    },
+    "/v1/users/authenticated/country-code": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Gets the country code of the authenticated user.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Users.Api.UserCountryCodeResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Users:GetAuthenticatedUserCountryCode"
+          ]
+        }
+      }
+    },
+    "/v1/users/authenticated/roles": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Gets the (public) roles of the authenticated user, such as \"Soothsayer\" and \"BetaTester\".",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Users.Api.UserRolesResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Users:GetAuthenticatedUserPublicRoles"
+          ]
+        }
+      }
+    },
     "/v1/users/search": {
       "get": {
         "tags": [
@@ -565,6 +658,43 @@
         },
         "displayName": {
           "type": "string"
+        }
+      }
+    },
+    "Roblox.Users.Api.UserAgeBracketResponse": {
+      "description": "A user age bracket response model.",
+      "type": "object",
+      "properties": {
+        "ageBracket": {
+          "description": "The age bracket of the user.",
+          "enum": [
+            "Age13OrOver",
+            "AgeUnder13"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Users.Api.UserCountryCodeResponse": {
+      "description": "A user country code response model.",
+      "type": "object",
+      "properties": {
+        "countryCode": {
+          "description": "The country code of the user.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Users.Api.UserRolesResponse": {
+      "description": "A user roles response model.",
+      "type": "object",
+      "properties": {
+        "roles": {
+          "description": "The roles of the user.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
