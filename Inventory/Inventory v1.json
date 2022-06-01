@@ -504,9 +504,6 @@
           },
           "400": {
             "description": "1: The specified user does not exist!\r\n5: The specified game pass does not exist! Are you using the new game pass ID?\r\n6: The specified item type does not exist.\r\n7: The specified Asset does not exist!\r\n10: The specified asset is not a badge!\r\n12: The specified bundle does not exist!"
-          },
-          "403": {
-            "description": "4: You don't have permissions for the specificed user.\r\n9: The game pass does not belong to this place."
           }
         },
         "properties": {
