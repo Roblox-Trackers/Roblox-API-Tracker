@@ -30,7 +30,8 @@
             "enum": [
               "Universe",
               "Undefined",
-              "Asset"
+              "Asset",
+              "ImmersiveAd"
             ]
           },
           {
@@ -524,7 +525,8 @@
           "enum": [
             "Undefined",
             "Universe",
-            "Asset"
+            "Asset",
+            "ImmersiveAd"
           ],
           "type": "string"
         },
@@ -754,7 +756,8 @@
           "enum": [
             "Universe",
             "Undefined",
-            "Asset"
+            "Asset",
+            "ImmersiveAd"
           ],
           "type": "string"
         },
@@ -806,7 +809,8 @@
             "enum": [
               "Universe",
               "Undefined",
-              "Asset"
+              "Asset",
+              "ImmersiveAd"
             ],
             "type": "string"
           }
@@ -840,7 +844,8 @@
           "enum": [
             "Universe",
             "Undefined",
-            "Asset"
+            "Asset",
+            "ImmersiveAd"
           ],
           "type": "string"
         },
@@ -1057,7 +1062,8 @@
           "enum": [
             "Universe",
             "Undefined",
-            "Asset"
+            "Asset",
+            "ImmersiveAd"
           ],
           "type": "string"
         },
