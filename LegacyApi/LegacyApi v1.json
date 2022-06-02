@@ -153,7 +153,7 @@
             "type": "integer",
             "name": "page",
             "in": "query",
-            "description": "(Optional) The page to retrieve. Value\n            is set to 1 by default.",
+            "description": "(Optional) The page to retrieve.",
             "format": "int32",
             "default": 1,
             "x-nullable": false
