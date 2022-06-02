@@ -580,7 +580,7 @@
           }
         },
         "totalCollectionSize": {
-          "format": "int32",
+          "format": "int64",
           "type": "integer"
         },
         "totalPages": {
@@ -695,7 +695,7 @@
       "type": "object",
       "properties": {
         "count": {
-          "format": "int32",
+          "format": "int64",
           "type": "integer"
         }
       }
