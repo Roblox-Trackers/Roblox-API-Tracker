@@ -83,7 +83,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Web.Responses.Users.UserResponseV2"
+              "$ref": "#/definitions/Roblox.Users.Api.GetUserResponse"
             }
           },
           "404": {
@@ -93,7 +93,7 @@
         "properties": {
           "internal": false,
           "metricIds": [
-            "Users:GetUserDetails"
+            "Users:GetUser"
           ]
         }
       }
@@ -244,7 +244,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Web.Responses.Users.SkinnyUserResponse"
+              "$ref": "#/definitions/Roblox.Users.Api.AuthenticatedUserResponse"
             }
           },
           "401": {
@@ -398,7 +398,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Users.Api.UserSearchUserResponse]"
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Users.Api.UserSearchResponse]"
             }
           },
           "400": {
@@ -493,7 +493,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Users.SkinnyUserResponse]"
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.BaseUserResponse]"
             }
           },
           "400": {
@@ -646,17 +646,21 @@
         }
       }
     },
-    "Roblox.Web.Responses.Users.SkinnyUserResponse": {
+    "Roblox.Users.Api.AuthenticatedUserResponse": {
+      "description": "A response model representing absolute minimal authenticating user information.\r\nNo new attributes should be added to this response since it is in the critical path of app launch and we want to minimize dependencies.",
       "type": "object",
       "properties": {
         "id": {
           "format": "int64",
+          "description": "The user Id.",
           "type": "integer"
         },
         "name": {
+          "description": "The user name.",
           "type": "string"
         },
         "displayName": {
+          "description": "The user DisplayName.",
           "type": "string"
         }
       }
@@ -698,30 +702,38 @@
         }
       }
     },
-    "Roblox.Web.Responses.Users.UserResponseV2": {
+    "Roblox.Users.Api.GetUserResponse": {
+      "description": "A response model representing user information.",
       "type": "object",
       "properties": {
         "description": {
+          "description": "The user description.",
           "type": "string"
         },
         "created": {
           "format": "date-time",
+          "description": "When the user signed up.",
           "type": "string"
         },
         "isBanned": {
+          "description": "Whether or not the user is banned",
           "type": "boolean"
         },
         "externalAppDisplayName": {
+          "description": "Unused, legacy attribute. For now always null to not disturb existing client code that might rely on its existence.",
           "type": "string"
         },
         "id": {
           "format": "int64",
+          "description": "The user Id.",
           "type": "integer"
         },
         "name": {
+          "description": "The user name.",
           "type": "string"
         },
         "displayName": {
+          "description": "The user DisplayName.",
           "type": "string"
         }
       }
@@ -744,14 +756,33 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Users.SkinnyUserResponse]": {
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.BaseUserResponse]": {
       "type": "object",
       "properties": {
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Web.Responses.Users.SkinnyUserResponse"
+            "$ref": "#/definitions/Roblox.Users.Api.BaseUserResponse"
           }
+        }
+      }
+    },
+    "Roblox.Users.Api.BaseUserResponse": {
+      "description": "No new attributes should be added to this response since it is in the critical path of app launch and we want to minimize dependencies.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "description": "The user Id.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The user name.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The user DisplayName.",
+          "type": "string"
         }
       }
     },
@@ -793,12 +824,15 @@
         },
         "id": {
           "format": "int64",
+          "description": "The user Id.",
           "type": "integer"
         },
         "name": {
+          "description": "The user name.",
           "type": "string"
         },
         "displayName": {
+          "description": "The user DisplayName.",
           "type": "string"
         }
       }
@@ -819,7 +853,7 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Users.Api.UserSearchUserResponse]": {
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Users.Api.UserSearchResponse]": {
       "type": "object",
       "properties": {
         "previousPageCursor": {
@@ -831,12 +865,12 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Users.Api.UserSearchUserResponse"
+            "$ref": "#/definitions/Roblox.Users.Api.UserSearchResponse"
           }
         }
       }
     },
-    "Roblox.Users.Api.UserSearchUserResponse": {
+    "Roblox.Users.Api.UserSearchResponse": {
       "description": "A user response model specific to getting a user from user search.",
       "type": "object",
       "properties": {
@@ -849,12 +883,15 @@
         },
         "id": {
           "format": "int64",
+          "description": "The user Id.",
           "type": "integer"
         },
         "name": {
+          "description": "The user name.",
           "type": "string"
         },
         "displayName": {
+          "description": "The user DisplayName.",
           "type": "string"
         }
       }

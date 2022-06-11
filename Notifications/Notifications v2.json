@@ -85,6 +85,83 @@
         }
       }
     },
+    "/v2/notifications/notification-preferences": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Gets all notification preferences for the signed in user",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Notifications.Models.ResponseModels.GetNotificationPreferencesResponseModel"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Notifications:GetNotificationPreferences"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Update notification preferences for a user",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Notifications.Models.UpdatedNotificationPreferenceModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Http response message",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Notifications:UpdateNotificationPreferences"
+          ]
+        }
+      }
+    },
     "/v2/notifications/settings/realtime": {
       "get": {
         "tags": [
@@ -503,6 +580,54 @@
           "internal": false,
           "metricIds": [
             "NotificationStream:GetUnreadStreamNotificationsCount"
+          ]
+        }
+      }
+    },
+    "/v2/notifications/experience-preferences": {
+      "post": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Update experience notification preferences for a user",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestModel",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Notifications.Models.UpdatedExperienceNotificationPreferenceModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Http response message",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Notifications:UpdateExperienceNotificationPreferences"
           ]
         }
       }
@@ -1803,6 +1928,147 @@
             "DesktopPush",
             "MobilePush",
             "NotificationStream"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.UpdatedNotificationPreferenceModel": {
+      "description": "The request model for an updated notification preference.",
+      "type": "object",
+      "properties": {
+        "notificationType": {
+          "description": "Notification type",
+          "type": "string"
+        },
+        "notificationChannel": {
+          "description": "Notification channel",
+          "type": "string"
+        },
+        "preferenceStatus": {
+          "description": "Notification preference status",
+          "enum": [
+            "All",
+            "Personalized",
+            "None"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.ResponseModels.GetNotificationPreferencesResponseModel": {
+      "description": "Notification preferences for a user",
+      "type": "object",
+      "properties": {
+        "notificationPreferences": {
+          "description": "All notification preferences",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationCategoryPreferencesModel"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.NotificationCategoryPreferencesModel": {
+      "description": "All preferences for a single notification category.",
+      "type": "object",
+      "properties": {
+        "categoryName": {
+          "description": "Notification category name",
+          "type": "string"
+        },
+        "localizedCategoryName": {
+          "description": "Localized notification category name",
+          "type": "string"
+        },
+        "categoryIcon": {
+          "description": "Category icon",
+          "type": "string"
+        },
+        "notificationTypePreferences": {
+          "description": "All preferences for all notification types for this category",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationTypePreferencesModel"
+          }
+        },
+        "subscribedExperiences": {
+          "description": "Experiences this user has subscribed to",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.NotificationTypePreferencesModel": {
+      "description": "Preferences for a particular notification type.",
+      "type": "object",
+      "properties": {
+        "notificationTypeName": {
+          "description": "Notification type name",
+          "type": "string"
+        },
+        "localizedNotificationTypeName": {
+          "description": "Localized notification type name",
+          "type": "string"
+        },
+        "localizedNotificationTypeDescriptor": {
+          "description": "Localized notification type descriptor",
+          "type": "string"
+        },
+        "notificationChannelPreferences": {
+          "description": "Preferences for all channels for this notification type",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationChannelPreferenceModel"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.NotificationChannelPreferenceModel": {
+      "description": "Preferences for a particular notification type on a particular channel.",
+      "type": "object",
+      "properties": {
+        "notificationChannel": {
+          "description": "Notification channel",
+          "type": "string"
+        },
+        "preferenceStatus": {
+          "description": "Notification preference status",
+          "enum": [
+            "All",
+            "Personalized",
+            "None"
+          ],
+          "type": "string"
+        },
+        "isOverridable": {
+          "description": "Whether or not the default preference setting is overridable",
+          "type": "boolean"
+        },
+        "isSetByReceiver": {
+          "description": "Whether or not the preference status was set by the user",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.UpdatedExperienceNotificationPreferenceModel": {
+      "description": "Updated experience notification preference.",
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "format": "int64",
+          "description": "ID of the experience",
+          "type": "integer"
+        },
+        "preferenceStatus": {
+          "description": "Notification preference status",
+          "enum": [
+            "All",
+            "Personalized",
+            "None"
           ],
           "type": "string"
         }

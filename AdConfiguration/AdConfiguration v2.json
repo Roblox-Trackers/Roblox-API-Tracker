@@ -245,7 +245,7 @@
         "tags": [
           "SponsoredCampaign"
         ],
-        "summary": "Creates a new sponsorship campaign with the specified input parameters.",
+        "summary": "Creates a complete ad. Including ad campaign, ad set, escrow, and the ad.\r\nIntended for creation of sponsorship ads, and NOT for creation of immersive ads.",
         "consumes": [
           "application/json",
           "text/json",
