@@ -405,6 +405,7 @@
         "tags": [
           "AssetFetch"
         ],
+        "summary": "Retrieves an asset by its ID",
         "consumes": [],
         "produces": [
           "application/json",
@@ -414,6 +415,7 @@
           {
             "name": "assetId",
             "in": "path",
+            "description": "The ID of the asset to retrieve.",
             "required": true,
             "type": "integer",
             "format": "int64"
