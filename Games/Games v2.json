@@ -680,6 +680,10 @@
         "approved": {
           "description": "The media item is approved or not",
           "type": "boolean"
+        },
+        "altText": {
+          "description": "The media item alt text",
+          "type": "string"
         }
       }
     }
