@@ -1925,7 +1925,7 @@
         "tags": [
           "Groups"
         ],
-        "summary": "Gets Groups contextual information:\r\nMax number of groups a user can be part of. \r\nCurrent number of groups a user is a member of. \r\nWhether to show/hide certain features based on device type.",
+        "summary": "Gets Groups contextual information:\r\nMax number of groups a user can be part of.\r\nCurrent number of groups a user is a member of.\r\nWhether to show/hide certain features based on device type.",
         "consumes": [],
         "produces": [
           "application/json",
@@ -3785,6 +3785,10 @@
         "isLocked": {
           "description": "Whether the group is locked",
           "type": "boolean"
+        },
+        "hasVerifiedBadge": {
+          "description": "Whether the group has a verified badge.",
+          "type": "boolean"
         }
       }
     },
@@ -3802,6 +3806,10 @@
             "RobloxPremium"
           ],
           "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "description": "The users's verified badge status.",
+          "type": "boolean"
         },
         "userId": {
           "format": "int64",

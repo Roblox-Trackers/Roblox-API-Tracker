@@ -462,6 +462,10 @@
           ],
           "type": "string"
         },
+        "hasVerifiedBadge": {
+          "description": "The users's verified badge status.",
+          "type": "boolean"
+        },
         "userId": {
           "format": "int64",
           "type": "integer"
