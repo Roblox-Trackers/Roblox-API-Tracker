@@ -1432,6 +1432,52 @@
         }
       }
     },
+    "/v1/user-localization-settings/universe/{universeId}": {
+      "get": {
+        "tags": [
+          "UserLocalizationSettings"
+        ],
+        "summary": "Get user localization settings for universe.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe's ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse"
+            }
+          },
+          "400": {
+            "description": "14: Invalid game id\r\n21: The language is not supported\r\n22: Invalid language code"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "503": {
+            "description": "17: Feature is disabled"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "UserLocalizationSettings:GetUserLocalizationSettingsForUniverse"
+          ]
+        }
+      }
+    },
     "/v1/autolocalization/games/{gameId}/autolocalizationtable": {
       "post": {
         "tags": [
@@ -4615,6 +4661,15 @@
         "isDeveloperProductEnabled": {
           "description": "Developer product translation management is enabled or not.",
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse": {
+      "type": "object",
+      "properties": {
+        "languageOrLocale": {
+          "$ref": "#/definitions/Roblox.GameInternationalization.Api.LanguageOrLocale",
+          "description": "The {Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse.LanguageOrLocale}."
         }
       }
     }
