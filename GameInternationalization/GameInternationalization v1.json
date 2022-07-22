@@ -1476,6 +1476,66 @@
             "UserLocalizationSettings:GetUserLocalizationSettingsForUniverse"
           ]
         }
+      },
+      "post": {
+        "tags": [
+          "UserLocalizationSettings"
+        ],
+        "summary": "Set user localization settings for universe.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe's ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.GameInternationalization.Api.Models.Request.SetUserLocalizationSettingsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.GameInternationalization.Api.Models.Response.SetUserLocalizationSettingsResponse"
+            }
+          },
+          "400": {
+            "description": "14: Invalid game id\r\n22: Invalid language code"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          },
+          "503": {
+            "description": "17: Feature is disabled"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "UserLocalizationSettings:SetUserLocalizationSettingsForUniverse"
+          ]
+        }
       }
     },
     "/v1/autolocalization/games/{gameId}/autolocalizationtable": {
@@ -4667,11 +4727,41 @@
     "Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse": {
       "type": "object",
       "properties": {
-        "languageOrLocale": {
-          "$ref": "#/definitions/Roblox.GameInternationalization.Api.LanguageOrLocale",
-          "description": "The {Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse.LanguageOrLocale}."
+        "userUniverseLocalizationSettingValue": {
+          "$ref": "#/definitions/Roblox.GameLocalization.Client.UserUniverseLocalizationSettingValue",
+          "description": "The {Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse.UserUniverseLocalizationSettingValue}."
         }
       }
+    },
+    "Roblox.GameLocalization.Client.UserUniverseLocalizationSettingValue": {
+      "type": "object",
+      "properties": {
+        "settingType": {
+          "enum": [
+            "LanguageFamily",
+            "SupportedLocale",
+            "SourceOrTranslation"
+          ],
+          "type": "string"
+        },
+        "settingTargetId": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Models.Request.SetUserLocalizationSettingsRequest": {
+      "type": "object",
+      "properties": {
+        "settingValue": {
+          "$ref": "#/definitions/Roblox.GameLocalization.Client.UserUniverseLocalizationSettingValue",
+          "description": "The setting value."
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Models.Response.SetUserLocalizationSettingsResponse": {
+      "type": "object",
+      "properties": {}
     }
   }
 }

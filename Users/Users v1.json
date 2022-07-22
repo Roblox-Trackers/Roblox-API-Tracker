@@ -493,7 +493,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.BaseUserResponse]"
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.VerifiedBadgeUserResponse]"
             }
           },
           "400": {
@@ -723,6 +723,10 @@
           "description": "Unused, legacy attribute. For now always null to not disturb existing client code that might rely on its existence.",
           "type": "string"
         },
+        "hasVerifiedBadge": {
+          "description": "The user's verified badge status.",
+          "type": "boolean"
+        },
         "id": {
           "format": "int64",
           "description": "The user Id.",
@@ -756,21 +760,25 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.BaseUserResponse]": {
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.VerifiedBadgeUserResponse]": {
       "type": "object",
       "properties": {
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Users.Api.BaseUserResponse"
+            "$ref": "#/definitions/Roblox.Users.Api.VerifiedBadgeUserResponse"
           }
         }
       }
     },
-    "Roblox.Users.Api.BaseUserResponse": {
-      "description": "No new attributes should be added to this response since it is in the critical path of app launch and we want to minimize dependencies.",
+    "Roblox.Users.Api.VerifiedBadgeUserResponse": {
+      "description": "A response model specific to multi-get user.",
       "type": "object",
       "properties": {
+        "hasVerifiedBadge": {
+          "description": "The user's verified badge status.",
+          "type": "boolean"
+        },
         "id": {
           "format": "int64",
           "description": "The user Id.",
@@ -821,6 +829,10 @@
         "requestedUsername": {
           "description": "The username the user was requested with.",
           "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "description": "The user's verified badge status.",
+          "type": "boolean"
         },
         "id": {
           "format": "int64",
@@ -880,6 +892,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "hasVerifiedBadge": {
+          "description": "The user's verified badge status.",
+          "type": "boolean"
         },
         "id": {
           "format": "int64",

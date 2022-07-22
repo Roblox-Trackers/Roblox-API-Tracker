@@ -311,50 +311,6 @@
         }
       }
     },
-    "/v1/exclusive-items/{appStoreType}/bundles": {
-      "get": {
-        "tags": [
-          "ExclusiveItems"
-        ],
-        "summary": "Lists the exclusive catalog items for a particular app store.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "appStoreType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "GooglePlay",
-              "Amazon",
-              "iOS",
-              "Xbox"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiLegacyPageResponse[Roblox.Catalog.Api.CatalogItemModel]"
-            }
-          },
-          "400": {
-            "description": "1: Invalid app store."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "ExclusiveItems:GetExclusiveItems"
-          ]
-        }
-      }
-    },
     "/v1/favorites/assets/{assetId}/count": {
       "get": {
         "tags": [
@@ -1108,6 +1064,10 @@
         "type": {
           "type": "string",
           "readOnly": true
+        },
+        "hasVerifiedBadge": {
+          "type": "boolean",
+          "readOnly": true
         }
       }
     },
@@ -1527,10 +1487,6 @@
             "enum": [
               "New",
               "Sale",
-              "XboxExclusive",
-              "AmazonExclusive",
-              "GooglePlayExclusive",
-              "IosExclusive",
               "SaleTimer"
             ],
             "type": "string"
@@ -1569,6 +1525,10 @@
           "description": "The creator name of the item's creator.",
           "type": "string"
         },
+        "hasVerifiedBadge": {
+          "description": "The verified status of a creator",
+          "type": "boolean"
+        },
         "price": {
           "format": "int64",
           "description": "The item's price.",
@@ -1606,52 +1566,6 @@
           "format": "date-time",
           "description": "When the item will go off sale, if the item has an off deadline.",
           "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiLegacyPageResponse[Roblox.Catalog.Api.CatalogItemModel]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Catalog.Api.CatalogItemModel"
-          }
-        },
-        "total": {
-          "format": "int64",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Catalog.Api.CatalogItemModel": {
-      "description": "Basic catalog item model",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "name": {
-          "type": "string",
-          "readOnly": true
-        },
-        "description": {
-          "type": "string",
-          "readOnly": true
-        },
-        "type": {
-          "type": "string",
-          "readOnly": true
-        },
-        "priceInRobux": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "premiumPricing": {
-          "$ref": "#/definitions/Roblox.Catalog.Api.PremiumPricingModel"
         }
       }
     },

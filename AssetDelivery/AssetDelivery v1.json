@@ -519,6 +519,7 @@
         "tags": [
           "AssetFetch"
         ],
+        "summary": "Retrieves an asset by its ID and its version.",
         "consumes": [],
         "produces": [
           "application/json",
@@ -528,6 +529,7 @@
           {
             "name": "assetId",
             "in": "path",
+            "description": "the ID of the asset to retrieve.",
             "required": true,
             "type": "integer",
             "format": "int64"
@@ -535,6 +537,7 @@
           {
             "name": "version",
             "in": "path",
+            "description": "the version of the asset to retrieve.",
             "required": true,
             "type": "integer",
             "format": "int32"

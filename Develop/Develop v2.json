@@ -239,6 +239,26 @@
           "format": "int32",
           "type": "integer"
         },
+        "isAllGenresAllowed": {
+          "type": "boolean"
+        },
+        "allowedGearTypes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Invalid",
+              "Melee",
+              "Ranged",
+              "Explosive",
+              "PowerUps",
+              "Navigation",
+              "Musical",
+              "Social",
+              "Building"
+            ],
+            "type": "string"
+          }
+        },
         "id": {
           "format": "int64",
           "description": "Returns the place id.",
@@ -285,6 +305,15 @@
           "type": "integer"
         },
         "allowCopying": {
+          "type": "boolean"
+        },
+        "allowedGearTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isAllGenresAllowed": {
           "type": "boolean"
         }
       }

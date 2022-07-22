@@ -3980,6 +3980,13 @@
       "description": "Model for UniverseSettings controller responses",
       "type": "object",
       "properties": {
+        "allowPrivateServers": {
+          "type": "boolean"
+        },
+        "privateServerPrice": {
+          "format": "int64",
+          "type": "integer"
+        },
         "id": {
           "format": "int64",
           "description": "The universe Id.",
@@ -4088,6 +4095,14 @@
           "format": "int64",
           "description": "Price of the game, in Robux.",
           "type": "integer"
+        },
+        "isStudioAccessToApisAllowed": {
+          "description": "Whether studio access to APIs is allowed or not.",
+          "type": "boolean"
+        },
+        "privacyType": {
+          "description": "Privacy type of the universe.",
+          "type": "string"
         }
       }
     },

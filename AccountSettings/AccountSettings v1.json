@@ -1525,6 +1525,10 @@
         "IsParentalNotificationSettingsInUIEnabled": {
           "description": "Enables/disables the section in the account parental controls page where you can set the parental notifications settings",
           "type": "boolean"
+        },
+        "IsContentControlsEnabled": {
+          "description": "Enables/disables the section in the account parental controls page where you can set the content control settings",
+          "type": "boolean"
         }
       }
     },
@@ -1727,13 +1731,15 @@
         "privateMessagePrivacy": {
           "description": "The desired private message privacy setting for the active user",
           "enum": [
+            "Invalid",
             "All",
             "TopFriends",
             "Friends",
-            "NoOne",
+            "Noone",
             "Disabled",
             "Following",
-            "Followers"
+            "Followers",
+            "NoOne"
           ],
           "type": "string"
         }

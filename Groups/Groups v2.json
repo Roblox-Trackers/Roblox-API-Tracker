@@ -267,6 +267,9 @@
         "created": {
           "format": "date-time",
           "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "type": "boolean"
         }
       }
     },
@@ -327,8 +330,11 @@
           "type": "string"
         },
         "memberCount": {
-          "format": "int32",
+          "format": "int64",
           "type": "integer"
+        },
+        "hasVerifiedBadge": {
+          "type": "boolean"
         }
       }
     },

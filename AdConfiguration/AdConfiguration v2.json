@@ -127,6 +127,66 @@
         }
       }
     },
+    "/v2/sponsored-campaigns/multi-get-can-user-sponsor": {
+      "get": {
+        "tags": [
+          "SponsoredCampaign"
+        ],
+        "summary": "Checks whether the targets are eligible for sponsorship, and\r\nif the user is authorized to sponsor the targets.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "campaignTargetType",
+            "in": "query",
+            "description": "{Ads.Management.Service.CampaignTargetType}.",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Universe",
+              "Undefined",
+              "Asset",
+              "ImmersiveAd"
+            ]
+          },
+          {
+            "name": "campaignTargetIds",
+            "in": "query",
+            "description": "The IDs of the campaign targets.",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "boolean"
+              }
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SponsoredCampaignV2:MultiGetCanUserSponsor"
+          ]
+        }
+      }
+    },
     "/v2/sponsored-games": {
       "get": {
         "tags": [
@@ -245,7 +305,7 @@
         "tags": [
           "SponsoredCampaign"
         ],
-        "summary": "Creates a complete ad. Including ad campaign, ad set, escrow, and the ad.\r\nIntended for creation of sponsorship ads, and NOT for creation of immersive ads.",
+        "summary": "Creates a complete ad. Including ad campaign, ad set, escrow, and the ad.\r\nCurrently intended for creation of sponsorships only.",
         "consumes": [
           "application/json",
           "text/json",
@@ -275,16 +335,19 @@
             }
           },
           "400": {
-            "description": "2: Daily budget is lower than minimum allowed.\r\n3: Total budget must be greater than 0.\r\n4: Ad name cannot be empty.\r\n5: Start date must not be a future date.\r\n6: End date must be a future date.\r\n7: Start date must be earlier than end date.\r\n8: Total budget does not match daily spend and number of days being scheduled\r\n9: Cannot load the universe for the specified universe id.\r\n11: Invalid target age bracket.\r\n12: Invalid target gender.\r\n13: Invalid target device type.\r\n15: Ad name cannot exceed 255 characters.\r\n16: Insufficient Robux balance.\r\n17: Name has already been taken.\r\n18: Daily budget is higher than maximum allowed.\r\n20: Number of days scheduled exceeded maximum days allowed.\r\n22: Invalid campaign target ID.\r\n23: Invalid campaign target type.\r\n24: Invalid creative ID.\r\n25: Invalid creative type."
+            "description": "2: Daily budget is lower than minimum allowed.\r\n3: Total budget must be greater than 0.\r\n4: Ad name cannot be empty.\r\n5: Start date must not be a future date.\r\n6: End date must be a future date.\r\n7: Start date must be earlier than end date.\r\n8: Total budget does not match daily spend and number of days being scheduled\r\n9: Cannot load the universe for the specified universe id.\r\n11: Invalid target age bracket.\r\n12: Invalid target gender.\r\n13: Invalid target device type.\r\n14: Invalid ad set id.\r\n15: Ad name cannot exceed 255 characters.\r\n16: Insufficient Robux balance.\r\n17: Name has already been taken.\r\n18: Daily budget is higher than maximum allowed.\r\n19: Invalid group id.\r\n20: Number of days scheduled exceeded maximum days allowed.\r\n21: Your experience is currently not eligible for advertising.\r\n22: Invalid campaign target ID.\r\n23: Invalid campaign target type.\r\n24: Invalid creative ID.\r\n25: Invalid creative type.\r\n28: Total budget must be campaign duration * daily bid\r\n29: The target is not eligible for new campaigns\r\n30: Invalid user ID"
           },
           "401": {
-            "description": "0: Authorization has been denied for this request."
+            "description": "0: Authorization has been denied for this request.\r\n10: Insufficient permissions."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n10: Insufficient permissions."
+            "description": "0: Token Validation Failed"
+          },
+          "500": {
+            "description": "0: An unknown error occurred.\r\n31: Internal server error"
           },
           "503": {
-            "description": "1: This feature is disabled.\r\n26: Failed to create campaign."
+            "description": "1: This feature is disabled."
           }
         },
         "properties": {
@@ -381,7 +444,7 @@
             }
           },
           "400": {
-            "description": "10: Insufficient permissions.\r\n14: Invalid ad set id.\r\n27: Failed to stop campaign."
+            "description": "10: Insufficient permissions.\r\n14: Invalid ad set id.\r\n31: Internal server error"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -435,13 +498,16 @@
             }
           },
           "400": {
-            "description": "2: Daily budget is lower than minimum allowed.\r\n3: Total budget must be greater than 0.\r\n4: Ad name cannot be empty.\r\n5: Start date must not be a future date.\r\n6: End date must be a future date.\r\n7: Start date must be earlier than end date.\r\n8: Total budget does not match daily spend and number of days being scheduled\r\n9: Cannot load the universe for the specified universe id.\r\n11: Invalid target age bracket.\r\n12: Invalid target gender.\r\n13: Invalid target device type."
+            "description": "2: Daily budget is lower than minimum allowed.\r\n3: Total budget must be greater than 0.\r\n4: Ad name cannot be empty.\r\n5: Start date must not be a future date.\r\n6: End date must be a future date.\r\n7: Start date must be earlier than end date.\r\n8: Total budget does not match daily spend and number of days being scheduled\r\n9: Cannot load the universe for the specified universe id.\r\n11: Invalid target age bracket.\r\n12: Invalid target gender.\r\n13: Invalid target device type.\r\n14: Invalid ad set id.\r\n15: Ad name cannot exceed 255 characters.\r\n16: Insufficient Robux balance.\r\n17: Name has already been taken.\r\n18: Daily budget is higher than maximum allowed.\r\n19: Invalid group id.\r\n20: Number of days scheduled exceeded maximum days allowed.\r\n21: Your experience is currently not eligible for advertising.\r\n22: Invalid campaign target ID.\r\n23: Invalid campaign target type.\r\n24: Invalid creative ID.\r\n25: Invalid creative type.\r\n28: Total budget must be campaign duration * daily bid\r\n29: The target is not eligible for new campaigns\r\n30: Invalid user ID"
           },
           "401": {
-            "description": "0: Authorization has been denied for this request."
+            "description": "0: Authorization has been denied for this request.\r\n10: Insufficient permissions."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n10: Insufficient permissions."
+            "description": "0: Token Validation Failed"
+          },
+          "500": {
+            "description": "0: An unknown error occurred.\r\n31: Internal server error"
           },
           "503": {
             "description": "1: This feature is disabled."
@@ -586,7 +652,9 @@
             "AvatarShop",
             "ItemDetails",
             "HomePage",
-            "Billboard300x250"
+            "Billboard300x250",
+            "Billboard600x300",
+            "Billboard300x600"
           ],
           "type": "string"
         },
@@ -609,7 +677,8 @@
           "description": "The type of the ad creative. Typically, CreativeType.Image.",
           "enum": [
             "Undefined",
-            "Image"
+            "Image",
+            "Video"
           ],
           "type": "string"
         }
@@ -680,7 +749,8 @@
           "description": "The type of the creative associated with the Ad",
           "enum": [
             "Undefined",
-            "Image"
+            "Image",
+            "Video"
           ],
           "type": "string"
         },
@@ -982,7 +1052,8 @@
           "description": "The type of the creative associated with the Ad",
           "enum": [
             "Undefined",
-            "Image"
+            "Image",
+            "Video"
           ],
           "type": "string"
         },

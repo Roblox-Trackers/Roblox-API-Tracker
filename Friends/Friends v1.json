@@ -638,6 +638,54 @@
         }
       }
     },
+    "/v1/contacts/{targetContactId}/request-friendship": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Send a contact friend request to target user",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "targetContactId",
+            "in": "path",
+            "description": "The target contact Id for friend request",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Friends.Api.CaptchaStatusResponseModel"
+            }
+          },
+          "400": {
+            "description": "1: The target user is invalid or does not exist.\r\n5: The target user is already a friend.\r\n6: Invalid parameters.\r\n7: The user cannot be friends with itself.\r\n31: User with max friends sent friend request."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n2: The user is banned from performing operation.\r\n3: The user is blocked from performing this action.\r\n14: The user has not passed the captcha."
+          },
+          "429": {
+            "description": "9: The flood limit has been exceeded."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Friends:RequestContactFriendship"
+          ]
+        }
+      }
+    },
     "/v1/user/following-exists": {
       "post": {
         "tags": [
@@ -1177,6 +1225,10 @@
           "description": "Frequents rank for the user.",
           "type": "integer"
         },
+        "hasVerifiedBadge": {
+          "description": "The user's verified badge status.",
+          "type": "boolean"
+        },
         "description": {
           "type": "string"
         },
@@ -1336,7 +1388,8 @@
             "UserProfile",
             "QqContactImporter",
             "WeChatContactImporter",
-            "ProfileShare"
+            "ProfileShare",
+            "PhoneContactImporter"
           ],
           "type": "string"
         }
@@ -1482,6 +1535,10 @@
             "type": "string"
           }
         },
+        "hasVerifiedBadge": {
+          "description": "The user's verified badge status.",
+          "type": "boolean"
+        },
         "description": {
           "type": "string"
         },
@@ -1525,6 +1582,21 @@
           "format": "int64",
           "description": "The source universe Id which the request was sent in.",
           "type": "integer"
+        },
+        "originSourceType": {
+          "description": "The origin source type associated with the friend request.",
+          "enum": [
+            "Unknown",
+            "PlayerSearch",
+            "QrCode",
+            "InGame",
+            "UserProfile",
+            "QqContactImporter",
+            "WeChatContactImporter",
+            "ProfileShare",
+            "PhoneContactImporter"
+          ],
+          "type": "string"
         }
       }
     },

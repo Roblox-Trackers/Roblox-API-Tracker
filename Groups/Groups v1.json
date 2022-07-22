@@ -3891,6 +3891,9 @@
         "created": {
           "format": "date-time",
           "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "type": "boolean"
         }
       }
     },
@@ -4466,35 +4469,47 @@
       }
     },
     "Roblox.Groups.Api.GroupSearchResponseItem": {
+      "description": "A group search response",
       "type": "object",
       "properties": {
         "id": {
           "format": "int64",
+          "description": "The group id",
           "type": "integer"
         },
         "name": {
+          "description": "The group name",
           "type": "string"
         },
         "description": {
+          "description": "The group description",
           "type": "string"
         },
         "memberCount": {
           "format": "int32",
+          "description": "The number of members in the group",
           "type": "integer"
         },
         "previousName": {
           "type": "string"
         },
         "publicEntryAllowed": {
+          "description": "When true anyone can join the group. When false manual approval \r\nis required to join the group",
           "type": "boolean"
         },
         "created": {
           "format": "date-time",
+          "description": "When the group was created",
           "type": "string"
         },
         "updated": {
           "format": "date-time",
+          "description": "When the group was last updated",
           "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "description": "The group's verified badge status",
+          "type": "boolean"
         }
       }
     },
@@ -4520,8 +4535,11 @@
           "type": "string"
         },
         "memberCount": {
-          "format": "int32",
+          "format": "int64",
           "type": "integer"
+        },
+        "hasVerifiedBadge": {
+          "type": "boolean"
         }
       }
     },

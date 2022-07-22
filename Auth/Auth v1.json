@@ -90,12 +90,25 @@
           "AccountPin"
         ],
         "summary": "Request for deletes the account pin from the account.",
-        "consumes": [],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "requestBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Authentication.Api.Models.AccountPinRequest"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1573,14 +1586,6 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiSuccessResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
-    },
     "Roblox.Authentication.Api.Models.AccountPinRequest": {
       "description": "A request model to accept pin.",
       "type": "object",
@@ -1588,6 +1593,18 @@
         "pin": {
           "description": "Gets or sets the pin.",
           "type": "string"
+        },
+        "reauthenticationToken": {
+          "description": "A re-authentication token redeemable for any password check.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiSuccessResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
         }
       }
     },
@@ -1824,12 +1841,12 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "ValidPassword",
             "ShortPasswordError",
+            "ValidPassword",
+            "DumbStringsError",
             "WeakPasswordError",
             "PasswordSameAsUsernameError",
-            "ForbiddenPasswordError",
-            "DumbStringsError"
+            "ForbiddenPasswordError"
           ],
           "type": "string"
         },
@@ -2258,9 +2275,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
+            "ValidUsername",
             "AlreadyInUseError",
             "ModerationError",
-            "ValidUsername",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",

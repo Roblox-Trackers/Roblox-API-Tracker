@@ -1365,6 +1365,10 @@
         "isTwoStepEnabledRequiredForAuthenticatorPasswordRequirement": {
           "description": "Whether or not a 2sv method has to be enabled to require password when enabling authenticator.",
           "type": "boolean"
+        },
+        "isSingleMethodEnforcementEnabled": {
+          "description": "Whether or not the frontend should enforce single method logic.",
+          "type": "boolean"
         }
       }
     },

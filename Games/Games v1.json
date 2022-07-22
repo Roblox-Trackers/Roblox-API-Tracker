@@ -97,6 +97,13 @@
             ]
           },
           {
+            "name": "excludeFullGames",
+            "in": "query",
+            "description": "Exclude full servers.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "The amount of results per request.",
@@ -2037,6 +2044,10 @@
           "description": "Creator type",
           "type": "string"
         },
+        "creatorHasVerifiedBadge": {
+          "description": "Creator verified badge status",
+          "type": "boolean"
+        },
         "totalUpVotes": {
           "format": "int64",
           "description": "Total up votes",
@@ -2525,6 +2536,10 @@
           "description": "Creator Id",
           "type": "integer"
         },
+        "hasVerifiedBadge": {
+          "description": "Builder verified badge status.",
+          "type": "boolean"
+        },
         "isPlayable": {
           "description": "Is playable",
           "type": "boolean"
@@ -2707,6 +2722,10 @@
         "isRNVAccount": {
           "description": "The game creator account is Luobu Real Name Verified",
           "type": "boolean"
+        },
+        "hasVerifiedBadge": {
+          "description": "Builder verified badge status.",
+          "type": "boolean"
         }
       }
     },
@@ -2832,6 +2851,10 @@
         "approved": {
           "description": "The media item is approved or not",
           "type": "boolean"
+        },
+        "altText": {
+          "description": "The media item's alt text",
+          "type": "string"
         }
       }
     },
