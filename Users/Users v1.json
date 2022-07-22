@@ -646,6 +646,47 @@
         }
       }
     },
+    "System.Threading.CancellationToken": {
+      "type": "object",
+      "properties": {
+        "IsCancellationRequested": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanBeCanceled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "WaitHandle": {
+          "$ref": "#/definitions/System.Threading.WaitHandle",
+          "readOnly": true
+        }
+      }
+    },
+    "System.Threading.WaitHandle": {
+      "type": "object",
+      "properties": {
+        "Handle": {
+          "type": "object"
+        },
+        "SafeWaitHandle": {
+          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
+        }
+      }
+    },
+    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
+      "type": "object",
+      "properties": {
+        "IsInvalid": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "IsClosed": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
     "Roblox.Users.Api.AuthenticatedUserResponse": {
       "description": "A response model representing absolute minimal authenticating user information.\r\nNo new attributes should be added to this response since it is in the critical path of app launch and we want to minimize dependencies.",
       "type": "object",
