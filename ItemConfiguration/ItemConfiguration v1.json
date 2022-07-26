@@ -415,7 +415,11 @@
               "DressSkirtAccessory",
               "FontFamily",
               "FontFace",
-              "MeshHiddenSurfaceRemoval"
+              "MeshHiddenSurfaceRemoval",
+              "EyebrowAccessory",
+              "EyelashAccessory",
+              "MoodAnimation",
+              "DynamicHead"
             ]
           },
           {
