@@ -866,6 +866,65 @@
         }
       }
     },
+    "/v1/users/{senderUserId}/accept-friend-request-with-token": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Accept a friend request with an Off Network Friending token.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "senderUserId",
+            "in": "path",
+            "description": "The user id of the sender of the off network friend request",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "friendingToken",
+            "in": "body",
+            "description": "The Off Network Friending token to authorize the friendship creation",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "1: The target user is invalid or does not exist.\r\n3: The user is blocked from performing this action.\r\n5: The target user is already a friend.\r\n6: Invalid parameters.\r\n7: The user cannot be friends with itself.\r\n11: The current users friends limit has been exceeded.\r\n12: The target users friends limit has been exceeded."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Friends:AcceptFriendRequestWithToken"
+          ]
+        }
+      }
+    },
     "/v1/users/{targetUserId}/follow": {
       "post": {
         "tags": [
