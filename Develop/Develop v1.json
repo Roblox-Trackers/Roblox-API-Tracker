@@ -758,7 +758,7 @@
           {
             "name": "sort",
             "in": "query",
-            "description": "Determines the way results will be sorted. Format: (a prefix for ascending or descending) + (sort type).\n\nAscending Prefix: +\n\nDescending Prefix -\n\nAllowed Sort Types: +GameCreated,-GameCreated,+GameName,-GameName,+RootPlaceName,-RootPlaceName,+RootPlaceUpdated,-RootPlaceUpdated,-LastUpdated\n\nNote: An allowed type with no prefix allows both ascending and descending but if a prefix is specified only the specified order is allowed.",
+            "description": "Determines the way results will be sorted. Format: (a prefix for ascending or descending) + (sort type).\n\nAscending Prefix: +\n\nDescending Prefix -\n\nAllowed Sort Types: +GameCreated,-GameCreated,+GameName,-GameName,+RootPlaceName,-RootPlaceName,+RootPlaceUpdated,-RootPlaceUpdated,+LastUpdated,-LastUpdated\n\nNote: An allowed type with no prefix allows both ascending and descending but if a prefix is specified only the specified order is allowed.",
             "required": false,
             "type": "array"
           },
