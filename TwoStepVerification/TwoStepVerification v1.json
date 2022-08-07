@@ -1244,7 +1244,8 @@
             "Email",
             "SMS",
             "Authenticator",
-            "RecoveryCode"
+            "RecoveryCode",
+            "SecurityKey"
           ],
           "type": "string"
         },
@@ -1267,7 +1268,8 @@
             "Email",
             "SMS",
             "Authenticator",
-            "RecoveryCode"
+            "RecoveryCode",
+            "SecurityKey"
           ],
           "type": "string"
         },
@@ -1368,6 +1370,10 @@
         },
         "isSingleMethodEnforcementEnabled": {
           "description": "Whether or not the frontend should enforce single method logic.",
+          "type": "boolean"
+        },
+        "isSmsTwoStepVerificationAvailable": {
+          "description": "Whether or not sms two step verification is available for the user.",
           "type": "boolean"
         }
       }

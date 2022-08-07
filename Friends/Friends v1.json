@@ -891,12 +891,11 @@
             "format": "int64"
           },
           {
-            "name": "friendingToken",
+            "name": "requestModel",
             "in": "body",
-            "description": "The Off Network Friending token to authorize the friendship creation",
             "required": true,
             "schema": {
-              "type": "string"
+              "$ref": "#/definitions/Roblox.Friends.Api.Models.Request.FriendingTokenRequestModel"
             }
           }
         ],
@@ -1422,6 +1421,16 @@
     "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
       "type": "object",
       "properties": {}
+    },
+    "Roblox.Friends.Api.Models.Request.FriendingTokenRequestModel": {
+      "description": "Request model for AcceptFriendRequestWithToken endpoint",
+      "type": "object",
+      "properties": {
+        "friendingToken": {
+          "description": "FriendingToken to authorize the creation of an Off Network Friend request",
+          "type": "string"
+        }
+      }
     },
     "Roblox.Friends.Api.PendingFriendRequestCountModel": {
       "description": "Response model for Pending Friend Request Count",

@@ -1143,6 +1143,40 @@
         }
       }
     },
+    "/v1/logoutfromallsessionsandreauthenticate": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Logs out user from all other sessions.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Authentication:LogoutFromAllSessionsAndReauthenticate"
+          ]
+        }
+      }
+    },
     "/v1/signup": {
       "post": {
         "tags": [
@@ -1707,7 +1741,8 @@
             "Email",
             "SMS",
             "Authenticator",
-            "RecoveryCode"
+            "RecoveryCode",
+            "SecurityKey"
           ],
           "type": "string"
         },
@@ -1841,12 +1876,12 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
-            "ShortPasswordError",
             "ValidPassword",
-            "DumbStringsError",
             "WeakPasswordError",
+            "ShortPasswordError",
             "PasswordSameAsUsernameError",
-            "ForbiddenPasswordError"
+            "ForbiddenPasswordError",
+            "DumbStringsError"
           ],
           "type": "string"
         },

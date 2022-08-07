@@ -154,83 +154,6 @@
         }
       }
     },
-    "/v1/content-restriction": {
-      "get": {
-        "tags": [
-          "ContentRestriction"
-        ],
-        "summary": "Gets the user's content restriction level.\r\nUser must be authenticated to perform the request.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Request.ContentRestrictions.GetContentRestrictionResponse"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "ContentRestriction:GetContentRestrictionResponse"
-          ]
-        }
-      },
-      "post": {
-        "tags": [
-          "ContentRestriction"
-        ],
-        "summary": "Sets the user's content restriction level.\r\nUser must be authenticated and also the PIN needs to be unlocked to perform the request.",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Request.ContentRestrictions.SetContentRestrictionLevelRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed\r\n0: PIN is locked."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "ContentRestriction:SetContentLevelRestriction"
-          ]
-        }
-      }
-    },
     "/v1/email": {
       "get": {
         "tags": [
@@ -1542,37 +1465,6 @@
             "format": "int64",
             "type": "integer"
           }
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.Models.Request.ContentRestrictions.SetContentRestrictionLevelRequest": {
-      "description": "API request to set content level restriction for a user.",
-      "type": "object",
-      "properties": {
-        "contentRestrictionLevel": {
-          "description": "Content restriction level to set.",
-          "enum": [
-            "NoRestrictions",
-            "Teen",
-            "PreTeen",
-            "Child"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.Models.Request.ContentRestrictions.GetContentRestrictionResponse": {
-      "description": "API response when getting the content restriction level.",
-      "type": "object",
-      "properties": {
-        "contentRestrictionLevel": {
-          "enum": [
-            "NoRestrictions",
-            "Teen",
-            "PreTeen",
-            "Child"
-          ],
-          "type": "string"
         }
       }
     },
