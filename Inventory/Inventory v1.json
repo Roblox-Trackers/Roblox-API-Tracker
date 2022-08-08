@@ -142,7 +142,11 @@
               "DressSkirtAccessory",
               "FontFamily",
               "FontFace",
-              "MeshHiddenSurfaceRemoval"
+              "MeshHiddenSurfaceRemoval",
+              "EyebrowAccessory",
+              "EyelashAccessory",
+              "MoodAnimation",
+              "DynamicHead"
             ]
           },
           {
@@ -408,7 +412,11 @@
               "DressSkirtAccessory",
               "FontFamily",
               "FontFace",
-              "MeshHiddenSurfaceRemoval"
+              "MeshHiddenSurfaceRemoval",
+              "EyebrowAccessory",
+              "EyelashAccessory",
+              "MoodAnimation",
+              "DynamicHead"
             ]
           },
           {
@@ -441,6 +449,12 @@
             "schema": {
               "$ref": "#/definitions/Roblox.Inventory.Api.Models.InventoryPageResponse"
             }
+          },
+          "400": {
+            "description": "1: The specified user does not exist!\r\n3: Specified asset type is invalid!"
+          },
+          "403": {
+            "description": "1: The specified user does not exist!\r\n11: You don't have permissions to view the specified user's inventory."
           }
         },
         "deprecated": true,
@@ -939,6 +953,7 @@
         "type": {
           "enum": [
             "AssetType",
+            "Bundle",
             "Outfit",
             "Set"
           ],
