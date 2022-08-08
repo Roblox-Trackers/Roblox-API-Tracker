@@ -1847,52 +1847,6 @@
         }
       }
     },
-    "/v1/universes/multiget/teamcreate": {
-      "get": {
-        "tags": [
-          "TeamCreate"
-        ],
-        "summary": "Gets TeamCreate settings for multiple universes specified by Ids",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int64"
-            },
-            "collectionFormat": "multi"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel]"
-            }
-          },
-          "400": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.TooManyUniverseIdsSent}"
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "TeamCreate:MultiGetTeamCreateSettings"
-          ]
-        }
-      }
-    },
     "/v1/user/{userId}/canmanage/{assetId}": {
       "get": {
         "tags": [
@@ -3657,73 +3611,6 @@
         }
       }
     },
-    "System.Threading.CancellationToken": {
-      "type": "object",
-      "properties": {
-        "IsCancellationRequested": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "CanBeCanceled": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "WaitHandle": {
-          "$ref": "#/definitions/System.Threading.WaitHandle",
-          "readOnly": true
-        }
-      }
-    },
-    "System.Threading.WaitHandle": {
-      "type": "object",
-      "properties": {
-        "Handle": {
-          "type": "object"
-        },
-        "SafeWaitHandle": {
-          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
-        }
-      }
-    },
-    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
-      "type": "object",
-      "properties": {
-        "IsInvalid": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "IsClosed": {
-          "type": "boolean",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel": {
-      "description": "Team create settings of a universe",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "description": "Id of the universe.",
-          "type": "integer"
-        },
-        "isEnabled": {
-          "description": "Whether or not the universe is enabled for team create",
-          "type": "boolean"
-        }
-      }
-    },
     "Roblox.Web.WebAPI.ExclusiveStartRequest[Roblox.Platform.TeamCreate.ITeamCreateMembership]": {
       "type": "object",
       "properties": {
@@ -3856,6 +3743,47 @@
         },
         "displayName": {
           "type": "string"
+        }
+      }
+    },
+    "System.Threading.CancellationToken": {
+      "type": "object",
+      "properties": {
+        "IsCancellationRequested": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanBeCanceled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "WaitHandle": {
+          "$ref": "#/definitions/System.Threading.WaitHandle",
+          "readOnly": true
+        }
+      }
+    },
+    "System.Threading.WaitHandle": {
+      "type": "object",
+      "properties": {
+        "Handle": {
+          "type": "object"
+        },
+        "SafeWaitHandle": {
+          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
+        }
+      }
+    },
+    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
+      "type": "object",
+      "properties": {
+        "IsInvalid": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "IsClosed": {
+          "type": "boolean",
+          "readOnly": true
         }
       }
     },
