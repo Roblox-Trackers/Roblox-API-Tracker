@@ -460,17 +460,6 @@
             "format": "int64"
           },
           {
-            "name": "costumeType",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "Invalid",
-              "Avatar",
-              "DynamicHead"
-            ]
-          },
-          {
             "name": "page",
             "in": "query",
             "description": "The page number",
