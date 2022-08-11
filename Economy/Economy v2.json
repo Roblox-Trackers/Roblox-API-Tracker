@@ -8,58 +8,6 @@
   "schemes": [
     "https"
   ],
-  "paths": {
-    "/v2/gift-robux": {
-      "post": {
-        "tags": [
-          "Gifting"
-        ],
-        "summary": "User gifts Robux",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "receiverUserId",
-            "in": "query",
-            "description": "ID of user reciving the Robux",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "amount",
-            "in": "query",
-            "description": "Amount of Robux to gift",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed"
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Gifting:GiftRobux"
-          ]
-        }
-      }
-    }
-  },
+  "paths": {},
   "definitions": {}
 }
