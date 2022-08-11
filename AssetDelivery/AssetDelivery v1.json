@@ -294,7 +294,6 @@
         "tags": [
           "AssetFetch"
         ],
-        "summary": "Retrieves an asset by its hash.",
         "consumes": [],
         "produces": [
           "application/json",
@@ -304,7 +303,6 @@
           {
             "name": "hash",
             "in": "path",
-            "description": "the hash of the asset to retrieve.",
             "required": true,
             "type": "string"
           },
@@ -857,9 +855,6 @@
             "schema": {
               "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItem"
             }
-          },
-          "404": {
-            "description": "5: Asset hash cannot be empty"
           }
         },
         "properties": {
