@@ -755,7 +755,6 @@
         "tags": [
           "AssetFetch"
         ],
-        "summary": "Retrieves an asset by its mar (moderation agnostic) hash and mar (moderation agnostic) checksum.",
         "consumes": [],
         "produces": [
           "application/json",
@@ -765,14 +764,12 @@
           {
             "name": "marAssetHash",
             "in": "path",
-            "description": "The mar (moderation agnostic) hash of the asset to retrieve.",
             "required": true,
             "type": "string"
           },
           {
             "name": "marCheckSum",
             "in": "path",
-            "description": "The mar (moderation agnostic) checksum of the asset to retrieve.",
             "required": true,
             "type": "string"
           },
