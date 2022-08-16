@@ -929,37 +929,6 @@
         }
       }
     },
-    "/v1/user/screens/contact-upsell": {
-      "get": {
-        "tags": [
-          "AccountInfoSettings"
-        ],
-        "summary": "Determines if the contact (e.g. email or phone) upsell screen should be shown to the current user and gets data related to it",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Response.InfoSettings.ContactUpsellResponse"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "AccountInfoSettings:GetContactUpsellScreen"
-          ]
-        }
-      }
-    },
     "/v1/users/get-blocked-users": {
       "get": {
         "tags": [
@@ -1190,101 +1159,6 @@
         }
       }
     },
-    "/v1/promotion-channels": {
-      "post": {
-        "tags": [
-          "PromotionChannel"
-        ],
-        "summary": "Updates a user's promotion channels and their visibility settings on their profile",
-        "description": "If the url in the request is empty, it will delete the user's existing promotion channel of that type.",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.UpdatePromotionChannelsRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "400": {
-            "description": "1: The request was empty.\r\n11: The Facebook profile url is invalid.\r\n12: The Twitter handle is invalid.\r\n13: The YouTube url is invalid.\r\n14: The Twitch profile url is invalid.\r\n15: The Guilded profile url is invalid."
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed\r\n2: PIN is locked.\r\n3: Only users who are over twelve years of age may edit social network channels."
-          },
-          "429": {
-            "description": "4: Too many attempts. Please try again later."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "PromotionChannel:UpdatePromotionChannelsAndPrivacySettings"
-          ]
-        }
-      }
-    },
-    "/v1/user/screens/contact-upsell/suppress": {
-      "post": {
-        "tags": [
-          "AccountInfoSettings"
-        ],
-        "summary": "Suppresses the ContactUpsell screen for the authenticated user",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "suppress",
-            "in": "query",
-            "required": false,
-            "type": "boolean"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed"
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "AccountInfoSettings:SuppressContactUpsellScreen"
-          ]
-        }
-      }
-    },
     "/v1/users/{userId}/block": {
       "post": {
         "tags": [
@@ -1385,32 +1259,6 @@
     }
   },
   "definitions": {
-    "Roblox.AccountSettings.Api.Models.Response.InfoSettings.ContactUpsellResponse": {
-      "description": "A class representing response for contact upsell screen",
-      "type": "object",
-      "properties": {
-        "upsellScreenType": {
-          "description": "Returns {Roblox.Web.Prompts.ContactUpsell.ContactUpsellType} to display",
-          "enum": [
-            "None",
-            "AddContactMethod",
-            "VerifyEmail",
-            "ContactFriendFinder",
-            "FreeHat",
-            "VerifyEmailFreeHat",
-            "AddContactMethodBanner",
-            "VerifyEmailBanner",
-            "AfterGamePlay",
-            "VerifyEmailAfterGamePlay"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object",
-      "properties": {}
-    },
     "Roblox.AccountSettings.Api.Models.Response.SettingsGroupsResponse": {
       "type": "object",
       "properties": {
@@ -1467,6 +1315,10 @@
           }
         }
       }
+    },
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object",
+      "properties": {}
     },
     "Roblox.AccountSettings.Api.EmailResponse": {
       "description": "Response model for getting the user's email address and verified status",
@@ -1732,44 +1584,6 @@
           "format": "int32",
           "description": "The desired visibility setting for the current user",
           "type": "integer"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.UpdatePromotionChannelsRequest": {
-      "description": "Request model to update a user's promotion channels and privacy settings",
-      "type": "object",
-      "properties": {
-        "facebook": {
-          "description": "The Facebook url",
-          "type": "string"
-        },
-        "twitter": {
-          "description": "The Twitter handle",
-          "type": "string"
-        },
-        "youtube": {
-          "description": "The Youtube url",
-          "type": "string"
-        },
-        "twitch": {
-          "description": "The Twitch url",
-          "type": "string"
-        },
-        "guilded": {
-          "description": "The Guilded url",
-          "type": "string"
-        },
-        "socialNetworksVisibilityPrivacy": {
-          "description": "The privacy level type of the user's promotion channels",
-          "enum": [
-            "NoOne",
-            "Friends",
-            "FriendsAndFollowing",
-            "FriendsFollowingAndFollowers",
-            "AllAuthenticatedUsers",
-            "AllUsers"
-          ],
-          "type": "string"
         }
       }
     },
