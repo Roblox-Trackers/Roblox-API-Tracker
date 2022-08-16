@@ -99,7 +99,14 @@
           "application/json",
           "text/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "binaryType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
