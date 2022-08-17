@@ -1561,7 +1561,8 @@
             "enum": [
               "New",
               "Sale",
-              "SaleTimer"
+              "SaleTimer",
+              "Live"
             ],
             "type": "string"
           }
