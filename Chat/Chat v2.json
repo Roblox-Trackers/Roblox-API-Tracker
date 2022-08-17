@@ -1344,6 +1344,15 @@
           "description": "The message to be sent.",
           "type": "string"
         },
+        "isExperienceInvite": {
+          "description": "Temporary field to denote requests from Experience Invite components",
+          "type": "boolean"
+        },
+        "userId": {
+          "format": "int64",
+          "description": "Temporary field to store userId for experience invite experiment",
+          "type": "integer"
+        },
         "conversationId": {
           "format": "int64",
           "description": "The conversation Id to send mesage to.",
@@ -1409,6 +1418,20 @@
         "universeId": {
           "format": "int64",
           "description": "The message to be sent.",
+          "type": "integer"
+        },
+        "isExperienceInvite": {
+          "description": "Temporary field to denote requests from Experience Invite components",
+          "type": "boolean"
+        },
+        "userId": {
+          "format": "int64",
+          "description": "Temporary field to store userId for experience invite experiment",
+          "type": "integer"
+        },
+        "placeId": {
+          "format": "int64",
+          "description": "Temporary field to store placeId for experience invite experiment",
           "type": "integer"
         },
         "conversationId": {
