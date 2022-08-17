@@ -2104,7 +2104,8 @@
             "ItemTrade",
             "Resale",
             "PasswordReset",
-            "RevertAccount"
+            "RevertAccount",
+            "Generic"
           ],
           "type": "string"
         }
@@ -2139,7 +2140,8 @@
             "ItemTrade",
             "Resale",
             "PasswordReset",
-            "RevertAccount"
+            "RevertAccount",
+            "Generic"
           ],
           "type": "string"
         }
