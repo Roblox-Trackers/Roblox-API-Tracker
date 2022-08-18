@@ -911,8 +911,7 @@
               "BodyParts",
               "AvatarAnimations",
               "Shoes",
-              "DynamicHead",
-              "DynamicHeadAvatar"
+              "DynamicHead"
             ]
           },
           {
@@ -1505,8 +1504,7 @@
             "BodyParts",
             "AvatarAnimations",
             "Shoes",
-            "DynamicHead",
-            "DynamicHeadAvatar"
+            "DynamicHead"
           ],
           "type": "string"
         },
