@@ -2750,10 +2750,7 @@
             "AccountRestricted",
             "TemporarilyUnavailable",
             "PlaceHasNoPublishedVersion",
-            "ComplianceBlocked",
-            "ContextualPlayabilityRegionalAvailability",
-            "ContextualPlayabilityRegionalCompliance",
-            "ContextualPlayabilityAgeRecommendationParentalControls"
+            "ComplianceBlocked"
           ],
           "type": "string"
         },
