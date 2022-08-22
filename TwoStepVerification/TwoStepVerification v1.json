@@ -433,6 +433,124 @@
         }
       }
     },
+    "/v1/users/{userId}/challenges/security-key/verify-finish": {
+      "post": {
+        "tags": [
+          "SecurityKey"
+        ],
+        "summary": "Validates the assertion data returned by the security key.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body{Roblox.TwoStepVerification.Api.VerifyCodeRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.VerifyCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.VerifyCodeResponse"
+            }
+          },
+          "400": {
+            "description": "1: Invalid challenge ID.\r\n2: The user ID is invalid.\r\n10: The two step verification challenge code is invalid."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n9: The two step verification configuration is invalid for this action."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SecurityKey:VerifyFinish"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/challenges/security-key/verify-start": {
+      "post": {
+        "tags": [
+          "SecurityKey"
+        ],
+        "summary": "Provides a challenge for the security key to authenticate.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body{Roblox.TwoStepVerification.Api.SendCodeRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.SendCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.VerifyStartSecurityKeyResponse"
+            }
+          },
+          "400": {
+            "description": "1: Invalid challenge ID.\r\n2: The user ID is invalid."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n8: The user is not allowed to perform the requested action."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SecurityKey:VerifyStart"
+          ]
+        }
+      }
+    },
     "/v1/users/{userId}/challenges/sms/send-code": {
       "post": {
         "tags": [
@@ -649,10 +767,10 @@
           {
             "name": "request",
             "in": "body",
-            "description": "The {Roblox.TwoStepVerification.Api.EnableAuthenticatorRequest}.",
+            "description": "The {Roblox.TwoStepVerification.Api.EnableTwoStepVerificationRequest}.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableAuthenticatorRequest"
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableTwoStepVerificationRequest"
             }
           }
         ],
@@ -842,7 +960,7 @@
             "description": "The request body.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableEmailTwoStepVerificationRequest"
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableTwoStepVerificationRequest"
             }
           }
         ],
@@ -870,6 +988,241 @@
           "internal": false,
           "metricIds": [
             "Email:EnableTwoStepVerification"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/configuration/security-key/disable": {
+      "post": {
+        "tags": [
+          "SecurityKey"
+        ],
+        "summary": "Disables a batch of credentials for the specified user.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body{Roblox.TwoStepVerification.Api.DisableTwoStepVerificationRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.DisableSecurityKeyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "4: The password is invalid."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n6: The account pin is locked.\r\n8: The user is not allowed to perform the requested action."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SecurityKey:DisableSecurityKey"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/configuration/security-key/enable": {
+      "post": {
+        "tags": [
+          "SecurityKey"
+        ],
+        "summary": "Initiates security key registration by providing credential creation options.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.EnableTwoStepVerificationRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableTwoStepVerificationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableSecurityKeyResponse"
+            }
+          },
+          "400": {
+            "description": "2: The user ID is invalid.\r\n4: The password is invalid."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n9: The two step verification configuration is invalid for this action.\r\n16: Reached limit of security keys registered."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SecurityKey:EnableSecurityKey"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/configuration/security-key/enable-verify": {
+      "post": {
+        "tags": [
+          "SecurityKey"
+        ],
+        "summary": "Finishes security key registration and stores credential. Enables security key as a 2sv media type if it is a user's first key.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.EnableVerifySecurityKeyRequest}.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableVerifySecurityKeyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "2: The user ID is invalid.\r\n17: Invalid security key nickname."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n17: Invalid security key nickname."
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SecurityKey:EnableVerifySecurityKey"
+          ]
+        }
+      }
+    },
+    "/v1/users/{userId}/configuration/security-key/list": {
+      "post": {
+        "tags": [
+          "SecurityKey"
+        ],
+        "summary": "List a user's registered security keys.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.ListSecurityKeyResponse"
+            }
+          },
+          "400": {
+            "description": "2: The user ID is invalid."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          },
+          "503": {
+            "description": "7: Two step verification is currently under maintenance."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "SecurityKey:ListSecurityKey"
           ]
         }
       }
@@ -966,10 +1319,10 @@
           {
             "name": "request",
             "in": "body",
-            "description": "The request body.{Roblox.TwoStepVerification.Api.EnableSMSTwoStepVerificationRequest}.",
+            "description": "The request body.{Roblox.TwoStepVerification.Api.EnableTwoStepVerificationRequest}.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableSMSTwoStepVerificationRequest"
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableTwoStepVerificationRequest"
             }
           }
         ],
@@ -1135,8 +1488,8 @@
     }
   },
   "definitions": {
-    "Roblox.TwoStepVerification.Api.EnableAuthenticatorRequest": {
-      "description": "Request parameters for enabling authenticator two step verification.",
+    "Roblox.TwoStepVerification.Api.EnableTwoStepVerificationRequest": {
+      "description": "Request parameters for enabling two step verification.",
       "type": "object",
       "properties": {
         "password": {
@@ -1287,16 +1640,6 @@
         }
       }
     },
-    "Roblox.TwoStepVerification.Api.EnableEmailTwoStepVerificationRequest": {
-      "description": "Request parameters for enabling email two step verification.",
-      "type": "object",
-      "properties": {
-        "password": {
-          "description": "The user's password.",
-          "type": "string"
-        }
-      }
-    },
     "Roblox.TwoStepVerification.Api.SendCodeRequest": {
       "description": "Request parameters for sending a two step verification code.",
       "type": "object",
@@ -1431,12 +1774,86 @@
         }
       }
     },
-    "Roblox.TwoStepVerification.Api.EnableSMSTwoStepVerificationRequest": {
-      "description": "Request parameters for enabling email two step verification.",
+    "Roblox.TwoStepVerification.Api.EnableSecurityKeyResponse": {
+      "description": "Response parameters for initiating enabling security key-based two step verification.",
+      "type": "object",
+      "properties": {
+        "creationOptions": {
+          "description": "The credential registration options for the hardware key.",
+          "type": "string"
+        },
+        "sessionId": {
+          "description": "The session of the registration attempt.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.TwoStepVerification.Api.EnableVerifySecurityKeyRequest": {
+      "description": "Request information needed to complete the registration of a security key.",
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "description": "The session of the registration attempt.",
+          "type": "string"
+        },
+        "credentialNickname": {
+          "description": "The nickname of the new credential.",
+          "type": "string"
+        },
+        "attestationResponse": {
+          "description": "The hardware key's response.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.TwoStepVerification.Api.DisableSecurityKeyRequest": {
+      "description": "Request information needed to disable two step verification.",
       "type": "object",
       "properties": {
         "password": {
           "description": "The user's password.",
+          "type": "string"
+        },
+        "credentialNicknames": {
+          "description": "A array of nicknames of credentials to be deleted.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Roblox.TwoStepVerification.Api.VerifyStartSecurityKeyResponse": {
+      "description": "Result for a successful verification.",
+      "type": "object",
+      "properties": {
+        "authenticationOptions": {
+          "description": "The authentication options for the hardware key.",
+          "type": "string"
+        },
+        "sessionId": {
+          "description": "The session of the authentication attempt.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.TwoStepVerification.Api.ListSecurityKeyResponse": {
+      "description": "Response parameters for listing all credentials under a user.",
+      "type": "object",
+      "properties": {
+        "credentialNicknames": {
+          "description": "An array of credential nicknames for a user.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Securitykey.Securitykeyservice.V1.Credential"
+          }
+        }
+      }
+    },
+    "Roblox.Securitykey.Securitykeyservice.V1.Credential": {
+      "type": "object",
+      "properties": {
+        "Nickname": {
           "type": "string"
         }
       }
