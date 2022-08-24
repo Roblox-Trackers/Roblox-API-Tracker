@@ -460,11 +460,15 @@
             "format": "int64"
           },
           {
-            "name": "outfitType",
+            "name": "costumeType",
             "in": "query",
-            "description": "The outfit type being searched for",
             "required": false,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "Invalid",
+              "Avatar",
+              "DynamicHead"
+            ]
           },
           {
             "name": "page",
