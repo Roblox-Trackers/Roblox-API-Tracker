@@ -1062,40 +1062,35 @@
       "properties": {
         "id": {
           "format": "int64",
-          "type": "integer"
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "readOnly": true
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "readOnly": true
         },
         "bundleType": {
-          "type": "string"
+          "type": "string",
+          "readOnly": true
         },
         "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Roblox.Catalog.Api.BundleItemDetailModel"
-          }
+          },
+          "readOnly": true
         },
         "creator": {
-          "$ref": "#/definitions/Roblox.Catalog.Api.BundleCreatorModel"
+          "$ref": "#/definitions/Roblox.Catalog.Api.BundleCreatorModel",
+          "readOnly": true
         },
         "product": {
-          "$ref": "#/definitions/Roblox.Catalog.Api.BundleProductModel"
-        },
-        "bundleItemStatuses": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "New",
-              "Sale",
-              "SaleTimer",
-              "Live"
-            ],
-            "type": "string"
-          }
+          "$ref": "#/definitions/Roblox.Catalog.Api.BundleProductModel",
+          "readOnly": true
         }
       }
     },
