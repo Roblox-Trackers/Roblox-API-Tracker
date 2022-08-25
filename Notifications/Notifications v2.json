@@ -1536,7 +1536,8 @@
               "GameUpdate",
               "DeveloperMetricsAvailable",
               "GroupJoinRequestAccepted",
-              "Sendr"
+              "Sendr",
+              "ExperienceInvitation"
             ],
             "type": "string"
           }
@@ -1574,7 +1575,8 @@
             "GameUpdate",
             "DeveloperMetricsAvailable",
             "GroupJoinRequestAccepted",
-            "Sendr"
+            "Sendr",
+            "ExperienceInvitation"
           ],
           "type": "string"
         },
@@ -1716,7 +1718,8 @@
             "GameUpdate",
             "DeveloperMetricsAvailable",
             "GroupJoinRequestAccepted",
-            "Sendr"
+            "Sendr",
+            "ExperienceInvitation"
           ],
           "type": "string"
         },
@@ -1754,7 +1757,8 @@
             "GameUpdate",
             "DeveloperMetricsAvailable",
             "GroupJoinRequestAccepted",
-            "Sendr"
+            "Sendr",
+            "ExperienceInvitation"
           ],
           "type": "string"
         },
@@ -1788,7 +1792,8 @@
             "GameUpdate",
             "DeveloperMetricsAvailable",
             "GroupJoinRequestAccepted",
-            "Sendr"
+            "Sendr",
+            "ExperienceInvitation"
           ],
           "type": "string"
         }
@@ -1833,7 +1838,8 @@
             "GameUpdate",
             "DeveloperMetricsAvailable",
             "GroupJoinRequestAccepted",
-            "Sendr"
+            "Sendr",
+            "ExperienceInvitation"
           ],
           "type": "string"
         },
@@ -2369,7 +2375,8 @@
             "GameUpdate",
             "DeveloperMetricsAvailable",
             "GroupJoinRequestAccepted",
-            "Sendr"
+            "Sendr",
+            "ExperienceInvitation"
           ],
           "type": "string"
         },
