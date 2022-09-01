@@ -40,40 +40,6 @@
         }
       }
     },
-    "/v1/account/settings/settings-groups": {
-      "get": {
-        "tags": [
-          "Accounts"
-        ],
-        "summary": "Used by the site and mobile apps to determine titles and locations of\r\nsettings groups such as \"Notifications\" and \"Billing\"",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Response.SettingsGroupsResponse"
-              }
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Accounts:GetSettingsGroups"
-          ]
-        }
-      }
-    },
     "/v1/app-chat-privacy": {
       "get": {
         "tags": [
@@ -952,10 +918,43 @@
             "description": "0: Authorization has been denied for this request."
           }
         },
+        "deprecated": true,
+        "properties": {
+          "internal": false,
+          "obsoleteMessage": "This is deprecated - please use GetDetailedBlockedUsers endpoint instead! This endpoint will be deleted!",
+          "metricIds": [
+            "BlockUser:GetBlockedUsers"
+          ]
+        }
+      }
+    },
+    "/v1/users/get-detailed-blocked-users": {
+      "get": {
+        "tags": [
+          "BlockUser"
+        ],
+        "summary": "Gets all blocked users with details.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.Response.GetDetailedBlockedUsersResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
         "properties": {
           "internal": false,
           "metricIds": [
-            "BlockUser:GetBlockedUsers"
+            "BlockUser:GetBlockedUsersForAccountSettingsPage"
           ]
         }
       }
@@ -1259,23 +1258,6 @@
     }
   },
   "definitions": {
-    "Roblox.AccountSettings.Api.Models.Response.SettingsGroupsResponse": {
-      "type": "object",
-      "properties": {
-        "Title": {
-          "description": "The text displayed to the user for the tab",
-          "type": "string"
-        },
-        "Url": {
-          "description": "The absolute Url of the page containing the corresponding group of settings",
-          "type": "string"
-        },
-        "Suffix": {
-          "description": "The url hash suffix",
-          "type": "string"
-        }
-      }
-    },
     "Roblox.AccountSettings.Api.Models.AccountsSettingsMetadataModel": {
       "description": "A model containing website metadata for avatars",
       "type": "object",
@@ -1313,6 +1295,48 @@
             "format": "int64",
             "type": "integer"
           }
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.Models.Response.GetDetailedBlockedUsersResponse": {
+      "description": "Response model for getting blocked users.",
+      "type": "object",
+      "properties": {
+        "blockedUsers": {
+          "description": "Other users blocked by this user.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.BlockedUser"
+          }
+        },
+        "maxBlockedUsers": {
+          "format": "int32",
+          "description": "The max number of users a user can block.",
+          "type": "integer"
+        },
+        "total": {
+          "format": "int64",
+          "description": "The total number of users this user has blocked.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.AccountSettings.Api.Models.BlockedUser": {
+      "description": "Another user that has been blocked by this user.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "format": "int64",
+          "description": "The user id of the blockee.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The user name of the blockee.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The display name of the blockee.",
+          "type": "string"
         }
       }
     },

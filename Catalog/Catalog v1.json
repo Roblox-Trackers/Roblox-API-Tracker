@@ -1085,13 +1085,17 @@
         "product": {
           "$ref": "#/definitions/Roblox.Catalog.Api.BundleProductModel"
         },
-        "bundleItemStatuses": {
+        "bundleItemRestrictions": {
           "type": "array",
           "items": {
             "enum": [
-              "New",
-              "Sale",
-              "SaleTimer",
+              "ThirteenPlus",
+              "LimitedUnique",
+              "Limited",
+              "BuildersClub",
+              "TurboBuildersClub",
+              "OutrageousBuildersClub",
+              "Rthro",
               "Live"
             ],
             "type": "string"
@@ -1564,8 +1568,7 @@
             "enum": [
               "New",
               "Sale",
-              "SaleTimer",
-              "Live"
+              "SaleTimer"
             ],
             "type": "string"
           }
@@ -1581,7 +1584,8 @@
               "BuildersClub",
               "TurboBuildersClub",
               "OutrageousBuildersClub",
-              "Rthro"
+              "Rthro",
+              "Live"
             ],
             "type": "string"
           }
