@@ -369,14 +369,6 @@
         },
         "playerAvatarType": {
           "type": "string"
-        },
-        "outfitType": {
-          "enum": [
-            "Invalid",
-            "Avatar",
-            "DynamicHead"
-          ],
-          "type": "string"
         }
       }
     },
