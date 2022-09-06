@@ -1085,7 +1085,7 @@
         "product": {
           "$ref": "#/definitions/Roblox.Catalog.Api.BundleProductModel"
         },
-        "bundleItemRestrictions": {
+        "itemRestrictions": {
           "type": "array",
           "items": {
             "enum": [
