@@ -1171,6 +1171,10 @@
         "displayName": {
           "description": "display name of the chat participant",
           "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "description": "Verified badge status of the participant.",
+          "type": "boolean"
         }
       }
     },
@@ -1606,6 +1610,10 @@
         "displayName": {
           "description": "display name of the chat participant",
           "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "description": "Verified badge status of the participant.",
+          "type": "boolean"
         }
       }
     },
