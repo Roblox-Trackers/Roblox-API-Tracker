@@ -460,6 +460,13 @@
             "format": "int64"
           },
           {
+            "name": "outfitType",
+            "in": "query",
+            "description": "The outfit type being searched for",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "page",
             "in": "query",
             "description": "The page number",
@@ -1612,6 +1619,14 @@
         },
         "playerAvatarType": {
           "type": "string"
+        },
+        "outfitType": {
+          "enum": [
+            "Invalid",
+            "Avatar",
+            "DynamicHead"
+          ],
+          "type": "string"
         }
       }
     },
@@ -1639,6 +1654,9 @@
           "$ref": "#/definitions/Roblox.Web.Responses.Avatar.ScaleModel"
         },
         "playerAvatarType": {
+          "type": "string"
+        },
+        "outfitType": {
           "type": "string"
         },
         "isEditable": {
