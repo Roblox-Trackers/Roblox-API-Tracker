@@ -1853,7 +1853,7 @@
           "example": "00000000-0000-0000-0000-000000000000"
         },
         "owner": {
-          "$ref": "#/definitions/Roblox.Games.Api.Models.Response.VerifiedBadgeUserResponse",
+          "$ref": "#/definitions/Roblox.Web.Responses.Users.SkinnyUserResponse",
           "description": "The private server owner."
         }
       }
@@ -1878,14 +1878,9 @@
         }
       }
     },
-    "Roblox.Games.Api.Models.Response.VerifiedBadgeUserResponse": {
-      "description": "A response model specific to multi-get user.",
+    "Roblox.Web.Responses.Users.SkinnyUserResponse": {
       "type": "object",
       "properties": {
-        "hasVerifiedBadge": {
-          "description": "The user's verified badge status.",
-          "type": "boolean"
-        },
         "id": {
           "format": "int64",
           "type": "integer"
@@ -3066,21 +3061,6 @@
         },
         "name": {
           "description": "Place name",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.Responses.Users.SkinnyUserResponse": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "displayName": {
           "type": "string"
         }
       }
