@@ -861,9 +861,6 @@
               "$ref": "#/definitions/Roblox.Web.Assets.IAssetResponseItem"
             }
           },
-          "400": {
-            "description": "2: invalid server request\r\n3: encoding cannot be empty"
-          },
           "404": {
             "description": "5: Asset hash cannot be empty"
           }
