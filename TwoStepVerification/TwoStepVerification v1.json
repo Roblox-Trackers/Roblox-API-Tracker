@@ -1722,6 +1722,10 @@
         "isSmsTwoStepVerificationAvailable": {
           "description": "Whether or not sms two step verification is available for the user.",
           "type": "boolean"
+        },
+        "isSecurityKeyTwoStepVerificationAvailable": {
+          "description": "Whether or not security key two step verification is available for the user.",
+          "type": "boolean"
         }
       }
     },
@@ -1810,10 +1814,6 @@
       "description": "Request information needed to disable two step verification.",
       "type": "object",
       "properties": {
-        "password": {
-          "description": "The user's password.",
-          "type": "string"
-        },
         "credentialNicknames": {
           "description": "A array of nicknames of credentials to be deleted.",
           "type": "array",
