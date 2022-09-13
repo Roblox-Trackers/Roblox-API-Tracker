@@ -1457,7 +1457,8 @@
             "QqContactImporter",
             "WeChatContactImporter",
             "ProfileShare",
-            "PhoneContactImporter"
+            "PhoneContactImporter",
+            "FriendRecommendations"
           ],
           "type": "string"
         }
@@ -1486,6 +1487,9 @@
           "type": "string"
         },
         "captchaProvider": {
+          "type": "string"
+        },
+        "challengeId": {
           "type": "string"
         }
       }
@@ -1662,7 +1666,8 @@
             "QqContactImporter",
             "WeChatContactImporter",
             "ProfileShare",
-            "PhoneContactImporter"
+            "PhoneContactImporter",
+            "FriendRecommendations"
           ],
           "type": "string"
         }
