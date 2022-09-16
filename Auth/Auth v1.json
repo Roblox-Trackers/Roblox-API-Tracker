@@ -1683,6 +1683,10 @@
           "description": "Redemption token for security questions challenge.",
           "type": "string"
         },
+        "secureAuthenticationIntent": {
+          "$ref": "#/definitions/Roblox.Authentication.Api.Models.Request.SecureAuthenticationIntentModel",
+          "description": "Secure authentication intent."
+        },
         "captchaId": {
           "type": "string"
         },
@@ -1690,6 +1694,28 @@
           "type": "string"
         },
         "captchaProvider": {
+          "type": "string"
+        },
+        "challengeId": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Authentication.Api.Models.Request.SecureAuthenticationIntentModel": {
+      "description": "Model describing secure auth intent.",
+      "type": "object",
+      "properties": {
+        "clientPublicKey": {
+          "type": "string"
+        },
+        "clientEpochTimestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "saiSignature": {
+          "type": "string"
+        },
+        "serverNonce": {
           "type": "string"
         }
       }
@@ -1841,6 +1867,9 @@
           "type": "boolean"
         },
         "IsKoreaIdVerificationEnabled": {
+          "type": "boolean"
+        },
+        "IsPasswordRequiredForUsernameChange": {
           "type": "boolean"
         }
       }
@@ -2078,6 +2107,9 @@
           "type": "string"
         },
         "captchaProvider": {
+          "type": "string"
+        },
+        "challengeId": {
           "type": "string"
         }
       }

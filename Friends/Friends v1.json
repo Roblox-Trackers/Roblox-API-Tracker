@@ -1670,6 +1670,10 @@
             "FriendRecommendations"
           ],
           "type": "string"
+        },
+        "contactName": {
+          "description": "The contact name associated with the friend request.",
+          "type": "string"
         }
       }
     },

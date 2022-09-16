@@ -2130,6 +2130,81 @@
         }
       }
     },
+    "/v1/game-thumbnails/games/{gameId}/language-codes/{languageCode}/alt-text": {
+      "post": {
+        "tags": [
+          "GameThumbnails"
+        ],
+        "summary": "Updates the game thumbnail alt text.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "description": "The game identifier.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "languageCode",
+            "in": "path",
+            "description": "The language code.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "altTextRequest",
+            "in": "body",
+            "description": "The game thumbnail alt text update request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.GameInternationalization.Api.UpdateThumbnailAltTextRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "14: Invalid game id\r\n19: New name is null or whitespaces or new name/description is too long\r\n20: New name or description is moderated\r\n22: Invalid language code\r\n26: You can't update translations for source language\r\n45: File uploaded does not match known image format\r\n53: Language is not supported for the game."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n18: You do not have permission to manage this game"
+          },
+          "429": {
+            "description": "24: Too many attempts.Please try again later."
+          },
+          "500": {
+            "description": "0: An unknown error occurred.\r\n88: Failed to filter text"
+          },
+          "503": {
+            "description": "17: Feature is disabled"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GameThumbnails:UpdateAltTextForGameThumbnail"
+          ]
+        }
+      }
+    },
     "/v1/game-thumbnails/games/{gameId}/language-codes/{languageCode}/image": {
       "post": {
         "tags": [
@@ -4241,6 +4316,9 @@
         "mediaAssetId": {
           "type": "string"
         },
+        "mediaAssetAltText": {
+          "type": "string"
+        },
         "state": {
           "enum": [
             "Approved",
@@ -4260,6 +4338,18 @@
       "type": "object",
       "properties": {
         "mediaAssetId": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.UpdateThumbnailAltTextRequest": {
+      "type": "object",
+      "properties": {
+        "thumbnailId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "altText": {
           "type": "string"
         }
       }

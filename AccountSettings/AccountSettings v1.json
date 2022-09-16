@@ -427,86 +427,6 @@
         }
       }
     },
-    "/v1/privacy": {
-      "get": {
-        "tags": [
-          "PrivacySettings"
-        ],
-        "summary": "Gets a user's privacy settings.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.PrivacyResponse"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "PrivacySettings:GetPrivacySettings"
-          ]
-        }
-      },
-      "patch": {
-        "tags": [
-          "PrivacySettings"
-        ],
-        "summary": "Updates a user's privacy settings.",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "model",
-            "in": "body",
-            "description": "{Roblox.AccountSettings.Api.UpdatePrivacyRequest}",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.UpdatePrivacyRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The user's privacy settings were successfully updated.",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "400": {
-            "description": "3: The option for that setting is invalid or does not exist."
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed\r\n1: The account is locked. Unlock the acount before performing the action.\r\n4: The user is not authorized to perform this operation."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "PrivacySettings:UpdatePrivacySettings"
-          ]
-        }
-      }
-    },
     "/v1/private-message-privacy": {
       "get": {
         "tags": [
@@ -959,86 +879,6 @@
         }
       }
     },
-    "/v1/visibility-privacy": {
-      "get": {
-        "tags": [
-          "PrivacySettings"
-        ],
-        "summary": "Get a user's visibility privacy setting",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.VisibilityPrivacyResponse"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "PrivacySettings:GetVisibilityPrivacy"
-          ]
-        }
-      },
-      "post": {
-        "tags": [
-          "PrivacySettings"
-        ],
-        "summary": "Updates a user's visibility privacy setting",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "model",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.VisibilityPrivacyRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The visibility privacy setting was successfully updated.",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "400": {
-            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.InvalidSettingOption}"
-          },
-          "403": {
-            "description": "{Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.AccountLocked}\r\n            OR\r\n            {Roblox.AccountSettings.Api.ResponseEnums.ContactSettingsErrors.SettingLockedCuratedGamesEnabled}\r\n0: Token Validation Failed"
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "PrivacySettings:UpdateVisibilityPrivacy"
-          ]
-        }
-      }
-    },
     "/v1/xbox/is-username-valid": {
       "get": {
         "tags": [
@@ -1390,42 +1230,6 @@
         }
       }
     },
-    "Roblox.AccountSettings.Api.PrivacyResponse": {
-      "description": "Response model for getting the user's privacy settings.",
-      "type": "object",
-      "properties": {
-        "phoneDiscovery": {
-          "description": "The phone discovery privacy setting.",
-          "enum": [
-            "NoOne",
-            "Friends",
-            "FriendsAndFollowing",
-            "FriendsFollowingAndFollowers",
-            "AllAuthenticatedUsers",
-            "AllUsers"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.UpdatePrivacyRequest": {
-      "description": "Request model for privacy settings update",
-      "type": "object",
-      "properties": {
-        "phoneDiscovery": {
-          "description": "The desired privacy settings for the active user.",
-          "enum": [
-            "NoOne",
-            "Friends",
-            "FriendsAndFollowing",
-            "FriendsFollowingAndFollowers",
-            "AllAuthenticatedUsers",
-            "AllUsers"
-          ],
-          "type": "string"
-        }
-      }
-    },
     "Roblox.AccountSettings.Api.AppChatPrivacyResponse": {
       "description": "Response model for getting the user's app chat privacy setting GET",
       "type": "object",
@@ -1586,28 +1390,6 @@
             "Conflict"
           ],
           "type": "string"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.VisibilityPrivacyResponse": {
-      "description": "Response model for getting the user's visibility privacy settings",
-      "type": "object",
-      "properties": {
-        "visibilityPrivacy": {
-          "format": "int32",
-          "description": "The current visibility setting for the current user",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.VisibilityPrivacyRequest": {
-      "description": "Request model for visibility privacy setting update",
-      "type": "object",
-      "properties": {
-        "visibilityPrivacy": {
-          "format": "int32",
-          "description": "The desired visibility setting for the current user",
-          "type": "integer"
         }
       }
     },

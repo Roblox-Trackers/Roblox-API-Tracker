@@ -407,7 +407,8 @@
               "Computer",
               "Phone",
               "Tablet",
-              "Console"
+              "Console",
+              "VR"
             ],
             "type": "string"
           }
@@ -631,7 +632,8 @@
               "Computer",
               "Phone",
               "Tablet",
-              "Console"
+              "Console",
+              "VR"
             ],
             "type": "string"
           }

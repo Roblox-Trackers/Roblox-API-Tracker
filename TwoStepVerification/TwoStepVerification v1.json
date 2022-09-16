@@ -841,7 +841,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+              "$ref": "#/definitions/Roblox.TwoStepVerification.Api.EnableVerifyAuthenticatorResponse"
             }
           },
           "400": {
@@ -1534,9 +1534,18 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+    "Roblox.TwoStepVerification.Api.EnableVerifyAuthenticatorResponse": {
+      "description": "Response parameters for finishing enabling authenticator-based two-step verification.",
       "type": "object",
-      "properties": {}
+      "properties": {
+        "recoveryCodes": {
+          "description": "Recovery codes automatically generated for the user (when applicable; the user should\r\nnot already have a set of recovery codes).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     },
     "Roblox.TwoStepVerification.Api.DisableTwoStepVerificationRequest": {
       "description": "Request information needed to disable two step verification.",
@@ -1551,6 +1560,10 @@
           "type": "string"
         }
       }
+    },
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object",
+      "properties": {}
     },
     "Roblox.TwoStepVerification.Api.VerifyCodeRequest": {
       "description": "Request parameters for verifying a two step verification code.",
@@ -1725,6 +1738,38 @@
         },
         "isSecurityKeyTwoStepVerificationAvailable": {
           "description": "Whether or not security key two step verification is available for the user.",
+          "type": "boolean"
+        },
+        "isAuthenticatorWithVerifiedPhoneEnabled": {
+          "description": "Whether or not someone can enable authenticator with just a verified phone number.",
+          "type": "boolean"
+        },
+        "isPasswordRequiredForEnablingSecurityKey": {
+          "description": "Whether or not a password is required for enabling Security Key 2SV.",
+          "type": "boolean"
+        },
+        "isPasswordRequiredForEnablingSms2SV": {
+          "description": "Whether or not a password is required for enabling SMS 2SV.",
+          "type": "boolean"
+        },
+        "isPasswordRequiredForChangingRecoveryCodes": {
+          "description": "Whether or not a password is required for making updates to recovery codes.",
+          "type": "boolean"
+        },
+        "isPasswordRequiredForDisablingAuthenticator": {
+          "description": "Whether or not a password is required for disabling authenticator.",
+          "type": "boolean"
+        },
+        "isPasswordRequiredForDisablingEmailTwoStepVerification": {
+          "description": "Whether or not a password is required for disabling email 2sv.",
+          "type": "boolean"
+        },
+        "isPasswordRequiredForDisablingSms2SV": {
+          "description": "Whether or not a password is required for disabling SMS 2SV.",
+          "type": "boolean"
+        },
+        "isRecoveryCodeGenerationForAuthenticatorSetupEnabled": {
+          "description": "Whether recovery code generation is attempted upon completion of authenticator setup.",
           "type": "boolean"
         }
       }
