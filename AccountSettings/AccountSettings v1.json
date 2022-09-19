@@ -1302,17 +1302,6 @@
       "properties": {
         "privateMessagePrivacy": {
           "description": "The desired private message privacy setting for the active user",
-          "enum": [
-            "Invalid",
-            "All",
-            "TopFriends",
-            "Friends",
-            "Noone",
-            "Disabled",
-            "Following",
-            "Followers",
-            "NoOne"
-          ],
           "type": "string"
         }
       }
