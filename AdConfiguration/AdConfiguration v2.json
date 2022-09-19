@@ -610,7 +610,9 @@
           "enum": [
             "Undefined",
             "AgeUnder13",
-            "Age13OrOver"
+            "Age13OrOver",
+            "Age13To16",
+            "Age17OrOver"
           ],
           "type": "string"
         },
@@ -806,7 +808,9 @@
           "enum": [
             "Undefined",
             "AgeUnder13",
-            "Age13OrOver"
+            "Age13OrOver",
+            "Age13To16",
+            "Age17OrOver"
           ],
           "type": "string"
         },
@@ -953,7 +957,9 @@
           "enum": [
             "Undefined",
             "AgeUnder13",
-            "Age13OrOver"
+            "Age13OrOver",
+            "Age13To16",
+            "Age17OrOver"
           ],
           "type": "string"
         },
@@ -1113,7 +1119,9 @@
           "enum": [
             "Undefined",
             "AgeUnder13",
-            "Age13OrOver"
+            "Age13OrOver",
+            "Age13To16",
+            "Age17OrOver"
           ],
           "type": "string"
         },
