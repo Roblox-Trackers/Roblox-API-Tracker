@@ -4723,9 +4723,6 @@
         },
         "captchaProvider": {
           "type": "string"
-        },
-        "challengeId": {
-          "type": "string"
         }
       }
     },
@@ -5450,9 +5447,6 @@
           "type": "string"
         },
         "captchaProvider": {
-          "type": "string"
-        },
-        "challengeId": {
           "type": "string"
         }
       }
