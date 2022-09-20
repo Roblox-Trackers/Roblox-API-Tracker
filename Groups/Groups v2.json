@@ -529,6 +529,9 @@
         },
         "captchaProvider": {
           "type": "string"
+        },
+        "challengeId": {
+          "type": "string"
         }
       }
     }
