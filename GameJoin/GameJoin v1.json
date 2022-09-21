@@ -351,6 +351,7 @@
           "GameJoin"
         ],
         "summary": "Endpoint to join team create session",
+        "description": "Xsrf protection disabled because it will only be used on Roblox clients. Adding an extra\r\nround-trip would impact client performance.",
         "consumes": [
           "application/json",
           "text/json",
@@ -392,6 +393,58 @@
           "internal": false,
           "metricIds": [
             "GameJoin:TeamCreate"
+          ]
+        }
+      }
+    },
+    "/v1/team-create-preemptive": {
+      "post": {
+        "tags": [
+          "GameJoin"
+        ],
+        "summary": "Endpoint to preemptively start team create session.",
+        "description": "Since the request origin might not be Roblox software, this endpoint implements a different set of security rules.\r\nMore specifically, it requires Xsrf protection and disables user-agent check so that it can be called from browsers.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "teamCreateRequest",
+            "in": "body",
+            "description": "The {Roblox.GameJoin.Api.TeamCreateRequest} in JSON format",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.GameJoin.Api.TeamCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.GameJoin.Api.TeamCreateResponse"
+            }
+          },
+          "400": {
+            "description": "-1: An unknown error occurred."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n1: Request is not authorized from specified origin.\r\n2: User is invalid or does not exist."
+          },
+          "429": {
+            "description": "3: Too many requests, please slow down."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GameJoin:TeamCreatePreemptive"
           ]
         }
       }
