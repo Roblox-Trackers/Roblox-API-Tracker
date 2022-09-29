@@ -3808,7 +3808,7 @@
           "type": "string"
         },
         "hasVerifiedBadge": {
-          "description": "The users's verified badge status.",
+          "description": "The user's verified badge status.",
           "type": "boolean"
         },
         "userId": {
@@ -4612,27 +4612,12 @@
       "type": "object",
       "properties": {
         "requester": {
-          "$ref": "#/definitions/Roblox.Web.Responses.Users.LegacyUserResponse",
+          "$ref": "#/definitions/Roblox.Groups.Api.Models.Response.UserModel",
           "description": "The requester"
         },
         "created": {
           "format": "date-time",
           "description": "The DateTime the request was created",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.Responses.Users.LegacyUserResponse": {
-      "type": "object",
-      "properties": {
-        "userId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "username": {
-          "type": "string"
-        },
-        "displayName": {
           "type": "string"
         }
       }
