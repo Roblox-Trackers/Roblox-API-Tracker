@@ -1886,19 +1886,21 @@
       "description": "Response parameters for listing all credentials under a user.",
       "type": "object",
       "properties": {
-        "credentialNicknames": {
-          "description": "An array of credential nicknames for a user.",
+        "credentials": {
+          "description": "An array of credentials for a user.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Securitykey.Securitykeyservice.V1.Credential"
+            "$ref": "#/definitions/Roblox.TwoStepVerification.Api.SecurityKeyCredential"
           }
         }
       }
     },
-    "Roblox.Securitykey.Securitykeyservice.V1.Credential": {
+    "Roblox.TwoStepVerification.Api.SecurityKeyCredential": {
+      "description": "Credential information that includes its nickname and any additional metadata.",
       "type": "object",
       "properties": {
-        "Nickname": {
+        "nickname": {
+          "description": "Nickname the user has chosen for this credential.",
           "type": "string"
         }
       }
