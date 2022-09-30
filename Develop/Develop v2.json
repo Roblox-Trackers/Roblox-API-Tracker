@@ -173,56 +173,6 @@
           ]
         }
       }
-    },
-    "/v2/teamtest/{placeId}": {
-      "delete": {
-        "tags": [
-          "TeamTest"
-        ],
-        "summary": "Close a game instance that is being used for team testing",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "placeId",
-            "in": "path",
-            "description": "The Id of the place we are setting the metadata for.",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "gameId",
-            "in": "query",
-            "description": "the Guid of the game instance {System.Guid}",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed"
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "TeamTestV2:CloseTeamTestGame"
-          ]
-        }
-      }
     }
   },
   "definitions": {
@@ -309,10 +259,6 @@
             "type": "string"
           }
         },
-        "maxPlayersAllowed": {
-          "format": "int32",
-          "type": "integer"
-        },
         "id": {
           "format": "int64",
           "description": "Returns the place id.",
@@ -371,10 +317,6 @@
           "type": "boolean"
         }
       }
-    },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object",
-      "properties": {}
     },
     "Roblox.Api.Develop.Models.UniverseSettingsRequestV2": {
       "description": "Model for UniverseSettings patch requests",
