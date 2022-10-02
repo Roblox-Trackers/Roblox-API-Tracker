@@ -97,6 +97,43 @@
         }
       }
     },
+    "/v1/game-start-info": {
+      "get": {
+        "tags": [
+          "Avatar"
+        ],
+        "summary": "The server will call this on game server start to request general information about the universe\r\nThis is version 1.1, which returns an entry from the UniverseAvatarType enum.\r\nDuring mixed mode this may return unreliable results.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Avatar.Models.GameStartInfoResponse"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Avatar:GetUniverseGameStartInfoEnum"
+          ]
+        }
+      }
+    },
     "/v1/outfits/{userOutfitId}/details": {
       "get": {
         "tags": [
@@ -1519,6 +1556,60 @@
             "R15"
           ],
           "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Avatar.Models.GameStartInfoResponse": {
+      "type": "object",
+      "properties": {
+        "gameAvatarType": {
+          "type": "string"
+        },
+        "allowCustomAnimations": {
+          "type": "string"
+        },
+        "universeAvatarCollisionType": {
+          "type": "string"
+        },
+        "universeAvatarBodyType": {
+          "type": "string"
+        },
+        "jointPositioningType": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "universeAvatarMinScales": {
+          "$ref": "#/definitions/Roblox.Web.Responses.Avatar.ScaleModel"
+        },
+        "universeAvatarMaxScales": {
+          "$ref": "#/definitions/Roblox.Web.Responses.Avatar.ScaleModel"
+        },
+        "universeAvatarAssetOverrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Platform.UniverseSettings.UniverseAvatarAssetOverrideResponseModel"
+          }
+        },
+        "moderationStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Platform.UniverseSettings.UniverseAvatarAssetOverrideResponseModel": {
+      "type": "object",
+      "properties": {
+        "assetID": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "assetTypeID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isPlayerChoice": {
+          "type": "boolean"
         }
       }
     },
