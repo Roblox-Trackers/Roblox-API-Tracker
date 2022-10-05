@@ -1054,6 +1054,51 @@
           ]
         }
       }
+    },
+    "/v1/topic/get-topics": {
+      "post": {
+        "tags": [
+          "TopicDiscovery"
+        ],
+        "summary": "",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Roblox.Catalog.Api.Topics.TopicRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Catalog.Api.Topics.TopicResponse"
+            }
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "TopicDiscovery:GetTopics"
+          ]
+        }
+      }
     }
   },
   "definitions": {
@@ -1717,6 +1762,96 @@
         "moreFavorites": {
           "description": "True if there exists a next page of favorited bundles.",
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Catalog.Api.Topics.TopicRequestModel": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Marketplacetopicdiscovery.Topicdiscoveryservice.V1Beta1.AvatarItem"
+          }
+        },
+        "selectTopics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inputQuery": {
+          "type": "string"
+        },
+        "maxResult": {
+          "format": "int32",
+          "description": "Maximum number of topic results returned from the server.",
+          "type": "integer"
+        },
+        "genderType": {
+          "enum": [
+            "Unknown",
+            "Male",
+            "Female"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Marketplacetopicdiscovery.Topicdiscoveryservice.V1Beta1.AvatarItem": {
+      "type": "object",
+      "properties": {
+        "TargetId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "ItemType": {
+          "enum": [
+            "Invalid",
+            "Asset",
+            "Bundle"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Catalog.Api.Topics.TopicResponse": {
+      "type": "object",
+      "properties": {
+        "topics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Catalog.Api.Topics.TopicModel"
+          }
+        },
+        "error": {
+          "$ref": "#/definitions/Roblox.Marketplacetopicdiscovery.Topicdiscoveryservice.V1Beta1.Error"
+        }
+      }
+    },
+    "Roblox.Catalog.Api.Topics.TopicModel": {
+      "description": "Response model for avatar topics",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "description": "The display topic name.",
+          "type": "string"
+        },
+        "originalTopicName": {
+          "description": "The original topic name stored in the table.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Marketplacetopicdiscovery.Topicdiscoveryservice.V1Beta1.Error": {
+      "type": "object",
+      "properties": {
+        "Message": {
+          "type": "string"
+        },
+        "Code": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     }
