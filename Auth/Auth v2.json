@@ -1396,6 +1396,11 @@
           "description": "Credentials password.",
           "type": "string"
         },
+        "userId": {
+          "format": "int64",
+          "description": "Optional User Id",
+          "type": "integer"
+        },
         "securityQuestionSessionId": {
           "description": "Session ID for security questions challenge.",
           "type": "string"
