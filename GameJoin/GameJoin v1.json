@@ -488,7 +488,7 @@
           "type": "boolean"
         },
         "channelName": {
-          "description": "String representing channel name in RCC Channel 2.0. \r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature. \r\nFor other users, this field should be null, otherwise the request will be rejected.",
+          "description": "String representing channel name in RCC Channel 2.0.\r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature.\r\nFor other users, this field should be null, otherwise the request will be rejected.",
           "type": "string"
         }
       }
@@ -580,6 +580,9 @@
         },
         "DisplayName": {
           "type": "string"
+        },
+        "HasVerifiedBadge": {
+          "type": "boolean"
         },
         "SeleniumTestMode": {
           "type": "boolean"
@@ -760,7 +763,7 @@
           "type": "boolean"
         },
         "channelName": {
-          "description": "String representing channel name in RCC Channel 2.0. \r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature. \r\nFor other users, this field should be null, otherwise the request will be rejected.",
+          "description": "String representing channel name in RCC Channel 2.0.\r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature.\r\nFor other users, this field should be null, otherwise the request will be rejected.",
           "type": "string"
         }
       }
@@ -810,7 +813,7 @@
           "type": "boolean"
         },
         "channelName": {
-          "description": "String representing channel name in RCC Channel 2.0. \r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature. \r\nFor other users, this field should be null, otherwise the request will be rejected.",
+          "description": "String representing channel name in RCC Channel 2.0.\r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature.\r\nFor other users, this field should be null, otherwise the request will be rejected.",
           "type": "string"
         }
       }
@@ -856,7 +859,7 @@
           "type": "boolean"
         },
         "channelName": {
-          "description": "String representing channel name in RCC Channel 2.0. \r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature. \r\nFor other users, this field should be null, otherwise the request will be rejected.",
+          "description": "String representing channel name in RCC Channel 2.0.\r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature.\r\nFor other users, this field should be null, otherwise the request will be rejected.",
           "type": "string"
         }
       }
@@ -903,7 +906,7 @@
           "type": "boolean"
         },
         "channelName": {
-          "description": "String representing channel name in RCC Channel 2.0. \r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature. \r\nFor other users, this field should be null, otherwise the request will be rejected.",
+          "description": "String representing channel name in RCC Channel 2.0.\r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature.\r\nFor other users, this field should be null, otherwise the request will be rejected.",
           "type": "string"
         }
       }
@@ -951,7 +954,7 @@
           "type": "boolean"
         },
         "channelName": {
-          "description": "String representing channel name in RCC Channel 2.0. \r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature. \r\nFor other users, this field should be null, otherwise the request will be rejected.",
+          "description": "String representing channel name in RCC Channel 2.0.\r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature.\r\nFor other users, this field should be null, otherwise the request will be rejected.",
           "type": "string"
         }
       }
@@ -993,7 +996,7 @@
           "type": "boolean"
         },
         "channelName": {
-          "description": "String representing channel name in RCC Channel 2.0. \r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature. \r\nFor other users, this field should be null, otherwise the request will be rejected.",
+          "description": "String representing channel name in RCC Channel 2.0.\r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature.\r\nFor other users, this field should be null, otherwise the request will be rejected.",
           "type": "string"
         }
       }
@@ -1059,7 +1062,7 @@
           "type": "boolean"
         },
         "channelName": {
-          "description": "String representing channel name in RCC Channel 2.0. \r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature. \r\nFor other users, this field should be null, otherwise the request will be rejected.",
+          "description": "String representing channel name in RCC Channel 2.0.\r\nNote: Only internal users (email address ending in roblox.com and verified) can use this feature.\r\nFor other users, this field should be null, otherwise the request will be rejected.",
           "type": "string"
         }
       }

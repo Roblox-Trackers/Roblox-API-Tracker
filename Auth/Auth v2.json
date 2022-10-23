@@ -2023,6 +2023,10 @@
           "description": "IdentityVerificationResultToken",
           "type": "string"
         },
+        "secureAuthenticationIntent": {
+          "$ref": "#/definitions/Roblox.Authentication.Api.Models.Request.SecureAuthenticationIntentModel",
+          "description": "Secure authentication intent."
+        },
         "captchaId": {
           "type": "string"
         },

@@ -4539,6 +4539,9 @@
         "isPaidItemTradingAllowed": {
           "type": "boolean"
         },
+        "areAdsAllowed": {
+          "type": "boolean"
+        },
         "allowedExternalLinkReferences": {
           "type": "array",
           "items": {
