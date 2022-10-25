@@ -879,65 +879,6 @@
         }
       }
     },
-    "/v1/xbox/is-username-valid": {
-      "get": {
-        "tags": [
-          "Xbox"
-        ],
-        "summary": "Determines whether the username requested is valid.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "The authorization header.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "Signature",
-            "in": "header",
-            "description": "The signature header.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "request.username",
-            "in": "query",
-            "description": "The username to run the validation against.",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Roblox.AccountSettings.Api.Models.UsernameValidationResponse"
-            }
-          },
-          "403": {
-            "description": "If this endpoint was called with an authenticated user in context."
-          },
-          "400": {
-            "description": "If this endpoint was called with wrong arguments."
-          },
-          "500": {
-            "description": "If an unknown error has occured."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Xbox:IsUsernameValid"
-          ]
-        }
-      }
-    },
     "/v1/email/verify": {
       "post": {
         "tags": [
@@ -1505,49 +1446,6 @@
             "Low",
             "Medium",
             "High"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.Models.UsernameValidationRequest": {
-      "description": "A request model for username validation",
-      "type": "object",
-      "properties": {
-        "username": {
-          "description": "The username to run the validation against.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.AccountSettings.Api.Models.UsernameValidationResponse": {
-      "description": "A class representing response for Username validation",
-      "type": "object",
-      "properties": {
-        "isValid": {
-          "description": "Returns true if  the username is valid.",
-          "type": "boolean"
-        },
-        "errorMessage": {
-          "description": "Gets the error message.",
-          "type": "string"
-        },
-        "errorCode": {
-          "description": "Gets the error code.",
-          "enum": [
-            "UserNameValid",
-            "UserNameAlreadyInUseErrorCode",
-            "UserNameModerationErrorCode",
-            "UserNameLengthErrorCode",
-            "UserNameStartEndUnderscoreErrorCode",
-            "UserNameAtMostUnderscoreErrorCode",
-            "UserNameNoSpaceErrorCode",
-            "UserNameAllowedCharErrorCode",
-            "UnknownErrorCode",
-            "UsernameNull",
-            "UsernameContainsPii",
-            "InvalidBirthDateForUsername",
-            "UsernameContainsReservedUsername"
           ],
           "type": "string"
         }
