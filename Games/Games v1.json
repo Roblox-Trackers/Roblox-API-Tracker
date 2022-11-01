@@ -2758,7 +2758,8 @@
             "ComplianceBlocked",
             "ContextualPlayabilityRegionalAvailability",
             "ContextualPlayabilityRegionalCompliance",
-            "ContextualPlayabilityAgeRecommendationParentalControls"
+            "ContextualPlayabilityAgeRecommendationParentalControls",
+            "ContextualPlayabilityAgeGated"
           ],
           "type": "string"
         },
