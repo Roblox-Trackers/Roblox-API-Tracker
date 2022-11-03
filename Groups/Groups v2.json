@@ -469,7 +469,7 @@
           "type": "string"
         },
         "hasVerifiedBadge": {
-          "description": "The user's verified badge status.",
+          "description": "The users's verified badge status.",
           "type": "boolean"
         },
         "userId": {
