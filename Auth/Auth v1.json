@@ -1911,8 +1911,8 @@
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
             "ValidPassword",
-            "WeakPasswordError",
             "ShortPasswordError",
+            "WeakPasswordError",
             "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
             "DumbStringsError"
@@ -2267,8 +2267,7 @@
             "Resale",
             "PasswordReset",
             "RevertAccount",
-            "Generic",
-            "GenericWithRecoveryCodes"
+            "Generic"
           ],
           "type": "string"
         }
@@ -2304,8 +2303,7 @@
             "Resale",
             "PasswordReset",
             "RevertAccount",
-            "Generic",
-            "GenericWithRecoveryCodes"
+            "Generic"
           ],
           "type": "string"
         }
