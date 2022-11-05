@@ -2149,8 +2149,7 @@
             "Resale",
             "PasswordReset",
             "RevertAccount",
-            "Generic",
-            "GenericWithRecoveryCodes"
+            "Generic"
           ],
           "type": "string"
         }
@@ -2186,8 +2185,7 @@
             "Resale",
             "PasswordReset",
             "RevertAccount",
-            "Generic",
-            "GenericWithRecoveryCodes"
+            "Generic"
           ],
           "type": "string"
         }
