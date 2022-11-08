@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "TranslationRoles Api v1",
-    "version": "v1"
+    "version": "v1",
+    "title": "TranslationRoles Api v1"
   },
   "host": "translationroles.roblox.com",
   "schemes": [
@@ -15,14 +15,15 @@
           "GameLocalizationRoles"
         ],
         "summary": "Retrieves the list of roles granted to current logged-in user",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "gameId",
+            "in": "path",
             "description": "The id of the game",
             "required": true,
             "type": "integer",
@@ -60,23 +61,24 @@
           "GameLocalizationRoles"
         ],
         "summary": "Gets list of users assigned a specific role in a game.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "gameId",
+            "in": "path",
             "description": "The id of the game",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "in": "path",
             "name": "role",
-            "description": "The Roblox.GameLocalization.Client.GameLocalizationRoles.GameLocalizationRoleType",
+            "in": "path",
+            "description": "The {Roblox.GameLocalization.Client.GameLocalizationRoles.GameLocalizationRoleType}",
             "required": true,
             "type": "string",
             "enum": [
@@ -118,15 +120,16 @@
           "GameLocalizationRoles"
         ],
         "summary": "Gets the list of games and associated role assignment info for the requested user and role.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "role",
-            "description": "The Roblox.GameLocalization.Client.GameLocalizationRoles.GameLocalizationRoleType",
+            "in": "path",
+            "description": "The {Roblox.GameLocalization.Client.GameLocalizationRoles.GameLocalizationRoleType}",
             "required": true,
             "type": "string",
             "enum": [
@@ -134,15 +137,17 @@
             ]
           },
           {
-            "in": "query",
             "name": "exclusiveStartKey",
+            "in": "query",
             "description": "Part of pagination. Last primary key of returned items in previous operation.",
+            "required": false,
             "type": "string"
           },
           {
-            "in": "query",
             "name": "pageSize",
+            "in": "query",
             "description": "Part of pagination. Maximum number of items that might be returned in the page.",
+            "required": false,
             "type": "integer",
             "format": "int32"
           }
@@ -182,10 +187,9 @@
         ],
         "summary": "Assigns or revokes a role",
         "consumes": [
-          "application/json-patch+json",
           "application/json",
           "text/json",
-          "application/*+json"
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -193,16 +197,16 @@
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "gameId",
+            "in": "path",
             "description": "The id of the game",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "in": "body",
             "name": "request",
+            "in": "body",
             "description": "The request body",
             "required": true,
             "schema": {
@@ -243,32 +247,14 @@
     }
   },
   "definitions": {
-    "Roblox.GameLocalization.Client.GameLocalizationRoles.Assignee": {
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.TranslationRoles.Api.Assignee]": {
       "type": "object",
       "properties": {
-        "assigneeType": {
-          "enum": [
-            "user",
-            "group",
-            "groupRole"
-          ],
-          "type": "string"
-        },
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.GameLocalization.Client.GameLocalizationRoles.GameLocalizationRoleAssignment": {
-      "type": "object",
-      "properties": {
-        "gameId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "assignee": {
-          "$ref": "#/definitions/Roblox.GameLocalization.Client.GameLocalizationRoles.Assignee"
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.TranslationRoles.Api.Assignee"
+          }
         }
       }
     },
@@ -292,24 +278,14 @@
         }
       }
     },
-    "Roblox.TranslationRoles.Api.GetGameLocalizationRoleAssignmentsForUserResponse": {
-      "description": "Response model containing a list of games and associated role assignment info for the requested user and role.",
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[System.String]": {
       "type": "object",
       "properties": {
-        "games": {
-          "description": "List of games with associated role assignment info.",
+        "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.GameLocalization.Client.GameLocalizationRoles.GameLocalizationRoleAssignment"
+            "type": "string"
           }
-        },
-        "previousPageCursor": {
-          "description": "Cursor which can be used for navigating to previous page.",
-          "type": "string"
-        },
-        "nextPageCursor": {
-          "description": "Cursor which can be used for navigating to next page.",
-          "type": "string"
         }
       }
     },
@@ -345,27 +321,56 @@
       }
     },
     "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object"
+      "type": "object",
+      "properties": {}
     },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.TranslationRoles.Api.Assignee]": {
+    "Roblox.TranslationRoles.Api.GetGameLocalizationRoleAssignmentsForUserResponse": {
+      "description": "Response model containing a list of games and associated role assignment info for the requested user and role.",
       "type": "object",
       "properties": {
-        "data": {
+        "games": {
+          "description": "List of games with associated role assignment info.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.TranslationRoles.Api.Assignee"
+            "$ref": "#/definitions/Roblox.GameLocalization.Client.GameLocalizationRoles.GameLocalizationRoleAssignment"
           }
+        },
+        "previousPageCursor": {
+          "description": "Cursor which can be used for navigating to previous page.",
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "description": "Cursor which can be used for navigating to next page.",
+          "type": "string"
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[System.String]": {
+    "Roblox.GameLocalization.Client.GameLocalizationRoles.GameLocalizationRoleAssignment": {
       "type": "object",
       "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "gameId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "assignee": {
+          "$ref": "#/definitions/Roblox.GameLocalization.Client.GameLocalizationRoles.Assignee"
+        }
+      }
+    },
+    "Roblox.GameLocalization.Client.GameLocalizationRoles.Assignee": {
+      "type": "object",
+      "properties": {
+        "assigneeType": {
+          "enum": [
+            "user",
+            "group",
+            "groupRole"
+          ],
+          "type": "string"
+        },
+        "id": {
+          "format": "int64",
+          "type": "integer"
         }
       }
     }
