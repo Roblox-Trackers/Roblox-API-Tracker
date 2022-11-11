@@ -857,10 +857,13 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Authentication.Api.Models.XboxConnectionModel"
             }
+          },
+          "403": {
+            "description": ""
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -870,6 +873,43 @@
           "internal": false,
           "metricIds": [
             "Xbox:GetConnection"
+          ]
+        }
+      }
+    },
+    "/v1/xbox/get-login-consecutive-days": {
+      "get": {
+        "tags": [
+          "Xbox"
+        ],
+        "summary": "Get the consecutive days the xbox user has been logged in.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Authentication.Api.Models.XboxLoginConsecutiveDaysResponse"
+            }
+          },
+          "403": {
+            "description": ""
+          },
+          "400": {
+            "description": "36: Invalid Xbox Live Account"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Xbox:GetXboxUserLoginConsecutiveDays"
           ]
         }
       }
@@ -1582,14 +1622,14 @@
         ],
         "parameters": [],
         "responses": {
-          "403": {
-            "description": "Forbidden\r\n0: Token Validation Failed"
-          },
           "200": {
-            "description": "OK",
+            "description": "Account is successfully disconnected",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiSuccessResponse"
             }
+          },
+          "403": {
+            "description": "Forbidden\r\n0: Token Validation Failed"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -1599,6 +1639,56 @@
           "internal": false,
           "metricIds": [
             "Xbox:Disconnect"
+          ]
+        }
+      }
+    },
+    "/v1/xbox/translate": {
+      "post": {
+        "tags": [
+          "Xbox"
+        ],
+        "summary": "Translate the xbox user to roblox user.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Authentication.Api.Models.XboxCollectionsOfUserResponse"
+            }
+          },
+          "403": {
+            "description": "\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Xbox:TranslateGamerTags"
           ]
         }
       }
@@ -1910,9 +2000,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
+            "ShortPasswordError",
             "ValidPassword",
             "WeakPasswordError",
-            "ShortPasswordError",
             "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
             "DumbStringsError"
@@ -2355,9 +2445,9 @@
         "code": {
           "description": "The {Roblox.Authentication.Api.Models.UsernameValidationStatus} of the username validation.",
           "enum": [
-            "ValidUsername",
             "AlreadyInUseError",
             "ModerationError",
+            "ValidUsername",
             "InvalidLengthError",
             "StartsOrEndsWithUnderscoreError",
             "TooManyUnderscoresError",
@@ -2475,6 +2565,46 @@
         "hasConnectedXboxAccount": {
           "description": "Whether the current user has Xbox account connected.",
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Authentication.Api.Models.XboxLoginConsecutiveDaysResponse": {
+      "description": "The information representing the count of Xbox login consecutive days.",
+      "type": "object",
+      "properties": {
+        "count": {
+          "format": "int32",
+          "description": "The count of Xbox log in consecutive days",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Authentication.Api.Models.XboxCollectionsOfUserResponse": {
+      "description": "The information representing a collection of users",
+      "type": "object",
+      "properties": {
+        "Users": {
+          "description": "Xbox users",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Authentication.Api.Models.XboxUserModel"
+          }
+        }
+      }
+    },
+    "Roblox.Authentication.Api.Models.XboxUserModel": {
+      "description": "A model containing information about Xbox User.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "type": "string"
+        },
+        "UserId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Username": {
+          "type": "string"
         }
       }
     }
