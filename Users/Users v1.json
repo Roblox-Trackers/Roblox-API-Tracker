@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1",
-    "title": "Users Api v1"
+    "title": "Users Api v1",
+    "version": "v1"
   },
   "host": "users.roblox.com",
   "schemes": [
@@ -15,25 +15,25 @@
           "DisplayNames"
         ],
         "summary": "Validate a display name for a new user.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "displayName",
             "in": "query",
+            "name": "displayName",
             "description": "The display name.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "birthdate",
             "in": "query",
+            "name": "birthdate",
             "description": "The new user's birthdate",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           }
         ],
         "responses": {
@@ -64,15 +64,14 @@
           "Users"
         ],
         "summary": "Gets detailed user information by id.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "The user id.",
             "required": true,
             "type": "integer",
@@ -104,23 +103,22 @@
           "DisplayNames"
         ],
         "summary": "Validate a display name for an existing user.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "The user id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "displayName",
             "in": "query",
+            "name": "displayName",
             "description": "The display name.",
             "required": true,
             "type": "string"
@@ -160,25 +158,23 @@
           "Usernames"
         ],
         "summary": "Retrieves the username history for a particular user.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "limit",
             "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "name": "limit",
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -190,17 +186,15 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
           },
           {
-            "name": "sortOrder",
             "in": "query",
+            "name": "sortOrder",
             "description": "The order the results are sorted in.",
-            "required": false,
             "type": "string",
             "default": "Asc",
             "enum": [
@@ -234,12 +228,10 @@
           "Users"
         ],
         "summary": "Gets the minimal authenticated user.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -265,12 +257,10 @@
           "Users"
         ],
         "summary": "Gets the age bracket of the authenticated user.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -296,12 +286,10 @@
           "Users"
         ],
         "summary": "Gets the country code of the authenticated user.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -326,13 +314,11 @@
         "tags": [
           "Users"
         ],
-        "summary": "Gets the (public) roles of the authenticated user, such as \"Soothsayer\" and \"BetaTester\".",
-        "consumes": [],
+        "summary": "Gets the (public) roles of the authenticated user, such as `\"Soothsayer\"` and `\"BetaTester\"`.",
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -358,24 +344,22 @@
           "UserSearch"
         ],
         "summary": "Searches for users by keyword.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "keyword",
             "in": "query",
+            "name": "keyword",
             "description": "The search keyword.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "limit",
             "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "name": "limit",
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -387,10 +371,9 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
           }
         ],
@@ -424,9 +407,10 @@
         "summary": "Get users by usernames.",
         "description": "This endpoint will also check previous usernames.\r\nDoes not require X-CSRF-Token protection because this is essentially a get request but as a POST to avoid URI limits.",
         "consumes": [
+          "application/json-patch+json",
           "application/json",
           "text/json",
-          "application/x-www-form-urlencoded"
+          "application/*+json"
         ],
         "produces": [
           "application/json",
@@ -434,9 +418,9 @@
         ],
         "parameters": [
           {
-            "name": "request",
             "in": "body",
-            "description": "The {Roblox.Users.Api.MultiGetByUsernameRequest}.",
+            "name": "request",
+            "description": "The Roblox.Users.Api.MultiGetByUsernameRequest.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Users.Api.MultiGetByUsernameRequest"
@@ -470,9 +454,10 @@
         "summary": "Get users by ids.",
         "description": "Does not require X-CSRF-Token protection because this is essentially a get request but as a POST to avoid URI limits.",
         "consumes": [
+          "application/json-patch+json",
           "application/json",
           "text/json",
-          "application/x-www-form-urlencoded"
+          "application/*+json"
         ],
         "produces": [
           "application/json",
@@ -480,9 +465,9 @@
         ],
         "parameters": [
           {
-            "name": "request",
             "in": "body",
-            "description": "The {Roblox.Users.Api.MultiGetByUserIdRequest}.",
+            "name": "request",
+            "description": "The Roblox.Users.Api.MultiGetByUserIdRequest.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Users.Api.MultiGetByUserIdRequest"
@@ -515,9 +500,10 @@
         ],
         "summary": "Set the display name for the authorized user.",
         "consumes": [
+          "application/json-patch+json",
           "application/json",
           "text/json",
-          "application/x-www-form-urlencoded"
+          "application/*+json"
         ],
         "produces": [
           "application/json",
@@ -525,17 +511,17 @@
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "the user id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": "{Roblox.Users.Api.SetDisplayNameRequest}",
+            "name": "request",
+            "description": "Roblox.Users.Api.SetDisplayNameRequest",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Users.Api.SetDisplayNameRequest"
@@ -572,20 +558,6 @@
     }
   },
   "definitions": {
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object",
-      "properties": {}
-    },
-    "Roblox.Users.Api.SetDisplayNameRequest": {
-      "description": "Request model for changing a display name.",
-      "type": "object",
-      "properties": {
-        "newDisplayName": {
-          "description": "The users new display name.",
-          "type": "string"
-        }
-      }
-    },
     "Roblox.Paging.ExclusiveStartKeyCursor[System.Nullable[System.Int64]]": {
       "type": "object",
       "properties": {
@@ -620,70 +592,19 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Users.Api.UsernameHistoryResponse]": {
+    "Roblox.Paging.StartIndexCursor": {
       "type": "object",
       "properties": {
-        "previousPageCursor": {
+        "startIndex": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "discriminator": {
           "type": "string"
         },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Users.Api.UsernameHistoryResponse"
-          }
-        }
-      }
-    },
-    "Roblox.Users.Api.UsernameHistoryResponse": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "A past username belonging to a particular userId",
-          "type": "string"
-        }
-      }
-    },
-    "System.Threading.CancellationToken": {
-      "type": "object",
-      "properties": {
-        "IsCancellationRequested": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "CanBeCanceled": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "WaitHandle": {
-          "$ref": "#/definitions/System.Threading.WaitHandle",
-          "readOnly": true
-        }
-      }
-    },
-    "System.Threading.WaitHandle": {
-      "type": "object",
-      "properties": {
-        "Handle": {
-          "type": "object"
-        },
-        "SafeWaitHandle": {
-          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
-        }
-      }
-    },
-    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
-      "type": "object",
-      "properties": {
-        "IsInvalid": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "IsClosed": {
-          "type": "boolean",
-          "readOnly": true
+        "count": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -703,43 +624,6 @@
         "displayName": {
           "description": "The user DisplayName.",
           "type": "string"
-        }
-      }
-    },
-    "Roblox.Users.Api.UserAgeBracketResponse": {
-      "description": "A user age bracket response model.",
-      "type": "object",
-      "properties": {
-        "ageBracket": {
-          "description": "The age bracket of the user.",
-          "enum": [
-            "Age13OrOver",
-            "AgeUnder13"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Users.Api.UserCountryCodeResponse": {
-      "description": "A user country code response model.",
-      "type": "object",
-      "properties": {
-        "countryCode": {
-          "description": "The country code of the user.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Users.Api.UserRolesResponse": {
-      "description": "A user roles response model.",
-      "type": "object",
-      "properties": {
-        "roles": {
-          "description": "The roles of the user.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     },
@@ -801,40 +685,6 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.VerifiedBadgeUserResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Users.Api.VerifiedBadgeUserResponse"
-          }
-        }
-      }
-    },
-    "Roblox.Users.Api.VerifiedBadgeUserResponse": {
-      "description": "A response model specific to multi-get user.",
-      "type": "object",
-      "properties": {
-        "hasVerifiedBadge": {
-          "description": "The user's verified badge status.",
-          "type": "boolean"
-        },
-        "id": {
-          "format": "int64",
-          "description": "The user Id.",
-          "type": "integer"
-        },
-        "name": {
-          "description": "The user name.",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "The user DisplayName.",
-          "type": "string"
-        }
-      }
-    },
     "Roblox.Users.Api.MultiGetByUsernameRequest": {
       "description": "Request model for getting users by usernames.",
       "type": "object",
@@ -849,17 +699,6 @@
         "excludeBannedUsers": {
           "description": "Whether or not the response should exclude banned users",
           "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.MultiGetUserByNameResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Users.Api.MultiGetUserByNameResponse"
-          }
         }
       }
     },
@@ -890,35 +729,49 @@
         }
       }
     },
-    "Roblox.Paging.StartIndexCursor": {
+    "Roblox.Users.Api.SetDisplayNameRequest": {
+      "description": "Request model for changing a display name.",
       "type": "object",
       "properties": {
-        "startIndex": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "discriminator": {
+        "newDisplayName": {
+          "description": "The users new display name.",
           "type": "string"
-        },
-        "count": {
-          "format": "int32",
-          "type": "integer"
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Users.Api.UserSearchResponse]": {
+    "Roblox.Users.Api.UserAgeBracketResponse": {
+      "description": "A user age bracket response model.",
       "type": "object",
       "properties": {
-        "previousPageCursor": {
+        "ageBracket": {
+          "description": "The age bracket of the user.",
+          "enum": [
+            "Age13OrOver",
+            "AgeUnder13"
+          ],
           "type": "string"
-        },
-        "nextPageCursor": {
+        }
+      }
+    },
+    "Roblox.Users.Api.UserCountryCodeResponse": {
+      "description": "A user country code response model.",
+      "type": "object",
+      "properties": {
+        "countryCode": {
+          "description": "The country code of the user.",
           "type": "string"
-        },
-        "data": {
+        }
+      }
+    },
+    "Roblox.Users.Api.UserRolesResponse": {
+      "description": "A user roles response model.",
+      "type": "object",
+      "properties": {
+        "roles": {
+          "description": "The roles of the user.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Users.Api.UserSearchResponse"
+            "type": "string"
           }
         }
       }
@@ -950,6 +803,97 @@
         "displayName": {
           "description": "The user DisplayName.",
           "type": "string"
+        }
+      }
+    },
+    "Roblox.Users.Api.UsernameHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "A past username belonging to a particular userId",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Users.Api.VerifiedBadgeUserResponse": {
+      "description": "A response model specific to multi-get user.",
+      "type": "object",
+      "properties": {
+        "hasVerifiedBadge": {
+          "description": "The user's verified badge status.",
+          "type": "boolean"
+        },
+        "id": {
+          "format": "int64",
+          "description": "The user Id.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The user name.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The user DisplayName.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object"
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.MultiGetUserByNameResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Users.Api.MultiGetUserByNameResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Users.Api.VerifiedBadgeUserResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Users.Api.VerifiedBadgeUserResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Users.Api.UserSearchResponse]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Users.Api.UserSearchResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Users.Api.UsernameHistoryResponse]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Users.Api.UsernameHistoryResponse"
+          }
         }
       }
     }
