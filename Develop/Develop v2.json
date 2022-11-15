@@ -304,7 +304,8 @@
               "Navigation",
               "Musical",
               "Social",
-              "Building"
+              "Building",
+              "PersonalTransport"
             ],
             "type": "string"
           }
