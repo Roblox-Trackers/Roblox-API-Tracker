@@ -625,44 +625,6 @@
         }
       }
     },
-    "/ownership/hasasset": {
-      "get": {
-        "tags": [
-          "Ownership"
-        ],
-        "summary": "Checks if a user owns the specified asset.",
-        "operationId": "Ownership_HasAsset",
-        "parameters": [
-          {
-            "type": "integer",
-            "name": "userId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the user.",
-            "format": "int64",
-            "x-nullable": false
-          },
-          {
-            "type": "integer",
-            "name": "assetId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the asset.",
-            "format": "int64",
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "true/false",
-            "schema": {
-              "type": "file"
-            }
-          }
-        }
-      }
-    },
     "/reference/deviceinfo": {
       "get": {
         "tags": [
@@ -736,45 +698,6 @@
             }
           }
         }
-      }
-    },
-    "/users/{userId:long}/canmanage/{assetId:long}": {
-      "get": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Returns whether the user can manage a given asset.",
-        "operationId": "Users_CanManage",
-        "parameters": [
-          {
-            "type": "integer",
-            "name": "userId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the user.",
-            "format": "int64",
-            "x-nullable": false
-          },
-          {
-            "type": "integer",
-            "name": "assetId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the asset.",
-            "format": "int64",
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "{\n\"Success\": true, \n\"CanManage\": false\n}",
-            "schema": {
-              "type": "file"
-            }
-          }
-        },
-        "depreated": true
       }
     },
     "/windows/v1/report-purchase": {

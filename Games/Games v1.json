@@ -53,6 +53,83 @@
         }
       }
     },
+    "/v1/games/{placeId}/private-servers": {
+      "get": {
+        "tags": [
+          "GameInstances"
+        ],
+        "summary": "Get list of private servers user can access for given game id.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "placeId",
+            "in": "path",
+            "description": "The Id of the place we are geting the private server list for.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50,
+              100
+            ]
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The paging cursor for the previous or next page.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "The order the results are sorted in.",
+            "required": false,
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get the game server list successfully.",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Web.Responses.Games.GameServerResponse]"
+            }
+          },
+          "400": {
+            "description": "1: The place is invalid.\r\n7: Guest users are not allowed."
+          },
+          "404": {
+            "description": "1: The place is invalid."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "GameInstances:GetPrivateServerList"
+          ]
+        }
+      }
+    },
     "/v1/games/{placeId}/servers/{serverType}": {
       "get": {
         "tags": [
@@ -1895,6 +1972,39 @@
         },
         "displayName": {
           "type": "string"
+        }
+      }
+    },
+    "Roblox.Paging.ExclusiveStartKeyCursor[System.String]": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "sortOrder": {
+          "enum": [
+            "Asc",
+            "Desc"
+          ],
+          "type": "string"
+        },
+        "pagingDirection": {
+          "enum": [
+            "Forward",
+            "Backward"
+          ],
+          "type": "string"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "discriminator": {
+          "type": "string"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },

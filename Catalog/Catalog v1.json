@@ -1141,7 +1141,8 @@
               "TurboBuildersClub",
               "OutrageousBuildersClub",
               "Rthro",
-              "Live"
+              "Live",
+              "Collectible"
             ],
             "type": "string"
           }
@@ -1630,7 +1631,8 @@
               "TurboBuildersClub",
               "OutrageousBuildersClub",
               "Rthro",
-              "Live"
+              "Live",
+              "Collectible"
             ],
             "type": "string"
           }
@@ -1692,6 +1694,10 @@
         "offSaleDeadline": {
           "format": "date-time",
           "description": "When the item will go off sale, if the item has an off deadline.",
+          "type": "string"
+        },
+        "collectibleItemId": {
+          "description": "The item's collectible item id. \r\nIt is an UUID if a item is collectible type. Otherwise, it is null.",
           "type": "string"
         }
       }
