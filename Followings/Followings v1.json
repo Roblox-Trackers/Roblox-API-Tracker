@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1",
-    "title": "Followings Api v1"
+    "title": "Followings Api v1",
+    "version": "v1"
   },
   "host": "followings.roblox.com",
   "schemes": [
@@ -14,16 +14,15 @@
         "tags": [
           "Users"
         ],
-        "summary": "Gets all the followings between a user with {userId} and universes",
-        "consumes": [],
+        "summary": "Gets all the followings between a user with userId and universes",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "",
             "required": true,
             "type": "integer",
@@ -32,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of user to game followings.",
+            "description": "OK",
             "schema": {
               "type": "array",
               "items": {
@@ -61,23 +60,22 @@
           "Users"
         ],
         "summary": "Gets the status of a following relationship between a user and a universe.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "",
             "required": true,
             "type": "integer",
@@ -86,7 +84,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The status of the following relationship.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Followings.Api.Models.UserFollowingUniverseStatusResponse"
             }
@@ -107,28 +105,27 @@
       }
     },
     "/v1/users/{userId}/universes/{universeId}": {
-      "post": {
+      "delete": {
         "tags": [
           "Users"
         ],
-        "summary": "Creates the following between a user with {userId} and universe with {universeId}",
-        "consumes": [],
+        "summary": "Deletes the following between a user with userId and universe with universeId",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "",
             "required": true,
             "type": "integer",
@@ -137,7 +134,55 @@
         ],
         "responses": {
           "200": {
-            "description": "The created following.",
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Followings.Api.Models.UserFollowingUniverseResponse"
+            }
+          },
+          "403": {
+            "description": "User is not authorized for this action.\r\n0: Token Validation Failed"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Users:DeleteUserToUniverseFollowing"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Creates the following between a user with userId and universe with universeId",
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "path",
+            "name": "universeId",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Followings.Api.Models.UserFollowingUniverseResponse"
             }
@@ -156,55 +201,6 @@
           "internal": false,
           "metricIds": [
             "Users:CreateUserToUniverseFollowing"
-          ]
-        }
-      },
-      "delete": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Deletes the following between a user with {userId} and universe with {universeId}",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "universeId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The deleted following.",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Followings.Api.Models.UserFollowingUniverseResponse"
-            }
-          },
-          "403": {
-            "description": "User is not authorized for this action.\r\n0: Token Validation Failed"
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Users:DeleteUserToUniverseFollowing"
           ]
         }
       }
@@ -234,36 +230,30 @@
         "UniverseId": {
           "format": "int64",
           "description": "The id of the universe.",
-          "type": "integer",
-          "readOnly": true
+          "type": "integer"
         },
         "UserId": {
           "format": "int64",
           "description": "The id of the user.",
-          "type": "integer",
-          "readOnly": true
+          "type": "integer"
         },
         "CanFollow": {
           "description": "If the user can follow the universe.",
-          "type": "boolean",
-          "readOnly": true
+          "type": "boolean"
         },
         "IsFollowing": {
           "description": "If the user is currently following the universe.",
-          "type": "boolean",
-          "readOnly": true
+          "type": "boolean"
         },
         "FollowingCountByType": {
           "format": "int32",
           "description": "The number of followings between this user and a universe.",
-          "type": "integer",
-          "readOnly": true
+          "type": "integer"
         },
         "FollowingLimitByType": {
           "format": "int32",
           "description": "The limit to the number of followings between a user and a universe for a specific user.",
-          "type": "integer",
-          "readOnly": true
+          "type": "integer"
         }
       }
     }
