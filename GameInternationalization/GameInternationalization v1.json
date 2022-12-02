@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1",
-    "title": "GameInternationalization Api v1"
+    "title": "GameInternationalization Api v1",
+    "version": "v1"
   },
   "host": "gameinternationalization.roblox.com",
   "schemes": [
@@ -15,12 +15,10 @@
           "Autolocalization"
         ],
         "summary": "Metadata for AutoLocalization Configuration",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -46,15 +44,14 @@
           "AutomaticTranslation"
         ],
         "summary": "Checks if automatic translation can be enabled for a game.\r\nThe user must still have proper permissions for the game to get this info.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game id.",
             "required": true,
             "type": "integer",
@@ -92,15 +89,14 @@
           "AutomaticTranslation"
         ],
         "summary": "Returns the automatic translation quota info for a game.\r\nThe user must still have proper permissions for the game to get this info.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game id.",
             "required": true,
             "type": "integer",
@@ -141,24 +137,22 @@
           "AutomaticTranslation"
         ],
         "summary": "Checks if the requested target languages are allowed for automatic translation based on the source language.\r\nIf there are no requested target languages, then all allowed target languages for the source language will be returned.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The source language.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "targetLanguages",
             "in": "query",
+            "name": "targetLanguages",
             "description": "Optional target languages. If not passed in, all allowed target languages for the source language will be returned.",
-            "required": false,
             "type": "array",
             "items": {
               "type": "string"
@@ -194,35 +188,34 @@
           "Badge"
         ],
         "summary": "Get all icons for a badge",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "badgeId",
             "in": "path",
+            "name": "badgeId",
             "description": "The id of the badge",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "width",
             "in": "query",
+            "name": "width",
             "description": "The width of the icon to request",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 150
           },
           {
-            "name": "height",
             "in": "query",
+            "name": "height",
             "description": "The height of the icon to request",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 150
           }
         ],
         "responses": {
@@ -258,15 +251,14 @@
         "tags": [
           "Badge"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "badgeId",
             "in": "path",
+            "name": "badgeId",
             "required": true,
             "type": "integer",
             "format": "int64"
@@ -303,35 +295,34 @@
           "DeveloperProduct"
         ],
         "summary": "Get all icons for a developer product",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "developerProductId",
             "in": "path",
+            "name": "developerProductId",
             "description": "The id of the developer product",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "width",
             "in": "query",
+            "name": "width",
             "description": "The width of the icon to request",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 150
           },
           {
-            "name": "height",
             "in": "query",
+            "name": "height",
             "description": "The height of the icon to request",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 150
           }
         ],
         "responses": {
@@ -368,15 +359,14 @@
           "DeveloperProduct"
         ],
         "summary": "Get all names and descriptions of a developer product",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "developerProductId",
             "in": "path",
+            "name": "developerProductId",
             "description": "The developer product Id",
             "required": true,
             "type": "integer",
@@ -414,35 +404,34 @@
           "GameIcon"
         ],
         "summary": "Get all icons for a game",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "width",
             "in": "query",
+            "name": "width",
             "description": "The width of the icon to request",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 512
           },
           {
-            "name": "height",
             "in": "query",
+            "name": "height",
             "description": "The height of the icon to request",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 512
           }
         ],
         "responses": {
@@ -479,15 +468,14 @@
           "GameLocalizationStatus"
         ],
         "summary": "Gets the language translation counts for all languages of a game",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "GameID of the game to get translation counts for",
             "required": true,
             "type": "integer",
@@ -525,40 +513,40 @@
           "GameLocalizationStatus"
         ],
         "summary": "Gets the language translation counts for the specified table.\r\nThe languages to retrieve must be provided.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameIds",
             "in": "query",
+            "name": "gameIds",
             "description": "List of game ids to retrieve translation counts for.",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "multi"
           },
           {
-            "name": "languageOrLocaleCode",
             "in": "query",
+            "name": "languageOrLocaleCode",
             "description": "The code for the language or locale.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "languageOrLocaleType",
             "in": "query",
+            "name": "languageOrLocaleType",
             "description": "Indicates whether the languageOrLocaleCode represents a language or locale.",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Language",
-              "Locale"
+              0,
+              1
             ]
           }
         ],
@@ -590,35 +578,34 @@
           "GamePass"
         ],
         "summary": "Get all icons for a game pass",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gamePassId",
             "in": "path",
+            "name": "gamePassId",
             "description": "The game pass id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "width",
             "in": "query",
+            "name": "width",
             "description": "The width of the icon to request",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 150
           },
           {
-            "name": "height",
             "in": "query",
+            "name": "height",
             "description": "The height of the icon to request",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 150
           }
         ],
         "responses": {
@@ -655,15 +642,14 @@
           "GamePass"
         ],
         "summary": "Get all names and descriptions of a game pass",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gamePassId",
             "in": "path",
+            "name": "gamePassId",
             "description": "The game pass Id",
             "required": true,
             "type": "integer",
@@ -701,35 +687,34 @@
           "GameThumbnails"
         ],
         "summary": "Get the localized image ids in all languages for a game.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game identifier.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "width",
             "in": "query",
+            "name": "width",
             "description": "The width.",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 768
           },
           {
-            "name": "height",
             "in": "query",
+            "name": "height",
             "description": "The height.",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 432
           }
         ],
         "responses": {
@@ -763,15 +748,14 @@
           "NameDescription"
         ],
         "summary": "Gets a game's name and description in all supported languages",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game",
             "required": true,
             "type": "integer",
@@ -806,8 +790,7 @@
         "summary": "Updates a game's name and description in multiple languages.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -815,16 +798,16 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request body.",
             "required": true,
             "schema": {
@@ -866,12 +849,10 @@
           "NameDescription"
         ],
         "summary": "Rollout settings for name/description migration to new page",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -896,12 +877,10 @@
         "tags": [
           "PlayerPolicy"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -926,12 +905,10 @@
         "tags": [
           "PlayerPolicy"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -960,15 +937,14 @@
           "SourceLanguage"
         ],
         "summary": "Gets the source language of a game",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "",
             "required": true,
             "type": "integer",
@@ -1001,23 +977,22 @@
           "SourceLanguage"
         ],
         "summary": "Sets the source language of a game",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "query",
+            "name": "languageCode",
             "description": "",
             "required": true,
             "type": "string"
@@ -1060,15 +1035,14 @@
           "SupportedLanguages"
         ],
         "summary": "Get the supported languages for a game.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game.",
             "required": true,
             "type": "integer",
@@ -1103,8 +1077,7 @@
         "summary": "Add or remove supported languages for a game.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -1112,16 +1085,16 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languages",
             "in": "body",
+            "name": "languages",
             "description": "The languages to add or remove. LanguageCodeType can be \"Language\" or \"Locale\".",
             "required": true,
             "schema": {
@@ -1166,15 +1139,14 @@
           "SupportedLanguages"
         ],
         "summary": "Get the automatic translation status of supported languages for a game.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game.",
             "required": true,
             "type": "integer",
@@ -1215,15 +1187,14 @@
           "SupportedLanguages"
         ],
         "summary": "Get UniverseDisplayInfo automatic translation settings.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game id.",
             "required": true,
             "type": "integer",
@@ -1264,12 +1235,10 @@
           "SupportedLanguages"
         ],
         "summary": "Rollout settings for supported languages of a game",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -1295,50 +1264,52 @@
           "TranslationAnalytics"
         ],
         "summary": "Download translation analytics report after the report is ready",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game's id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "startDateTime",
             "in": "query",
+            "name": "startDateTime",
             "description": "The inclusive start dateTime of report in UTC",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           {
-            "name": "endDateTime",
             "in": "query",
+            "name": "endDateTime",
             "description": "The exclusive end dateTime of report in UTC",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           {
-            "name": "reportType",
             "in": "query",
+            "name": "reportType",
             "description": "The report type",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "GameTranslationStatus",
-              "GameTranslationStatusForTranslatorGroup",
-              "GameTranslationStatusForTranslator",
-              "Test"
+              0,
+              1,
+              2,
+              3
             ]
           },
           {
-            "name": "reportSubjectTargetId",
             "in": "query",
+            "name": "reportSubjectTargetId",
             "description": "The translator group id",
             "required": true,
             "type": "integer",
@@ -1376,12 +1347,10 @@
           "TranslationAnalytics"
         ],
         "summary": "Get metadata related to UI and rollout settings",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -1407,12 +1376,10 @@
           "UiConfigurations"
         ],
         "summary": "Get ui configurations for frontend to use.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -1438,15 +1405,14 @@
           "UserLocalizationSettings"
         ],
         "summary": "Get user localization settings for universe.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe's ID.",
             "required": true,
             "type": "integer",
@@ -1484,8 +1450,7 @@
         "summary": "Set user localization settings for universe.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -1493,16 +1458,16 @@
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe's ID.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request body",
             "required": true,
             "schema": {
@@ -1539,53 +1504,13 @@
       }
     },
     "/v1/autolocalization/games/{gameId}/autolocalizationtable": {
-      "post": {
-        "tags": [
-          "Autolocalization"
-        ],
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "gameId",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.GameInternationalization.Api.GameAutolocalizationInformationResponse"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed"
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Autolocalization:GetOrCreateAutolocalizationTableForGame"
-          ]
-        }
-      },
       "patch": {
         "tags": [
           "Autolocalization"
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -1593,15 +1518,15 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.GameInternationalization.Api.SetAutolocalizationTableForGameRequest"
@@ -1628,39 +1553,134 @@
             "Autolocalization:SetAutolocalizationTableForGame"
           ]
         }
-      }
-    },
-    "/v1/badges/{badgeId}/icons/language-codes/{languageCode}": {
+      },
       "post": {
         "tags": [
-          "Badge"
+          "Autolocalization"
         ],
-        "summary": "Update a badge's icon",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "badgeId",
             "in": "path",
+            "name": "gameId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.GameInternationalization.Api.GameAutolocalizationInformationResponse"
+            }
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Autolocalization:GetOrCreateAutolocalizationTableForGame"
+          ]
+        }
+      }
+    },
+    "/v1/badges/{badgeId}/icons/language-codes/{languageCode}": {
+      "delete": {
+        "tags": [
+          "Badge"
+        ],
+        "summary": "Delete a localized icon from a badge",
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "badgeId",
             "description": "The id of the badge",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
+            "description": "The language code of the localized icon to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "22: Invalid language code\r\n23: You can't delete translations for source language\r\n53: Language is not supported for the game.\r\n62: Invalid game badge id"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n18: You do not have permission to manage this game"
+          },
+          "500": {
+            "description": "0: An unknown error occurred."
+          },
+          "503": {
+            "description": "17: Feature is disabled"
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Badge:DeleteBadgeIcon"
+          ]
+        }
+      },
+      "post": {
+        "tags": [
+          "Badge"
+        ],
+        "summary": "Update a badge's icon",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "badgeId",
+            "description": "The id of the badge",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "path",
+            "name": "languageCode",
             "description": "The language code of this icon to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request.files",
             "in": "formData",
-            "required": false,
+            "name": "Files",
             "type": "file"
           }
         ],
@@ -1696,29 +1716,30 @@
             "Badge:UpdateBadgeIcon"
           ]
         }
-      },
+      }
+    },
+    "/v1/developer-products/{developerProductId}/icons/language-codes/{languageCode}": {
       "delete": {
         "tags": [
-          "Badge"
+          "DeveloperProduct"
         ],
-        "summary": "Delete a localized icon from a badge",
-        "consumes": [],
+        "summary": "Delete a localized icon from a developer product",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "badgeId",
             "in": "path",
-            "description": "The id of the badge",
+            "name": "developerProductId",
+            "description": "The id of the developer product",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the localized icon to delete",
             "required": true,
             "type": "string"
@@ -1732,7 +1753,7 @@
             }
           },
           "400": {
-            "description": "22: Invalid language code\r\n23: You can't delete translations for source language\r\n53: Language is not supported for the game.\r\n62: Invalid game badge id"
+            "description": "22: Invalid language code\r\n23: You can't delete translations for source language\r\n53: Language is not supported for the game.\r\n70: Invalid developer product id"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -1750,42 +1771,41 @@
         "properties": {
           "internal": false,
           "metricIds": [
-            "Badge:DeleteBadgeIcon"
+            "DeveloperProduct:DeleteDeveloperProductIcon"
           ]
         }
-      }
-    },
-    "/v1/developer-products/{developerProductId}/icons/language-codes/{languageCode}": {
+      },
       "post": {
         "tags": [
           "DeveloperProduct"
         ],
         "summary": "Update a developer product's icon",
-        "consumes": [],
+        "consumes": [
+          "multipart/form-data"
+        ],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "developerProductId",
             "in": "path",
+            "name": "developerProductId",
             "description": "The id of the developer product",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of this icon to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request.files",
             "in": "formData",
-            "required": false,
+            "name": "Files",
             "type": "file"
           }
         ],
@@ -1821,29 +1841,30 @@
             "DeveloperProduct:UpdateDeveloperProductIcon"
           ]
         }
-      },
+      }
+    },
+    "/v1/game-icon/games/{gameId}/language-codes/{languageCode}": {
       "delete": {
         "tags": [
-          "DeveloperProduct"
+          "GameIcon"
         ],
-        "summary": "Delete a localized icon from a developer product",
-        "consumes": [],
+        "summary": "Delete a localized icon from a game",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "developerProductId",
             "in": "path",
-            "description": "The id of the developer product",
+            "name": "gameId",
+            "description": "The id of the game",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the localized icon to delete",
             "required": true,
             "type": "string"
@@ -1857,7 +1878,7 @@
             }
           },
           "400": {
-            "description": "22: Invalid language code\r\n23: You can't delete translations for source language\r\n53: Language is not supported for the game.\r\n70: Invalid developer product id"
+            "description": "14: Invalid game id\r\n22: Invalid language code\r\n23: You can't delete translations for source language\r\n53: Language is not supported for the game."
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -1875,42 +1896,41 @@
         "properties": {
           "internal": false,
           "metricIds": [
-            "DeveloperProduct:DeleteDeveloperProductIcon"
+            "GameIcon:DeleteGameIcon"
           ]
         }
-      }
-    },
-    "/v1/game-icon/games/{gameId}/language-codes/{languageCode}": {
+      },
       "post": {
         "tags": [
           "GameIcon"
         ],
         "summary": "Update a game's icon",
-        "consumes": [],
+        "consumes": [
+          "multipart/form-data"
+        ],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of this icon to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request.files",
             "in": "formData",
-            "required": false,
+            "name": "Files",
             "type": "file"
           }
         ],
@@ -1946,29 +1966,30 @@
             "GameIcon:UpdateGameIcon"
           ]
         }
-      },
+      }
+    },
+    "/v1/game-passes/{gamePassId}/icons/language-codes/{languageCode}": {
       "delete": {
         "tags": [
-          "GameIcon"
+          "GamePass"
         ],
-        "summary": "Delete a localized icon from a game",
-        "consumes": [],
+        "summary": "Delete a localized icon from a game pass",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
-            "description": "The id of the game",
+            "name": "gamePassId",
+            "description": "The game pass id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the localized icon to delete",
             "required": true,
             "type": "string"
@@ -1982,7 +2003,7 @@
             }
           },
           "400": {
-            "description": "14: Invalid game id\r\n22: Invalid language code\r\n23: You can't delete translations for source language\r\n53: Language is not supported for the game."
+            "description": "22: Invalid language code\r\n23: You can't delete translations for source language\r\n53: Language is not supported for the game.\r\n61: Invalid game pass id"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -2000,42 +2021,41 @@
         "properties": {
           "internal": false,
           "metricIds": [
-            "GameIcon:DeleteGameIcon"
+            "GamePass:DeleteIcon"
           ]
         }
-      }
-    },
-    "/v1/game-passes/{gamePassId}/icons/language-codes/{languageCode}": {
+      },
       "post": {
         "tags": [
           "GamePass"
         ],
         "summary": "Update a game pass's icon",
-        "consumes": [],
+        "consumes": [
+          "multipart/form-data"
+        ],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gamePassId",
             "in": "path",
+            "name": "gamePassId",
             "description": "The game pass id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of this icon to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request.files",
             "in": "formData",
-            "required": false,
+            "name": "Files",
             "type": "file"
           }
         ],
@@ -2071,63 +2091,6 @@
             "GamePass:UpdateIcon"
           ]
         }
-      },
-      "delete": {
-        "tags": [
-          "GamePass"
-        ],
-        "summary": "Delete a localized icon from a game pass",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "gamePassId",
-            "in": "path",
-            "description": "The game pass id",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "languageCode",
-            "in": "path",
-            "description": "The language code of the localized icon to delete",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "400": {
-            "description": "22: Invalid language code\r\n23: You can't delete translations for source language\r\n53: Language is not supported for the game.\r\n61: Invalid game pass id"
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed\r\n18: You do not have permission to manage this game"
-          },
-          "500": {
-            "description": "0: An unknown error occurred."
-          },
-          "503": {
-            "description": "17: Feature is disabled"
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "GamePass:DeleteIcon"
-          ]
-        }
       }
     },
     "/v1/game-thumbnails/games/{gameId}/language-codes/{languageCode}/alt-text": {
@@ -2138,8 +2101,7 @@
         "summary": "Updates the game thumbnail alt text.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2147,23 +2109,23 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game identifier.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "altTextRequest",
             "in": "body",
+            "name": "altTextRequest",
             "description": "The game thumbnail alt text update request.",
             "required": true,
             "schema": {
@@ -2211,31 +2173,32 @@
           "GameThumbnails"
         ],
         "summary": "Uploads the game thumbnail.",
-        "consumes": [],
+        "consumes": [
+          "multipart/form-data"
+        ],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game identifier.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "gameThumbnailRequest.files",
             "in": "formData",
-            "required": false,
+            "name": "Files",
             "type": "file"
           }
         ],
@@ -2281,8 +2244,7 @@
         "summary": "Orders the specified image Ids for the game thumbnails.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2290,23 +2252,23 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game identifier.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request.",
             "required": true,
             "schema": {
@@ -2350,8 +2312,7 @@
         "summary": "Gets the history for name or description in a provided language.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2359,16 +2320,16 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request.",
             "required": true,
             "schema": {
@@ -2415,8 +2376,7 @@
         "summary": "Request translation analytics report to be generated",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2424,16 +2384,16 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game's id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request body",
             "required": true,
             "schema": {
@@ -2474,8 +2434,7 @@
         "summary": "Sets a game's auto-localization related settings",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2483,16 +2442,16 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request body.",
             "required": true,
             "schema": {
@@ -2536,8 +2495,7 @@
         "summary": "Update localized description of a badge",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2545,23 +2503,23 @@
         ],
         "parameters": [
           {
-            "name": "badgeId",
             "in": "path",
+            "name": "badgeId",
             "description": "The badge id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the description to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -2608,8 +2566,7 @@
         "summary": "Update localized name of a badge",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2617,23 +2574,23 @@
         ],
         "parameters": [
           {
-            "name": "badgeId",
             "in": "path",
+            "name": "badgeId",
             "description": "The badge id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -2678,23 +2635,22 @@
           "Badge"
         ],
         "summary": "Delete localized name and description of a badge",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "badgeId",
             "in": "path",
+            "name": "badgeId",
             "description": "The badge id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name and description to delete",
             "required": true,
             "type": "string"
@@ -2737,8 +2693,7 @@
         "summary": "Update localized name and description of a badge",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2746,23 +2701,23 @@
         ],
         "parameters": [
           {
-            "name": "badgeId",
             "in": "path",
+            "name": "badgeId",
             "description": "The badge id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name and description to Update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -2809,8 +2764,7 @@
         "summary": "Update localized description of a developer product",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2818,23 +2772,23 @@
         ],
         "parameters": [
           {
-            "name": "developerProductId",
             "in": "path",
+            "name": "developerProductId",
             "description": "The developer product id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the description to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -2881,8 +2835,7 @@
         "summary": "Update localized name of a developer product",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2890,23 +2843,23 @@
         ],
         "parameters": [
           {
-            "name": "developerProductId",
             "in": "path",
+            "name": "developerProductId",
             "description": "The developer product id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -2951,23 +2904,22 @@
           "DeveloperProduct"
         ],
         "summary": "Delete localized name and description of a developer product",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "developerProductId",
             "in": "path",
+            "name": "developerProductId",
             "description": "The developer product id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name and description to delete",
             "required": true,
             "type": "string"
@@ -3010,8 +2962,7 @@
         "summary": "Update localized name and description of a developer product",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -3019,23 +2970,23 @@
         ],
         "parameters": [
           {
-            "name": "developerProductId",
             "in": "path",
+            "name": "developerProductId",
             "description": "The developer product id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name and description to Update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -3082,8 +3033,7 @@
         "summary": "Update localized description of a game pass",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -3091,23 +3041,23 @@
         ],
         "parameters": [
           {
-            "name": "gamePassId",
             "in": "path",
+            "name": "gamePassId",
             "description": "The game pass id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of description to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -3151,8 +3101,7 @@
         "summary": "Update localized name of a game pass",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -3160,23 +3109,23 @@
         ],
         "parameters": [
           {
-            "name": "gamePassId",
             "in": "path",
+            "name": "gamePassId",
             "description": "The game pass id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -3218,23 +3167,22 @@
           "GamePass"
         ],
         "summary": "Delete localized name and description of a game pass",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gamePassId",
             "in": "path",
+            "name": "gamePassId",
             "description": "The game pass id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name and description to delete",
             "required": true,
             "type": "string"
@@ -3274,8 +3222,7 @@
         "summary": "Update localized name and description of a game pass",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -3283,23 +3230,23 @@
         ],
         "parameters": [
           {
-            "name": "gamePassId",
             "in": "path",
+            "name": "gamePassId",
             "description": "The game pass id",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code of the name/description to update",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request",
             "required": true,
             "schema": {
@@ -3342,8 +3289,7 @@
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -3351,15 +3297,15 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.GameInternationalization.Api.AssociateLocalizationTablesToGameRequest"
@@ -3396,8 +3342,7 @@
         "summary": "Enable or disable automatic translation for a game and language.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -3405,23 +3350,23 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language to enable or disable for automatic translation.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "enableAutomaticTranslation",
             "in": "body",
+            "name": "enableAutomaticTranslation",
             "description": "Flag to indicate if automatic translation should be enabled or disabled.",
             "required": true,
             "schema": {
@@ -3465,8 +3410,7 @@
         "summary": "Update the switch which controls if the UniverseDisplayInformation should be automatically translated.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -3474,23 +3418,23 @@
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "enableUniverseDisplayInfoAutomaticTranslation",
             "in": "body",
+            "name": "enableUniverseDisplayInfoAutomaticTranslation",
             "description": "Whether to enable automatic translation for universe display info.",
             "required": true,
             "schema": {
@@ -3532,30 +3476,29 @@
           "GameThumbnails"
         ],
         "summary": "Deletes the game thumbnail.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The game identifier.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "languageCode",
             "in": "path",
+            "name": "languageCode",
             "description": "The language code.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "imageId",
             "in": "path",
+            "name": "imageId",
             "description": "The image identifier.",
             "required": true,
             "type": "integer",
@@ -3592,47 +3535,21 @@
     }
   },
   "definitions": {
-    "Roblox.GameInternationalization.Api.SetAutolocalizationTableForGameRequest": {
+    "Roblox.GameInternationalization.Api.AssociateLocalizationTablesToGameRequest": {
       "type": "object",
       "properties": {
-        "tableId": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
+        "tables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.LocalizationTableGameAssociation"
+          }
         }
       }
     },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object",
-      "properties": {}
-    },
-    "Roblox.GameInternationalization.Api.GameAutolocalizationInformationResponse": {
+    "Roblox.GameInternationalization.Api.AssociateLocalizationTablesToGameResponse": {
       "type": "object",
       "properties": {
-        "isAutolocalizationEnabled": {
-          "type": "boolean"
-        },
-        "shouldUseLocalizationTable": {
-          "type": "boolean"
-        },
-        "autoLocalizationTableId": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "assetId": {
-          "format": "int64",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.SetAutolocalizationSettingsForGameRequest": {
-      "type": "object",
-      "properties": {
-        "isAutolocalizationEnabled": {
-          "type": "boolean"
-        },
-        "shouldUseLocalizationTable": {
+        "success": {
           "type": "boolean"
         }
       }
@@ -3658,8 +3575,20 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.GetAutomaticTranslationFeatureStatusForGameResponse": {
-      "description": "A response model for getting the automatic translation allowed status of a game.",
+    "Roblox.GameInternationalization.Api.AutomaticTranslationStatusTargetLanguage": {
+      "type": "object",
+      "properties": {
+        "languageCode": {
+          "description": "The language code.",
+          "type": "string"
+        },
+        "isAutomaticTranslationAllowed": {
+          "description": "Indicates whether or not automatic translation is allowed for the target language.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.EditAutomaticTranslationStatusForGameAndLanguageResponse": {
       "type": "object",
       "properties": {
         "gameId": {
@@ -3667,13 +3596,44 @@
           "description": "The game id.",
           "type": "integer"
         },
-        "isAutomaticTranslationAllowed": {
-          "description": "Indicates whether or not automatic translation is allowed for the game.",
+        "languageCode": {
+          "description": "The language code.",
+          "type": "string"
+        },
+        "isAutomaticTranslationEnabled": {
+          "description": "Indicates whether or not automatic translation is currently enabled for the game and language.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.FailedNameDescription": {
+      "type": "object",
+      "properties": {
+        "languageCode": {
+          "type": "string"
+        },
+        "errorCode": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GameAutolocalizationInformationResponse": {
+      "type": "object",
+      "properties": {
+        "isAutolocalizationEnabled": {
           "type": "boolean"
         },
-        "isAutomaticTranslationSwitchesUIEnabled": {
-          "description": "Indicates whether or not automatic translation switches are enabled for the game.",
+        "shouldUseLocalizationTable": {
           "type": "boolean"
+        },
+        "autoLocalizationTableId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "assetId": {
+          "format": "int64",
+          "type": "integer"
         }
       }
     },
@@ -3694,15 +3654,21 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.AutomaticTranslationStatusTargetLanguage": {
+    "Roblox.GameInternationalization.Api.GetAutomaticTranslationFeatureStatusForGameResponse": {
+      "description": "A response model for getting the automatic translation allowed status of a game.",
       "type": "object",
       "properties": {
-        "languageCode": {
-          "description": "The language code.",
-          "type": "string"
+        "gameId": {
+          "format": "int64",
+          "description": "The game id.",
+          "type": "integer"
         },
         "isAutomaticTranslationAllowed": {
-          "description": "Indicates whether or not automatic translation is allowed for the target language.",
+          "description": "Indicates whether or not automatic translation is allowed for the game.",
+          "type": "boolean"
+        },
+        "isAutomaticTranslationSwitchesUIEnabled": {
+          "description": "Indicates whether or not automatic translation switches are enabled for the game.",
           "type": "boolean"
         }
       }
@@ -3716,6 +3682,391 @@
         },
         "bankQuota": {
           "$ref": "#/definitions/Roblox.GameInternationalization.Api.QuotaModel"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetBadgeIconResponse": {
+      "type": "object",
+      "properties": {
+        "imageId": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        },
+        "state": {
+          "format": "int32",
+          "description": "Enum for image status. ['Approved' = 0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetDeveloperProductIconResponse": {
+      "description": "A response model for getting developer product icon",
+      "type": "object",
+      "properties": {
+        "imageId": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        },
+        "state": {
+          "format": "int32",
+          "description": "Enum for image status. ['Approved' = 0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetGameIconResponse": {
+      "type": "object",
+      "properties": {
+        "imageId": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        },
+        "state": {
+          "format": "int32",
+          "description": "Enum for image status. ['Approved' = 0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetGamePassIconResponse": {
+      "description": "A response model for getting game pass icon",
+      "type": "object",
+      "properties": {
+        "imageId": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        },
+        "state": {
+          "format": "int32",
+          "description": "Enum for image status. ['Approved' = 0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetGameThumbnailsResponse": {
+      "type": "object",
+      "properties": {
+        "languageCode": {
+          "type": "string"
+        },
+        "mediaAssets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.MediaAssetResponse"
+          }
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetNameDescriptionHistoryRequest": {
+      "description": "A model containing request for getting history of name or description.",
+      "type": "object",
+      "properties": {
+        "requestType": {
+          "format": "int32",
+          "description": "The enum representing the type of request while requesting name/description history ['Name' = 0, 'Description' = 1]",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "languageCode": {
+          "type": "string"
+        },
+        "cursor": {
+          "type": "string"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sortOrder": {
+          "format": "int32",
+          "description": " ['Asc' = 1, 'Desc' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetNameDescriptionHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationHistory"
+          }
+        },
+        "lastEvaluatedId": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetPlayerPoliciesResponse": {
+      "type": "object",
+      "properties": {
+        "isSubjectToChinaPolicies": {
+          "type": "boolean"
+        },
+        "arePaidRandomItemsRestricted": {
+          "type": "boolean"
+        },
+        "isPaidItemTradingAllowed": {
+          "type": "boolean"
+        },
+        "areAdsAllowed": {
+          "type": "boolean"
+        },
+        "allowedExternalLinkReferences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetTranslationCountsForGameResponse": {
+      "description": "A response model that contains game info for getting a translation count.",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "format": "int64",
+          "description": "The game id.",
+          "type": "integer"
+        },
+        "languagesOrLocales": {
+          "description": "The list of languages/locales of the game.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCountLanguageOrLocaleResponse"
+          }
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetTranslationCountsForLanguageOrLocaleResponse": {
+      "description": "A response model for getting translation counts for a language or locale.",
+      "type": "object",
+      "properties": {
+        "languageOrLocaleCode": {
+          "description": "The code of the language or locale.",
+          "type": "string"
+        },
+        "languageOrLocaleType": {
+          "format": "int32",
+          "description": "An indicator that says whether the passed in language/locale code represents a language or locale. ['Language' = 0, 'Locale' = 1]",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "games": {
+          "description": "Info for the requested games, including their translation counts for the specified language or locale.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCountGameInfoResponse"
+          }
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.GetUiConfigurationsResponse": {
+      "type": "object",
+      "properties": {
+        "isGameProductsEnabled": {
+          "description": "Game products translation management page is enabled or not.",
+          "type": "boolean"
+        },
+        "isBadgeIconEnabled": {
+          "description": "Badge Icon translation management is enabled or not.",
+          "type": "boolean"
+        },
+        "isGamePassEnabled": {
+          "description": "Game pass translation management is enabled or not.",
+          "type": "boolean"
+        },
+        "isDeveloperProductEnabled": {
+          "description": "Developer product translation management is enabled or not.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Language": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "nativeName": {
+          "type": "string"
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.LanguageOrLocale": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "languageCodeType": {
+          "format": "int32",
+          "description": "An enum to distinguish between locale codes and language codes. ['Language' = 0, 'Locale' = 1]",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.LanguageOrLocaleSettings": {
+      "type": "object",
+      "properties": {
+        "languageCodeType": {
+          "format": "int32",
+          "description": "The language code type. ['Language' = 0, 'Locale' = 1]",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "languageCode": {
+          "description": "The language code.",
+          "type": "string"
+        },
+        "isAutomaticTranslationEnabled": {
+          "description": "Indicates whether or not automatic translation is currently enabled for the game and language.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.LocalizationTableGameAssociation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "dissociate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.MediaAssetResponse": {
+      "type": "object",
+      "properties": {
+        "mediaAssetId": {
+          "type": "string"
+        },
+        "mediaAssetAltText": {
+          "type": "string"
+        },
+        "state": {
+          "format": "int32",
+          "description": "Enum for image status. ['Approved' = 0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "mediaAssetUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Models.Request.SetUserLocalizationSettingsRequest": {
+      "type": "object",
+      "properties": {
+        "settingValue": {
+          "$ref": "#/definitions/Roblox.GameLocalization.Client.UserUniverseLocalizationSettingValue"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Models.Response.GameNameDescriptionMetadataResponse": {
+      "type": "object",
+      "properties": {
+        "isNameDescriptionMigrationEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse": {
+      "type": "object",
+      "properties": {
+        "userUniverseLocalizationSettingValue": {
+          "$ref": "#/definitions/Roblox.GameLocalization.Client.UserUniverseLocalizationSettingValue"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Models.Response.SetUserLocalizationSettingsResponse": {
+      "type": "object"
+    },
+    "Roblox.GameInternationalization.Api.Models.Response.UploadImageForGameThumbnailResponse": {
+      "type": "object",
+      "properties": {
+        "mediaAssetId": {
+          "type": "string"
         }
       }
     },
@@ -3740,6 +4091,42 @@
         }
       }
     },
+    "Roblox.GameInternationalization.Api.NameDescription": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.PatchLanguage": {
+      "type": "object",
+      "properties": {
+        "languageCodeType": {
+          "format": "int32",
+          "description": "The language code type. ['Language' = 0, 'Locale' = 1]",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "languageCode": {
+          "description": "The language code for the language to edit.",
+          "type": "string"
+        },
+        "delete": {
+          "description": "An optional field used to indicate whether a language should be deleted from this game's list of supported languages.",
+          "type": "boolean"
+        }
+      }
+    },
     "Roblox.GameInternationalization.Api.QuotaModel": {
       "type": "object",
       "properties": {
@@ -3753,27 +4140,318 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.NameDescription]": {
+    "Roblox.GameInternationalization.Api.RequestTranslationAnalyticsReportRequest": {
       "type": "object",
       "properties": {
-        "data": {
+        "startDateTime": {
+          "format": "date-time",
+          "description": "The inclusive start dateTime of report in UTC",
+          "type": "string"
+        },
+        "endDateTime": {
+          "format": "date-time",
+          "description": "The exclusive end dateTime of report in UTC",
+          "type": "string"
+        },
+        "reportType": {
+          "format": "int32",
+          "description": "The report type ['GameTranslationStatus' = 0, 'GameTranslationStatusForTranslatorGroup' = 1, 'GameTranslationStatusForTranslator' = 2, 'Test' = 3]",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "reportSubjectTargetId": {
+          "format": "int64",
+          "description": "The report subject target id",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.RequestTranslationAnalyticsReportResponse": {
+      "type": "object",
+      "properties": {
+        "reportGenerationStatus": {
+          "format": "int32",
+          "description": " ['InProgress' = 0, 'Ready' = 1, 'Unavailable' = 2]",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.SetAutolocalizationSettingsForGameRequest": {
+      "type": "object",
+      "properties": {
+        "isAutolocalizationEnabled": {
+          "type": "boolean"
+        },
+        "shouldUseLocalizationTable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.SetAutolocalizationTableForGameRequest": {
+      "type": "object",
+      "properties": {
+        "tableId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.SortImageIdsRequest": {
+      "description": "A request model for sorting of image Ids for game thumbnails",
+      "type": "object",
+      "properties": {
+        "mediaAssetIds": {
+          "description": "List of thumbnail ids in desired order.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.NameDescription"
+            "format": "int64",
+            "type": "integer"
           }
         }
       }
     },
-    "Roblox.GameInternationalization.Api.NameDescription": {
+    "Roblox.GameInternationalization.Api.SupportedLanguagesMetadataResponse": {
       "type": "object",
       "properties": {
+        "isFeatureEnabled": {
+          "type": "boolean"
+        },
+        "areAllLanguagesEnabled": {
+          "type": "boolean"
+        },
+        "minimumUniverseIdForFeature": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "isHumanTranslationProgressUIEnabled": {
+          "description": "Is translation progress for human translations enabled on UI",
+          "type": "boolean"
+        },
+        "isAutomaticTranslationProgressUIEnabled": {
+          "description": "Is translation progress for automatic translations enabled on UI",
+          "type": "boolean"
+        },
+        "isSupportedLanguagesChildLocalesUIEnabled": {
+          "description": "Is Language Locales UI Enabled for Supported Languages",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.TranslationAnalyticsMetadataResponse": {
+      "type": "object",
+      "properties": {
+        "isFeatureEnabledOnUI": {
+          "description": "Is Translation Analytics feature enabled on UI",
+          "type": "boolean"
+        },
+        "reportRequestPollingIntervalSeconds": {
+          "format": "int32",
+          "description": "Number of seconds to poll the server for report availability",
+          "type": "integer"
+        },
+        "minimumDateTimeForAnalyticsReport": {
+          "format": "date-time",
+          "description": "Date-Time since the Analytics Reports can be downloaded",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.TranslationCount": {
+      "description": "A model that contains the count value of a translation count and relevant metadata.",
+      "type": "object",
+      "properties": {
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "translationStatus": {
+          "format": "int32",
+          "description": "The enum representing a translation status. ['Approved' = 0]",
+          "enum": [
+            0
+          ],
+          "type": "integer"
+        },
+        "translatorType": {
+          "format": "int32",
+          "description": "Gets or sets the type of the translator associated with the count, or `null` if the count is not associated with a specific type of translator.",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.TranslationCountCategoryInfoResponse": {
+      "description": "A response model that contains category info for getting a translation count.",
+      "type": "object",
+      "properties": {
+        "category": {
+          "format": "int32",
+          "description": "The category of the translation counts. ['InGameContent' = 0]",
+          "enum": [
+            0
+          ],
+          "type": "integer"
+        },
+        "translationCounts": {
+          "description": "The translation counts.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCount"
+          }
+        },
+        "totalTranslatableItemCount": {
+          "format": "int32",
+          "description": "The total number of translatable items.\r\nThe translation count percentage can be calculated by doing translationCounts / totalTranslatableItemCount.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.TranslationCountGameInfoResponse": {
+      "description": "A response model that contains game info for getting a translation count.",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "format": "int64",
+          "description": "The game id.",
+          "type": "integer"
+        },
+        "status": {
+          "format": "int32",
+          "description": "The status of the response for the requested game. ['LanguageOrLocaleSupportedForGame' = 0, 'LanguageOrLocaleNotSupportedForGame' = 1, 'LanguageOrLocaleIsSource' = 2, 'InsufficientPermission' = 3, 'GameDoesNotExist' = 4, 'GameDoesNotHaveTable' = 5, 'UnknownError' = 6]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "type": "integer"
+        },
+        "categories": {
+          "description": "Categories of translation counts.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCountCategoryInfoResponse"
+          }
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.TranslationCountLanguageOrLocaleResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "format": "int32",
+          "description": "The status of the response for the requested game. ['Success' = 1, 'LanguageOrLocaleNotSupportedForGame' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "categories": {
+          "description": "Categories of translation counts.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCountCategoryInfoResponse"
+          }
+        },
         "name": {
           "type": "string"
         },
-        "description": {
-          "type": "string"
+        "languageCodeType": {
+          "format": "int32",
+          "description": "An enum to distinguish between locale codes and language codes. ['Language' = 0, 'Locale' = 1]",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
         },
         "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.TranslationHistory": {
+      "description": "A model containing a translation, translator, and translation time.",
+      "type": "object",
+      "properties": {
+        "translationText": {
+          "description": "The translation provided by the translator.",
+          "type": "string"
+        },
+        "translator": {
+          "$ref": "#/definitions/Roblox.GameInternationalization.Api.Translator"
+        },
+        "created": {
+          "format": "date-time",
+          "description": "The time the translation was provided.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.Translator": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "agentType": {
+          "format": "int32",
+          "description": " ['User' = 0, 'Automation' = 1]",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.UniverseDisplayInfoAutomaticTranslationSettings": {
+      "type": "object",
+      "properties": {
+        "languageCode": {
+          "description": "The language code.",
+          "type": "string"
+        },
+        "isUniverseDisplayInfoAutomaticTranslationEnabled": {
+          "description": "Indicates whether or not automatic translation is currently enabled for Game and Place Information for a game and language.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.UpdateBadgeDescriptionRequest": {
+      "description": "A request model for updating badge description",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "Badge description",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.GameInternationalization.Api.UpdateBadgeDescriptionResponse": {
+      "description": "A response model for updating badge description",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "Badge description saved",
           "type": "string"
         }
       }
@@ -3826,65 +4504,25 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.UpdateBadgeDescriptionRequest": {
-      "description": "A request model for updating badge description",
+    "Roblox.GameInternationalization.Api.UpdateDeveloperProductDescriptionRequest": {
+      "description": "A request model for updating developer product description",
       "type": "object",
       "properties": {
         "description": {
-          "description": "Badge description",
+          "description": "Developer product description",
           "type": "string"
         }
       }
     },
-    "Roblox.GameInternationalization.Api.UpdateBadgeDescriptionResponse": {
-      "description": "A response model for updating badge description",
+    "Roblox.GameInternationalization.Api.UpdateDeveloperProductDescriptionResponse": {
+      "description": "A response model for updating developer product description",
       "type": "object",
       "properties": {
         "description": {
-          "description": "Badge description saved",
+          "description": "Developer product description saved",
           "type": "string"
         }
       }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetBadgeIconResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetBadgeIconResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetBadgeIconResponse": {
-      "type": "object",
-      "properties": {
-        "imageId": {
-          "type": "string"
-        },
-        "imageUrl": {
-          "type": "string"
-        },
-        "state": {
-          "enum": [
-            "Approved",
-            "PendingReview",
-            "UnAvailable",
-            "Rejected",
-            "Error"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.Models.Request.UploadFileRequest": {
-      "description": "A request model for updating a localized icon.",
-      "type": "object",
-      "properties": {}
     },
     "Roblox.GameInternationalization.Api.UpdateDeveloperProductNameDescriptionRequest": {
       "description": "A request model for updating developer product name and description",
@@ -3934,249 +4572,22 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.UpdateDeveloperProductDescriptionRequest": {
-      "description": "A request model for updating developer product description",
+    "Roblox.GameInternationalization.Api.UpdateGamePassDescriptionRequest": {
+      "description": "A request model for updating game pass description",
       "type": "object",
       "properties": {
         "description": {
-          "description": "Developer product description",
+          "description": "Game pass description",
           "type": "string"
         }
       }
     },
-    "Roblox.GameInternationalization.Api.UpdateDeveloperProductDescriptionResponse": {
-      "description": "A response model for updating developer product description",
+    "Roblox.GameInternationalization.Api.UpdateGamePassDescriptionResponse": {
+      "description": "A response model for updating game pass description",
       "type": "object",
       "properties": {
         "description": {
-          "description": "Developer product description saved",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetDeveloperProductIconResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetDeveloperProductIconResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetDeveloperProductIconResponse": {
-      "description": "A response model for getting developer product icon",
-      "type": "object",
-      "properties": {
-        "imageId": {
-          "type": "string"
-        },
-        "imageUrl": {
-          "type": "string"
-        },
-        "state": {
-          "enum": [
-            "Approved",
-            "PendingReview",
-            "UnAvailable",
-            "Rejected",
-            "Error"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetGameIconResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetGameIconResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetGameIconResponse": {
-      "type": "object",
-      "properties": {
-        "imageId": {
-          "type": "string"
-        },
-        "imageUrl": {
-          "type": "string"
-        },
-        "state": {
-          "enum": [
-            "Approved",
-            "PendingReview",
-            "UnAvailable",
-            "Rejected",
-            "Error"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetTranslationCountsForLanguageOrLocaleResponse": {
-      "description": "A response model for getting translation counts for a language or locale.",
-      "type": "object",
-      "properties": {
-        "languageOrLocaleCode": {
-          "description": "The code of the language or locale.",
-          "type": "string"
-        },
-        "languageOrLocaleType": {
-          "description": "An indicator that says whether the passed in language/locale code represents a language or locale.",
-          "enum": [
-            "Language",
-            "Locale"
-          ],
-          "type": "string"
-        },
-        "games": {
-          "description": "Info for the requested games, including their translation counts for the specified language or locale.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCountGameInfoResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.TranslationCountGameInfoResponse": {
-      "description": "A response model that contains game info for getting a translation count.",
-      "type": "object",
-      "properties": {
-        "gameId": {
-          "format": "int64",
-          "description": "The game id.",
-          "type": "integer"
-        },
-        "status": {
-          "description": "The status of the response for the requested game.",
-          "enum": [
-            "LanguageOrLocaleSupportedForGame",
-            "LanguageOrLocaleNotSupportedForGame",
-            "LanguageOrLocaleIsSource",
-            "InsufficientPermission",
-            "GameDoesNotExist",
-            "GameDoesNotHaveTable",
-            "UnknownError"
-          ],
-          "type": "string"
-        },
-        "categories": {
-          "description": "Categories of translation counts.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCountCategoryInfoResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.TranslationCountCategoryInfoResponse": {
-      "description": "A response model that contains category info for getting a translation count.",
-      "type": "object",
-      "properties": {
-        "category": {
-          "description": "The category of the translation counts.",
-          "enum": [
-            "InGameContent"
-          ],
-          "type": "string"
-        },
-        "translationCounts": {
-          "description": "The translation counts.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCount"
-          }
-        },
-        "totalTranslatableItemCount": {
-          "format": "int32",
-          "description": "The total number of translatable items.\r\nThe translation count percentage can be calculated by doing translationCounts / totalTranslatableItemCount.",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.TranslationCount": {
-      "description": "A model that contains the count value of a translation count and relevant metadata.",
-      "type": "object",
-      "properties": {
-        "count": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "translationStatus": {
-          "enum": [
-            "Approved"
-          ],
-          "type": "string"
-        },
-        "translatorType": {
-          "description": "Gets or sets the type of the translator associated with the count, or null if the count is not associated with a specific type of translator.",
-          "enum": [
-            "Automation",
-            "User"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetTranslationCountsForGameResponse": {
-      "description": "A response model that contains game info for getting a translation count.",
-      "type": "object",
-      "properties": {
-        "gameId": {
-          "format": "int64",
-          "description": "The game id.",
-          "type": "integer"
-        },
-        "languagesOrLocales": {
-          "description": "The list of languages/locales of the game.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCountLanguageOrLocaleResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.TranslationCountLanguageOrLocaleResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "description": "The status of the response for the requested game.",
-          "enum": [
-            "Success",
-            "LanguageOrLocaleNotSupportedForGame"
-          ],
-          "type": "string"
-        },
-        "categories": {
-          "description": "Categories of translation counts.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationCountCategoryInfoResponse"
-          }
-        },
-        "name": {
-          "type": "string"
-        },
-        "languageCodeType": {
-          "enum": [
-            "Language",
-            "Locale"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
+          "description": "Game pass description saved",
           "type": "string"
         }
       }
@@ -4229,185 +4640,6 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.UpdateGamePassDescriptionRequest": {
-      "description": "A request model for updating game pass description",
-      "type": "object",
-      "properties": {
-        "description": {
-          "description": "Game pass description",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.UpdateGamePassDescriptionResponse": {
-      "description": "A response model for updating game pass description",
-      "type": "object",
-      "properties": {
-        "description": {
-          "description": "Game pass description saved",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetGamePassIconResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetGamePassIconResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetGamePassIconResponse": {
-      "description": "A response model for getting game pass icon",
-      "type": "object",
-      "properties": {
-        "imageId": {
-          "type": "string"
-        },
-        "imageUrl": {
-          "type": "string"
-        },
-        "state": {
-          "enum": [
-            "Approved",
-            "PendingReview",
-            "UnAvailable",
-            "Rejected",
-            "Error"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetGameThumbnailsResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetGameThumbnailsResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetGameThumbnailsResponse": {
-      "type": "object",
-      "properties": {
-        "languageCode": {
-          "type": "string"
-        },
-        "mediaAssets": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.MediaAssetResponse"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.MediaAssetResponse": {
-      "type": "object",
-      "properties": {
-        "mediaAssetId": {
-          "type": "string"
-        },
-        "mediaAssetAltText": {
-          "type": "string"
-        },
-        "state": {
-          "enum": [
-            "Approved",
-            "PendingReview",
-            "UnAvailable",
-            "Rejected",
-            "Error"
-          ],
-          "type": "string"
-        },
-        "mediaAssetUrl": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.Models.Response.UploadImageForGameThumbnailResponse": {
-      "type": "object",
-      "properties": {
-        "mediaAssetId": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.UpdateThumbnailAltTextRequest": {
-      "type": "object",
-      "properties": {
-        "thumbnailId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "altText": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.SortImageIdsRequest": {
-      "description": "A request model for sorting of image Ids for game thumbnails",
-      "type": "object",
-      "properties": {
-        "mediaAssetIds": {
-          "description": "List of thumbnail ids in desired order.",
-          "type": "array",
-          "items": {
-            "format": "int64",
-            "type": "integer"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.AssociateLocalizationTablesToGameRequest": {
-      "type": "object",
-      "properties": {
-        "tables": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.LocalizationTableGameAssociation"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.LocalizationTableGameAssociation": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "dissociate": {
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.AssociateLocalizationTablesToGameResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.Models.Response.GameNameDescriptionMetadataResponse": {
-      "type": "object",
-      "properties": {
-        "isNameDescriptionMigrationEnabled": {
-          "type": "boolean"
-        }
-      }
-    },
     "Roblox.GameInternationalization.Api.UpdateNameDescriptionsRequest": {
       "type": "object",
       "properties": {
@@ -4436,282 +4668,15 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.FailedNameDescription": {
+    "Roblox.GameInternationalization.Api.UpdateThumbnailAltTextRequest": {
       "type": "object",
       "properties": {
-        "languageCode": {
-          "type": "string"
-        },
-        "errorCode": {
-          "format": "int32",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetNameDescriptionHistoryRequest": {
-      "description": "A model containing request for getting history of name or description.",
-      "type": "object",
-      "properties": {
-        "requestType": {
-          "enum": [
-            "Name",
-            "Description"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
-          "type": "string"
-        },
-        "cursor": {
-          "type": "string"
-        },
-        "count": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "sortOrder": {
-          "enum": [
-            "Asc",
-            "Desc"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetNameDescriptionHistoryResponse": {
-      "type": "object",
-      "properties": {
-        "history": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.TranslationHistory"
-          }
-        },
-        "lastEvaluatedId": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.TranslationHistory": {
-      "description": "A model containing a translation, translator, and translation time.",
-      "type": "object",
-      "properties": {
-        "translationText": {
-          "description": "The translation provided by the translator.",
-          "type": "string"
-        },
-        "translator": {
-          "$ref": "#/definitions/Roblox.GameInternationalization.Api.Translator",
-          "description": "The agent that provided the translation. Can be null if recorded before history auditing was enabled."
-        },
-        "created": {
-          "format": "date-time",
-          "description": "The time the translation was provided.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.Translator": {
-      "type": "object",
-      "properties": {
-        "id": {
+        "thumbnailId": {
           "format": "int64",
           "type": "integer"
         },
-        "agentType": {
-          "enum": [
-            "User",
-            "Automation"
-          ],
+        "altText": {
           "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetPlayerPoliciesResponse": {
-      "type": "object",
-      "properties": {
-        "isSubjectToChinaPolicies": {
-          "type": "boolean"
-        },
-        "arePaidRandomItemsRestricted": {
-          "type": "boolean"
-        },
-        "isPaidItemTradingAllowed": {
-          "type": "boolean"
-        },
-        "areAdsAllowed": {
-          "type": "boolean"
-        },
-        "allowedExternalLinkReferences": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.Language": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "nativeName": {
-          "type": "string"
-        },
-        "languageCode": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.SupportedLanguagesMetadataResponse": {
-      "type": "object",
-      "properties": {
-        "isFeatureEnabled": {
-          "type": "boolean"
-        },
-        "areAllLanguagesEnabled": {
-          "type": "boolean"
-        },
-        "minimumUniverseIdForFeature": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "isHumanTranslationProgressUIEnabled": {
-          "description": "Is translation progress for human translations enabled on UI",
-          "type": "boolean"
-        },
-        "isAutomaticTranslationProgressUIEnabled": {
-          "description": "Is translation progress for automatic translations enabled on UI",
-          "type": "boolean"
-        },
-        "isSupportedLanguagesChildLocalesUIEnabled": {
-          "description": "Is Language Locales UI Enabled for Supported Languages",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.LanguageOrLocale]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.LanguageOrLocale"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.LanguageOrLocale": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "languageCodeType": {
-          "enum": [
-            "Language",
-            "Locale"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.PatchLanguage": {
-      "type": "object",
-      "properties": {
-        "languageCodeType": {
-          "description": "The language code type.",
-          "enum": [
-            "Language",
-            "Locale"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
-          "description": "The language code for the language to edit.",
-          "type": "string"
-        },
-        "delete": {
-          "description": "An optional field used to indicate whether a language should be deleted from this game's list of supported languages.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.LanguageOrLocaleSettings]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.LanguageOrLocaleSettings"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.LanguageOrLocaleSettings": {
-      "type": "object",
-      "properties": {
-        "languageCodeType": {
-          "description": "The language code type.",
-          "enum": [
-            "Language",
-            "Locale"
-          ],
-          "type": "string"
-        },
-        "languageCode": {
-          "description": "The language code.",
-          "type": "string"
-        },
-        "isAutomaticTranslationEnabled": {
-          "description": "Indicates whether or not automatic translation is currently enabled for the game and language.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.EditAutomaticTranslationStatusForGameAndLanguageResponse": {
-      "type": "object",
-      "properties": {
-        "gameId": {
-          "format": "int64",
-          "description": "The game id.",
-          "type": "integer"
-        },
-        "languageCode": {
-          "description": "The language code.",
-          "type": "string"
-        },
-        "isAutomaticTranslationEnabled": {
-          "description": "Indicates whether or not automatic translation is currently enabled for the game and language.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.UniverseDisplayInfoAutomaticTranslationSettings]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.UniverseDisplayInfoAutomaticTranslationSettings"
-          }
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.UniverseDisplayInfoAutomaticTranslationSettings": {
-      "type": "object",
-      "properties": {
-        "languageCode": {
-          "description": "The language code.",
-          "type": "string"
-        },
-        "isUniverseDisplayInfoAutomaticTranslationEnabled": {
-          "description": "Indicates whether or not automatic translation is currently enabled for Game and Place Information for a game and language.",
-          "type": "boolean"
         }
       }
     },
@@ -4734,108 +4699,18 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.TranslationAnalyticsMetadataResponse": {
-      "type": "object",
-      "properties": {
-        "isFeatureEnabledOnUI": {
-          "description": "Is Translation Analytics feature enabled on UI",
-          "type": "boolean"
-        },
-        "reportRequestPollingIntervalSeconds": {
-          "format": "int32",
-          "description": "Number of seconds to poll the server for report availability",
-          "type": "integer"
-        },
-        "minimumDateTimeForAnalyticsReport": {
-          "format": "date-time",
-          "description": "Date-Time since the Analytics Reports can be downloaded",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.RequestTranslationAnalyticsReportRequest": {
-      "type": "object",
-      "properties": {
-        "startDateTime": {
-          "format": "date-time",
-          "description": "The inclusive start dateTime of report in UTC",
-          "type": "string"
-        },
-        "endDateTime": {
-          "format": "date-time",
-          "description": "The exclusive end dateTime of report in UTC",
-          "type": "string"
-        },
-        "reportType": {
-          "description": "The report type",
-          "enum": [
-            "GameTranslationStatus",
-            "GameTranslationStatusForTranslatorGroup",
-            "GameTranslationStatusForTranslator",
-            "Test"
-          ],
-          "type": "string"
-        },
-        "reportSubjectTargetId": {
-          "format": "int64",
-          "description": "The report subject target id",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.RequestTranslationAnalyticsReportResponse": {
-      "type": "object",
-      "properties": {
-        "reportGenerationStatus": {
-          "enum": [
-            "inProgress",
-            "ready",
-            "unavailable"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.GetUiConfigurationsResponse": {
-      "type": "object",
-      "properties": {
-        "isGameProductsEnabled": {
-          "description": "Game products translation management page is enabled or not.",
-          "type": "boolean"
-        },
-        "isBadgeIconEnabled": {
-          "description": "Badge Icon translation management is enabled or not.",
-          "type": "boolean"
-        },
-        "isGamePassEnabled": {
-          "description": "Game pass translation management is enabled or not.",
-          "type": "boolean"
-        },
-        "isDeveloperProductEnabled": {
-          "description": "Developer product translation management is enabled or not.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse": {
-      "type": "object",
-      "properties": {
-        "userUniverseLocalizationSettingValue": {
-          "$ref": "#/definitions/Roblox.GameLocalization.Client.UserUniverseLocalizationSettingValue",
-          "description": "The {Roblox.GameInternationalization.Api.Models.Response.GetUserLocalizationSettingsForUniverseResponse.UserUniverseLocalizationSettingValue}."
-        }
-      }
-    },
     "Roblox.GameLocalization.Client.UserUniverseLocalizationSettingValue": {
       "type": "object",
       "properties": {
         "settingType": {
+          "format": "int32",
+          "description": " ['LanguageFamily' = 0, 'SupportedLocale' = 1, 'SourceOrTranslation' = 2]",
           "enum": [
-            "LanguageFamily",
-            "SupportedLocale",
-            "SourceOrTranslation"
+            0,
+            1,
+            2
           ],
-          "type": "string"
+          "type": "integer"
         },
         "settingTargetId": {
           "format": "int64",
@@ -4843,18 +4718,170 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.Models.Request.SetUserLocalizationSettingsRequest": {
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object"
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetBadgeIconResponse]": {
       "type": "object",
       "properties": {
-        "settingValue": {
-          "$ref": "#/definitions/Roblox.GameLocalization.Client.UserUniverseLocalizationSettingValue",
-          "description": "The setting value."
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetBadgeIconResponse"
+          }
         }
       }
     },
-    "Roblox.GameInternationalization.Api.Models.Response.SetUserLocalizationSettingsResponse": {
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetDeveloperProductIconResponse]": {
       "type": "object",
-      "properties": {}
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetDeveloperProductIconResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetGameIconResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetGameIconResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetGamePassIconResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetGamePassIconResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.GetGameThumbnailsResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.GetGameThumbnailsResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.LanguageOrLocaleSettings]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.LanguageOrLocaleSettings"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.LanguageOrLocale]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.LanguageOrLocale"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.NameDescription]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.NameDescription"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.UniverseDisplayInfoAutomaticTranslationSettings]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.UniverseDisplayInfoAutomaticTranslationSettings"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebApi.FormData.IUploadedFile": {
+      "type": "file",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "Stream": {
+          "$ref": "#/definitions/System.IO.Stream"
+        },
+        "ContentEncoding": {
+          "format": "int32",
+          "description": " ['None' = 0, 'GZip' = 1, 'Deflate' = 2, 'Brotli' = 4, 'All' = -1]",
+          "enum": [
+            0,
+            1,
+            2,
+            4,
+            -1
+          ],
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "System.IO.Stream": {
+      "type": "object",
+      "properties": {
+        "CanRead": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanWrite": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanSeek": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanTimeout": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "Length": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "Position": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "ReadTimeout": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "WriteTimeout": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
     }
   }
 }
