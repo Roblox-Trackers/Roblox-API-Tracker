@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v2",
-    "title": "GameInternationalization Api v2"
+    "title": "GameInternationalization Api v2",
+    "version": "v2"
   },
   "host": "gameinternationalization.roblox.com",
   "schemes": [
@@ -12,18 +12,17 @@
     "/v2/supported-languages/games/{gameId}": {
       "get": {
         "tags": [
-          "SupportedLanguages"
+          "SupportedLanguagesV2"
         ],
         "summary": "Get the supported languages for a game.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "gameId",
             "in": "path",
+            "name": "gameId",
             "description": "The id of the game.",
             "required": true,
             "type": "integer",
@@ -54,14 +53,17 @@
     }
   },
   "definitions": {
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.LanguageWithLocales]": {
+    "Roblox.GameInternationalization.Api.Language": {
       "type": "object",
       "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.GameInternationalization.Api.LanguageWithLocales"
-          }
+        "name": {
+          "type": "string"
+        },
+        "nativeName": {
+          "type": "string"
+        },
+        "languageCode": {
+          "type": "string"
         }
       }
     },
@@ -79,9 +81,13 @@
         }
       }
     },
-    "Roblox.GameInternationalization.Api.Language": {
+    "Roblox.Localization.Client.LanguageFamily": {
       "type": "object",
       "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
         "name": {
           "type": "string"
         },
@@ -101,56 +107,57 @@
           "type": "integer"
         },
         "locale": {
+          "format": "int32",
           "enum": [
-            "en_us",
-            "es_es",
-            "fr_fr",
-            "id_id",
-            "it_it",
-            "ja_jp",
-            "ko_kr",
-            "ru_ru",
-            "th_th",
-            "tr_tr",
-            "vi_vn",
-            "pt_br",
-            "de_de",
-            "zh_cn",
-            "zh_tw",
-            "bg_bg",
-            "bn_bd",
-            "cs_cz",
-            "da_dk",
-            "el_gr",
-            "et_ee",
-            "fi_fi",
-            "hi_in",
-            "hr_hr",
-            "hu_hu",
-            "ka_ge",
-            "kk_kz",
-            "km_kh",
-            "lt_lt",
-            "lv_lv",
-            "ms_my",
-            "my_mm",
-            "nb_no",
-            "nl_nl",
-            "fil_ph",
-            "pl_pl",
-            "ro_ro",
-            "uk_ua",
-            "si_lk",
-            "sk_sk",
-            "sl_sl",
-            "sq_al",
-            "bs_ba",
-            "sr_rs",
-            "sv_se",
-            "zh_cjv",
-            "ar_001"
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46
           ],
-          "type": "string"
+          "type": "integer"
         },
         "localeCode": {
           "type": "string"
@@ -166,21 +173,14 @@
         }
       }
     },
-    "Roblox.Localization.Client.LanguageFamily": {
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.GameInternationalization.Api.LanguageWithLocales]": {
       "type": "object",
       "properties": {
-        "id": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nativeName": {
-          "type": "string"
-        },
-        "languageCode": {
-          "type": "string"
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.GameInternationalization.Api.LanguageWithLocales"
+          }
         }
       }
     }
