@@ -108,6 +108,313 @@
         }
       }
     },
+    "/my/balance": {
+      "get": {
+        "tags": [
+          "Currency"
+        ],
+        "summary": "Returns the Robux and Ticket balances for the currently authenticated user.",
+        "operationId": "Currency_GetBalance",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"robux\":10\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/users/{userId:long}/friends": {
+      "get": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Retrieves a paged list of friends for the specified user.",
+        "operationId": "Friends_GetFriends",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user.",
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "page",
+            "in": "query",
+            "description": "(Optional) The page to retrieve. Value\n            is set to 1 by default.",
+            "format": "int32",
+            "default": 1,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "[{\n\"Id\":12345678,\n\"Username\":\"user\",\n\"AvatarUri\":\"\",\n\"AvatarFinal\":true,\n\"IsOnline\":true\n}]",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/user/accept-friend-request": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Accept a friend request.",
+        "operationId": "Friends_AcceptFriendRequest",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "requesterUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the requester.",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/decline-friend-request": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Decline a friend request.",
+        "operationId": "Friends_DeclineFriendRequest",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "requesterUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the requester.",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/request-friendship": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Send a friend request to the specified user.",
+        "operationId": "Friends_RequestFriendship",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "recipientUserId",
+            "in": "query",
+            "required": true,
+            "description": "The userId of the recipient.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/get-friendship-count": {
+      "get": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Get number of friends.",
+        "operationId": "Friends_GetFriendshipCount",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "(Optional)The ID of the user, or the ID of the autheticated user if not provided.",
+            "format": "int64",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\", \n\"count\":10\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/unfriend": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "UnFriend a user",
+        "operationId": "Friends_UnFriend",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "friendUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the friend.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/follow": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Follow a particular user",
+        "operationId": "Friends_Follow",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "followedUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the user to follow.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/unfollow": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "UnFollow a particular user",
+        "operationId": "Friends_UnFollow",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "followedUserId",
+            "in": "query",
+            "required": true,
+            "description": "The ID of the followed user.",
+            "format": "int64",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "{\n\"success\":true, \n\"message\":\"Success\"\n}",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
     "/users/{userId:long}/groups": {
       "get": {
         "tags": [
