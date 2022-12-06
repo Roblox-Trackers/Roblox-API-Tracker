@@ -227,6 +227,7 @@
               "Email",
               "Username",
               "PhoneNumber",
+              "EmailOtpSessionToken",
               "AuthToken"
             ]
           },
@@ -1660,14 +1661,11 @@
         ],
         "parameters": [
           {
-            "name": "ids",
+            "name": "xboxTranslateRequest",
             "in": "body",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "$ref": "#/definitions/Roblox.Authentication.Api.Models.XboxTranslateRequest"
             }
           }
         ],
@@ -1753,6 +1751,7 @@
             "Email",
             "Username",
             "PhoneNumber",
+            "EmailOtpSessionToken",
             "AuthToken"
           ],
           "type": "string"
@@ -1898,6 +1897,7 @@
             "Email",
             "Username",
             "PhoneNumber",
+            "EmailOtpSessionToken",
             "AuthToken"
           ],
           "type": "string"
@@ -2576,6 +2576,19 @@
           "format": "int32",
           "description": "The count of Xbox log in consecutive days",
           "type": "integer"
+        }
+      }
+    },
+    "Roblox.Authentication.Api.Models.XboxTranslateRequest": {
+      "description": "Model for Xbox translate requests",
+      "type": "object",
+      "properties": {
+        "ids": {
+          "description": "Signup Username",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
