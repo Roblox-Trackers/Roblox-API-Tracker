@@ -59,7 +59,6 @@
               "Email",
               "Username",
               "PhoneNumber",
-              "EmailOtpSessionToken",
               "AuthToken"
             ]
           },
@@ -1385,7 +1384,6 @@
             "Email",
             "Username",
             "PhoneNumber",
-            "EmailOtpSessionToken",
             "AuthToken"
           ],
           "type": "string"
@@ -1531,7 +1529,6 @@
             "Email",
             "Username",
             "PhoneNumber",
-            "EmailOtpSessionToken",
             "AuthToken"
           ],
           "type": "string"
