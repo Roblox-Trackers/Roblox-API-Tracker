@@ -419,7 +419,8 @@
               "EyebrowAccessory",
               "EyelashAccessory",
               "MoodAnimation",
-              "DynamicHead"
+              "DynamicHead",
+              "CodeSnippet"
             ]
           },
           {
