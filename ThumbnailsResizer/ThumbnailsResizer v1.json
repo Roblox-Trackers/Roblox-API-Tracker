@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1",
-    "title": "ThumbnailsResizer Api v1"
+    "title": "ThumbnailsResizer Api v1",
+    "version": "v1"
   },
   "host": "thumbnailsresizer.roblox.com",
   "schemes": [
@@ -15,63 +15,54 @@
           "Resize"
         ],
         "summary": "Resizes larger thumbnails to specified size and format",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
         "parameters": [
           {
-            "name": "hash",
             "in": "path",
+            "name": "hash",
             "description": "Hash of larger thumbnail",
             "required": true,
             "type": "string"
           },
           {
-            "name": "width",
             "in": "path",
+            "name": "width",
             "description": "Desired width of thumbnail",
             "required": true,
             "type": "integer",
             "format": "int32"
           },
           {
-            "name": "height",
             "in": "path",
+            "name": "height",
             "description": "Desired height of thumbnail",
             "required": true,
             "type": "integer",
             "format": "int32"
           },
           {
-            "name": "type",
             "in": "path",
+            "name": "type",
             "description": "Thumbnail Type",
             "required": true,
             "type": "string"
           },
           {
-            "name": "format",
             "in": "path",
+            "name": "format",
             "description": "Desired image format of the thumbnail",
             "required": true,
             "type": "string"
           },
           {
+            "in": "query",
             "name": "filterType",
-            "in": "path",
             "description": "E.g. is output circular",
-            "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object"
-            }
+            "description": "OK"
           }
         },
         "properties": {
@@ -82,6 +73,5 @@
         }
       }
     }
-  },
-  "definitions": {}
+  }
 }
