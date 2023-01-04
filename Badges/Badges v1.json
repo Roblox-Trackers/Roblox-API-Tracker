@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Badges Api v1",
-    "version": "v1"
+    "version": "v1",
+    "title": "Badges Api v1"
   },
   "host": "badges.roblox.com",
   "schemes": [
@@ -15,14 +15,15 @@
           "Badges"
         ],
         "summary": "Gets badge information by the badge Id.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "badgeId",
+            "in": "path",
             "description": "The badge Id.",
             "required": true,
             "type": "integer",
@@ -54,7 +55,8 @@
         "summary": "Updates badge configuration.",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -62,16 +64,16 @@
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "badgeId",
+            "in": "path",
             "description": "The badge Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "in": "body",
             "name": "request",
+            "in": "body",
             "description": "The request body.",
             "required": true,
             "schema": {
@@ -113,10 +115,12 @@
           "Badges"
         ],
         "summary": "Gets metadata about the badges system.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -139,23 +143,25 @@
           "Badges"
         ],
         "summary": "Gets badges by their awarding game.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "universeId",
+            "in": "path",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "in": "query",
             "name": "limit",
-            "description": "The number of results per request.",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -167,15 +173,17 @@
             ]
           },
           {
-            "in": "query",
             "name": "cursor",
+            "in": "query",
             "description": "The paging cursor for the previous or next page.",
+            "required": false,
             "type": "string"
           },
           {
-            "in": "query",
             "name": "sortOrder",
+            "in": "query",
             "description": "The order the results are sorted in.",
+            "required": false,
             "type": "string",
             "default": "Asc",
             "enum": [
@@ -207,57 +215,58 @@
           "Badges"
         ],
         "summary": "Creates a new badge.",
-        "consumes": [
-          "multipart/form-data"
-        ],
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "universeId",
+            "in": "path",
             "description": "The ID of the universe to create the badge for.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
+            "name": "request.name",
             "in": "formData",
-            "name": "name",
             "description": "The badge name.",
+            "required": false,
             "type": "string"
           },
           {
+            "name": "request.description",
             "in": "formData",
-            "name": "description",
             "description": "The badge description.",
+            "required": false,
             "type": "string"
           },
           {
+            "name": "request.paymentSourceType",
             "in": "formData",
-            "name": "paymentSourceType",
-            "description": "Whether or not to pay for the badge with user funds, or group funds. ['User' = 1, 'Group' = 2]",
-            "type": "integer",
-            "format": "int32",
+            "description": "Whether or not to pay for the badge with user funds, or group funds.",
+            "required": false,
+            "type": "string",
             "enum": [
-              1,
-              2
+              "User",
+              "Group"
             ]
           },
           {
+            "name": "request.expectedCost",
             "in": "formData",
-            "name": "files",
-            "description": "The badge icon.",
-            "type": "file"
-          },
-          {
-            "in": "formData",
-            "name": "expectedCost",
             "description": "User expected cost of a badge.",
+            "required": false,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "request.files",
+            "in": "formData",
+            "required": false,
+            "type": "file"
           }
         ],
         "responses": {
@@ -297,14 +306,15 @@
           "Badges"
         ],
         "summary": "Gets the number of free badges left for the current UTC day by their awarding game.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "universeId",
+            "in": "path",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
@@ -337,23 +347,25 @@
           "Badges"
         ],
         "summary": "Gets a list of badges a user has been awarded.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "userId",
+            "in": "path",
             "description": "The user Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "in": "query",
             "name": "limit",
-            "description": "The number of results per request.",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -365,15 +377,17 @@
             ]
           },
           {
-            "in": "query",
             "name": "cursor",
+            "in": "query",
             "description": "The paging cursor for the previous or next page.",
+            "required": false,
             "type": "string"
           },
           {
-            "in": "query",
             "name": "sortOrder",
+            "in": "query",
             "description": "The order the results are sorted in.",
+            "required": false,
             "type": "string",
             "default": "Asc",
             "enum": [
@@ -407,28 +421,29 @@
           "BadgeAwards"
         ],
         "summary": "Gets timestamps for when badges were awarded to a user.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "userId",
+            "in": "path",
             "description": "The user Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "in": "query",
             "name": "badgeIds",
+            "in": "query",
             "description": "The CSV of badge Ids.",
             "required": true,
             "type": "array",
             "items": {
-              "format": "int64",
-              "type": "integer"
+              "type": "integer",
+              "format": "int64"
             },
             "collectionFormat": "csv"
           }
@@ -461,21 +476,22 @@
           "BadgeAwards"
         ],
         "summary": "Removes a badge from the user.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "userId",
+            "in": "path",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "in": "path",
             "name": "badgeId",
+            "in": "path",
             "description": "The badge Id.",
             "required": true,
             "type": "integer",
@@ -513,14 +529,15 @@
           "BadgeAwards"
         ],
         "summary": "Removes a badge from the authenticated user.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "path",
             "name": "badgeId",
+            "in": "path",
             "description": "The badge Id.",
             "required": true,
             "type": "integer",
@@ -554,6 +571,62 @@
     }
   },
   "definitions": {
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object",
+      "properties": {}
+    },
+    "System.Threading.CancellationToken": {
+      "type": "object",
+      "properties": {
+        "IsCancellationRequested": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanBeCanceled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "WaitHandle": {
+          "$ref": "#/definitions/System.Threading.WaitHandle",
+          "readOnly": true
+        }
+      }
+    },
+    "System.Threading.WaitHandle": {
+      "type": "object",
+      "properties": {
+        "Handle": {
+          "type": "object"
+        },
+        "SafeWaitHandle": {
+          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
+        }
+      }
+    },
+    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
+      "type": "object",
+      "properties": {
+        "IsInvalid": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "IsClosed": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Badges.Api.BadgeAwardResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Badges.Api.BadgeAwardResponse"
+          }
+        }
+      }
+    },
     "Roblox.Badges.Api.BadgeAwardResponse": {
       "description": "The result of being awarded a badge.",
       "type": "object",
@@ -641,10 +714,29 @@
           "type": "string"
         },
         "statistics": {
-          "$ref": "#/definitions/Roblox.Web.Responses.Badges.BadgeAwardStatisticsResponse"
+          "$ref": "#/definitions/Roblox.Web.Responses.Badges.BadgeAwardStatisticsResponse",
+          "description": "Badge award statisics."
         },
         "awardingUniverse": {
-          "$ref": "#/definitions/Roblox.Badges.Api.UniverseResponse"
+          "$ref": "#/definitions/Roblox.Badges.Api.UniverseResponse",
+          "description": "The universe the badge is being awarded from."
+        }
+      }
+    },
+    "Roblox.Web.Responses.Badges.BadgeAwardStatisticsResponse": {
+      "type": "object",
+      "properties": {
+        "pastDayAwardedCount": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "awardedCount": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "winRatePercentage": {
+          "format": "double",
+          "type": "number"
         }
       }
     },
@@ -693,22 +785,18 @@
           "type": "string"
         },
         "sortOrder": {
-          "format": "int32",
-          "description": " ['Asc' = 1, 'Desc' = 2]",
           "enum": [
-            1,
-            2
+            "Asc",
+            "Desc"
           ],
-          "type": "integer"
+          "type": "string"
         },
         "pagingDirection": {
-          "format": "int32",
-          "description": " ['Forward' = 1, 'Backward' = 2]",
           "enum": [
-            1,
-            2
+            "Forward",
+            "Backward"
           ],
-          "type": "integer"
+          "type": "string"
         },
         "pageNumber": {
           "format": "int32",
@@ -723,20 +811,115 @@
         }
       }
     },
-    "Roblox.Web.Responses.Badges.BadgeAwardStatisticsResponse": {
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Badges.Api.BadgeResponse]": {
       "type": "object",
       "properties": {
-        "pastDayAwardedCount": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Badges.Api.BadgeResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Badges.Api.CreateBadgeRequest": {
+      "description": "Request parameters required for creating a badge.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The badge name.",
+          "type": "string"
+        },
+        "description": {
+          "description": "The badge description.",
+          "type": "string"
+        },
+        "paymentSourceType": {
+          "description": "Whether or not to pay for the badge with user funds, or group funds.",
+          "enum": [
+            "User",
+            "Group"
+          ],
+          "type": "string"
+        },
+        "files": {
+          "description": "The badge icon.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Roblox.Web.WebApi.FormData.IUploadedFile"
+          },
+          "readOnly": true
+        },
+        "expectedCost": {
+          "format": "int64",
+          "description": "User expected cost of a badge.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Web.WebApi.FormData.IUploadedFile": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "Stream": {
+          "$ref": "#/definitions/System.IO.Stream",
+          "readOnly": true
+        },
+        "ContentEncoding": {
+          "enum": [
+            "None",
+            "GZip",
+            "Deflate"
+          ],
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "System.IO.Stream": {
+      "type": "object",
+      "properties": {
+        "CanRead": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanSeek": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanTimeout": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "CanWrite": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "Length": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "Position": {
           "format": "int64",
           "type": "integer"
         },
-        "awardedCount": {
-          "format": "int64",
+        "ReadTimeout": {
+          "format": "int32",
           "type": "integer"
         },
-        "winRatePercentage": {
-          "format": "double",
-          "type": "number"
+        "WriteTimeout": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -791,49 +974,19 @@
       "properties": {
         "id": {
           "format": "int64",
-          "type": "integer"
+          "type": "integer",
+          "readOnly": true
         },
         "type": {
-          "format": "int32",
-          "description": " ['Place' = 1]",
           "enum": [
-            1
+            "Place"
           ],
-          "type": "integer"
+          "type": "string",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object"
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Badges.Api.BadgeAwardResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Badges.Api.BadgeAwardResponse"
-          }
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Badges.Api.BadgeResponse]": {
-      "type": "object",
-      "properties": {
-        "previousPageCursor": {
-          "type": "string"
-        },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Badges.Api.BadgeResponse"
-          }
+          "type": "string",
+          "readOnly": true
         }
       }
     },
@@ -851,69 +1004,6 @@
           "items": {
             "$ref": "#/definitions/Roblox.Web.Responses.Badges.BadgeResponseV2"
           }
-        }
-      }
-    },
-    "Roblox.Web.WebApi.FormData.IUploadedFile": {
-      "type": "file",
-      "properties": {
-        "Name": {
-          "type": "string",
-          "readOnly": true
-        },
-        "Stream": {
-          "$ref": "#/definitions/System.IO.Stream"
-        },
-        "ContentEncoding": {
-          "format": "int32",
-          "description": " ['None' = 0, 'GZip' = 1, 'Deflate' = 2, 'Brotli' = 4, 'All' = -1]",
-          "enum": [
-            0,
-            1,
-            2,
-            4,
-            -1
-          ],
-          "type": "integer",
-          "readOnly": true
-        }
-      }
-    },
-    "System.IO.Stream": {
-      "type": "object",
-      "properties": {
-        "CanRead": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "CanWrite": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "CanSeek": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "CanTimeout": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "Length": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "Position": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "ReadTimeout": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "WriteTimeout": {
-          "format": "int32",
-          "type": "integer"
         }
       }
     }
