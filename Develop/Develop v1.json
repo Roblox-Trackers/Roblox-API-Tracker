@@ -24,7 +24,7 @@
           {
             "name": "assetIds",
             "in": "query",
-            "description": "The ids of the {Roblox.IAsset}.",
+            "description": "The ids of the {Roblox.Platform.Assets.IAsset}.",
             "required": true,
             "type": "array",
             "items": {
@@ -2962,15 +2962,15 @@
       "properties": {
         "assetId": {
           "format": "int64",
-          "description": "The {Roblox.IAsset}'s id.",
+          "description": "The {!:IAsset}'s id.",
           "type": "integer"
         },
         "hasUserVoted": {
-          "description": "Whether the user has voted on this {Roblox.IAsset}.",
+          "description": "Whether the user has voted on this {!:IAsset}.",
           "type": "boolean"
         },
         "canUserVote": {
-          "description": "Whether the user can vote on this {Roblox.IAsset}.",
+          "description": "Whether the user can vote on this {!:IAsset}.",
           "type": "boolean"
         },
         "shouldShowVotes": {
@@ -2988,7 +2988,7 @@
           "type": "integer"
         },
         "reasonForNotAbleToVote": {
-          "description": "The reason this {Roblox.IAsset} cannot be voted on.",
+          "description": "The reason this {!:IAsset} cannot be voted on.",
           "type": "string"
         }
       }
