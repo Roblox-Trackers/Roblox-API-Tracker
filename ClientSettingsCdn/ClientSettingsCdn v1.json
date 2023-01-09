@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1",
-    "title": "ClientSettings Api v1"
+    "title": "ClientSettings Api v1",
+    "version": "v1"
   },
   "host": "clientsettings.roblox.com",
   "schemes": [
@@ -15,15 +15,14 @@
           "VersionCheck"
         ],
         "summary": "Get client version information for specific binary type",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "binaryType",
             "in": "path",
+            "name": "binaryType",
             "description": "Platform(WindowsPlayer, WindowsStudio, MacPlayer or MacStudio) for which we want the latest version",
             "required": true,
             "type": "string"
@@ -51,18 +50,9 @@
           "Cdn"
         ],
         "summary": "Get information about which CDNs to use for installation.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object"
-            }
+            "description": "OK"
           }
         },
         "properties": {
@@ -79,15 +69,14 @@
           "VersionCheck"
         ],
         "summary": "Get mobile client version information based on app version parameter",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "appVersion",
             "in": "query",
+            "name": "appVersion",
             "description": "AppiOSV2.13, AppVersioniOS2.0.1, etc",
             "required": true,
             "type": "string"
@@ -146,9 +135,7 @@
         "MD5Sum": {
           "type": "string"
         },
-        "data": {
-          "type": "object"
-        }
+        "data": {}
       }
     }
   }
