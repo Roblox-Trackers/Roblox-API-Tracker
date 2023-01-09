@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v2",
-    "title": "ClientSettings Api v2"
+    "title": "ClientSettings Api v2",
+    "version": "v2"
   },
   "host": "clientsettings.roblox.com",
   "schemes": [
@@ -12,18 +12,17 @@
     "/v2/client-version/{binaryType}": {
       "get": {
         "tags": [
-          "VersionCheck"
+          "VersionCheckV2"
         ],
         "summary": "Get client version information for specific binary type",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "binaryType",
             "in": "path",
+            "name": "binaryType",
             "description": "Platform(WindowsPlayer, WindowsStudio, MacPlayer or MacStudio) for which we want the latest version",
             "required": true,
             "type": "string"
@@ -48,25 +47,24 @@
     "/v2/client-version/{binaryType}/channel/{channelName}": {
       "get": {
         "tags": [
-          "VersionCheck"
+          "VersionCheckV2"
         ],
         "summary": "Get client version information for specific binary type",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "binaryType",
             "in": "path",
+            "name": "binaryType",
             "description": "Platform(WindowsPlayer, WindowsStudio, MacPlayer or MacStudio) for which we want the latest version",
             "required": true,
             "type": "string"
           },
           {
-            "name": "channelName",
             "in": "path",
+            "name": "channelName",
             "description": "Channel Name",
             "required": true,
             "type": "string"
@@ -94,16 +92,14 @@
           "Channel"
         ],
         "summary": "Get channel name for currently logged in user",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "binaryType",
             "in": "query",
-            "required": false,
+            "name": "binaryType",
             "type": "string"
           }
         ],
@@ -125,15 +121,6 @@
     }
   },
   "definitions": {
-    "Roblox.ClientSettings.Api.Models.Response.UserChannelResponse": {
-      "description": "Response data object for getting a user's channel information.",
-      "type": "object",
-      "properties": {
-        "channelName": {
-          "type": "string"
-        }
-      }
-    },
     "Roblox.ClientSettings.Api.Models.Response.ClientVersionResponse": {
       "type": "object",
       "properties": {
@@ -150,6 +137,16 @@
           "type": "string"
         },
         "nextClientVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.ClientSettings.Api.Models.Response.UserChannelResponse": {
+      "description": "Response data object for getting a user's channel information.",
+      "type": "object",
+      "properties": {
+        "channelName": {
+          "description": "Name of the channel.",
           "type": "string"
         }
       }
