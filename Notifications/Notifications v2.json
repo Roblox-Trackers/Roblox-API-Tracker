@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Notifications Api v2",
-    "version": "v2"
+    "version": "v2",
+    "title": "Notifications Api v2"
   },
   "host": "notifications.roblox.com",
   "schemes": [
@@ -15,14 +15,15 @@
           "Notifications"
         ],
         "summary": "Gets the notification settings related to rollout",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "query",
             "name": "featureNames",
+            "in": "query",
             "description": "names of features to get the corresponding rollout values",
             "required": true,
             "type": "array",
@@ -59,10 +60,12 @@
           "Notifications"
         ],
         "summary": "Gets settings related to notifications for the signed in user",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -88,10 +91,12 @@
           "Notifications"
         ],
         "summary": "Gets the notification settings related to realtime",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -117,13 +122,15 @@
           "PushNotifications"
         ],
         "summary": "Get Chrome Manifest to link GCM project to Chrome Browser",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.ChromeManifestModel"
             }
@@ -146,13 +153,15 @@
           "PushNotifications"
         ],
         "summary": "Gets the current device destination",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.GetCurrentPushDestinationResponseModel"
             }
@@ -175,13 +184,15 @@
           "PushNotifications"
         ],
         "summary": "Gets valid destinations associated with the signed user",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.GetPushDestinationsResponseModel"
             }
@@ -204,30 +215,30 @@
           "PushNotifications"
         ],
         "summary": "Gets the corresponding metadata for the specified notification",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "query",
             "name": "notificationToken",
+            "in": "query",
             "description": "Token for the notification",
             "required": true,
             "type": "string"
           },
           {
-            "in": "query",
             "name": "notificationId",
+            "in": "query",
             "description": "Id of the specified notification",
             "required": true,
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.GetMetadataResponseModel"
             }
@@ -250,38 +261,39 @@
           "PushNotifications"
         ],
         "summary": "Gets the notificationIds for the specified notification token",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "query",
             "name": "notificationToken",
+            "in": "query",
             "description": "Token for the notification",
             "required": true,
             "type": "string"
           },
           {
-            "in": "query",
             "name": "limit",
+            "in": "query",
             "description": "Max number of notifications to get",
             "required": true,
             "type": "integer",
             "format": "int32"
           },
           {
-            "in": "query",
             "name": "cursor",
+            "in": "query",
             "description": "starting point to get the notifications",
+            "required": false,
             "type": "integer",
-            "format": "int32",
-            "default": 0
+            "format": "int32"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationIdsResponseModel"
             }
@@ -303,29 +315,30 @@
         "tags": [
           "NotificationStream"
         ],
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "query",
             "name": "universeIds",
+            "in": "query",
             "description": "List of universe IDs",
             "required": true,
             "type": "array",
             "items": {
-              "format": "int64",
-              "type": "integer"
+              "type": "integer",
+              "format": "int64"
             },
             "collectionFormat": "multi"
           },
           {
-            "in": "query",
             "name": "sinceDateTime",
+            "in": "query",
             "description": "For retrieving only updates that created after a time point.",
-            "type": "string",
-            "format": "date-time"
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -356,13 +369,15 @@
           "NotificationStream"
         ],
         "summary": "Gets the Notification stream prompt settings",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationStreamPromptSettingsModel"
             }
@@ -385,31 +400,32 @@
           "NotificationStream"
         ],
         "summary": "Gets the recent entries from the notification stream",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "in": "query",
             "name": "startIndex",
+            "in": "query",
             "description": "Index to start the entries from. (Optional : Defaults to 0 which means the most recent entry)",
+            "required": false,
             "type": "integer",
-            "format": "int32",
-            "default": 0
+            "format": "int32"
           },
           {
-            "in": "query",
             "name": "maxRows",
+            "in": "query",
             "description": "Number of entries to be returned. (Optional : Defaults to 10 entries)",
+            "required": false,
             "type": "integer",
-            "format": "int32",
-            "default": 10
+            "format": "int32"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "type": "array",
               "items": {
@@ -435,10 +451,12 @@
           "NotificationStream"
         ],
         "summary": "Get Notification Stream metadata.",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -464,13 +482,15 @@
           "NotificationStream"
         ],
         "summary": "Gets the count of unread Notification stream entries",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.UnreadStreamNotificationsModel"
             }
@@ -495,7 +515,8 @@
         "summary": "Allows the specified notification source types",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -503,8 +524,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -514,7 +535,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Http response message",
             "schema": {
               "type": "object"
             }
@@ -542,7 +563,8 @@
         "summary": "Opts out from the specified notification source types",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -550,8 +572,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -561,7 +583,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Http response message",
             "schema": {
               "type": "object"
             }
@@ -589,7 +611,8 @@
         "summary": "Allows the specified notification receiver destination types",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -597,8 +620,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -608,7 +631,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Http response message",
             "schema": {
               "type": "object"
             }
@@ -636,7 +659,8 @@
         "summary": "Opts out from the specified notification receiver destination types",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -644,8 +668,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -655,7 +679,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Http response message",
             "schema": {
               "type": "object"
             }
@@ -683,7 +707,8 @@
         "summary": "Updates the notification destination setting",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -691,8 +716,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.ReceiverDestinationPreferenceModel"
@@ -701,7 +726,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Http response Message",
             "schema": {
               "type": "object"
             }
@@ -729,7 +754,8 @@
         "summary": "Updated the notification band settings",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -737,8 +763,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -748,7 +774,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Http response Message",
             "schema": {
               "type": "object"
             }
@@ -774,13 +800,15 @@
           "PushNotifications"
         ],
         "summary": "De-register all devices to disable push notifications",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -806,13 +834,15 @@
           "PushNotifications"
         ],
         "summary": "De-register current device to diable push notifications",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -841,7 +871,8 @@
         "description": "This will notify the user's other notification clients (such as other push \r\n            devices and the Notification Stream) of the change.",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -849,8 +880,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -860,7 +891,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -889,7 +920,8 @@
         "description": "This will notify the user's \r\n            other notification clients (such as other push devices and the Notification Stream) of the change. This would typically be triggered \r\n            by the user clicking/interacting with a stack of notifications",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -897,8 +929,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -908,7 +940,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -936,7 +968,8 @@
         "summary": "Marks Interaction status for push notification",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -944,8 +977,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -955,7 +988,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -983,7 +1016,8 @@
         "summary": "Register Amazon Android for push notifications",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -991,8 +1025,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -1002,7 +1036,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.RegistrationResponseModel"
             }
@@ -1030,7 +1064,8 @@
         "summary": "Register Android Native for push notifications",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -1038,8 +1073,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -1049,7 +1084,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.RegistrationResponseModel"
             }
@@ -1077,7 +1112,8 @@
         "summary": "Register Android Tencent service device for push notifications",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -1085,8 +1121,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -1096,7 +1132,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.RegistrationResponseModel"
             }
@@ -1124,7 +1160,8 @@
         "summary": "Registers Chrome for push notifications",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -1132,8 +1169,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -1143,7 +1180,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.RegistrationResponseModel"
             }
@@ -1171,7 +1208,8 @@
         "summary": "Registers Firefox for push notifications",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -1179,8 +1217,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -1190,7 +1228,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.RegistrationResponseModel"
             }
@@ -1218,7 +1256,8 @@
         "summary": "Registers IOS device for push notifications",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -1226,8 +1265,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -1237,7 +1276,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.RegistrationResponseModel"
             }
@@ -1263,13 +1302,15 @@
           "NotificationStream"
         ],
         "summary": "Clears the unread Notification stream count",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -1297,7 +1338,8 @@
         "summary": "Sends metrics for when a Game Update Notification as Interacted. This differs from an the MarkStreamEntryInteracted function because it comes from an interaction\r\n              on the Game Update Notifications section not the aggregated Notification Stream view",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -1305,8 +1347,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.GameUpdateNotificationInteractedRequestModel"
@@ -1315,7 +1357,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -1343,7 +1385,8 @@
         "summary": "Sends metrics when a Game Update Notification is Read from the Game Update Notifications Section of the Notification Stream",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -1351,8 +1394,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.GameUpdateNotificationReadRequestModel"
@@ -1361,7 +1404,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -1389,7 +1432,8 @@
         "summary": "Marks a Notification Stream Entry as Interacted",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -1397,8 +1441,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "eventId (Guid) : Id corresponding to the Notification stream Entry to be marked as Interacted",
             "required": true,
             "schema": {
@@ -1408,7 +1452,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -1434,13 +1478,15 @@
           "NotificationStream"
         ],
         "summary": "Supresses the notification stream prompt",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Notifications.Models.SuccessResponseModel"
             }
@@ -1462,44 +1508,412 @@
     }
   },
   "definitions": {
-    "Roblox.Api.Notifications.Models.ChromeManifestModel": {
-      "description": "Chrome Manifest to link GCM project to Chrome browser",
+    "Roblox.Api.Notifications.Models.UserNotificationSettingsModel": {
+      "type": "object",
+      "properties": {
+        "notificationBandSettings": {
+          "description": "Settings model for notifications",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Notifications.Models.ReceiverNotificationSettingGroupModel"
+          }
+        },
+        "optedOutNotificationSourceTypes": {
+          "description": "List of strings to specify the opted out notification source types",
+          "type": "array",
+          "items": {
+            "enum": [
+              "Test",
+              "FriendRequestReceived",
+              "FriendRequestAccepted",
+              "PartyInviteReceived",
+              "PartyMemberJoined",
+              "ChatNewMessage",
+              "PrivateMessageReceived",
+              "UserAddedToPrivateServerWhiteList",
+              "ConversationUniverseChanged",
+              "TeamCreateInvite",
+              "GameUpdate",
+              "DeveloperMetricsAvailable",
+              "GroupJoinRequestAccepted",
+              "Sendr",
+              "ExperienceInvitation"
+            ],
+            "type": "string"
+          }
+        },
+        "optedOutReceiverDestinationTypes": {
+          "description": "List of strings to specify the opted out receiver destination types",
+          "type": "array",
+          "items": {
+            "enum": [
+              "DesktopPush",
+              "MobilePush",
+              "NotificationStream"
+            ],
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.ReceiverNotificationSettingGroupModel": {
+      "type": "object",
+      "properties": {
+        "notificationSourceType": {
+          "description": "Type of the notification",
+          "enum": [
+            "Test",
+            "FriendRequestReceived",
+            "FriendRequestAccepted",
+            "PartyInviteReceived",
+            "PartyMemberJoined",
+            "ChatNewMessage",
+            "PrivateMessageReceived",
+            "UserAddedToPrivateServerWhiteList",
+            "ConversationUniverseChanged",
+            "TeamCreateInvite",
+            "GameUpdate",
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted",
+            "Sendr",
+            "ExperienceInvitation"
+          ],
+          "type": "string"
+        },
+        "receiverDestinationType": {
+          "description": "Type of the destination of the notification",
+          "enum": [
+            "DesktopPush",
+            "MobilePush",
+            "NotificationStream"
+          ],
+          "type": "string"
+        },
+        "isEnabled": {
+          "description": "Is the corresponding notification enabled",
+          "type": "boolean"
+        },
+        "isOverridable": {
+          "description": "Is the corresponding notification overridable",
+          "type": "boolean"
+        },
+        "isSetByReceiver": {
+          "description": "Is the corresponding notification set by the receiver",
+          "type": "boolean"
+        },
+        "pushNotificationDestinationPreferences": {
+          "description": "List of models that specify the different preferences of push notification destinations for the user",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Notifications.Models.ReceiverDestinationSettingModel"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.ReceiverDestinationSettingModel": {
       "type": "object",
       "properties": {
         "name": {
+          "description": "Name of the destination setting",
           "type": "string"
         },
-        "gcm_sender_id": {
+        "platform": {
+          "description": "Platform corresponding to the destination setting",
+          "enum": [
+            "ChromeOnDesktop",
+            "AndroidNative",
+            "FirefoxOnDesktop",
+            "IOSNative",
+            "AndroidAmazon",
+            "IOSTencent",
+            "AndroidTencentService"
+          ],
+          "type": "string"
+        },
+        "destinationId": {
+          "format": "int64",
+          "description": "Id of the destination",
+          "type": "integer"
+        },
+        "isEnabled": {
+          "description": "Is the notification for the corresponding destination enabled",
+          "type": "boolean"
+        },
+        "isSetByReceiver": {
+          "description": "Is the notification for the corresponding destination set by the receiver",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.NotificationRolloutSettingsModel": {
+      "type": "object",
+      "properties": {
+        "rollOutFeatureEnabledList": {
+          "description": "List of models to specify feature and corresponding enable/disable pairs",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Notifications.Models.RolloutSettingsModel"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.RolloutSettingsModel": {
+      "type": "object",
+      "properties": {
+        "featureName": {
+          "description": "Name of the rollout feature\r\nValid Feature Names : \"PushNotifications\" / \"NotificationStream\" / \"NativeSignalR\"",
+          "type": "string"
+        },
+        "isRolloutEnabled": {
+          "description": "Is the rollout feature enabled",
+          "type": "boolean"
+        },
+        "isValidFeature": {
+          "description": "Is the feature name specified a valid feature",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.RealTimeNotificationsSettingsResponseModel": {
+      "type": "object",
+      "properties": {
+        "primaryDomain": {
+          "description": "Primary RealTime domain to use",
+          "type": "string"
+        },
+        "fallbackDomain": {
+          "description": "Fallback RealTime domain to use",
           "type": "string"
         }
       }
     },
-    "Roblox.Api.Notifications.Models.GameUpdateNotificationInteractedRequestModel": {
-      "description": "The request model for game update notification interacted event",
+    "Roblox.Api.Notifications.Models.NotificationBandSettingsModel": {
       "type": "object",
       "properties": {
-        "universeId": {
-          "format": "int64",
-          "description": "id of the universe whose notification was interacted with",
-          "type": "integer"
-        },
-        "createdOnKey": {
-          "type": "string"
-        },
-        "interactionType": {
-          "description": "type of interaction, current usage includes [\"Seen\", \"Played\", \"Unfollowed\"] in the future we will expand it to include other actions ['Unknown' = 0, 'Seen' = 1, 'Played' = 2, 'Unfollowed' = 3]",
+        "updatedSettings": {
+          "description": "List of notification band settings model",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationBandSettingModel"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.NotificationBandSettingModel": {
+      "type": "object",
+      "properties": {
+        "notificationSourceType": {
+          "description": "Type of notication source",
           "enum": [
-            "Unknown",
-            "Seen",
-            "Played",
-            "Unfollowed"
+            "Test",
+            "FriendRequestReceived",
+            "FriendRequestAccepted",
+            "PartyInviteReceived",
+            "PartyMemberJoined",
+            "ChatNewMessage",
+            "PrivateMessageReceived",
+            "UserAddedToPrivateServerWhiteList",
+            "ConversationUniverseChanged",
+            "TeamCreateInvite",
+            "GameUpdate",
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted",
+            "Sendr",
+            "ExperienceInvitation"
           ],
           "type": "string"
         },
-        "currentUserId": {
+        "receiverDestinationType": {
+          "description": "Type of receiver destination type",
+          "enum": [
+            "DesktopPush",
+            "MobilePush",
+            "NotificationStream"
+          ],
+          "type": "string"
+        },
+        "isEnabled": {
+          "description": "Is the notification band enabled",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.ReceiverDestinationPreferenceModel": {
+      "type": "object",
+      "properties": {
+        "notificationSourceType": {
+          "description": "Notification source type",
+          "enum": [
+            "Test",
+            "FriendRequestReceived",
+            "FriendRequestAccepted",
+            "PartyInviteReceived",
+            "PartyMemberJoined",
+            "ChatNewMessage",
+            "PrivateMessageReceived",
+            "UserAddedToPrivateServerWhiteList",
+            "ConversationUniverseChanged",
+            "TeamCreateInvite",
+            "GameUpdate",
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted",
+            "Sendr",
+            "ExperienceInvitation"
+          ],
+          "type": "string"
+        },
+        "destinationId": {
           "format": "int64",
-          "description": "Id of the user that is being tracked",
+          "description": "Notification destination Id",
           "type": "integer"
+        },
+        "isEnabled": {
+          "description": "Is Notification enabled for tje destination",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.NotificationSourceTypeModel": {
+      "type": "object",
+      "properties": {
+        "sourceType": {
+          "description": "Type of the notification source",
+          "enum": [
+            "Test",
+            "FriendRequestReceived",
+            "FriendRequestAccepted",
+            "PartyInviteReceived",
+            "PartyMemberJoined",
+            "ChatNewMessage",
+            "PrivateMessageReceived",
+            "UserAddedToPrivateServerWhiteList",
+            "ConversationUniverseChanged",
+            "TeamCreateInvite",
+            "GameUpdate",
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted",
+            "Sendr",
+            "ExperienceInvitation"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.ReceiverDestinationTypeModel": {
+      "type": "object",
+      "properties": {
+        "destinationType": {
+          "description": "Type of notification receiver destination type",
+          "enum": [
+            "DesktopPush",
+            "MobilePush",
+            "NotificationStream"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.NotificationStreamEntriesModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Id of the notification stream entry",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "notificationSourceType": {
+          "description": "Type of the notification source",
+          "enum": [
+            "Test",
+            "FriendRequestReceived",
+            "FriendRequestAccepted",
+            "PartyInviteReceived",
+            "PartyMemberJoined",
+            "ChatNewMessage",
+            "PrivateMessageReceived",
+            "UserAddedToPrivateServerWhiteList",
+            "ConversationUniverseChanged",
+            "TeamCreateInvite",
+            "GameUpdate",
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted",
+            "Sendr",
+            "ExperienceInvitation"
+          ],
+          "type": "string"
+        },
+        "eventDate": {
+          "format": "date-time",
+          "description": "Datetime when the notification stream entry event had occured",
+          "type": "string"
+        },
+        "isInteracted": {
+          "description": "Has the user interacted with the notification stream entry",
+          "type": "boolean"
+        },
+        "metadataCollection": {
+          "description": "List of metadata objects showing more details related to the notification stream entry",
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "eventCount": {
+          "format": "int64",
+          "description": "Count of events corresponding to the group of notification stream entry",
+          "type": "integer"
+        },
+        "content": {
+          "description": "Content object for sendr notification stream entry",
+          "type": "object"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.MarkInteractedRequestModel": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "format": "uuid",
+          "description": "Event Id to be marked interacted",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.SuccessResponseModel": {
+      "type": "object",
+      "properties": {
+        "statusMessage": {
+          "description": "Message for the success response",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.UnreadStreamNotificationsModel": {
+      "type": "object",
+      "properties": {
+        "unreadNotifications": {
+          "format": "int64",
+          "description": "Count of unread notifications in the stream",
+          "type": "integer"
+        },
+        "statusMessage": {
+          "description": "Message for the success response",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.NotificationStreamPromptSettingsModel": {
+      "type": "object",
+      "properties": {
+        "hasUserInteractedWithNotificationStream": {
+          "description": "Has user interacted with the notification stream",
+          "type": "boolean"
+        },
+        "showNotificationStreamPrompt": {
+          "description": "Should the notification stream prompt be visible for the user",
+          "type": "boolean"
         }
       }
     },
@@ -1555,27 +1969,48 @@
         }
       }
     },
-    "Roblox.Api.Notifications.Models.GetCurrentPushDestinationResponseModel": {
+    "Roblox.Api.Notifications.Models.GameUpdateNotificationInteractedRequestModel": {
+      "description": "The request model for game update notification interacted event",
       "type": "object",
       "properties": {
-        "destination": {
-          "$ref": "#/definitions/Roblox.Api.Notifications.Models.UserPushDestination"
+        "universeId": {
+          "format": "int64",
+          "description": "id of the universe whose notification was interacted with",
+          "type": "integer"
         },
-        "statusMessage": {
-          "description": "Message for the success response",
+        "createdOnKey": {
           "type": "string"
+        },
+        "interactionType": {
+          "description": "type of interaction, current usage includes [\"Seen\", \"Played\", \"Unfollowed\"] in the future we will expand it to include other actions",
+          "enum": [
+            "Unknown",
+            "Seen",
+            "Played",
+            "Unfollowed"
+          ],
+          "type": "string"
+        },
+        "currentUserId": {
+          "format": "int64",
+          "description": "Id of the user that is being tracked",
+          "type": "integer"
         }
       }
     },
-    "Roblox.Api.Notifications.Models.GetMetadataResponseModel": {
+    "Roblox.Api.Notifications.Models.ResponseModels.NotificationStreamMetadataResponse": {
       "type": "object",
       "properties": {
-        "metadata": {
-          "$ref": "#/definitions/Roblox.Api.Notifications.Models.PushNotificationClientMetadata"
+        "bannerDismissTimeSpan": {
+          "format": "int32",
+          "type": "integer"
         },
-        "statusMessage": {
-          "description": "Message for the success response",
-          "type": "string"
+        "signalRDisconnectionResponseInMilliseconds": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "canLaunchGameFromGameUpdate": {
+          "type": "boolean"
         }
       }
     },
@@ -1595,279 +2030,46 @@
         }
       }
     },
-    "Roblox.Api.Notifications.Models.MarkAsReadRequestModel": {
+    "Roblox.Api.Notifications.Models.UserPushDestination": {
       "type": "object",
       "properties": {
-        "platformType": {
-          "description": "Platform type sending the mark-as-read notification ['ChromeOnDesktop' = 0, 'AndroidNative' = 1, 'FirefoxOnDesktop' = 2, 'IOSNative' = 3, 'AndroidAmazon' = 4, 'IOSTencent' = 5, 'AndroidTencentService' = 6]",
-          "enum": [
-            "ChromeOnDesktop",
-            "AndroidNative",
-            "FirefoxOnDesktop",
-            "IOSNative",
-            "AndroidAmazon",
-            "IOSTencent",
-            "AndroidTencentService"
-          ],
-          "type": "string"
+        "user": {
+          "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationUser",
+          "description": "Notification user"
         },
-        "notificationId": {
-          "format": "uuid",
-          "description": "Id of the Notification",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.MarkCategoryAsReadRequestModel": {
-      "type": "object",
-      "properties": {
-        "notificationType": {
-          "description": "Type of notification to mark category as read ['Test' = 0, 'FriendRequestReceived' = 1, 'FriendRequestAccepted' = 2, 'PartyInviteReceived' = 3, 'PartyMemberJoined' = 4, 'ChatNewMessage' = 5, 'PrivateMessageReceived' = 6, 'UserAddedToPrivateServerWhiteList' = 7, 'ConversationUniverseChanged' = 8, 'TeamCreateInvite' = 9, 'GameUpdate' = 10, 'DeveloperMetricsAvailable' = 11, 'GroupJoinRequestAccepted' = 12, 'Sendr' = 13, 'ExperienceInvitation' = 14]",
-          "enum": [
-            "Test",
-            "FriendRequestReceived",
-            "FriendRequestAccepted",
-            "PartyInviteReceived",
-            "PartyMemberJoined",
-            "ChatNewMessage",
-            "PrivateMessageReceived",
-            "UserAddedToPrivateServerWhiteList",
-            "ConversationUniverseChanged",
-            "TeamCreateInvite",
-            "GameUpdate",
-            "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted",
-            "Sendr",
-            "ExperienceInvitation"
-          ],
-          "type": "string"
-        },
-        "category": {
-          "description": "Category of notification",
-          "type": "string"
-        },
-        "latestNotificationId": {
-          "format": "uuid",
-          "description": "Id of the latest notification",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.MarkInteractedRequestModel": {
-      "type": "object",
-      "properties": {
-        "eventId": {
-          "format": "uuid",
-          "description": "Event Id to be marked interacted",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.MarkInteractionRequestModel": {
-      "type": "object",
-      "properties": {
-        "platformType": {
-          "description": "Type of platform making the request ['ChromeOnDesktop' = 0, 'AndroidNative' = 1, 'FirefoxOnDesktop' = 2, 'IOSNative' = 3, 'AndroidAmazon' = 4, 'IOSTencent' = 5, 'AndroidTencentService' = 6]",
-          "enum": [
-            "ChromeOnDesktop",
-            "AndroidNative",
-            "FirefoxOnDesktop",
-            "IOSNative",
-            "AndroidAmazon",
-            "IOSTencent",
-            "AndroidTencentService"
-          ],
+        "name": {
+          "description": "Name of the destination",
           "type": "string"
         },
         "notificationToken": {
-          "description": "Token for notification",
+          "description": "Token for the corresponding notification",
           "type": "string"
         },
-        "notificationId": {
-          "format": "uuid",
-          "description": "Id for notification",
-          "type": "string"
-        },
-        "interactionType": {
-          "description": "Type of interation with the notification ['Click' = 0, 'Dismiss' = 1, 'Action' = 2]",
-          "enum": [
-            "Click",
-            "Dismiss",
-            "Action"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.NotificationBandSettingModel": {
-      "type": "object",
-      "properties": {
-        "notificationSourceType": {
-          "description": "Type of notication source ['Test' = 0, 'FriendRequestReceived' = 1, 'FriendRequestAccepted' = 2, 'PartyInviteReceived' = 3, 'PartyMemberJoined' = 4, 'ChatNewMessage' = 5, 'PrivateMessageReceived' = 6, 'UserAddedToPrivateServerWhiteList' = 7, 'ConversationUniverseChanged' = 8, 'TeamCreateInvite' = 9, 'GameUpdate' = 10, 'DeveloperMetricsAvailable' = 11, 'GroupJoinRequestAccepted' = 12, 'Sendr' = 13, 'ExperienceInvitation' = 14]",
-          "enum": [
-            "Test",
-            "FriendRequestReceived",
-            "FriendRequestAccepted",
-            "PartyInviteReceived",
-            "PartyMemberJoined",
-            "ChatNewMessage",
-            "PrivateMessageReceived",
-            "UserAddedToPrivateServerWhiteList",
-            "ConversationUniverseChanged",
-            "TeamCreateInvite",
-            "GameUpdate",
-            "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted",
-            "Sendr",
-            "ExperienceInvitation"
-          ],
-          "type": "string"
-        },
-        "receiverDestinationType": {
-          "description": "Type of receiver destination type ['DesktopPush' = 0, 'MobilePush' = 1, 'NotificationStream' = 2]",
-          "enum": [
-            "DesktopPush",
-            "MobilePush",
-            "NotificationStream"
-          ],
-          "type": "string"
-        },
-        "isEnabled": {
-          "description": "Is the notification band enabled",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.NotificationBandSettingsModel": {
-      "type": "object",
-      "properties": {
-        "updatedSettings": {
-          "description": "List of notification band settings model",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationBandSettingModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.NotificationIdsResponseModel": {
-      "type": "object",
-      "properties": {
-        "ids": {
-          "description": "List of notification Ids",
-          "type": "array",
-          "items": {
-            "format": "uuid",
-            "type": "string"
-          }
-        },
-        "statusMessage": {
-          "description": "Message for the success response",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.NotificationRolloutSettingsModel": {
-      "type": "object",
-      "properties": {
-        "rollOutFeatureEnabledList": {
-          "description": "List of models to specify feature and corresponding enable/disable pairs",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Notifications.Models.RolloutSettingsModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.NotificationSourceTypeModel": {
-      "type": "object",
-      "properties": {
-        "sourceType": {
-          "description": "Type of the notification source ['Test' = 0, 'FriendRequestReceived' = 1, 'FriendRequestAccepted' = 2, 'PartyInviteReceived' = 3, 'PartyMemberJoined' = 4, 'ChatNewMessage' = 5, 'PrivateMessageReceived' = 6, 'UserAddedToPrivateServerWhiteList' = 7, 'ConversationUniverseChanged' = 8, 'TeamCreateInvite' = 9, 'GameUpdate' = 10, 'DeveloperMetricsAvailable' = 11, 'GroupJoinRequestAccepted' = 12, 'Sendr' = 13, 'ExperienceInvitation' = 14]",
-          "enum": [
-            "Test",
-            "FriendRequestReceived",
-            "FriendRequestAccepted",
-            "PartyInviteReceived",
-            "PartyMemberJoined",
-            "ChatNewMessage",
-            "PrivateMessageReceived",
-            "UserAddedToPrivateServerWhiteList",
-            "ConversationUniverseChanged",
-            "TeamCreateInvite",
-            "GameUpdate",
-            "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted",
-            "Sendr",
-            "ExperienceInvitation"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.NotificationStreamEntriesModel": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "description": "Id of the notification stream entry",
-          "type": "string"
-        },
-        "notificationSourceType": {
-          "description": "Type of the notification source ['Test' = 0, 'FriendRequestReceived' = 1, 'FriendRequestAccepted' = 2, 'PartyInviteReceived' = 3, 'PartyMemberJoined' = 4, 'ChatNewMessage' = 5, 'PrivateMessageReceived' = 6, 'UserAddedToPrivateServerWhiteList' = 7, 'ConversationUniverseChanged' = 8, 'TeamCreateInvite' = 9, 'GameUpdate' = 10, 'DeveloperMetricsAvailable' = 11, 'GroupJoinRequestAccepted' = 12, 'Sendr' = 13, 'ExperienceInvitation' = 14]",
-          "enum": [
-            "Test",
-            "FriendRequestReceived",
-            "FriendRequestAccepted",
-            "PartyInviteReceived",
-            "PartyMemberJoined",
-            "ChatNewMessage",
-            "PrivateMessageReceived",
-            "UserAddedToPrivateServerWhiteList",
-            "ConversationUniverseChanged",
-            "TeamCreateInvite",
-            "GameUpdate",
-            "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted",
-            "Sendr",
-            "ExperienceInvitation"
-          ],
-          "type": "string"
-        },
-        "eventDate": {
-          "format": "date-time",
-          "description": "Datetime when the notification stream entry event had occured",
-          "type": "string"
-        },
-        "isInteracted": {
-          "description": "Has the user interacted with the notification stream entry",
+        "supportsUpdateNotifications": {
+          "description": "Is Update notification feature supported",
           "type": "boolean"
         },
-        "metadataCollection": {
-          "description": "List of metadata objects showing more details related to the notification stream entry",
-          "type": "array",
-          "items": {}
-        },
-        "eventCount": {
+        "userPushNotificationDestinationId": {
           "format": "int64",
-          "description": "Count of events corresponding to the group of notification stream entry",
+          "description": "Destination Id for the push notification",
           "type": "integer"
         },
-        "content": {
-          "description": "Content object for sendr notification stream entry"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.NotificationStreamPromptSettingsModel": {
-      "type": "object",
-      "properties": {
-        "hasUserInteractedWithNotificationStream": {
-          "description": "Has user interacted with the notification stream",
-          "type": "boolean"
+        "application": {
+          "description": "application for the corresponding notification\r\nExample : \"Roblox\"",
+          "type": "string"
         },
-        "showNotificationStreamPrompt": {
-          "description": "Should the notification stream prompt be visible for the user",
-          "type": "boolean"
+        "platform": {
+          "description": "Platform for the corresponding notification",
+          "enum": [
+            "ChromeOnDesktop",
+            "AndroidNative",
+            "FirefoxOnDesktop",
+            "IOSNative",
+            "AndroidAmazon",
+            "IOSTencent",
+            "AndroidTencentService"
+          ],
+          "type": "string"
         }
       }
     },
@@ -1885,24 +2087,54 @@
         }
       }
     },
-    "Roblox.Api.Notifications.Models.PushNotificationClientMetadata": {
+    "Roblox.Api.Notifications.Models.GetCurrentPushDestinationResponseModel": {
       "type": "object",
       "properties": {
-        "notificationId": {
-          "format": "uuid",
-          "description": "Id for the push client notification",
+        "destination": {
+          "$ref": "#/definitions/Roblox.Api.Notifications.Models.UserPushDestination",
+          "description": "Notification destination for push"
+        },
+        "statusMessage": {
+          "description": "Message for the success response",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.ChromeManifestModel": {
+      "description": "Chrome Manifest to link GCM project to Chrome browser",
+      "type": "object",
+      "properties": {
+        "name": {
           "type": "string"
         },
-        "type": {
-          "description": "Type of the push client notification",
+        "gcm_sender_id": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.RegisterChromeRequestModel": {
+      "type": "object",
+      "properties": {
+        "notificationToken": {
+          "description": "Token for notification",
           "type": "string"
         },
-        "detail": {
-          "description": "Details corresponding to the notification"
-        },
-        "fallbackDelivered": {
-          "description": "Is fallback delivered for the notification metadata",
+        "initiatedByUser": {
+          "description": "Is the call initiated by user",
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.RegistrationResponseModel": {
+      "type": "object",
+      "properties": {
+        "registration": {
+          "$ref": "#/definitions/Roblox.Api.Notifications.Models.PushNotificationRegistration",
+          "description": "Push notification registration model"
+        },
+        "statusMessage": {
+          "description": "Message for the success response",
+          "type": "string"
         }
       }
     },
@@ -1927,7 +2159,7 @@
           "type": "string"
         },
         "platform": {
-          "description": "Notification platform ['ChromeOnDesktop' = 0, 'AndroidNative' = 1, 'FirefoxOnDesktop' = 2, 'IOSNative' = 3, 'AndroidAmazon' = 4, 'IOSTencent' = 5, 'AndroidTencentService' = 6]",
+          "description": "Notification platform",
           "enum": [
             "ChromeOnDesktop",
             "AndroidNative",
@@ -1941,162 +2173,20 @@
         }
       }
     },
-    "Roblox.Api.Notifications.Models.ReceiverDestinationPreferenceModel": {
-      "type": "object",
-      "properties": {
-        "notificationSourceType": {
-          "description": "Notification source type ['Test' = 0, 'FriendRequestReceived' = 1, 'FriendRequestAccepted' = 2, 'PartyInviteReceived' = 3, 'PartyMemberJoined' = 4, 'ChatNewMessage' = 5, 'PrivateMessageReceived' = 6, 'UserAddedToPrivateServerWhiteList' = 7, 'ConversationUniverseChanged' = 8, 'TeamCreateInvite' = 9, 'GameUpdate' = 10, 'DeveloperMetricsAvailable' = 11, 'GroupJoinRequestAccepted' = 12, 'Sendr' = 13, 'ExperienceInvitation' = 14]",
-          "enum": [
-            "Test",
-            "FriendRequestReceived",
-            "FriendRequestAccepted",
-            "PartyInviteReceived",
-            "PartyMemberJoined",
-            "ChatNewMessage",
-            "PrivateMessageReceived",
-            "UserAddedToPrivateServerWhiteList",
-            "ConversationUniverseChanged",
-            "TeamCreateInvite",
-            "GameUpdate",
-            "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted",
-            "Sendr",
-            "ExperienceInvitation"
-          ],
-          "type": "string"
-        },
-        "destinationId": {
-          "format": "int64",
-          "description": "Notification destination Id",
-          "type": "integer"
-        },
-        "isEnabled": {
-          "description": "Is Notification enabled for tje destination",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.ReceiverDestinationSettingModel": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Name of the destination setting",
-          "type": "string"
-        },
-        "platform": {
-          "description": "Platform corresponding to the destination setting ['ChromeOnDesktop' = 0, 'AndroidNative' = 1, 'FirefoxOnDesktop' = 2, 'IOSNative' = 3, 'AndroidAmazon' = 4, 'IOSTencent' = 5, 'AndroidTencentService' = 6]",
-          "enum": [
-            "ChromeOnDesktop",
-            "AndroidNative",
-            "FirefoxOnDesktop",
-            "IOSNative",
-            "AndroidAmazon",
-            "IOSTencent",
-            "AndroidTencentService"
-          ],
-          "type": "string"
-        },
-        "destinationId": {
-          "format": "int64",
-          "description": "Id of the destination",
-          "type": "integer"
-        },
-        "isEnabled": {
-          "description": "Is the notification for the corresponding destination enabled",
-          "type": "boolean"
-        },
-        "isSetByReceiver": {
-          "description": "Is the notification for the corresponding destination set by the receiver",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.ReceiverDestinationTypeModel": {
-      "type": "object",
-      "properties": {
-        "destinationType": {
-          "description": "Type of notification receiver destination type ['DesktopPush' = 0, 'MobilePush' = 1, 'NotificationStream' = 2]",
-          "enum": [
-            "DesktopPush",
-            "MobilePush",
-            "NotificationStream"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.ReceiverNotificationSettingGroupModel": {
-      "type": "object",
-      "properties": {
-        "notificationSourceType": {
-          "description": "Type of the notification ['Test' = 0, 'FriendRequestReceived' = 1, 'FriendRequestAccepted' = 2, 'PartyInviteReceived' = 3, 'PartyMemberJoined' = 4, 'ChatNewMessage' = 5, 'PrivateMessageReceived' = 6, 'UserAddedToPrivateServerWhiteList' = 7, 'ConversationUniverseChanged' = 8, 'TeamCreateInvite' = 9, 'GameUpdate' = 10, 'DeveloperMetricsAvailable' = 11, 'GroupJoinRequestAccepted' = 12, 'Sendr' = 13, 'ExperienceInvitation' = 14]",
-          "enum": [
-            "Test",
-            "FriendRequestReceived",
-            "FriendRequestAccepted",
-            "PartyInviteReceived",
-            "PartyMemberJoined",
-            "ChatNewMessage",
-            "PrivateMessageReceived",
-            "UserAddedToPrivateServerWhiteList",
-            "ConversationUniverseChanged",
-            "TeamCreateInvite",
-            "GameUpdate",
-            "DeveloperMetricsAvailable",
-            "GroupJoinRequestAccepted",
-            "Sendr",
-            "ExperienceInvitation"
-          ],
-          "type": "string"
-        },
-        "receiverDestinationType": {
-          "description": "Type of the destination of the notification ['DesktopPush' = 0, 'MobilePush' = 1, 'NotificationStream' = 2]",
-          "enum": [
-            "DesktopPush",
-            "MobilePush",
-            "NotificationStream"
-          ],
-          "type": "string"
-        },
-        "isEnabled": {
-          "description": "Is the corresponding notification enabled",
-          "type": "boolean"
-        },
-        "isOverridable": {
-          "description": "Is the corresponding notification overridable",
-          "type": "boolean"
-        },
-        "isSetByReceiver": {
-          "description": "Is the corresponding notification set by the receiver",
-          "type": "boolean"
-        },
-        "pushNotificationDestinationPreferences": {
-          "description": "List of models that specify the different preferences of push notification destinations for the user",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Notifications.Models.ReceiverDestinationSettingModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.RegisterAndroidAmazonRequestModel": {
+    "Roblox.Api.Notifications.Models.RegisterFirefoxRequestModel": {
       "type": "object",
       "properties": {
         "notificationToken": {
           "description": "Token for notification",
           "type": "string"
         },
-        "authorizeForUser": {
-          "description": "Is call authorized for the user",
+        "notificationEndpoint": {
+          "description": "Endpoint for the notification",
+          "type": "string"
+        },
+        "initiatedByUser": {
+          "description": "Is the call initiated by the user",
           "type": "boolean"
-        },
-        "oldNotificationToken": {
-          "description": "Old notification token",
-          "type": "string"
-        },
-        "deviceName": {
-          "description": "Name of the requesting device",
-          "type": "string"
         }
       }
     },
@@ -2121,33 +2211,24 @@
         }
       }
     },
-    "Roblox.Api.Notifications.Models.RegisterChromeRequestModel": {
+    "Roblox.Api.Notifications.Models.RegisterAndroidAmazonRequestModel": {
       "type": "object",
       "properties": {
         "notificationToken": {
           "description": "Token for notification",
           "type": "string"
         },
-        "initiatedByUser": {
-          "description": "Is the call initiated by user",
+        "authorizeForUser": {
+          "description": "Is call authorized for the user",
           "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.RegisterFirefoxRequestModel": {
-      "type": "object",
-      "properties": {
-        "notificationToken": {
-          "description": "Token for notification",
+        },
+        "oldNotificationToken": {
+          "description": "Old notification token",
           "type": "string"
         },
-        "notificationEndpoint": {
-          "description": "Endpoint for the notification",
+        "deviceName": {
+          "description": "Name of the requesting device",
           "type": "string"
-        },
-        "initiatedByUser": {
-          "description": "Is the call initiated by the user",
-          "type": "boolean"
         }
       }
     },
@@ -2197,11 +2278,12 @@
         }
       }
     },
-    "Roblox.Api.Notifications.Models.RegistrationResponseModel": {
+    "Roblox.Api.Notifications.Models.GetMetadataResponseModel": {
       "type": "object",
       "properties": {
-        "registration": {
-          "$ref": "#/definitions/Roblox.Api.Notifications.Models.PushNotificationRegistration"
+        "metadata": {
+          "$ref": "#/definitions/Roblox.Api.Notifications.Models.PushNotificationClientMetadata",
+          "description": "Metadata for the push notification client"
         },
         "statusMessage": {
           "description": "Message for the success response",
@@ -2209,55 +2291,40 @@
         }
       }
     },
-    "Roblox.Api.Notifications.Models.ResponseModels.NotificationStreamMetadataResponse": {
+    "Roblox.Api.Notifications.Models.PushNotificationClientMetadata": {
       "type": "object",
       "properties": {
-        "bannerDismissTimeSpan": {
-          "format": "int32",
-          "type": "integer"
+        "notificationId": {
+          "format": "uuid",
+          "description": "Id for the push client notification",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
         },
-        "signalRDisconnectionResponseInMilliseconds": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "canLaunchGameFromGameUpdate": {
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.RolloutSettingsModel": {
-      "type": "object",
-      "properties": {
-        "featureName": {
-          "description": "Name of the rollout feature\r\nValid Feature Names : \"PushNotifications\" / \"NotificationStream\" / \"NativeSignalR\"",
+        "type": {
+          "description": "Type of the push client notification",
           "type": "string"
         },
-        "isRolloutEnabled": {
-          "description": "Is the rollout feature enabled",
-          "type": "boolean"
+        "detail": {
+          "description": "Details corresponding to the notification",
+          "type": "object"
         },
-        "isValidFeature": {
-          "description": "Is the feature name specified a valid feature",
+        "fallbackDelivered": {
+          "description": "Is fallback delivered for the notification metadata",
           "type": "boolean"
         }
       }
     },
-    "Roblox.Api.Notifications.Models.SuccessResponseModel": {
+    "Roblox.Api.Notifications.Models.NotificationIdsResponseModel": {
       "type": "object",
       "properties": {
-        "statusMessage": {
-          "description": "Message for the success response",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.UnreadStreamNotificationsModel": {
-      "type": "object",
-      "properties": {
-        "unreadNotifications": {
-          "format": "int64",
-          "description": "Count of unread notifications in the stream",
-          "type": "integer"
+        "ids": {
+          "description": "List of notification Ids",
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          }
         },
         "statusMessage": {
           "description": "Message for the success response",
@@ -2265,85 +2332,11 @@
         }
       }
     },
-    "Roblox.Api.Notifications.Models.UserNotificationSettingsModel": {
+    "Roblox.Api.Notifications.Models.MarkAsReadRequestModel": {
       "type": "object",
       "properties": {
-        "notificationBandSettings": {
-          "description": "Settings model for notifications",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Notifications.Models.ReceiverNotificationSettingGroupModel"
-          }
-        },
-        "optedOutNotificationSourceTypes": {
-          "description": "List of strings to specify the opted out notification source types",
-          "type": "array",
-          "items": {
-            "description": " ['Test' = 0, 'FriendRequestReceived' = 1, 'FriendRequestAccepted' = 2, 'PartyInviteReceived' = 3, 'PartyMemberJoined' = 4, 'ChatNewMessage' = 5, 'PrivateMessageReceived' = 6, 'UserAddedToPrivateServerWhiteList' = 7, 'ConversationUniverseChanged' = 8, 'TeamCreateInvite' = 9, 'GameUpdate' = 10, 'DeveloperMetricsAvailable' = 11, 'GroupJoinRequestAccepted' = 12, 'Sendr' = 13, 'ExperienceInvitation' = 14]",
-            "enum": [
-              "Test",
-              "FriendRequestReceived",
-              "FriendRequestAccepted",
-              "PartyInviteReceived",
-              "PartyMemberJoined",
-              "ChatNewMessage",
-              "PrivateMessageReceived",
-              "UserAddedToPrivateServerWhiteList",
-              "ConversationUniverseChanged",
-              "TeamCreateInvite",
-              "GameUpdate",
-              "DeveloperMetricsAvailable",
-              "GroupJoinRequestAccepted",
-              "Sendr",
-              "ExperienceInvitation"
-            ],
-            "type": "string"
-          }
-        },
-        "optedOutReceiverDestinationTypes": {
-          "description": "List of strings to specify the opted out receiver destination types",
-          "type": "array",
-          "items": {
-            "description": " ['DesktopPush' = 0, 'MobilePush' = 1, 'NotificationStream' = 2]",
-            "enum": [
-              "DesktopPush",
-              "MobilePush",
-              "NotificationStream"
-            ],
-            "type": "string"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Notifications.Models.UserPushDestination": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/Roblox.Api.Notifications.Models.NotificationUser"
-        },
-        "name": {
-          "description": "Name of the destination",
-          "type": "string"
-        },
-        "notificationToken": {
-          "description": "Token for the corresponding notification",
-          "type": "string"
-        },
-        "supportsUpdateNotifications": {
-          "description": "Is Update notification feature supported",
-          "type": "boolean"
-        },
-        "userPushNotificationDestinationId": {
-          "format": "int64",
-          "description": "Destination Id for the push notification",
-          "type": "integer"
-        },
-        "application": {
-          "description": "application for the corresponding notification\r\nExample : \"Roblox\"",
-          "type": "string"
-        },
-        "platform": {
-          "description": "Platform for the corresponding notification ['ChromeOnDesktop' = 0, 'AndroidNative' = 1, 'FirefoxOnDesktop' = 2, 'IOSNative' = 3, 'AndroidAmazon' = 4, 'IOSTencent' = 5, 'AndroidTencentService' = 6]",
+        "platformType": {
+          "description": "Platform type sending the mark-as-read notification",
           "enum": [
             "ChromeOnDesktop",
             "AndroidNative",
@@ -2354,18 +2347,84 @@
             "AndroidTencentService"
           ],
           "type": "string"
+        },
+        "notificationId": {
+          "format": "uuid",
+          "description": "Id of the Notification",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
         }
       }
     },
-    "Roblox.Api.Notifications.RealTimeNotificationsSettingsResponseModel": {
+    "Roblox.Api.Notifications.Models.MarkCategoryAsReadRequestModel": {
       "type": "object",
       "properties": {
-        "primaryDomain": {
-          "description": "Primary RealTime domain to use",
+        "notificationType": {
+          "description": "Type of notification to mark category as read",
+          "enum": [
+            "Test",
+            "FriendRequestReceived",
+            "FriendRequestAccepted",
+            "PartyInviteReceived",
+            "PartyMemberJoined",
+            "ChatNewMessage",
+            "PrivateMessageReceived",
+            "UserAddedToPrivateServerWhiteList",
+            "ConversationUniverseChanged",
+            "TeamCreateInvite",
+            "GameUpdate",
+            "DeveloperMetricsAvailable",
+            "GroupJoinRequestAccepted",
+            "Sendr",
+            "ExperienceInvitation"
+          ],
           "type": "string"
         },
-        "fallbackDomain": {
-          "description": "Fallback RealTime domain to use",
+        "category": {
+          "description": "Category of notification",
+          "type": "string"
+        },
+        "latestNotificationId": {
+          "format": "uuid",
+          "description": "Id of the latest notification",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    "Roblox.Api.Notifications.Models.MarkInteractionRequestModel": {
+      "type": "object",
+      "properties": {
+        "platformType": {
+          "description": "Type of platform making the request",
+          "enum": [
+            "ChromeOnDesktop",
+            "AndroidNative",
+            "FirefoxOnDesktop",
+            "IOSNative",
+            "AndroidAmazon",
+            "IOSTencent",
+            "AndroidTencentService"
+          ],
+          "type": "string"
+        },
+        "notificationToken": {
+          "description": "Token for notification",
+          "type": "string"
+        },
+        "notificationId": {
+          "format": "uuid",
+          "description": "Id for notification",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "interactionType": {
+          "description": "Type of interation with the notification",
+          "enum": [
+            "Click",
+            "Dismiss",
+            "Action"
+          ],
           "type": "string"
         }
       }
