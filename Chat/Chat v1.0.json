@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1.0",
-    "title": "Chat Api v1.0"
+    "title": "Chat Api v1.0",
+    "version": "v1.0"
   },
   "host": "chat.roblox.com",
   "schemes": [
@@ -14,12 +14,10 @@
         "tags": [
           "Party"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -44,22 +42,21 @@
         "tags": [
           "Party"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "pageNumber",
             "in": "query",
+            "name": "pageNumber",
             "required": true,
             "type": "integer",
             "format": "int32"
           },
           {
-            "name": "pageSize",
             "in": "query",
+            "name": "pageSize",
             "required": true,
             "type": "integer",
             "format": "int32"
@@ -92,20 +89,19 @@
         "tags": [
           "Party"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "conversationIds",
             "in": "query",
+            "name": "conversationIds",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "multi"
           }
@@ -139,8 +135,7 @@
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -148,8 +143,8 @@
         ],
         "parameters": [
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.CreatePartyRequest"
@@ -185,8 +180,7 @@
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -194,8 +188,8 @@
         ],
         "parameters": [
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.InviteUserRequest"
@@ -231,8 +225,7 @@
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -240,8 +233,8 @@
         ],
         "parameters": [
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.JoinPartyRequest"
@@ -277,8 +270,7 @@
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -286,8 +278,8 @@
         ],
         "parameters": [
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyRequest"
@@ -323,8 +315,7 @@
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -332,8 +323,8 @@
         ],
         "parameters": [
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.RemoveFromPartyRequest"
@@ -369,8 +360,7 @@
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -378,8 +368,8 @@
         ],
         "parameters": [
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyRequest"
@@ -413,12 +403,10 @@
         "tags": [
           "Party"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -443,14 +431,37 @@
     }
   },
   "definitions": {
-    "Roblox.Chat.Api.Models.Party": {
+    "Roblox.Chat.Api.Models.CreatePartyRequest": {
       "type": "object",
       "properties": {
+        "invitedUserIds": {
+          "description": "Array of invited user ids to create a party.",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation id.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CurrentParty": {
+      "type": "object",
+      "properties": {
+        "Party": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
+        },
+        "PartyingOnDeviceType": {
+          "type": "string"
+        },
         "Id": {
           "format": "uuid",
           "type": "string",
-          "readOnly": true,
-          "example": "00000000-0000-0000-0000-000000000000"
+          "readOnly": true
         },
         "ConversationId": {
           "format": "int64",
@@ -458,12 +469,10 @@
           "readOnly": true
         },
         "CreatorUser": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser",
-          "readOnly": true
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
         },
         "LeaderUser": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser",
-          "readOnly": true
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
         },
         "PendingUsers": {
           "type": "array",
@@ -482,8 +491,88 @@
         "GameId": {
           "format": "uuid",
           "type": "string",
-          "readOnly": true,
-          "example": "00000000-0000-0000-0000-000000000000"
+          "readOnly": true
+        },
+        "GameName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "GamePlaceId": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "GameSlotExpiry": {
+          "format": "date-time",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.InviteUserRequest": {
+      "type": "object",
+      "properties": {
+        "partyId": {
+          "description": "The party id string to invite user to.",
+          "type": "string"
+        },
+        "invitedUserId": {
+          "format": "int64",
+          "description": "The user id.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.JoinPartyRequest": {
+      "type": "object",
+      "properties": {
+        "partyId": {
+          "description": "The string party id to join to.",
+          "type": "string"
+        },
+        "autoFollowPartyLeader": {
+          "description": "Bool specifying if the participants can auto follow the leader.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.Party": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "ConversationId": {
+          "format": "int64",
+          "type": "integer",
+          "readOnly": true
+        },
+        "CreatorUser": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
+        },
+        "LeaderUser": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
+        },
+        "PendingUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
+          },
+          "readOnly": true
+        },
+        "MemberUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
+          },
+          "readOnly": true
+        },
+        "GameId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
         },
         "GameName": {
           "type": "string",
@@ -500,13 +589,24 @@
           "readOnly": true
         },
         "PartyType": {
+          "format": "int32",
+          "description": " ['PlayTogether' = 0, 'General' = 1, 'Xbox' = 2]",
           "enum": [
-            "PlayTogether",
-            "General",
-            "Xbox"
+            0,
+            1,
+            2
           ],
-          "type": "string",
+          "type": "integer",
           "readOnly": true
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.PartyRequest": {
+      "type": "object",
+      "properties": {
+        "partyId": {
+          "description": "The party id.",
+          "type": "string"
         }
       }
     },
@@ -522,78 +622,17 @@
         }
       }
     },
-    "Roblox.Chat.Api.Models.CurrentParty": {
-      "type": "object",
-      "properties": {
-        "Party": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.Party"
-        },
-        "PartyingOnDeviceType": {
-          "type": "string"
-        },
-        "Id": {
-          "format": "uuid",
-          "type": "string",
-          "readOnly": true,
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "ConversationId": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "CreatorUser": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser",
-          "readOnly": true
-        },
-        "LeaderUser": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser",
-          "readOnly": true
-        },
-        "PendingUsers": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
-          },
-          "readOnly": true
-        },
-        "MemberUsers": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Chat.Api.Models.PartyUser"
-          },
-          "readOnly": true
-        },
-        "GameId": {
-          "format": "uuid",
-          "type": "string",
-          "readOnly": true,
-          "example": "00000000-0000-0000-0000-000000000000"
-        },
-        "GameName": {
-          "type": "string",
-          "readOnly": true
-        },
-        "GamePlaceId": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "GameSlotExpiry": {
-          "format": "date-time",
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.JoinPartyRequest": {
+    "Roblox.Chat.Api.Models.RemoveFromPartyRequest": {
       "type": "object",
       "properties": {
         "partyId": {
+          "description": "The party id to remove user from.",
           "type": "string"
         },
-        "autoFollowPartyLeader": {
-          "type": "boolean"
+        "userId": {
+          "format": "int64",
+          "description": "The user id to remove user form the party.",
+          "type": "integer"
         }
       }
     },
@@ -605,54 +644,6 @@
         },
         "StatusMessage": {
           "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.PartyRequest": {
-      "type": "object",
-      "properties": {
-        "partyId": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.RemoveFromPartyRequest": {
-      "type": "object",
-      "properties": {
-        "partyId": {
-          "type": "string"
-        },
-        "userId": {
-          "format": "int64",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.InviteUserRequest": {
-      "type": "object",
-      "properties": {
-        "partyId": {
-          "type": "string"
-        },
-        "invitedUserId": {
-          "format": "int64",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.CreatePartyRequest": {
-      "type": "object",
-      "properties": {
-        "invitedUserIds": {
-          "type": "array",
-          "items": {
-            "format": "int64",
-            "type": "integer"
-          }
-        },
-        "conversationId": {
-          "format": "int64",
-          "type": "integer"
         }
       }
     }

@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v2",
-    "title": "Chat Api v2"
+    "title": "Chat Api v2",
+    "version": "v2"
   },
   "host": "chat.roblox.com",
   "schemes": [
@@ -15,15 +15,13 @@
           "Chat"
         ],
         "summary": "For every authenticated user, the clients hit this endpoint to get the chat related settings. Example : Chat is enabled or not",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatSettingsResponse"
             }
@@ -46,28 +44,27 @@
           "Chat"
         ],
         "summary": "Gets conversations for the conversationIds specified in the parameters",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "conversationIds",
             "in": "query",
+            "name": "conversationIds",
             "description": "Ids of the conversations to be returned",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "multi"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "type": "array",
               "items": {
@@ -93,39 +90,37 @@
           "Chat"
         ],
         "summary": "Gets messages corresponding to the given conversationId",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "conversationId",
             "in": "query",
+            "name": "conversationId",
             "description": "",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "pageSize",
             "in": "query",
+            "name": "pageSize",
             "description": "",
             "required": true,
             "type": "integer",
             "format": "int32"
           },
           {
-            "name": "exclusiveStartMessageId",
             "in": "query",
+            "name": "exclusiveStartMessageId",
             "description": "",
-            "required": false,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "type": "array",
               "items": {
@@ -151,15 +146,14 @@
           "Chat"
         ],
         "summary": "Gets the rollout settings for requested feature",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "featureNames",
             "in": "query",
+            "name": "featureNames",
             "description": "string array to request feature rollout settings",
             "required": true,
             "type": "array",
@@ -171,7 +165,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.RolloutSettingsResponse"
             }
@@ -194,15 +188,13 @@
           "Chat"
         ],
         "summary": "Gets the count of unread conversations",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.UnreadConversationCountResponse"
             }
@@ -225,23 +217,22 @@
           "Chat"
         ],
         "summary": "Gets a list of unread conversations",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "pageNumber",
             "in": "query",
+            "name": "pageNumber",
             "description": "",
             "required": true,
             "type": "integer",
             "format": "int32"
           },
           {
-            "name": "pageSize",
             "in": "query",
+            "name": "pageSize",
             "description": "",
             "required": true,
             "type": "integer",
@@ -250,7 +241,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "type": "array",
               "items": {
@@ -278,27 +269,26 @@
           "Chat"
         ],
         "summary": "Gets the unread messages for the conversationIds specified in the parameters",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "conversationIds",
             "in": "query",
+            "name": "conversationIds",
             "description": "",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "multi"
           },
           {
-            "name": "pageSize",
             "in": "query",
+            "name": "pageSize",
             "description": "",
             "required": true,
             "type": "integer",
@@ -307,7 +297,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "type": "array",
               "items": {
@@ -333,23 +323,22 @@
           "Chat"
         ],
         "summary": "Gets all conversations associated with the logged-in User",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "pageNumber",
             "in": "query",
+            "name": "pageNumber",
             "description": "",
             "required": true,
             "type": "integer",
             "format": "int32"
           },
           {
-            "name": "pageSize",
             "in": "query",
+            "name": "pageSize",
             "description": "",
             "required": true,
             "type": "integer",
@@ -358,7 +347,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "type": "array",
               "items": {
@@ -384,12 +373,10 @@
           "Chat"
         ],
         "summary": "Get Chat metadata.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -415,27 +402,26 @@
           "Chat"
         ],
         "summary": "Gets latest messages corresponding to the given list of conversation Ids",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "conversationIds",
             "in": "query",
+            "name": "conversationIds",
             "description": "",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "multi"
           },
           {
-            "name": "pageSize",
             "in": "query",
+            "name": "pageSize",
             "description": "",
             "required": true,
             "type": "integer",
@@ -444,7 +430,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "type": "array",
               "items": {
@@ -472,8 +458,7 @@
         "summary": "Adds users to an existing conversation",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -481,8 +466,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -492,7 +477,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.AddUserToConversationResponse"
             }
@@ -520,8 +505,7 @@
         "summary": "Mark the specified conversation messages as read",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -529,8 +513,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -540,7 +524,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.MarkAsReadResponse"
             }
@@ -568,8 +552,7 @@
         "summary": "Mark the specified conversation messages as seen",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -577,8 +560,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -588,7 +571,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.MarkAsSeenResponse"
             }
@@ -616,8 +599,7 @@
         "summary": "Removes a user from an existing conversation",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -625,8 +607,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -636,7 +618,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.RemoveUserFromConversationResponse"
             }
@@ -664,8 +646,7 @@
         "summary": "Renames the title of an existing conversation",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -673,8 +654,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -684,7 +665,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.RenameConversationResponse"
             }
@@ -712,8 +693,7 @@
         "summary": "Removes universe associated with a conversation",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -721,8 +701,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -732,7 +712,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.UserVisibleStatusResponse"
             }
@@ -759,8 +739,7 @@
         ],
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -768,8 +747,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.SendGameLinkChatMessageRequest"
@@ -806,8 +785,7 @@
         "summary": "Sends a chat message",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -815,8 +793,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -826,7 +804,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.SendPlainTextChatMessageResponse"
             }
@@ -854,8 +832,7 @@
         "summary": "Adds or updates universe associated with a conversation",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -863,8 +840,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -874,7 +851,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.UserVisibleStatusResponse"
             }
@@ -902,8 +879,7 @@
         "summary": "Creates a new cloud edit conversation",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -911,8 +887,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -922,7 +898,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.StartNewConversationResponse"
             }
@@ -950,8 +926,7 @@
         "summary": "Creates a new group conversation",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -959,8 +934,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -970,7 +945,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.StartNewConversationResponse"
             }
@@ -998,8 +973,7 @@
         "summary": "Creates a new one-on-one conversation",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -1007,8 +981,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -1018,7 +992,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.StartNewConversationResponse"
             }
@@ -1046,8 +1020,7 @@
         "summary": "Updates the status for whether a user is typing currently",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -1055,8 +1028,8 @@
         ],
         "parameters": [
           {
-            "name": "requestModel",
             "in": "body",
+            "name": "requestModel",
             "description": "",
             "required": true,
             "schema": {
@@ -1066,7 +1039,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Chat.Api.Models.UserVisibleStatusResponse"
             }
@@ -1088,138 +1061,49 @@
     }
   },
   "definitions": {
-    "Roblox.Chat.Api.Models.UnreadConversationCountResponse": {
-      "type": "object",
-      "properties": {
-        "count": {
-          "format": "int64",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.Conversation": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "description": "Chat conversation Id",
-          "type": "integer"
-        },
-        "title": {
-          "description": "Chat conversation title",
-          "type": "string"
-        },
-        "initiator": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatParticipant",
-          "description": "Conversation initiator entity"
-        },
-        "hasUnreadMessages": {
-          "description": "Does the conversation have any unread messages",
-          "type": "boolean"
-        },
-        "participants": {
-          "description": "Participants involved in the conversation",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatParticipant"
-          }
-        },
-        "conversationType": {
-          "description": "Type of the conversation",
-          "enum": [
-            "OneToOneConversation",
-            "MultiUserConversation",
-            "CloudEditConversation"
-          ],
-          "type": "string"
-        },
-        "conversationTitle": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationTitle",
-          "description": "Specifies if the conversation title is generated by default."
-        },
-        "lastUpdated": {
-          "format": "date-time",
-          "description": "Specifies the datetime when the conversation was last updated",
-          "type": "string"
-        },
-        "conversationUniverse": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationUniverse",
-          "description": "Specifies the universe associated with the conversation"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.ChatParticipant": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "Type of a chat participant",
-          "enum": [
-            "User",
-            "System"
-          ],
-          "type": "string"
-        },
-        "targetId": {
-          "format": "int64",
-          "description": "Id of the chat participant",
-          "type": "integer"
-        },
-        "name": {
-          "description": "Name of the chat participant",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "display name of the chat participant",
-          "type": "string"
-        },
-        "hasVerifiedBadge": {
-          "description": "Verified badge status of the participant.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.ConversationTitle": {
-      "type": "object",
-      "properties": {
-        "titleForViewer": {
-          "description": "Specifies the title for the conversation specific to the viewer",
-          "type": "string"
-        },
-        "isDefaultTitle": {
-          "description": "Specifies if the title displayed for the user is generated as a default title in the backend or was custom assigned by the user.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.ConversationUniverse": {
-      "type": "object",
-      "properties": {
-        "universeId": {
-          "format": "int64",
-          "description": "Id corresponding to the universe",
-          "type": "integer"
-        },
-        "rootPlaceId": {
-          "format": "int64",
-          "description": "Id Corresponding to the root place of the universe",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.MultigetConversationMessagesResponse": {
+    "Roblox.Chat.Api.Models.AddUserToConversationResponse": {
       "type": "object",
       "properties": {
         "conversationId": {
           "format": "int64",
-          "description": "Conversation Id to get multiple conversations",
+          "description": "Conversation Id to add a new user to",
           "type": "integer"
         },
-        "chatMessages": {
-          "description": "Chat messages associated with the conversation",
+        "rejectedParticipants": {
+          "description": "List of rejected chat participants",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatMessage"
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.RejectedChatParticipant"
           }
+        },
+        "resultType": {
+          "description": "Status of the response ['Success' = 0]",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.AddUsersToConversationRequest": {
+      "type": "object",
+      "properties": {
+        "participantUserIds": {
+          "description": "Array of user ids to be added to the conversation.",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation id",
+          "type": "integer"
         }
       }
     },
@@ -1229,11 +1113,10 @@
         "id": {
           "format": "uuid",
           "description": "Id of the chat message",
-          "type": "string",
-          "example": "00000000-0000-0000-0000-000000000000"
+          "type": "string"
         },
         "senderType": {
-          "description": "Type of the chat message sender",
+          "description": "Type of the chat message sender ['User' = 0, 'System' = 1]",
           "enum": [
             "User",
             "System"
@@ -1250,7 +1133,7 @@
           "type": "boolean"
         },
         "messageType": {
-          "description": "Type of the chat message",
+          "description": "Type of the chat message ['PlainText' = 0, 'Link' = 1, 'EventBased' = 2]",
           "enum": [
             "PlainText",
             "Link",
@@ -1275,592 +1158,10 @@
           "type": "string"
         },
         "link": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.Link",
-          "description": "The link chat message"
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.Link"
         },
         "eventBased": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.EventBased",
-          "description": "The eventBased chat message"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.Link": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "The chat message link type",
-          "enum": [
-            "Game"
-          ],
-          "type": "string"
-        },
-        "game": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.GameLink",
-          "description": "The game link model"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.EventBased": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "The chat message event type",
-          "enum": [
-            "SetConversationUniverse"
-          ],
-          "type": "string"
-        },
-        "setConversationUniverse": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.SetConversationUniverseEventBased",
-          "description": "The set conversation universe event based model"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.GameLink": {
-      "type": "object",
-      "properties": {
-        "universeId": {
-          "format": "int64",
-          "description": "The universeId for game link chat message",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.SetConversationUniverseEventBased": {
-      "type": "object",
-      "properties": {
-        "actorUserId": {
-          "format": "int64",
-          "description": "The UserId for the user who setConversationUniverse",
-          "type": "integer"
-        },
-        "universeId": {
-          "format": "int64",
-          "description": "The universeId for SetConversationUniverse EventBased ChatMessage",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.SendPlainTextChatMessageRequest": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "description": "The message to be sent.",
-          "type": "string"
-        },
-        "isExperienceInvite": {
-          "description": "Temporary field to denote requests from Experience Invite components",
-          "type": "boolean"
-        },
-        "userId": {
-          "format": "int64",
-          "description": "Temporary field to store userId for experience invite experiment",
-          "type": "integer"
-        },
-        "conversationId": {
-          "format": "int64",
-          "description": "The conversation Id to send mesage to.",
-          "type": "integer"
-        },
-        "decorators": {
-          "description": "The decorators to attach to the new message.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.SendPlainTextChatMessageResponse": {
-      "type": "object",
-      "properties": {
-        "content": {
-          "description": "The actual chat message that was being sent",
-          "type": "string"
-        },
-        "filteredForReceivers": {
-          "description": "Was the chat message filtered based on the receivers of the message",
-          "type": "boolean"
-        },
-        "messageId": {
-          "description": "Id of the chat message being sent",
-          "type": "string"
-        },
-        "sent": {
-          "format": "date-time",
-          "description": "DateTime of when the message was sent",
-          "type": "string"
-        },
-        "messageType": {
-          "description": "Type of the chat message being sent",
-          "enum": [
-            "PlainText",
-            "Link",
-            "EventBased"
-          ],
-          "type": "string"
-        },
-        "resultType": {
-          "description": "Status of the response",
-          "enum": [
-            "Success",
-            "Moderated",
-            "TextTooLong",
-            "NoRealtimeConnection"
-          ],
-          "type": "string"
-        },
-        "statusMessage": {
-          "description": "Status message to be sent to the requestor",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.SendGameLinkChatMessageRequest": {
-      "type": "object",
-      "properties": {
-        "universeId": {
-          "format": "int64",
-          "description": "The message to be sent.",
-          "type": "integer"
-        },
-        "isExperienceInvite": {
-          "description": "Temporary field to denote requests from Experience Invite components",
-          "type": "boolean"
-        },
-        "userId": {
-          "format": "int64",
-          "description": "Temporary field to store userId for experience invite experiment",
-          "type": "integer"
-        },
-        "placeId": {
-          "format": "int64",
-          "description": "Temporary field to store placeId for experience invite experiment",
-          "type": "integer"
-        },
-        "conversationId": {
-          "format": "int64",
-          "description": "The conversation Id to send mesage to.",
-          "type": "integer"
-        },
-        "decorators": {
-          "description": "The decorators to attach to the new message.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.SendLinkChatResponse": {
-      "type": "object",
-      "properties": {
-        "chatMessageLinkType": {
-          "enum": [
-            "Game"
-          ],
-          "type": "string"
-        },
-        "messageId": {
-          "description": "Id of the chat message being sent",
-          "type": "string"
-        },
-        "sent": {
-          "format": "date-time",
-          "description": "DateTime of when the message was sent",
-          "type": "string"
-        },
-        "messageType": {
-          "description": "Type of the chat message being sent",
-          "enum": [
-            "PlainText",
-            "Link",
-            "EventBased"
-          ],
-          "type": "string"
-        },
-        "resultType": {
-          "description": "Status of the response",
-          "enum": [
-            "Success",
-            "Moderated",
-            "TextTooLong",
-            "NoRealtimeConnection"
-          ],
-          "type": "string"
-        },
-        "statusMessage": {
-          "description": "Status message to be sent to the requestor",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.MarkAsReadRequest": {
-      "type": "object",
-      "properties": {
-        "conversationId": {
-          "format": "int64",
-          "description": "the conversation id to be marked as read.",
-          "type": "integer"
-        },
-        "endMessageId": {
-          "description": "The end message id string.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.MarkAsReadResponse": {
-      "type": "object",
-      "properties": {
-        "resultType": {
-          "description": "Status of the response",
-          "enum": [
-            "Success"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.MarkAsSeenRequest": {
-      "type": "object",
-      "properties": {
-        "conversationsToMarkSeen": {
-          "description": "The conversation ids to be marked as seen.",
-          "type": "array",
-          "items": {
-            "format": "int64",
-            "type": "integer"
-          }
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.MarkAsSeenResponse": {
-      "type": "object",
-      "properties": {
-        "resultType": {
-          "description": "Status of the response",
-          "enum": [
-            "Success"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.CreateCloudEditConversationRequest": {
-      "type": "object",
-      "properties": {
-        "placeId": {
-          "format": "int64",
-          "description": "Place id to create a Cloud edit conversation.",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.StartNewConversationResponse": {
-      "type": "object",
-      "properties": {
-        "conversation": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.Conversation",
-          "description": "The newly created conversation"
-        },
-        "rejectedParticipants": {
-          "description": "List of chat participants who were rejected to be part of the associated conversation",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Chat.Api.Models.RejectedChatParticipant"
-          }
-        },
-        "resultType": {
-          "description": "Status of the response",
-          "enum": [
-            "Success"
-          ],
-          "type": "string"
-        },
-        "statusMessage": {
-          "description": "Status message to be sent to the requestor",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.RejectedChatParticipant": {
-      "type": "object",
-      "properties": {
-        "rejectedReason": {
-          "description": "Reason as to why the chat participant was rejected to be a part of the conversation",
-          "type": "string"
-        },
-        "type": {
-          "description": "Type of a chat participant",
-          "enum": [
-            "User",
-            "System"
-          ],
-          "type": "string"
-        },
-        "targetId": {
-          "format": "int64",
-          "description": "Id of the chat participant",
-          "type": "integer"
-        },
-        "name": {
-          "description": "Name of the chat participant",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "display name of the chat participant",
-          "type": "string"
-        },
-        "hasVerifiedBadge": {
-          "description": "Verified badge status of the participant.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.CreateGroupConversationRequest": {
-      "type": "object",
-      "properties": {
-        "participantUserIds": {
-          "description": "Array of user id to create a group conversation with.",
-          "type": "array",
-          "items": {
-            "format": "int64",
-            "type": "integer"
-          }
-        },
-        "title": {
-          "description": "Title of the new group conversation.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.CreateOneToOneConversationRequest": {
-      "type": "object",
-      "properties": {
-        "participantUserId": {
-          "format": "int64",
-          "description": "Participant user id to create 1-1 conversation.",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.AddUsersToConversationRequest": {
-      "type": "object",
-      "properties": {
-        "participantUserIds": {
-          "description": "Array of user ids to be added to the conversation.",
-          "type": "array",
-          "items": {
-            "format": "int64",
-            "type": "integer"
-          }
-        },
-        "conversationId": {
-          "format": "int64",
-          "description": "The conversation id",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.AddUserToConversationResponse": {
-      "type": "object",
-      "properties": {
-        "conversationId": {
-          "format": "int64",
-          "description": "Conversation Id to add a new user to",
-          "type": "integer"
-        },
-        "rejectedParticipants": {
-          "description": "List of rejected chat participants",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Chat.Api.Models.RejectedChatParticipant"
-          }
-        },
-        "resultType": {
-          "description": "Status of the response",
-          "enum": [
-            "Success"
-          ],
-          "type": "string"
-        },
-        "statusMessage": {
-          "description": "Status message to be sent to the requestor",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.RemoveUserFromConversationRequest": {
-      "type": "object",
-      "properties": {
-        "participantUserId": {
-          "format": "int64",
-          "description": "Participant user id to be removed from the conversation.",
-          "type": "integer"
-        },
-        "conversationId": {
-          "format": "int64",
-          "description": "The conversation id.",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.RemoveUserFromConversationResponse": {
-      "type": "object",
-      "properties": {
-        "conversationId": {
-          "format": "int64",
-          "description": "Id of the conversation to remove a user from",
-          "type": "integer"
-        },
-        "resultType": {
-          "description": "Status of the response",
-          "enum": [
-            "Success"
-          ],
-          "type": "string"
-        },
-        "statusMessage": {
-          "description": "Status message to be sent to the requestor",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.RenameGroupConversationRequest": {
-      "type": "object",
-      "properties": {
-        "conversationId": {
-          "format": "int64",
-          "description": "The conversation id to rename the conversation.",
-          "type": "integer"
-        },
-        "newTitle": {
-          "description": "New title for the conversation.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.RenameConversationResponse": {
-      "type": "object",
-      "properties": {
-        "conversationTitle": {
-          "description": "New conversation title after rename",
-          "type": "string"
-        },
-        "resultType": {
-          "description": "Status of the response",
-          "enum": [
-            "Success",
-            "Moderated",
-            "TextTooLong"
-          ],
-          "type": "string"
-        },
-        "title": {
-          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationTitle",
-          "description": "The title object after rename"
-        },
-        "statusMessage": {
-          "description": "Status message to be sent to the requestor",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.ChatSettingsResponse": {
-      "type": "object",
-      "properties": {
-        "chatEnabled": {
-          "description": "Is chat enabled for the user",
-          "type": "boolean"
-        },
-        "isActiveChatUser": {
-          "description": "Was the Last ChatMessage Sent within the last x days or the account was created in the last x days?\r\nNote: user is active by default unless he does not chat for more than x days after account creation",
-          "type": "boolean"
-        },
-        "isConnectTabEnabled": {
-          "description": "Is Connect Tab Enabled for this user",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.UpdateUserTypingStatusRequest": {
-      "type": "object",
-      "properties": {
-        "conversationId": {
-          "format": "int64",
-          "description": "The Conversation id in which user is typing.",
-          "type": "integer"
-        },
-        "isTyping": {
-          "description": "isTyping flag to indicate if user has started typing or stopped.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.UserVisibleStatusResponse": {
-      "type": "object",
-      "properties": {
-        "statusMessage": {
-          "description": "Status message to be sent to the requestor",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.RolloutSettingsResponse": {
-      "type": "object",
-      "properties": {
-        "rolloutFeatures": {
-          "description": "List of rollout features",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Chat.Api.Models.RolloutSettingModel"
-          }
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.RolloutSettingModel": {
-      "type": "object",
-      "properties": {
-        "featureName": {
-          "description": "Feature name strings for rollout settings",
-          "enum": [
-            "LuaChat",
-            "ConversationUniverse",
-            "PlayTogether",
-            "Party",
-            "GameLink",
-            "OldPlayTogether"
-          ],
-          "type": "string"
-        },
-        "isRolloutEnabled": {
-          "description": "Is the feature enabled to be rolledout",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.SetConversationUniverseRequest": {
-      "type": "object",
-      "properties": {
-        "conversationId": {
-          "format": "int64",
-          "description": "Conversation id to add universe to",
-          "type": "integer"
-        },
-        "universeId": {
-          "format": "int64",
-          "description": "ConversationUniverse id to be added to the conversation",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Chat.Api.Models.ResetConversationUniverseRequest": {
-      "type": "object",
-      "properties": {
-        "conversationId": {
-          "format": "int64",
-          "description": "Conversation id to remove universe from",
-          "type": "integer"
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.EventBased"
         }
       }
     },
@@ -1869,12 +1170,14 @@
       "type": "object",
       "properties": {
         "isChatEnabledByPrivacySetting": {
+          "format": "int32",
+          "description": " ['Disabled' = 0, 'Enabled' = 1, 'Unavailable' = 2]",
           "enum": [
-            "Disabled",
-            "Enabled",
-            "Unavailable"
+            0,
+            1,
+            2
           ],
-          "type": "string"
+          "type": "integer"
         },
         "languageForPrivacySettingUnavailable": {
           "type": "string"
@@ -1950,6 +1253,669 @@
         },
         "isRoactChatEnabled": {
           "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ChatParticipant": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Type of a chat participant ['User' = 0, 'System' = 1]",
+          "enum": [
+            "User",
+            "System"
+          ],
+          "type": "string"
+        },
+        "targetId": {
+          "format": "int64",
+          "description": "Id of the chat participant",
+          "type": "integer"
+        },
+        "name": {
+          "description": "Name of the chat participant",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "display name of the chat participant",
+          "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "description": "Verified badge status of the participant.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ChatSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "chatEnabled": {
+          "description": "Is chat enabled for the user",
+          "type": "boolean"
+        },
+        "isActiveChatUser": {
+          "description": "Was the Last ChatMessage Sent within the last x days or the account was created in the last x days?\r\nNote: user is active by default unless he does not chat for more than x days after account creation",
+          "type": "boolean"
+        },
+        "isConnectTabEnabled": {
+          "description": "Is Connect Tab Enabled for this user",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.Conversation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "description": "Chat conversation Id",
+          "type": "integer"
+        },
+        "title": {
+          "description": "Chat conversation title",
+          "type": "string"
+        },
+        "initiator": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatParticipant"
+        },
+        "hasUnreadMessages": {
+          "description": "Does the conversation have any unread messages",
+          "type": "boolean"
+        },
+        "participants": {
+          "description": "Participants involved in the conversation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatParticipant"
+          }
+        },
+        "conversationType": {
+          "description": "Type of the conversation ['OneToOneConversation' = 0, 'MultiUserConversation' = 1, 'CloudEditConversation' = 2]",
+          "enum": [
+            "OneToOneConversation",
+            "MultiUserConversation",
+            "CloudEditConversation"
+          ],
+          "type": "string"
+        },
+        "conversationTitle": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationTitle"
+        },
+        "lastUpdated": {
+          "format": "date-time",
+          "description": "Specifies the datetime when the conversation was last updated",
+          "type": "string"
+        },
+        "conversationUniverse": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationUniverse"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ConversationTitle": {
+      "type": "object",
+      "properties": {
+        "titleForViewer": {
+          "description": "Specifies the title for the conversation specific to the viewer",
+          "type": "string"
+        },
+        "isDefaultTitle": {
+          "description": "Specifies if the title displayed for the user is generated as a default title in the backend or was custom assigned by the user.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ConversationUniverse": {
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "format": "int64",
+          "description": "Id corresponding to the universe",
+          "type": "integer"
+        },
+        "rootPlaceId": {
+          "format": "int64",
+          "description": "Id Corresponding to the root place of the universe",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CreateCloudEditConversationRequest": {
+      "type": "object",
+      "properties": {
+        "placeId": {
+          "format": "int64",
+          "description": "Place id to create a Cloud edit conversation.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CreateGroupConversationRequest": {
+      "type": "object",
+      "properties": {
+        "participantUserIds": {
+          "description": "Array of user id to create a group conversation with.",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "title": {
+          "description": "Title of the new group conversation.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.CreateOneToOneConversationRequest": {
+      "type": "object",
+      "properties": {
+        "participantUserId": {
+          "format": "int64",
+          "description": "Participant user id to create 1-1 conversation.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.EventBased": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The chat message event type",
+          "enum": [
+            "SetConversationUniverse"
+          ],
+          "type": "string"
+        },
+        "setConversationUniverse": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.SetConversationUniverseEventBased"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.GameLink": {
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "format": "int64",
+          "description": "The universeId for game link chat message",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.Link": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The chat message link type",
+          "enum": [
+            "Game"
+          ],
+          "type": "string"
+        },
+        "game": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.GameLink"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MarkAsReadRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "the conversation id to be marked as read.",
+          "type": "integer"
+        },
+        "endMessageId": {
+          "description": "The end message id string.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MarkAsReadResponse": {
+      "type": "object",
+      "properties": {
+        "resultType": {
+          "description": "Status of the response ['Success' = 0]",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MarkAsSeenRequest": {
+      "type": "object",
+      "properties": {
+        "conversationsToMarkSeen": {
+          "description": "The conversation ids to be marked as seen.",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MarkAsSeenResponse": {
+      "type": "object",
+      "properties": {
+        "resultType": {
+          "description": "Status of the response ['Success' = 0]",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.MultigetConversationMessagesResponse": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Conversation Id to get multiple conversations",
+          "type": "integer"
+        },
+        "chatMessages": {
+          "description": "Chat messages associated with the conversation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.ChatMessage"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RejectedChatParticipant": {
+      "type": "object",
+      "properties": {
+        "rejectedReason": {
+          "description": "Reason as to why the chat participant was rejected to be a part of the conversation",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of a chat participant ['User' = 0, 'System' = 1]",
+          "enum": [
+            "User",
+            "System"
+          ],
+          "type": "string"
+        },
+        "targetId": {
+          "format": "int64",
+          "description": "Id of the chat participant",
+          "type": "integer"
+        },
+        "name": {
+          "description": "Name of the chat participant",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "display name of the chat participant",
+          "type": "string"
+        },
+        "hasVerifiedBadge": {
+          "description": "Verified badge status of the participant.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RemoveUserFromConversationRequest": {
+      "type": "object",
+      "properties": {
+        "participantUserId": {
+          "format": "int64",
+          "description": "Participant user id to be removed from the conversation.",
+          "type": "integer"
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation id.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RemoveUserFromConversationResponse": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Id of the conversation to remove a user from",
+          "type": "integer"
+        },
+        "resultType": {
+          "description": "Status of the response ['Success' = 0]",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RenameConversationResponse": {
+      "type": "object",
+      "properties": {
+        "conversationTitle": {
+          "description": "New conversation title after rename",
+          "type": "string"
+        },
+        "resultType": {
+          "description": "Status of the response ['Success' = 0, 'Moderated' = 1, 'TextTooLong' = 2]",
+          "enum": [
+            "Success",
+            "Moderated",
+            "TextTooLong"
+          ],
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.ConversationTitle"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RenameGroupConversationRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation id to rename the conversation.",
+          "type": "integer"
+        },
+        "newTitle": {
+          "description": "New title for the conversation.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.ResetConversationUniverseRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Conversation id to remove universe from",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RolloutSettingModel": {
+      "type": "object",
+      "properties": {
+        "featureName": {
+          "description": "Feature name strings for rollout settings ['LuaChat' = 0, 'ConversationUniverse' = 1, 'PlayTogether' = 2, 'Party' = 3, 'GameLink' = 4, 'OldPlayTogether' = 5]",
+          "enum": [
+            "LuaChat",
+            "ConversationUniverse",
+            "PlayTogether",
+            "Party",
+            "GameLink",
+            "OldPlayTogether"
+          ],
+          "type": "string"
+        },
+        "isRolloutEnabled": {
+          "description": "Is the feature enabled to be rolledout",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.RolloutSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "rolloutFeatures": {
+          "description": "List of rollout features",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.RolloutSettingModel"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SendGameLinkChatMessageRequest": {
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "format": "int64",
+          "description": "The message to be sent.",
+          "type": "integer"
+        },
+        "isExperienceInvite": {
+          "description": "Temporary field to denote requests from Experience Invite components",
+          "type": "boolean"
+        },
+        "userId": {
+          "format": "int64",
+          "description": "Temporary field to store userId for experience invite experiment",
+          "type": "integer"
+        },
+        "placeId": {
+          "format": "int64",
+          "description": "Temporary field to store placeId for experience invite experiment",
+          "type": "integer"
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation Id to send mesage to.",
+          "type": "integer"
+        },
+        "decorators": {
+          "description": "The decorators to attach to the new message.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SendLinkChatResponse": {
+      "type": "object",
+      "properties": {
+        "chatMessageLinkType": {
+          "description": " ['Game' = 0]",
+          "enum": [
+            "Game"
+          ],
+          "type": "string"
+        },
+        "messageId": {
+          "description": "Id of the chat message being sent",
+          "type": "string"
+        },
+        "sent": {
+          "format": "date-time",
+          "description": "DateTime of when the message was sent",
+          "type": "string"
+        },
+        "messageType": {
+          "description": "Type of the chat message being sent ['PlainText' = 0, 'Link' = 1, 'EventBased' = 2]",
+          "enum": [
+            "PlainText",
+            "Link",
+            "EventBased"
+          ],
+          "type": "string"
+        },
+        "resultType": {
+          "description": "Status of the response ['Success' = 0, 'Moderated' = 1, 'TextTooLong' = 2, 'NoRealtimeConnection' = 3]",
+          "enum": [
+            "Success",
+            "Moderated",
+            "TextTooLong",
+            "NoRealtimeConnection"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SendPlainTextChatMessageRequest": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "The message to be sent.",
+          "type": "string"
+        },
+        "isExperienceInvite": {
+          "description": "Temporary field to denote requests from Experience Invite components",
+          "type": "boolean"
+        },
+        "userId": {
+          "format": "int64",
+          "description": "Temporary field to store userId for experience invite experiment",
+          "type": "integer"
+        },
+        "conversationId": {
+          "format": "int64",
+          "description": "The conversation Id to send mesage to.",
+          "type": "integer"
+        },
+        "decorators": {
+          "description": "The decorators to attach to the new message.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SendPlainTextChatMessageResponse": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "description": "The actual chat message that was being sent",
+          "type": "string"
+        },
+        "filteredForReceivers": {
+          "description": "Was the chat message filtered based on the receivers of the message",
+          "type": "boolean"
+        },
+        "messageId": {
+          "description": "Id of the chat message being sent",
+          "type": "string"
+        },
+        "sent": {
+          "format": "date-time",
+          "description": "DateTime of when the message was sent",
+          "type": "string"
+        },
+        "messageType": {
+          "description": "Type of the chat message being sent ['PlainText' = 0, 'Link' = 1, 'EventBased' = 2]",
+          "enum": [
+            "PlainText",
+            "Link",
+            "EventBased"
+          ],
+          "type": "string"
+        },
+        "resultType": {
+          "description": "Status of the response ['Success' = 0, 'Moderated' = 1, 'TextTooLong' = 2, 'NoRealtimeConnection' = 3]",
+          "enum": [
+            "Success",
+            "Moderated",
+            "TextTooLong",
+            "NoRealtimeConnection"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SetConversationUniverseEventBased": {
+      "type": "object",
+      "properties": {
+        "actorUserId": {
+          "format": "int64",
+          "description": "The UserId for the user who setConversationUniverse",
+          "type": "integer"
+        },
+        "universeId": {
+          "format": "int64",
+          "description": "The universeId for SetConversationUniverse EventBased ChatMessage",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.SetConversationUniverseRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "Conversation id to add universe to",
+          "type": "integer"
+        },
+        "universeId": {
+          "format": "int64",
+          "description": "ConversationUniverse id to be added to the conversation",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.StartNewConversationResponse": {
+      "type": "object",
+      "properties": {
+        "conversation": {
+          "$ref": "#/definitions/Roblox.Chat.Api.Models.Conversation"
+        },
+        "rejectedParticipants": {
+          "description": "List of chat participants who were rejected to be part of the associated conversation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Chat.Api.Models.RejectedChatParticipant"
+          }
+        },
+        "resultType": {
+          "description": "Status of the response ['Success' = 0]",
+          "enum": [
+            "Success"
+          ],
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.UnreadConversationCountResponse": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.UpdateUserTypingStatusRequest": {
+      "type": "object",
+      "properties": {
+        "conversationId": {
+          "format": "int64",
+          "description": "The Conversation id in which user is typing.",
+          "type": "integer"
+        },
+        "isTyping": {
+          "description": "isTyping flag to indicate if user has started typing or stopped.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Chat.Api.Models.UserVisibleStatusResponse": {
+      "type": "object",
+      "properties": {
+        "statusMessage": {
+          "description": "Status message to be sent to the requestor",
+          "type": "string"
         }
       }
     }
