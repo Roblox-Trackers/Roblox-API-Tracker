@@ -9,6 +9,85 @@
     "https"
   ],
   "paths": {
+    "/v2/assets/{id}/versions": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Retrieves asset information for the specified asset ID. The authenticated user must be able to manage the asset\r\nor granted by package permission.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the asset.{Roblox.Platform.Assets.IAsset}",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "description": "The ID of the place.{Roblox.Platform.Assets.IPlace}",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort by version number, default is desc.",
+            "required": false,
+            "type": "string",
+            "default": "Desc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The amount of results per request.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50,
+              100
+            ]
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The paging cursor for the previous or next page.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.AssetVersion]"
+            }
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "AssetsV2:GetAssetVersionsByAssetIdAndPlaceIdAsync"
+          ]
+        }
+      }
+    },
     "/v2/places/{placeId}": {
       "get": {
         "tags": [
@@ -226,6 +305,45 @@
     }
   },
   "definitions": {
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.String]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.String]",
+          "readOnly": true
+        },
+        "CursorRecipe": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.String]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "enum": [
+            "Asc",
+            "Desc"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "enum": [
+            "Forward",
+            "Backward"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
     "System.Threading.CancellationToken": {
       "type": "object",
       "properties": {
@@ -264,6 +382,71 @@
         "IsClosed": {
           "type": "boolean",
           "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.AssetVersion]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.AssetVersion"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Develop.AssetVersion": {
+      "description": "Model of an asset version.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "description": "The VersionID of the asset version.",
+          "type": "integer"
+        },
+        "assetId": {
+          "format": "int64",
+          "description": "The ID of the asset.",
+          "type": "integer"
+        },
+        "assetVersionNumber": {
+          "format": "int32",
+          "description": "The version number.",
+          "type": "integer"
+        },
+        "creatorType": {
+          "description": "Type of the asset version creator.",
+          "type": "string"
+        },
+        "creatorTargetId": {
+          "format": "int64",
+          "description": "ID of the asset version creator.",
+          "type": "integer"
+        },
+        "creatingUniverseId": {
+          "format": "int64",
+          "description": "ID of the universe this asset version was created in.",
+          "type": "integer"
+        },
+        "created": {
+          "format": "date-time",
+          "description": "The created date of this asset version.",
+          "type": "string"
+        },
+        "isEqualToCurrentPublishedVersion": {
+          "description": "Indicates if this version is same to current published version.\r\nThis property is available on /v1/{assetId}/published-versions and /v1/{assetId}/version/{versionNumber}.",
+          "type": "boolean"
+        },
+        "isPublished": {
+          "description": "Indicates if this version is / was published.\r\nThis property is available on /v1/{assetId}/saved-versions.",
+          "type": "boolean"
         }
       }
     },
