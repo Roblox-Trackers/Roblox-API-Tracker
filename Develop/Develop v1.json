@@ -1355,6 +1355,164 @@
         }
       }
     },
+    "/v1/universes/{universeId}/statistic-reports": {
+      "get": {
+        "tags": [
+          "Universes"
+        ],
+        "summary": "Lists all months and years for which universe statistics are available.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Develop.Models.GameStatsListResponse"
+            }
+          },
+          "400": {
+            "description": "1: The universe does not exist."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "3: You are not authorized to configure this universe."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Universes:GetUniverseStatisticsReportsListAsync"
+          ]
+        }
+      }
+    },
+    "/v1/universes/{universeId}/statistic-reports/{yearDashMonth}": {
+      "get": {
+        "tags": [
+          "Universes"
+        ],
+        "summary": "Retrieves the status of a spreadsheet with universe statistics for a given month.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "yearDashMonth",
+            "in": "path",
+            "description": "Four digit year and two digit month of data to retrieve.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.DevMetrics.Models.ReportStatusResult"
+            }
+          },
+          "400": {
+            "description": "1: The universe does not exist.\r\n10: Report name is invalid: "
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "3: You are not authorized to configure this universe."
+          },
+          "404": {
+            "description": "11: No report found by this name: "
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Universes:GetUniverseStatisticsReportStatusAsync"
+          ]
+        }
+      }
+    },
+    "/v1/universes/{universeId}/statistic-reports/{yearDashMonth}/download": {
+      "get": {
+        "tags": [
+          "Universes"
+        ],
+        "summary": "Retrieves a spreadsheet with universe statistics for a given month.",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "yearDashMonth",
+            "in": "path",
+            "description": "Four digit year and two digit month of data to retrieve.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "1: The universe does not exist.\r\n10: Report name is invalid: "
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "3: You are not authorized to configure this universe."
+          },
+          "404": {
+            "description": "11: No report found by this name: "
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Universes:GetUniverseStatisticsReportDownloadAsync"
+          ]
+        }
+      }
+    },
     "/v1/universes/{universeId}/teamcreate": {
       "get": {
         "tags": [
@@ -2515,6 +2673,63 @@
         }
       }
     },
+    "/v1/universes/{universeId}/statistic-reports/{yearDashMonth}/generate": {
+      "post": {
+        "tags": [
+          "Universes"
+        ],
+        "summary": "",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "yearDashMonth",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "1: The universe does not exist.\r\n10: Report name is invalid: "
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n3: You are not authorized to configure this universe."
+          },
+          "404": {
+            "description": "11: No report found by this name: "
+          },
+          "409": {
+            "description": "12: Invalid report state for this operation: "
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Universes:StartUniverseStatisticsReportGenerationAsync"
+          ]
+        }
+      }
+    },
     "/v1/plugins/{pluginId}": {
       "patch": {
         "tags": [
@@ -3646,6 +3861,40 @@
           "type": "string"
         },
         "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.GameStatsListResponse": {
+      "description": "The response model for statistics about a place",
+      "type": "object",
+      "properties": {
+        "reports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.DevMetrics.Models.ReportStatusResult"
+          }
+        }
+      }
+    },
+    "Roblox.DevMetrics.Models.ReportStatusResult": {
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "type": "string"
+        },
+        "yearDashMonth": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "NotGenerated",
+            "Queued",
+            "ReadyForDownload"
+          ],
+          "type": "string"
+        },
+        "spreadsheetId": {
           "type": "string"
         }
       }
