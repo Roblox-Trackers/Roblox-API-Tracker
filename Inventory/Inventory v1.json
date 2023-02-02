@@ -1,29 +1,28 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1",
-    "title": "Inventory Api v1"
+    "title": "Inventory Api v1",
+    "version": "v1"
   },
   "host": "inventory.roblox.com",
   "schemes": [
     "https"
   ],
   "paths": {
-    "/v1/packages/{packageID}/assets": {
+    "/v1/packages/{packageId}/assets": {
       "get": {
         "tags": [
           "Assets"
         ],
         "summary": "Given a package ID, returns the list of asset IDs for that package",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "packageID",
             "in": "path",
+            "name": "packageID",
             "description": "The asset ID of the package",
             "required": true,
             "type": "integer",
@@ -54,118 +53,105 @@
           "Inventory"
         ],
         "summary": "Gets all collectible assets owned by the specified user.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "The userid of the owner of the collectibles.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
+            "in": "query",
             "name": "assetType",
-            "in": "query",
             "description": "The asset type for the collectibles you're trying to get.",
-            "required": false,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Image",
-              "TShirt",
-              "Audio",
-              "Mesh",
-              "Lua",
-              "HTML",
-              "Text",
-              "Hat",
-              "Place",
-              "Model",
-              "Shirt",
-              "Pants",
-              "Decal",
-              "Avatar",
-              "Head",
-              "Face",
-              "Gear",
-              "Badge",
-              "GroupEmblem",
-              "Animation",
-              "Arms",
-              "Legs",
-              "Torso",
-              "RightArm",
-              "LeftArm",
-              "LeftLeg",
-              "RightLeg",
-              "Package",
-              "YouTubeVideo",
-              "GamePass",
-              "App",
-              "Code",
-              "Plugin",
-              "SolidModel",
-              "MeshPart",
-              "HairAccessory",
-              "FaceAccessory",
-              "NeckAccessory",
-              "ShoulderAccessory",
-              "FrontAccessory",
-              "BackAccessory",
-              "WaistAccessory",
-              "ClimbAnimation",
-              "DeathAnimation",
-              "FallAnimation",
-              "IdleAnimation",
-              "JumpAnimation",
-              "RunAnimation",
-              "SwimAnimation",
-              "WalkAnimation",
-              "PoseAnimation",
-              "LocalizationTableManifest",
-              "LocalizationTableTranslation",
-              "EmoteAnimation",
-              "Video",
-              "TexturePack",
-              "TShirtAccessory",
-              "ShirtAccessory",
-              "PantsAccessory",
-              "JacketAccessory",
-              "SweaterAccessory",
-              "ShortsAccessory",
-              "LeftShoeAccessory",
-              "RightShoeAccessory",
-              "DressSkirtAccessory",
-              "FontFamily",
-              "FontFace",
-              "MeshHiddenSurfaceRemoval",
-              "EyebrowAccessory",
-              "EyelashAccessory",
-              "MoodAnimation",
-              "DynamicHead"
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              16,
+              17,
+              18,
+              19,
+              21,
+              22,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80
             ]
           },
           {
-            "name": "sortOrder",
             "in": "query",
-            "description": "Sorted by userAssetId",
-            "required": false,
-            "type": "string",
-            "default": "Asc",
-            "enum": [
-              "Asc",
-              "Desc"
-            ]
-          },
-          {
             "name": "limit",
-            "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -177,16 +163,26 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "description": "Sorted by userAssetId",
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
           }
         ],
         "responses": {
           "200": {
-            "description": "Collectibles owned by user",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Inventory.Api.Models.CollectibleUserAssetModel]"
             }
@@ -212,15 +208,14 @@
           "Inventory"
         ],
         "summary": "Gets whether the specified user's inventory can be viewed.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "The user identifier.",
             "required": true,
             "type": "integer",
@@ -252,15 +247,14 @@
           "Inventory"
         ],
         "summary": "Return inventory categories for a user",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "required": true,
             "type": "integer",
             "format": "int64"
@@ -288,15 +282,14 @@
           "Inventory"
         ],
         "summary": "Return favorites categories for a user",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "required": true,
             "type": "integer",
             "format": "int64"
@@ -324,122 +317,122 @@
           "Inventory"
         ],
         "summary": "Gets a list of assets by type for the specified user.\r\nNote that the 'Hat' asset type may return accessories while we are migrating.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "The user identifier.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "assetType",
             "in": "path",
+            "name": "assetType",
             "description": "The asset type.",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Image",
-              "TShirt",
-              "Audio",
-              "Mesh",
-              "Lua",
-              "HTML",
-              "Text",
-              "Hat",
-              "Place",
-              "Model",
-              "Shirt",
-              "Pants",
-              "Decal",
-              "Avatar",
-              "Head",
-              "Face",
-              "Gear",
-              "Badge",
-              "GroupEmblem",
-              "Animation",
-              "Arms",
-              "Legs",
-              "Torso",
-              "RightArm",
-              "LeftArm",
-              "LeftLeg",
-              "RightLeg",
-              "Package",
-              "YouTubeVideo",
-              "GamePass",
-              "App",
-              "Code",
-              "Plugin",
-              "SolidModel",
-              "MeshPart",
-              "HairAccessory",
-              "FaceAccessory",
-              "NeckAccessory",
-              "ShoulderAccessory",
-              "FrontAccessory",
-              "BackAccessory",
-              "WaistAccessory",
-              "ClimbAnimation",
-              "DeathAnimation",
-              "FallAnimation",
-              "IdleAnimation",
-              "JumpAnimation",
-              "RunAnimation",
-              "SwimAnimation",
-              "WalkAnimation",
-              "PoseAnimation",
-              "LocalizationTableManifest",
-              "LocalizationTableTranslation",
-              "EmoteAnimation",
-              "Video",
-              "TexturePack",
-              "TShirtAccessory",
-              "ShirtAccessory",
-              "PantsAccessory",
-              "JacketAccessory",
-              "SweaterAccessory",
-              "ShortsAccessory",
-              "LeftShoeAccessory",
-              "RightShoeAccessory",
-              "DressSkirtAccessory",
-              "FontFamily",
-              "FontFace",
-              "MeshHiddenSurfaceRemoval",
-              "EyebrowAccessory",
-              "EyelashAccessory",
-              "MoodAnimation",
-              "DynamicHead"
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              16,
+              17,
+              18,
+              19,
+              21,
+              22,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80
             ]
           },
           {
+            "in": "query",
             "name": "pageNumber",
-            "in": "query",
             "description": "The start index.",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 1
           },
           {
+            "in": "query",
             "name": "itemsPerPage",
-            "in": "query",
             "description": "The max number of items that can be returned.",
-            "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 25
           },
           {
-            "name": "keyword",
             "in": "query",
+            "name": "keyword",
             "description": "Filter results for items containing this.",
-            "required": false,
             "type": "string"
           }
         ],
@@ -473,36 +466,36 @@
           "Inventory"
         ],
         "summary": "Gets owned items of the specified item type. Game Servers can make requests for any user, but can only make requests for game passes that belong to the place sending the request.\r\nPlace creators can make requests as if they were the Game Server.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "ID of the user in question",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "itemType",
             "in": "path",
+            "name": "itemType",
             "description": "Type of the item in question (ie. Asset, GamePass, Badge, Bundle)",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Asset",
-              "GamePass",
-              "Badge",
-              "Bundle"
+              0,
+              1,
+              2,
+              3
             ]
           },
           {
-            "name": "itemTargetId",
             "in": "path",
+            "name": "itemTargetId",
             "description": "ID of the item in question",
             "required": true,
             "type": "integer",
@@ -533,37 +526,37 @@
         "tags": [
           "Inventory"
         ],
-        "summary": "Gets whether a user owns an item of type {itemType} with id {itemTargetId}.",
-        "consumes": [],
+        "summary": "Gets whether a user owns an item of type itemType with id itemTargetId.",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "ID of the user in question",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "itemType",
             "in": "path",
+            "name": "itemType",
             "description": "Type of the item in question (ie. Asset, GamePass, Badge, Bundle)",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Asset",
-              "GamePass",
-              "Badge",
-              "Bundle"
+              0,
+              1,
+              2,
+              3
             ]
           },
           {
-            "name": "itemTargetId",
             "in": "path",
+            "name": "itemTargetId",
             "description": "ID of the item in question",
             "required": true,
             "type": "integer",
@@ -590,90 +583,33 @@
       }
     },
     "/v1/collections/items/{itemType}/{itemTargetId}": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Adds an item to the appropriate collection",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "itemType",
-            "in": "path",
-            "description": "Type of the item (ie. Asset, Bundle)",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "Asset",
-              "GamePass",
-              "Badge",
-              "Bundle"
-            ]
-          },
-          {
-            "name": "itemTargetId",
-            "in": "path",
-            "description": "ID of the item",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
-            }
-          },
-          "400": {
-            "description": "1: The item type does not exist.\r\n2: The asset does not exist.\r\n3: The bundle does not exist."
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          },
-          "403": {
-            "description": "0: Token Validation Failed\r\n4: You don't own the specified item.\r\n5: Assets of this type are not allowed in collections.\r\n6: Items of this type are not allowed in collections.\r\n7: The item is already in the collection.\r\n9: The collection is full."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "Collections:AddItemToCollection"
-          ]
-        }
-      },
       "delete": {
         "tags": [
           "Collections"
         ],
         "summary": "Removes an item to the appropriate collection",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "itemType",
             "in": "path",
+            "name": "itemType",
             "description": "Type of the item (ie. Asset, Bundle)",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Asset",
-              "GamePass",
-              "Badge",
-              "Bundle"
+              0,
+              1,
+              2,
+              3
             ]
           },
           {
-            "name": "itemTargetId",
             "in": "path",
+            "name": "itemTargetId",
             "description": "ID of the item",
             "required": true,
             "type": "integer",
@@ -703,214 +639,96 @@
             "Collections:RemoveItemFromCollection"
           ]
         }
+      },
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Adds an item to the appropriate collection",
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemType",
+            "description": "Type of the item (ie. Asset, Bundle)",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "in": "path",
+            "name": "itemTargetId",
+            "description": "ID of the item",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
+            }
+          },
+          "400": {
+            "description": "1: The item type does not exist.\r\n2: The asset does not exist.\r\n3: The bundle does not exist."
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          },
+          "403": {
+            "description": "0: Token Validation Failed\r\n4: You don't own the specified item.\r\n5: Assets of this type are not allowed in collections.\r\n6: Items of this type are not allowed in collections.\r\n7: The item is already in the collection.\r\n9: The collection is full."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "Collections:AddItemToCollection"
+          ]
+        }
       }
     }
   },
   "definitions": {
-    "Roblox.Inventory.Api.Models.AssetIdListModel": {
-      "description": "A model that contains a list of asset ids",
+    "Roblox.Inventory.Api.AssetsExplorerCategoryItemModel": {
       "type": "object",
       "properties": {
-        "assetIds": {
-          "type": "array",
-          "items": {
-            "format": "int64",
-            "type": "integer"
-          }
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object",
-      "properties": {}
-    },
-    "Roblox.Inventory.Api.Models.CanViewInventoryResponse": {
-      "type": "object",
-      "properties": {
-        "canView": {
-          "description": "Boolean describing if the user's inventory can be viewed",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Inventory.Api.Models.InventoryPageResponse": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "total": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "includesAccessories": {
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int64]": {
-      "type": "object",
-      "properties": {
-        "ExclusiveStartKeyInfo": {
-          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]",
-          "readOnly": true
-        },
-        "CursorRecipe": {
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]": {
-      "type": "object",
-      "properties": {
-        "SortOrder": {
-          "enum": [
-            "Asc",
-            "Desc"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "PagingDirection": {
-          "enum": [
-            "Forward",
-            "Backward"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "Count": {
-          "format": "int32",
-          "type": "integer",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Inventory.Api.Models.CollectibleUserAssetModel]": {
-      "type": "object",
-      "properties": {
-        "previousPageCursor": {
-          "type": "string"
-        },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Inventory.Api.Models.CollectibleUserAssetModel"
-          }
-        }
-      }
-    },
-    "Roblox.Inventory.Api.Models.CollectibleUserAssetModel": {
-      "description": "A model containing information about a {Roblox.Platform.AssetOwnership.UserAsset}",
-      "type": "object",
-      "properties": {
-        "userAssetId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "serialNumber": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "assetId": {
-          "format": "int64",
-          "type": "integer"
-        },
         "name": {
           "type": "string"
         },
-        "recentAveragePrice": {
+        "displayName": {
+          "type": "string"
+        },
+        "filter": {
+          "type": "string"
+        },
+        "id": {
           "format": "int64",
           "type": "integer"
         },
-        "originalPrice": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "assetStock": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "buildersClubMembershipType": {
+        "type": {
+          "format": "int32",
+          "description": "Describes what type an AssetsExplorerCategoryItemModel contains ['AssetType' = 0, 'Bundle' = 1, 'Outfit' = 2, 'Set' = 3]",
           "enum": [
-            "None",
-            "BC",
-            "TBC",
-            "OBC",
-            "RobloxPremium"
+            0,
+            1,
+            2,
+            3
           ],
+          "type": "integer"
+        },
+        "categoryType": {
           "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Inventory.Api.Models.IItemModel]": {
-      "type": "object",
-      "properties": {
-        "previousPageCursor": {
-          "type": "string"
-        },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Inventory.Api.Models.IItemModel"
-          }
-        }
-      }
-    },
-    "Roblox.Inventory.Api.Models.IItemModel": {
-      "description": "Model representing an inventory item",
-      "type": "object",
-      "properties": {
-        "Id": {
-          "format": "int64",
-          "description": "The ID of the item",
-          "type": "integer",
-          "readOnly": true
-        },
-        "Name": {
-          "description": "The name of the item",
-          "type": "string",
-          "readOnly": true
-        },
-        "Type": {
-          "description": "The type of the item",
-          "enum": [
-            "Asset",
-            "GamePass",
-            "Badge",
-            "Bundle"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "InstanceId": {
-          "format": "int64",
-          "description": "The instance id of the item if applicable",
-          "type": "integer",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Inventory.Api.CategoriesModel": {
-      "description": "Model class that contains the categories of the Inventory or Favorites page",
-      "type": "object",
-      "properties": {
-        "categories": {
-          "description": "Categories to show up in Inventory or Favorites page",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Inventory.Api.AssetsExplorerCategoryModel"
-          }
         }
       }
     },
@@ -934,33 +752,220 @@
         }
       }
     },
-    "Roblox.Inventory.Api.AssetsExplorerCategoryItemModel": {
+    "Roblox.Inventory.Api.CategoriesModel": {
+      "description": "Model class that contains the categories of the Inventory or Favorites page",
       "type": "object",
       "properties": {
+        "categories": {
+          "description": "Categories to show up in Inventory or Favorites page",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Inventory.Api.AssetsExplorerCategoryModel"
+          }
+        }
+      }
+    },
+    "Roblox.Inventory.Api.Models.AssetIdListModel": {
+      "description": "A model that contains a list of asset ids",
+      "type": "object",
+      "properties": {
+        "assetIds": {
+          "description": "The asset ids",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Roblox.Inventory.Api.Models.CanViewInventoryResponse": {
+      "type": "object",
+      "properties": {
+        "canView": {
+          "description": "Boolean describing if the user's inventory can be viewed",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Inventory.Api.Models.CollectibleUserAssetModel": {
+      "description": "A model containing information about a Roblox.Platform.AssetOwnership.UserAsset",
+      "type": "object",
+      "properties": {
+        "userAssetId": {
+          "format": "int64",
+          "description": "The user asset id",
+          "type": "integer"
+        },
+        "serialNumber": {
+          "format": "int64",
+          "description": "The serial number of the user asset",
+          "type": "integer"
+        },
+        "assetId": {
+          "format": "int64",
+          "description": "The asset id of the user asset",
+          "type": "integer"
+        },
         "name": {
+          "description": "The asset name of the asset",
           "type": "string"
         },
-        "displayName": {
-          "type": "string"
+        "recentAveragePrice": {
+          "format": "int64",
+          "description": "The recent average price of the asset",
+          "type": "integer"
         },
-        "filter": {
-          "type": "string"
+        "originalPrice": {
+          "format": "int64",
+          "description": "The original price of the asset",
+          "type": "integer"
         },
-        "id": {
+        "assetStock": {
+          "format": "int64",
+          "description": "The recent average price of the user asset",
+          "type": "integer"
+        },
+        "buildersClubMembershipType": {
+          "format": "int32",
+          "description": "The recent average price of the user asset ['None' = 0, 'BC' = 1, 'TBC' = 2, 'OBC' = 3, 'RobloxPremium' = 4]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Inventory.Api.Models.IItemModel": {
+      "description": "Model representing an inventory item",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "description": "The ID of the item",
+          "type": "integer",
+          "readOnly": true
+        },
+        "Name": {
+          "description": "The name of the item",
+          "type": "string",
+          "readOnly": true
+        },
+        "Type": {
+          "format": "int32",
+          "description": "The type of the item ['Asset' = 0, 'GamePass' = 1, 'Badge' = 2, 'Bundle' = 3]",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "InstanceId": {
+          "format": "int64",
+          "description": "The instance id of the item if applicable",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Inventory.Api.Models.InventoryPageResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {}
+        },
+        "total": {
           "format": "int64",
           "type": "integer"
         },
-        "type": {
+        "includesAccessories": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "format": "int32",
+          "description": " ['Asc' = 1, 'Desc' = 2]",
           "enum": [
-            "AssetType",
-            "Bundle",
-            "Outfit",
-            "Set"
+            1,
+            2
           ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "format": "int32",
+          "description": " ['Forward' = 1, 'Backward' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object"
+    },
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int64]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]"
+        },
+        "CursorRecipe": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Inventory.Api.Models.CollectibleUserAssetModel]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
           "type": "string"
         },
-        "categoryType": {
+        "nextPageCursor": {
           "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Inventory.Api.Models.CollectibleUserAssetModel"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Inventory.Api.Models.IItemModel]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Inventory.Api.Models.IItemModel"
+          }
         }
       }
     }
