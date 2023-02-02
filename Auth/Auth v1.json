@@ -1677,7 +1677,7 @@
             }
           },
           "403": {
-            "description": ""
+            "description": "\r\n0: Token Validation Failed"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -2001,8 +2001,8 @@
           "description": "The {Roblox.Authentication.Api.Models.PasswordValidationStatus} of the password validation",
           "enum": [
             "ValidPassword",
-            "WeakPasswordError",
             "ShortPasswordError",
+            "WeakPasswordError",
             "PasswordSameAsUsernameError",
             "ForbiddenPasswordError",
             "DumbStringsError"
