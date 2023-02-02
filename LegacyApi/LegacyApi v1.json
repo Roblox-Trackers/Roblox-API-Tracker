@@ -13,101 +13,6 @@
     "application/json"
   ],
   "paths": {
-    "/assets/{id:long}/versions": {
-      "get": {
-        "tags": [
-          "Assets"
-        ],
-        "summary": "Retrieves asset information for the specified asset ID.  The authenticated user must be able to manage the asset.",
-        "operationId": "Assets_Versions",
-        "parameters": [
-          {
-            "type": "integer",
-            "name": "id",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the asset.",
-            "format": "int64",
-            "x-nullable": false
-          },
-          {
-            "type": "integer",
-            "name": "placeId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the place.",
-            "format": "int64",
-            "x-nullable": true
-          },
-          {
-            "type": "integer",
-            "name": "page",
-            "in": "query",
-            "description": "(Optional)The page to retrieve.",
-            "format": "int32",
-            "default": 1,
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "[{\n    \"Id\":536133191,\n    \"AssetId\":226132918,\n    \"VersionNumber\":3,\n    \"RawContentId\":2619739106,\n    \"ParentAssetVersionId\":536132109,\n    \"CreatorType\":1,\n    \"CreatorTargetId\":80502178,\n    \"CreatingUniverseId\":null,\n    \"Created\":\"2015-07-13T11:51:12.9073098-05:00\",\n    \"Updated\":\"2015-07-13T11:51:12.9073098-05:00\"\n}]",
-            "schema": {
-              "type": "file"
-            }
-          }
-        },
-        "deprecated": true
-      }
-    },
-    "/assets/award-badge": {
-      "post": {
-        "tags": [
-          "Assets"
-        ],
-        "summary": "Award a badge to a user.",
-        "operationId": "Assets_AwardBadge",
-        "parameters": [
-          {
-            "type": "integer",
-            "name": "userId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the user.",
-            "format": "int64",
-            "x-nullable": false
-          },
-          {
-            "type": "integer",
-            "name": "badgeId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the badge.",
-            "format": "int64",
-            "x-nullable": false
-          },
-          {
-            "type": "integer",
-            "name": "placeId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the place.",
-            "format": "int64",
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "{userName} won {badgeCreatorName}'s \"{badgeName}\" award! (if successful)",
-            "schema": {
-              "type": "file"
-            }
-          }
-        }
-      }
-    },
     "/users/{userId:long}/groups": {
       "get": {
         "tags": [
@@ -289,35 +194,6 @@
         }
       }
     },
-    "/marketplace/game-pass-product-info": {
-      "get": {
-        "tags": [
-          "Marketplace"
-        ],
-        "summary": "Returns the product info for the specified game pass.",
-        "operationId": "Marketplace_GetGamePassProductInfo",
-        "parameters": [
-          {
-            "type": "integer",
-            "name": "gamePassId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the asset.",
-            "format": "int64",
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "{\n    \"TargetId\":123456789,\n    \"ProductType\":\"Game Pass\",\n    \"AssetId\":123456789,\n    \"ProductId\":24870409,\n    \"Name\":\"Hat\",\n    \"Description\":\"\",\n    \"AssetTypeId\":8,\n    \"Creator\":{\"Id\":1,\"Name\":\"ROBLOX\"},\n    \"IconImageAssetId\":0,\n    \"Created\":\"2015-06-25T20:07:49.147Z\",\n    \"Updated\":\"2015-07-11T20:07:51.863Z\",\n    \"PriceInRobux\":350,\n    \"PriceInTickets\":null,\n    \"Sales\":0,\n    \"IsNew\":true,\n    \"IsForSale\":true,\n    \"IsPublicDomain\":false,\n    \"IsLimited\":false,\n    \"IsLimitedUnique\":false,\n    \"Remaining\":null,\n    \"MinimumMembershipLevel\":0,\n    \"ContentRatingTypeId\":0\n}",
-            "schema": {
-              "type": "file"
-            }
-          }
-        }
-      }
-    },
     "/reference/deviceinfo": {
       "get": {
         "tags": [
@@ -386,56 +262,6 @@
           "200": {
             "x-nullable": true,
             "description": "{\"Id\": 12345678, \"Username\":\"user name\"}",
-            "schema": {
-              "type": "file"
-            }
-          }
-        }
-      }
-    },
-    "/windows/v1/report-purchase": {
-      "post": {
-        "tags": [
-          "Windows"
-        ],
-        "summary": "After a purchase has been made with the Windows Store, validates the receipt and grants the user the products.",
-        "operationId": "Windows_ProcessWindowsStorePurchase",
-        "parameters": [
-          {
-            "name": "transactionIds",
-            "in": "body",
-            "required": true,
-            "description": "A list of transactionIds that are contained in the , which need to be granted.",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "format": "guid"
-              }
-            },
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "receipt",
-            "in": "query",
-            "required": true,
-            "description": "The receipt from the purchase or the app. Used to verify purchase authenticity.",
-            "x-nullable": true
-          },
-          {
-            "type": "boolean",
-            "name": "isRetry",
-            "in": "query",
-            "description": "Whether the purchase is a retry.",
-            "default": false,
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "If Windows Store purchasing is not enabled, returns a status code 404 Not Found result.\n\nIf the user is not authenticated, returns a status code 401 Unauthorized result.\n\nIf the purchases succeeded OR the purchases corresponding to the transactionIds has already been granted, returns a status code 200 OK result.\nA combination of transactions that have been granted and transactions that are successfully granted will also return 200 OK.\n\nIf granting the purchase failed due to an unexpected error, returns a status code 500 Error result.\nIf granting the purchase failed due to a verification problem, returns a status code 403 Forbidden result.\nIn either case, the response also contains a JSON object in the following format:\n\n{\n    status : \"Failure\",\n    errors : [\n        {\n            message: \"Sorry, an unexpected error occurred. Please try again later.\",\n            code: 0\n        }\n    ]\n}\n\nwhere there is exactly one error and the code is one of the following:\n0 - Unexpected error\n1 - Verification failed",
             "schema": {
               "type": "file"
             }

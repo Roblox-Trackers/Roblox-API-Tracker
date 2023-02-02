@@ -1811,37 +1811,6 @@
         }
       }
     },
-    "/v1/user/notifications/statistic-reports": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Gets a list of DeveloperMetricsAvailable notifications for the authenticated user.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.DevMetrics.Models.INotification]"
-            }
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "User:GetUserNotificationsOfTypeDeveloperMetricsAvailable"
-          ]
-        }
-      }
-    },
     "/v1/user/teamcreate/memberships": {
       "get": {
         "tags": [
@@ -4093,46 +4062,6 @@
         },
         "name": {
           "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.DevMetrics.Models.INotification]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.DevMetrics.Models.INotification"
-          }
-        }
-      }
-    },
-    "Roblox.DevMetrics.Models.INotification": {
-      "type": "object",
-      "properties": {
-        "UserId": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "UniverseId": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "Expires": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "RootPlaceId": {
-          "format": "int64",
-          "type": "integer",
-          "readOnly": true
-        },
-        "GameName": {
-          "type": "string",
-          "readOnly": true
         }
       }
     }

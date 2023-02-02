@@ -1889,6 +1889,10 @@
           "description": "Is Email changed",
           "type": "boolean"
         },
+        "isPhoneVerified": {
+          "description": "If Phone will be reset",
+          "type": "boolean"
+        },
         "userId": {
           "format": "int64",
           "description": "User ID",

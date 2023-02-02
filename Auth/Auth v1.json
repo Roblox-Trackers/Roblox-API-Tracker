@@ -1677,7 +1677,7 @@
             }
           },
           "403": {
-            "description": "\r\n0: Token Validation Failed"
+            "description": ""
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -2056,6 +2056,10 @@
         },
         "isEmailChanged": {
           "description": "Is Email changed",
+          "type": "boolean"
+        },
+        "isPhoneVerified": {
+          "description": "If Phone will be reset",
           "type": "boolean"
         },
         "userId": {
