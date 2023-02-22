@@ -1700,6 +1700,11 @@
         "collectibleItemId": {
           "description": "The item's collectible item id. \r\nIt is an UUID if a item is collectible type. Otherwise, it is null.",
           "type": "string"
+        },
+        "totalQuantity": {
+          "format": "int64",
+          "description": "The collectible or limited-unique item's total quantity of unique instances.",
+          "type": "integer"
         }
       }
     },

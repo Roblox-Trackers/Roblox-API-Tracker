@@ -370,7 +370,7 @@
             "description": "0: Authorization has been denied for this request."
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n4: Account Pin Locked\r\n5: Incorrect Password"
+            "description": "0: Token Validation Failed\r\n4: Account Pin Locked\r\n5: Incorrect Password\r\n10: "
           },
           "429": {
             "description": "6: Flooded"
@@ -1068,9 +1068,6 @@
           "type": "boolean"
         },
         "isUserBlockEndpointsUpdated": {
-          "type": "boolean"
-        },
-        "isIDVerificationEnabled": {
           "type": "boolean"
         },
         "isPasswordRequiredForAgingDown": {
