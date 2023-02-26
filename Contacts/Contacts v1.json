@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts Api v1",
-    "version": "v1"
+    "version": "v1",
+    "title": "Contacts Api v1"
   },
   "host": "contacts.roblox.com",
   "schemes": [
@@ -15,10 +15,12 @@
           "Contacts"
         ],
         "summary": "Gets contextual information for contacts and usertags",
+        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -46,7 +48,8 @@
         "summary": "Gets the tags for multiple users",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -54,8 +57,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "",
             "required": true,
             "schema": {
@@ -99,7 +102,8 @@
         "summary": "Sets the tag for a user",
         "consumes": [
           "application/json",
-          "text/json"
+          "text/json",
+          "application/x-www-form-urlencoded"
         ],
         "produces": [
           "application/json",
@@ -107,8 +111,8 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "requestModel",
+            "in": "body",
             "description": "The tag receiving userId and the tag itself",
             "required": true,
             "schema": {
@@ -159,18 +163,6 @@
         }
       }
     },
-    "Roblox.Contacts.Api.Request.GetUserTagsRequestModel": {
-      "type": "object",
-      "properties": {
-        "targetUserIds": {
-          "type": "array",
-          "items": {
-            "format": "int64",
-            "type": "integer"
-          }
-        }
-      }
-    },
     "Roblox.Contacts.Api.Request.SetUserTagRequestModel": {
       "type": "object",
       "properties": {
@@ -185,6 +177,31 @@
         }
       }
     },
+    "Roblox.Contacts.Api.Response.SetUserTagResponseModel": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "Status message to be sent to the setter of the userTag",
+          "enum": [
+            "Success",
+            "Moderated"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Contacts.Api.Request.GetUserTagsRequestModel": {
+      "type": "object",
+      "properties": {
+        "targetUserIds": {
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      }
+    },
     "Roblox.Contacts.Api.Response.GetUserTagsResponseModel": {
       "type": "object",
       "properties": {
@@ -193,19 +210,6 @@
           "type": "integer"
         },
         "targetUserTag": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Contacts.Api.Response.SetUserTagResponseModel": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "description": "Status message to be sent to the setter of the userTag ['Success' = 0, 'Moderated' = 1]",
-          "enum": [
-            "Success",
-            "Moderated"
-          ],
           "type": "string"
         }
       }
