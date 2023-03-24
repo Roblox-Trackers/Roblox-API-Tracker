@@ -165,35 +165,6 @@
         }
       }
     },
-    "/marketplace/productinfo": {
-      "get": {
-        "tags": [
-          "Marketplace"
-        ],
-        "summary": "Returns the product info for the specified asset.",
-        "operationId": "Marketplace_GetProductInfo",
-        "parameters": [
-          {
-            "type": "integer",
-            "name": "assetId",
-            "in": "query",
-            "required": true,
-            "description": "The ID of the asset.",
-            "format": "int64",
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "{\n    \"TargetId\":123456789,\n    \"ProductType\":\"User Product\",\n    \"AssetId\":123456789,\n    \"ProductId\":24870409,\n    \"Name\":\"Hat\",\n    \"Description\":\"\",\n    \"AssetTypeId\":8,\n    \"Creator\":{\"Id\":1,\"Name\":\"ROBLOX\"},\n    \"IconImageAssetId\":0,\n    \"Created\":\"2015-06-25T20:07:49.147Z\",\n    \"Updated\":\"2015-07-11T20:07:51.863Z\",\n    \"PriceInRobux\":350,\n    \"PriceInTickets\":null,\n    \"Sales\":0,\n    \"IsNew\":true,\n    \"IsForSale\":true,\n    \"IsPublicDomain\":false,\n    \"IsLimited\":false,\n    \"IsLimitedUnique\":false,\n    \"Remaining\":null,\n    \"MinimumMembershipLevel\":0,\n    \"ContentRatingTypeId\":0\n}",
-            "schema": {
-              "type": "file"
-            }
-          }
-        }
-      }
-    },
     "/reference/deviceinfo": {
       "get": {
         "tags": [

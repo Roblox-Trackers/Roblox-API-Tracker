@@ -1085,7 +1085,7 @@
             "description": "Service unavailable"
           },
           "403": {
-            "description": "0: Token Validation Failed\r\n2: Captcha Failed.\r\n4: Invalid Birthday.\r\n5: Invalid Username.\r\n6: Username already taken.\r\n7: Invalid Password.\r\n8: Password and Username are same.\r\n9: Password is too simple.\r\n10: Email is invalid.\r\n11: Asset is invalid.\r\n12: Too many attempts. Please wait a bit."
+            "description": "0: Token Validation Failed\r\n2: Captcha Failed.\r\n4: Invalid Birthday.\r\n5: Invalid Username.\r\n6: Username already taken.\r\n7: Invalid Password.\r\n8: Password and Username are same.\r\n9: Password is too simple.\r\n10: Email is invalid.\r\n11: Asset is invalid.\r\n12: Too many attempts. Please wait a bit.\r\n17: One time Passcode session was not valid"
           },
           "429": {
             "description": "3: Too many attempts. Please wait a bit."
@@ -2034,6 +2034,10 @@
           "$ref": "#/definitions/Roblox.Authentication.Api.Models.Request.SecureAuthenticationIntentModel",
           "description": "Secure authentication intent."
         },
+        "otpSession": {
+          "$ref": "#/definitions/Roblox.Authentication.Api.Models.Request.OtpSessionModel",
+          "description": "OTP Session to be used to attach a verified contact method to the newly created user at signup"
+        },
         "captchaId": {
           "type": "string"
         },
@@ -2095,6 +2099,22 @@
         },
         "offerId": {
           "description": "Offer Id",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Authentication.Api.Models.Request.OtpSessionModel": {
+      "description": "Model describing secure auth intent.",
+      "type": "object",
+      "properties": {
+        "otpSessionToken": {
+          "type": "string"
+        },
+        "otpContactType": {
+          "enum": [
+            "Unset",
+            "Email"
+          ],
           "type": "string"
         }
       }
