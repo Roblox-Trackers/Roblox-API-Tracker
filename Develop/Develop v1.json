@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1",
-    "title": "Develop Api v1"
+    "title": "Develop Api v1",
+    "version": "v1"
   },
   "host": "develop.roblox.com",
   "schemes": [
@@ -15,21 +15,20 @@
           "Assets"
         ],
         "summary": "Gets the voting information of the given assets",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "assetIds",
             "in": "query",
-            "description": "The ids of the {Roblox.Platform.Assets.IAsset}.",
+            "name": "assetIds",
+            "description": "The ids of the Roblox.Platform.Assets.IAsset.",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "csv"
           }
@@ -57,12 +56,10 @@
         ],
         "summary": "Gets a page of templates that can be used to start off making games.",
         "description": "Templates subject to change without notice.\r\nSort order of templates specified by Roblox.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -85,15 +82,14 @@
           "GameUpdateNotifications"
         ],
         "summary": "Retrieves historical records of game update messages.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The game ID",
             "required": true,
             "type": "integer",
@@ -102,7 +98,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "type": "array",
               "items": {
@@ -111,7 +107,7 @@
             }
           },
           "404": {
-            "description": "{universeId} is invalid."
+            "description": "universeId is invalid."
           },
           "403": {
             "description": "User is not authorized for this action on the universe."
@@ -134,11 +130,10 @@
         "tags": [
           "GameUpdateNotifications"
         ],
-        "summary": "Publishes a new Game Update Notification for a {Roblox.Platform.Universes.IUniverse}Universe",
+        "summary": "Publishes a new Game Update Notification for a Roblox.Platform.Universes.IUniverseUniverse",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -146,16 +141,16 @@
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "gameUpdateText",
             "in": "body",
+            "name": "gameUpdateText",
             "description": "The JSON object that will represent the body of the notification to be sent.",
             "required": true,
             "schema": {
@@ -165,7 +160,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Develop.Models.GameUpdateMessageModel"
             }
@@ -174,7 +169,7 @@
             "description": "Called with invalid arguments."
           },
           "404": {
-            "description": "{universeId} is invalid."
+            "description": "universeId is invalid."
           },
           "403": {
             "description": "User is not authorized for this action on the universe.\r\n0: Token Validation Failed"
@@ -200,44 +195,30 @@
           "Groups"
         ],
         "summary": "Gets a list of universes for the given group.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "groupId",
             "in": "path",
+            "name": "groupId",
             "description": "The group id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
+            "in": "query",
             "name": "isArchived",
-            "in": "query",
             "description": "Whether or not to return archived games.",
-            "required": false,
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           {
-            "name": "sortOrder",
             "in": "query",
-            "description": "Sorted by universeId",
-            "required": false,
-            "type": "string",
-            "default": "Asc",
-            "enum": [
-              "Asc",
-              "Desc"
-            ]
-          },
-          {
             "name": "limit",
-            "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -249,22 +230,32 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "description": "Sorted by universeId",
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UniverseModel]"
             }
           },
           "400": {
-            "description": "Invalid {groupId}."
+            "description": "Invalid groupId."
           }
         },
         "properties": {
@@ -280,16 +271,15 @@
         "tags": [
           "Places"
         ],
-        "summary": "Gets compatibility of place with different platforms {placeId}",
-        "consumes": [],
+        "summary": "Gets compatibility of place with different platforms placeId",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "placeId",
             "in": "path",
+            "name": "placeId",
             "description": "The place id for the place to be updated.",
             "required": true,
             "type": "integer",
@@ -298,13 +288,13 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Develop.Models.Response.PlaceCompatibilitiesResponse"
             }
           },
           "400": {
-            "description": "{placeId} is invalid."
+            "description": "placeId is invalid."
           },
           "403": {
             "description": "Authenticated user is not authorized to manage this place."
@@ -327,69 +317,70 @@
           "Statistics"
         ],
         "summary": "Get statistics data for a place.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "placeId",
             "in": "path",
+            "name": "placeId",
             "description": "The place id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "type",
             "in": "path",
+            "name": "type",
             "description": "The data type.",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Revenue",
-              "RevenuePerVisit",
-              "AverageVisitLength",
-              "Visits"
+              0,
+              1,
+              2,
+              3
             ]
           },
           {
+            "in": "query",
             "name": "granularity",
-            "in": "query",
-            "description": "The {Roblox.Api.Develop.Models.StatisticsDataGranularity}.",
+            "description": "The Roblox.Api.Develop.Models.StatisticsDataGranularity.",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Hourly",
-              "Daily",
-              "Monthly"
+              0,
+              1,
+              2
             ]
           },
           {
+            "in": "query",
             "name": "divisionType",
-            "in": "query",
             "description": "Optional division type for the data.",
-            "required": false,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Device",
-              "Age"
+              0,
+              1
             ]
           },
           {
-            "name": "startTime",
             "in": "query",
+            "name": "startTime",
             "description": "Optional time of first sample.",
-            "required": false,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           {
-            "name": "endTime",
             "in": "query",
+            "name": "endTime",
             "description": "Optional time of last sample.",
-            "required": false,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           }
         ],
         "responses": {
@@ -423,76 +414,77 @@
           "Statistics"
         ],
         "summary": "Get statistics data for a place in a certain format.\r\nDO NOT USE THIS ENDPOINT. It may be removed at any time. Use GetStatistics instead.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "placeId",
             "in": "path",
+            "name": "placeId",
             "description": "The place id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "type",
             "in": "path",
+            "name": "type",
             "description": "The data type.",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Revenue",
-              "RevenuePerVisit",
-              "AverageVisitLength",
-              "Visits"
+              0,
+              1,
+              2,
+              3
             ]
           },
           {
+            "in": "query",
             "name": "timeFrame",
-            "in": "query",
-            "description": "The {Roblox.Api.Develop.Models.StatisticsDataGranularity}.",
+            "description": "The Roblox.Api.Develop.Models.StatisticsDataGranularity.",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Hourly",
-              "Daily",
-              "Monthly"
+              0,
+              1,
+              2
             ]
           },
           {
+            "in": "query",
             "name": "divisionType",
-            "in": "query",
             "description": "Optional division type for the data.",
-            "required": false,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Device",
-              "Age"
+              0,
+              1
             ]
           },
           {
-            "name": "startTime",
             "in": "query",
+            "name": "startTime",
             "description": "Optional time of first sample.",
-            "required": false,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           {
-            "name": "endTime",
             "in": "query",
+            "name": "endTime",
             "description": "Optional time of last sample.",
-            "required": false,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "type": "object"
+              "description": "The response model for statistics about a place in the format the flot charting library expects."
             }
           },
           "401": {
@@ -519,30 +511,30 @@
           "Statistics"
         ],
         "summary": "An endpoint that returns whether the age data is available for a place.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "placeId",
             "in": "path",
+            "name": "placeId",
             "description": "The place Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "timeFrame",
             "in": "query",
-            "description": "The {Roblox.Api.Develop.Models.StatisticsDataGranularity}.",
+            "name": "timeFrame",
+            "description": "The Roblox.Api.Develop.Models.StatisticsDataGranularity.",
             "required": true,
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "enum": [
-              "Hourly",
-              "Daily",
-              "Monthly"
+              0,
+              1,
+              2
             ]
           }
         ],
@@ -577,15 +569,14 @@
           "Statistics"
         ],
         "summary": "An endpoint that returns whether the age data is available for a place.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "placeId",
             "in": "path",
+            "name": "placeId",
             "description": "The place Id.",
             "required": true,
             "type": "integer",
@@ -623,25 +614,23 @@
           "TeamCreate"
         ],
         "summary": "List of users in the active Team Create session",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "placeId",
             "in": "path",
+            "name": "placeId",
             "description": "The place Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "limit",
             "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "name": "limit",
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -653,16 +642,15 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Users.SkinnyUserResponse]"
             }
@@ -697,21 +685,20 @@
           "Plugins"
         ],
         "summary": "Gets plugin details by ids.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "pluginIds",
             "in": "query",
+            "name": "pluginIds",
             "description": "The plugin ids.",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "csv"
           }
@@ -742,43 +729,20 @@
         ],
         "summary": "Allows searching for universes.",
         "description": "PoC of search endpoint which supports filters in search query string and special syntax for sorts.\r\nIMPORTANT: filter names, values, sort values - are case sensitive!",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "q",
             "in": "query",
-            "description": "A search query with filters seperated by whitespace. Example: \"these are keywords! filterName:filterValue filterName:filterValue\"\n\narchived:[Value] (required: False)\nAllowed values: [True,False]\n\nactive:[Value] (required: False)\nAllowed values: [True,False]\n\ncreator:[Value] (required: True)\nAllowed values: [User,Group,Team]\n\ngroups:[Value,Value,...] (required: False)\n\n",
-            "required": false,
-            "type": "string"
+            "name": "search",
+            "required": true
           },
           {
-            "name": "sort",
             "in": "query",
-            "description": "Determines the way results will be sorted. Format: (a prefix for ascending or descending) + (sort type).\n\nAscending Prefix: +\n\nDescending Prefix -\n\nAllowed Sort Types: +GameCreated,-GameCreated,+GameName,-GameName,+RootPlaceName,-RootPlaceName,+RootPlaceUpdated,-RootPlaceUpdated,+LastUpdated,-LastUpdated\n\nNote: An allowed type with no prefix allows both ascending and descending but if a prefix is specified only the specified order is allowed.",
-            "required": false,
-            "type": "array"
-          },
-          {
-            "name": "sortOrder",
-            "in": "query",
-            "description": "The order the results are sorted in.",
-            "required": false,
-            "type": "string",
-            "default": "Asc",
-            "enum": [
-              "Asc",
-              "Desc"
-            ]
-          },
-          {
             "name": "limit",
-            "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -790,16 +754,38 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "description": "The order the results are sorted in.",
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "description": "A search query with filters seperated by whitespace. Example: \"these are keywords! filterName:filterValue filterName:filterValue\"\n\narchived:[Value] (required: False)\nAllowed values: [True,False]\n\nactive:[Value] (required: False)\nAllowed values: [True,False]\n\ncreator:[Value] (required: True)\nAllowed values: [User,Group,Team]\n\ngroups:[Value,Value,...] (required: False)\n\n",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Determines the way results will be sorted. Format: (a prefix for ascending or descending) + (sort type).\n\nAscending Prefix: +\n\nDescending Prefix -\n\nAllowed Sort Types: +GameCreated,-GameCreated,+GameName,-GameName,+RootPlaceName,-RootPlaceName,+RootPlaceUpdated,-RootPlaceUpdated,+LastUpdated,-LastUpdated\n\nNote: An allowed type with no prefix allows both ascending and descending but if a prefix is specified only the specified order is allowed.",
+            "type": "array"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UniverseModel]"
             }
@@ -827,12 +813,10 @@
         "tags": [
           "Statistics"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -857,16 +841,15 @@
         "tags": [
           "Universes"
         ],
-        "summary": "Gets a {Roblox.Api.Develop.Models.UniverseModel}.",
-        "consumes": [],
+        "summary": "Gets a Roblox.Api.Develop.Models.UniverseModel.",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The Universe id.",
             "required": true,
             "type": "integer",
@@ -898,15 +881,14 @@
           "UniverseSettings"
         ],
         "summary": "Get settings for an owned universe.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
@@ -915,7 +897,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseSettingsResponse"
             }
@@ -944,8 +926,7 @@
         "summary": "Update universe settings for an owned universe.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -953,17 +934,17 @@
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universeId.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "model",
             "in": "body",
-            "description": "The {Roblox.Api.Develop.Models.UniverseSettingsRequest} model.",
+            "name": "model",
+            "description": "The Roblox.Api.Develop.Models.UniverseSettingsRequest model.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseSettingsRequest"
@@ -1004,15 +985,14 @@
           "UniverseSettings"
         ],
         "summary": "Get settings for an owned universe's VIP servers.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
@@ -1049,15 +1029,14 @@
         "tags": [
           "Universes"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "required": true,
             "type": "integer",
             "format": "int64"
@@ -1093,16 +1072,15 @@
         "tags": [
           "Universes"
         ],
-        "summary": "Returns list of granted and declined permissions related to the universe with the id {universeId} for authenticated user",
-        "consumes": [],
+        "summary": "Returns list of granted and declined permissions related to the universe with the id universeId for authenticated user",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe id.",
             "required": true,
             "type": "integer",
@@ -1137,37 +1115,23 @@
           "Universes"
         ],
         "summary": "Gets a list of places for a universe.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The asset id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "sortOrder",
             "in": "query",
-            "description": "Sorted by placeId",
-            "required": false,
-            "type": "string",
-            "default": "Asc",
-            "enum": [
-              "Asc",
-              "Desc"
-            ]
-          },
-          {
             "name": "limit",
-            "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -1179,11 +1143,21 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "description": "Sorted by placeId",
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
           }
         ],
         "responses": {
@@ -1207,15 +1181,14 @@
         "tags": [
           "Universes"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "required": true,
             "type": "integer",
             "format": "int64"
@@ -1254,22 +1227,21 @@
         "tags": [
           "Universes"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "yearDashMonth",
             "in": "path",
+            "name": "yearDashMonth",
             "required": true,
             "type": "string"
           }
@@ -1307,22 +1279,21 @@
         "tags": [
           "Universes"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "yearDashMonth",
             "in": "path",
+            "name": "yearDashMonth",
             "required": true,
             "type": "string"
           }
@@ -1360,16 +1331,15 @@
         "tags": [
           "TeamCreate"
         ],
-        "summary": "Gets TeamCreate settings for an {Roblox.Platform.Universes.IUniverse}.",
-        "consumes": [],
+        "summary": "Gets TeamCreate settings for an Roblox.Platform.Universes.IUniverse.",
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
@@ -1378,16 +1348,16 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Develop.Models.Response.TeamCreateSettingsResponse"
             }
           },
           "400": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUniverse}"
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUniverse"
           },
           "403": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.Unauthorized}"
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.Unauthorized"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -1408,8 +1378,7 @@
         "description": "Enables, or disables team create for a universe.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -1417,16 +1386,16 @@
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request body containing the team create settings.",
             "required": true,
             "schema": {
@@ -1436,16 +1405,16 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
             }
           },
           "400": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUniverse}"
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUniverse"
           },
           "403": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.Unauthorized}\r\n0: Token Validation Failed"
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.Unauthorized\r\n0: Token Validation Failed"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -1460,84 +1429,6 @@
       }
     },
     "/v1/universes/{universeId}/teamcreate/memberships": {
-      "get": {
-        "tags": [
-          "TeamCreate"
-        ],
-        "summary": "List of users allowed to TeamCreate a universe.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "universeId",
-            "in": "path",
-            "description": "The universe Id.",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "sortOrder",
-            "in": "query",
-            "description": "TeamCreate membership grant date",
-            "required": false,
-            "type": "string",
-            "default": "Asc",
-            "enum": [
-              "Asc",
-              "Desc"
-            ]
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
-            "type": "integer",
-            "format": "int32",
-            "default": 10,
-            "enum": [
-              10,
-              25,
-              50,
-              100
-            ]
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "The paging cursor for the previous or next page.",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UserResponse]"
-            }
-          },
-          "400": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUniverse}"
-          },
-          "403": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.TeamCreateDisabled}"
-          },
-          "401": {
-            "description": "0: Authorization has been denied for this request."
-          }
-        },
-        "properties": {
-          "internal": false,
-          "metricIds": [
-            "TeamCreate:GetTeamCreateMembershipsByUniverse"
-          ]
-        }
-      },
       "delete": {
         "tags": [
           "TeamCreate"
@@ -1545,8 +1436,7 @@
         "summary": "Removes a user from a TeamCreate permissions list.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -1554,16 +1444,16 @@
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request body.",
             "required": true,
             "schema": {
@@ -1573,16 +1463,16 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.ApiEmptyResponseModel"
             }
           },
           "400": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUniverse} OR {Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUser}"
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUniverse OR Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUser"
           },
           "403": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.TeamCreateDisabled}\r\n0: Token Validation Failed"
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.TeamCreateDisabled\r\n0: Token Validation Failed"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -1594,6 +1484,80 @@
             "TeamCreate:DeleteTeamCreateMembership"
           ]
         }
+      },
+      "get": {
+        "tags": [
+          "TeamCreate"
+        ],
+        "summary": "List of users allowed to TeamCreate a universe.",
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "universeId",
+            "description": "The universe Id.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "The number of results per request.",
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "enum": [
+              10,
+              25,
+              50,
+              100
+            ]
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "description": "The paging cursor for the previous or next page.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "description": "TeamCreate membership grant date",
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UserResponse]"
+            }
+          },
+          "400": {
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.InvalidUniverse"
+          },
+          "403": {
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.TeamCreateDisabled"
+          },
+          "401": {
+            "description": "0: Authorization has been denied for this request."
+          }
+        },
+        "properties": {
+          "internal": false,
+          "metricIds": [
+            "TeamCreate:GetTeamCreateMembershipsByUniverse"
+          ]
+        }
       }
     },
     "/v1/universes/multiget": {
@@ -1601,23 +1565,22 @@
         "tags": [
           "Universes"
         ],
-        "summary": "Gets a {System.Collections.Generic.List`1}.",
+        "summary": "Gets a System.Collections.Generic.List`1.",
         "description": "If a universe can not be found for a given ID (such as -1) it will be skipped.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "ids",
             "in": "query",
+            "name": "ids",
             "description": "The universe IDs to get. Limit 100.",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "multi"
           }
@@ -1646,23 +1609,22 @@
         "tags": [
           "Universes"
         ],
-        "summary": "Returns an array of granted and declined permissions related to the universes with the ids in {ids} for the authenticated user.",
+        "summary": "Returns an array of granted and declined permissions related to the universes with the ids in ids for the authenticated user.",
         "description": "If a universe can not be found for a given ID (such as -1) it will be skipped.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "ids",
             "in": "query",
+            "name": "ids",
             "description": "The universe ids.",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "multi"
           }
@@ -1695,33 +1657,32 @@
           "TeamCreate"
         ],
         "summary": "Gets TeamCreate settings for multiple universes specified by Ids",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "ids",
             "in": "query",
+            "name": "ids",
             "required": true,
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "collectionFormat": "multi"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel]"
             }
           },
           "400": {
-            "description": "{Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.TooManyUniverseIdsSent}"
+            "description": "Roblox.Api.Develop.ResponseEnums.TeamCreateErrors.TooManyUniverseIdsSent"
           },
           "401": {
             "description": "0: Authorization has been denied for this request."
@@ -1741,23 +1702,18 @@
           "User"
         ],
         "summary": "Returns whether the user can manage a given asset.",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
         "parameters": [
           {
-            "name": "userId",
             "in": "path",
+            "name": "userId",
             "description": "The ID of the user.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "assetId",
             "in": "path",
+            "name": "assetId",
             "description": "The ID of the asset.",
             "required": true,
             "type": "integer",
@@ -1766,10 +1722,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object"
-            }
+            "description": "OK"
           }
         },
         "properties": {
@@ -1786,15 +1739,13 @@
           "User"
         ],
         "summary": "Gets a list of Groups that a user can manage.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.GroupModel]"
             }
@@ -1817,29 +1768,15 @@
           "TeamCreate"
         ],
         "summary": "List of universes the authenticated user has permission to TeamCreate.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "sortOrder",
             "in": "query",
-            "description": "TeamCreate membership grant date",
-            "required": false,
-            "type": "string",
-            "default": "Asc",
-            "enum": [
-              "Asc",
-              "Desc"
-            ]
-          },
-          {
             "name": "limit",
-            "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -1851,11 +1788,21 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "description": "TeamCreate membership grant date",
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
           }
         ],
         "responses": {
@@ -1883,36 +1830,22 @@
           "User"
         ],
         "summary": "Gets a list of universes for the authenticated user.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
+            "in": "query",
             "name": "isArchived",
-            "in": "query",
             "description": "Whether or not to return archived games.",
-            "required": false,
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           {
-            "name": "sortOrder",
             "in": "query",
-            "description": "Sorted by universeId",
-            "required": false,
-            "type": "string",
-            "default": "Asc",
-            "enum": [
-              "Asc",
-              "Desc"
-            ]
-          },
-          {
             "name": "limit",
-            "in": "query",
-            "description": "The amount of results per request.",
-            "required": false,
+            "description": "The number of results per request.",
             "type": "integer",
             "format": "int32",
             "default": 10,
@@ -1924,16 +1857,26 @@
             ]
           },
           {
-            "name": "cursor",
             "in": "query",
+            "name": "cursor",
             "description": "The paging cursor for the previous or next page.",
-            "required": false,
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "description": "Sorted by universeId",
+            "type": "string",
+            "default": "Asc",
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UniverseModel]"
             }
@@ -1961,8 +1904,7 @@
         "summary": "Filters game update text.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -1970,8 +1912,8 @@
         ],
         "parameters": [
           {
-            "name": "gameUpdateText",
             "in": "body",
+            "name": "gameUpdateText",
             "description": "Game update message text.",
             "required": true,
             "schema": {
@@ -1980,6 +1922,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Roblox.Api.Develop.Models.Response.GameUpdateTextFilterResponse"
+            }
+          },
           "400": {
             "description": "Called with invalid arguments."
           },
@@ -2002,16 +1950,15 @@
       }
     },
     "/v1/places/{placeId}": {
-      "post": {
+      "patch": {
         "tags": [
           "Places"
         ],
-        "summary": "Updates the place configuration for the place with the id {placeId}",
+        "summary": "Updates the place configuration for the place with the id placeId",
         "description": "Currently the only supported functionality for updating the configuration is around Name, and Description.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2019,16 +1966,16 @@
         ],
         "parameters": [
           {
-            "name": "placeId",
             "in": "path",
+            "name": "placeId",
             "description": "The place id for the place to be updated.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "configuration",
             "in": "body",
+            "name": "configuration",
             "description": "",
             "required": true,
             "schema": {
@@ -2038,13 +1985,13 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Develop.Models.PlaceModel"
             }
           },
           "400": {
-            "description": "{placeId} is invalid."
+            "description": "placeId is invalid."
           },
           "403": {
             "description": "Authenticated user is not authorized to manage this place.\r\n0: Token Validation Failed"
@@ -2060,16 +2007,15 @@
           ]
         }
       },
-      "patch": {
+      "post": {
         "tags": [
           "Places"
         ],
-        "summary": "Updates the place configuration for the place with the id {placeId}",
+        "summary": "Updates the place configuration for the place with the id placeId",
         "description": "Currently the only supported functionality for updating the configuration is around Name, and Description.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2077,16 +2023,16 @@
         ],
         "parameters": [
           {
-            "name": "placeId",
             "in": "path",
+            "name": "placeId",
             "description": "The place id for the place to be updated.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "configuration",
             "in": "body",
+            "name": "configuration",
             "description": "",
             "required": true,
             "schema": {
@@ -2096,13 +2042,13 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Roblox.Api.Develop.Models.PlaceModel"
             }
           },
           "400": {
-            "description": "{placeId} is invalid."
+            "description": "placeId is invalid."
           },
           "403": {
             "description": "Authenticated user is not authorized to manage this place.\r\n0: Token Validation Failed"
@@ -2125,15 +2071,14 @@
           "Universes"
         ],
         "summary": "Activates a universes.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe id.",
             "required": true,
             "type": "integer",
@@ -2173,8 +2118,7 @@
         "summary": "Creates an alias.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2182,16 +2126,16 @@
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request body containing the alias attributes.",
             "required": true,
             "schema": {
@@ -2236,15 +2180,14 @@
           "Universes"
         ],
         "summary": "Deactivates a universe.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe id.",
             "required": true,
             "type": "integer",
@@ -2282,47 +2225,45 @@
           "DeveloperProducts"
         ],
         "summary": "Creates a Developer Product.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "name",
             "in": "query",
+            "name": "name",
             "description": "The name of the developer product.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "description",
             "in": "query",
+            "name": "description",
             "description": "The description of the developer product.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "priceInRobux",
             "in": "query",
+            "name": "priceInRobux",
             "description": "Price of the dev product in robux.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "iconImageAssetId",
             "in": "query",
+            "name": "iconImageAssetId",
             "description": "Asset id of the image to be used as an icon.",
-            "required": false,
             "type": "integer",
             "format": "int64"
           }
@@ -2369,8 +2310,7 @@
         "summary": "Updates a Developer Product.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2378,24 +2318,24 @@
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "productId",
             "in": "path",
+            "name": "productId",
             "description": "The product id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "updateInfo",
             "in": "body",
+            "name": "updateInfo",
             "description": "",
             "required": true,
             "schema": {
@@ -2436,22 +2376,21 @@
         "tags": [
           "Universes"
         ],
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "yearDashMonth",
             "in": "path",
+            "name": "yearDashMonth",
             "required": true,
             "type": "string"
           }
@@ -2492,8 +2431,7 @@
         "summary": "Updates a plugin.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2501,17 +2439,17 @@
         ],
         "parameters": [
           {
-            "name": "pluginId",
             "in": "path",
+            "name": "pluginId",
             "description": "The id of the plugin.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": "The {Roblox.Develop.Api.UpdatePluginRequest}.",
+            "name": "request",
+            "description": "The Roblox.Develop.Api.UpdatePluginRequest.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Roblox.Develop.Api.UpdatePluginRequest"
@@ -2552,23 +2490,22 @@
           "Aliases"
         ],
         "summary": "Deletes an alias.",
-        "consumes": [],
         "produces": [
           "application/json",
           "text/json"
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "name",
             "in": "path",
+            "name": "name",
             "description": "The name of the alias to delete.",
             "required": true,
             "type": "string"
@@ -2605,8 +2542,7 @@
         "summary": "Updates an alias.",
         "consumes": [
           "application/json",
-          "text/json",
-          "application/x-www-form-urlencoded"
+          "text/json"
         ],
         "produces": [
           "application/json",
@@ -2614,23 +2550,23 @@
         ],
         "parameters": [
           {
-            "name": "universeId",
             "in": "path",
+            "name": "universeId",
             "description": "The universe Id.",
             "required": true,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "name",
             "in": "path",
+            "name": "name",
             "description": "The name of the alias to update.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "request",
             "in": "body",
+            "name": "request",
             "description": "The request body containing the alias attributes to update.",
             "required": true,
             "schema": {
@@ -2671,6 +2607,35 @@
     }
   },
   "definitions": {
+    "Roblox.Api.Develop.DeveloperProductResponse": {
+      "description": "A model representing data about an Roblox.Platform.VirtualEconomy.IDeveloperProduct",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "description": "The developer product id",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The developer product name",
+          "type": "string"
+        },
+        "Description": {
+          "description": "The developer product description",
+          "type": "string"
+        },
+        "shopId": {
+          "format": "int64",
+          "description": "The developer product shop id",
+          "type": "integer"
+        },
+        "iconImageAssetId": {
+          "format": "int64",
+          "description": "The developer product icon image asset id",
+          "type": "integer"
+        }
+      }
+    },
     "Roblox.Api.Develop.Models.AliasRequest": {
       "description": "Request model for an asset alias.",
       "type": "object",
@@ -2680,13 +2645,14 @@
           "type": "string"
         },
         "type": {
+          "format": "int32",
           "description": "Alias type. Required when creating an alias, optional for an update.",
           "enum": [
-            "Asset",
-            "DeveloperProduct",
-            "AssetVersion"
+            1,
+            2,
+            3
           ],
-          "type": "string"
+          "type": "integer"
         },
         "targetId": {
           "format": "int64",
@@ -2695,627 +2661,18 @@
         }
       }
     },
-    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
-      "type": "object",
-      "properties": {}
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.Response.AssetVotingModel]": {
+    "Roblox.Api.Develop.Models.DevStatsCreatorDashboardMetadataResponse": {
       "type": "object",
       "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.Response.AssetVotingModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.Response.AssetVotingModel": {
-      "description": "Asset voting information",
-      "type": "object",
-      "properties": {
-        "assetId": {
-          "format": "int64",
-          "description": "The {!:IAsset}'s id.",
-          "type": "integer"
-        },
-        "hasUserVoted": {
-          "description": "Whether the user has voted on this {!:IAsset}.",
+        "isPlayFabDataSourceChartsEnabled": {
           "type": "boolean"
         },
-        "canUserVote": {
-          "description": "Whether the user can vote on this {!:IAsset}.",
-          "type": "boolean"
-        },
-        "shouldShowVotes": {
-          "description": "Whether votes should be shown.",
-          "type": "boolean"
-        },
-        "upVotes": {
-          "format": "int64",
-          "description": "The number of up votes.",
-          "type": "integer"
-        },
-        "downVotes": {
-          "format": "int64",
-          "description": "The number of down votes.",
-          "type": "integer"
-        },
-        "reasonForNotAbleToVote": {
-          "description": "The reason this {!:IAsset} cannot be voted on.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Develop.DeveloperProductResponse": {
-      "description": "A model representing data about an {Roblox.Platform.VirtualEconomy.IDeveloperProduct}",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "Description": {
-          "type": "string"
-        },
-        "shopId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "iconImageAssetId": {
-          "format": "int64",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.DeveloperProductsUpdateModel": {
-      "description": "A model containing information about the developer product to be updated",
-      "type": "object",
-      "properties": {
-        "Name": {
-          "type": "string"
-        },
-        "Description": {
-          "type": "string"
-        },
-        "IconImageAssetId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "PriceInRobux": {
-          "format": "int64",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.GameTemplateModel]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.GameTemplateModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.GameTemplateModel": {
-      "description": "Represents a game template in API endpoint responses.",
-      "type": "object",
-      "properties": {
-        "gameTemplateType": {
-          "description": "The type of this game template.",
-          "type": "string"
-        },
-        "hasTutorials": {
-          "description": "Whether this game template has tutorials.",
-          "type": "boolean"
-        },
-        "universe": {
-          "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseModel",
-          "description": "The universe of this game template."
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.UniverseModel": {
-      "description": "Represents a universe in API endpoint results.",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "description": "The universe Id.",
-          "type": "integer"
-        },
-        "name": {
-          "description": "The name of the universe",
-          "type": "string"
-        },
-        "description": {
-          "description": "The description of the universe",
-          "type": "string"
-        },
-        "isArchived": {
-          "description": "Is this universe archived",
-          "type": "boolean"
-        },
-        "rootPlaceId": {
-          "format": "int64",
-          "description": "The universe's root place id",
-          "type": "integer"
-        },
-        "isActive": {
-          "description": "Is this universe active",
-          "type": "boolean"
-        },
-        "privacyType": {
-          "description": "The universe's privacy type.",
-          "type": "string"
-        },
-        "creatorType": {
-          "description": "The creator type, either \"User\" or \"Group\"",
-          "type": "string"
-        },
-        "creatorTargetId": {
-          "format": "int64",
-          "description": "The id of the user or group that created this universe.",
-          "type": "integer"
-        },
-        "creatorName": {
-          "description": "The name of the creator of the universe.",
-          "type": "string"
-        },
-        "created": {
-          "format": "date-time",
-          "description": "The created {System.DateTime}",
-          "type": "string"
-        },
-        "updated": {
-          "format": "date-time",
-          "description": "The updated {System.DateTime}",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.GameUpdateMessageModel": {
-      "description": "Model for a game update message.",
-      "type": "object",
-      "properties": {
-        "universeId": {
-          "format": "int64",
-          "description": "ID of the game.",
-          "type": "integer"
-        },
-        "createdOn": {
-          "format": "date-time",
-          "description": "Creation date of the update message.",
-          "type": "string"
-        },
-        "createdOnKey": {
-          "description": "Key of Creation date ticks (dynamo table sort key).",
-          "type": "string"
-        },
-        "creatorType": {
-          "description": "Type of the creator entity of the update message: user, group, etc.",
-          "type": "string"
-        },
-        "creatorId": {
-          "format": "int64",
-          "description": "ID of the creator entity (user, group, etc) creating the update message.",
-          "type": "integer"
-        },
-        "creatorName": {
-          "description": "Name of the creator entity.",
-          "type": "string"
-        },
-        "expiredOn": {
-          "format": "date-time",
-          "description": "Expiration date/time of the update message.",
-          "type": "string"
-        },
-        "content": {
-          "description": "Content of the update message.",
-          "type": "string"
-        },
-        "impressions": {
-          "format": "int64",
-          "description": "Number of impressions of the update message.",
-          "type": "integer"
-        },
-        "plays": {
-          "format": "int64",
-          "description": "Number of plays of the update message.",
-          "type": "integer"
-        },
-        "unfollows": {
-          "format": "int64",
-          "description": "Number of unfollows of the update message.",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.Response.GameUpdateTextFilterResponse": {
-      "description": "Response to request to filter game update message text.",
-      "type": "object",
-      "properties": {
-        "filteredGameUpdateText": {
-          "description": "Filtered text.",
-          "type": "string"
-        },
-        "isFiltered": {
-          "description": "Indicates whether the text was filtered/blocked.",
-          "type": "boolean"
-        },
-        "moderationLevel": {
-          "description": "Text filter moderation level.",
-          "enum": [
-            "FullyAcceptable",
-            "PartiallyModerated",
-            "FullyModerated"
-          ],
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int64]": {
-      "type": "object",
-      "properties": {
-        "ExclusiveStartKeyInfo": {
-          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]",
-          "readOnly": true
-        },
-        "CursorRecipe": {
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]": {
-      "type": "object",
-      "properties": {
-        "SortOrder": {
-          "enum": [
-            "Asc",
-            "Desc"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "PagingDirection": {
-          "enum": [
-            "Forward",
-            "Backward"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "Count": {
-          "format": "int32",
-          "type": "integer",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UniverseModel]": {
-      "type": "object",
-      "properties": {
-        "previousPageCursor": {
-          "type": "string"
-        },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.PlaceConfigurationModel": {
-      "description": "A model containing information about a place to be configured",
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.PlaceModel": {
-      "description": "A model containing information about a place",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "description": "Returns the place id.",
-          "type": "integer"
-        },
-        "universeId": {
-          "format": "int64",
-          "description": "Returns the id of the place's universe, or null - if the place is not part of a universe.",
-          "type": "integer"
-        },
-        "name": {
-          "description": "Returns the place name.",
-          "type": "string"
-        },
-        "description": {
-          "description": "Returns the place description.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.Response.PlaceCompatibilitiesResponse": {
-      "type": "object",
-      "properties": {
-        "Compatibilities": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.PlaceCompatibilityModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.PlaceCompatibilityModel": {
-      "description": "A model containing information about a place",
-      "type": "object",
-      "properties": {
-        "status": {
-          "enum": [
-            "Good",
-            "Unknown",
-            "Bad"
-          ],
-          "type": "string"
-        },
-        "platformName": {
-          "type": "string"
-        },
-        "crashRatePercentage": {
-          "format": "double",
-          "type": "number"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Plugins.PluginResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Web.Responses.Plugins.PluginResponse"
-          }
-        }
-      }
-    },
-    "Roblox.Web.Responses.Plugins.PluginResponse": {
-      "description": "Represents information about a plugin.",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
-          "description": "The plugin Id.",
-          "type": "integer"
-        },
-        "name": {
-          "description": "The plugin name.",
-          "type": "string"
-        },
-        "description": {
-          "description": "The plugin description.",
-          "type": "string"
-        },
-        "commentsEnabled": {
-          "description": "Whether or not the plugin allows comments to be posted.",
-          "type": "boolean"
-        },
-        "versionId": {
-          "format": "int64",
-          "description": "plugin version id",
-          "type": "integer"
-        },
-        "created": {
-          "format": "date-time",
-          "description": "The time the plugin was created.",
-          "type": "string"
-        },
-        "updated": {
-          "format": "date-time",
-          "description": "The last time the plugin was updated.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Develop.Api.UpdatePluginRequest": {
-      "description": "A request model for updating a plugin.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "The new plugin name.",
-          "type": "string"
-        },
-        "description": {
-          "description": "The new plugin description.",
-          "type": "string"
-        },
-        "commentsEnabled": {
-          "description": "Whether or not comments should be enabled.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.UniversesSearchRequest": {
-      "description": "Universes search model. Implements {Roblox.Web.WebAPI.Search.ISearchAndSortBaseModel}",
-      "type": "object",
-      "properties": {
-        "Sorts": {
-          "description": "Sort value and {Roblox.DataV2.Core.SortOrder} pairs.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/System.Tuple[System.String,Roblox.DataV2.Core.SortOrder]"
-          }
-        },
-        "RawQuery": {
-          "type": "string"
-        },
-        "Keywords": {
-          "type": "string"
-        },
-        "IsArchived": {
-          "description": "Gets or sets the is archived.",
-          "type": "boolean"
-        },
-        "IsActive": {
-          "description": "Gets or sets the is active.",
-          "type": "boolean"
-        },
-        "UniverseSearchPreset": {
-          "description": "Gets or sets the universe search preset.",
-          "enum": [
-            "User",
-            "Group",
-            "Team"
-          ],
-          "type": "string"
-        },
-        "GroupIds": {
-          "description": "Gets or sets group ids to filter by. Only applies when the Groups filter is being used.",
+        "playFabDataSourceChartsAvailableByKPITypes": {
+          "uniqueItems": true,
           "type": "array",
           "items": {
             "type": "string"
           }
-        }
-      }
-    },
-    "System.Tuple[System.String,Roblox.DataV2.Core.SortOrder]": {
-      "type": "object",
-      "properties": {
-        "Item1": {
-          "type": "string",
-          "readOnly": true
-        },
-        "Item2": {
-          "enum": [
-            "Asc",
-            "Desc"
-          ],
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int32]": {
-      "type": "object",
-      "properties": {
-        "ExclusiveStartKeyInfo": {
-          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int32]",
-          "readOnly": true
-        },
-        "CursorRecipe": {
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int32]": {
-      "type": "object",
-      "properties": {
-        "SortOrder": {
-          "enum": [
-            "Asc",
-            "Desc"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "PagingDirection": {
-          "enum": [
-            "Forward",
-            "Backward"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "Count": {
-          "format": "int32",
-          "type": "integer",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.StatisticsResponse": {
-      "description": "The response model for statistics about a place",
-      "type": "object",
-      "properties": {
-        "placeId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "dataType": {
-          "enum": [
-            "Revenue",
-            "RevenuePerVisit",
-            "AverageVisitLength",
-            "Visits"
-          ],
-          "type": "string"
-        },
-        "dataGranularity": {
-          "enum": [
-            "Hourly",
-            "Daily",
-            "Monthly"
-          ],
-          "type": "string"
-        },
-        "startTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "endTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "data": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.Response.StatisticsRange"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.Response.StatisticsRange": {
-      "description": "The response model for a statistics data range inside of an {Roblox.Api.Develop.Models.StatisticsResponse}.",
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "The data's subtype, e.g. the computer line of a revenue graph",
-          "type": "string",
-          "readOnly": true
-        },
-        "data": {
-          "description": "Samples by timestamp",
-          "type": "object",
-          "additionalProperties": {
-            "format": "double",
-            "type": "number"
-          },
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.Response.StatisticsAgeDataResponse": {
-      "type": "object",
-      "properties": {
-        "isAgeDataAvailable": {
-          "type": "boolean",
-          "readOnly": true
         }
       }
     },
@@ -3383,275 +2740,140 @@
         }
       }
     },
-    "Roblox.Api.Develop.Models.DevStatsCreatorDashboardMetadataResponse": {
+    "Roblox.Api.Develop.Models.DeveloperProductsUpdateModel": {
+      "description": "A model containing information about the developer product to be updated",
       "type": "object",
       "properties": {
-        "isPlayFabDataSourceChartsEnabled": {
+        "Name": {
+          "description": "The name for the developer product",
+          "type": "string"
+        },
+        "Description": {
+          "description": "The new description for the developer product",
+          "type": "string"
+        },
+        "IconImageAssetId": {
+          "format": "int64",
+          "description": "The Id for the icon image",
+          "type": "integer"
+        },
+        "PriceInRobux": {
+          "format": "int64",
+          "description": "The price in Robux",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.GameTemplateModel": {
+      "description": "Represents a game template in API endpoint responses.",
+      "type": "object",
+      "properties": {
+        "gameTemplateType": {
+          "description": "The type of this game template.",
+          "type": "string"
+        },
+        "hasTutorials": {
+          "description": "Whether this game template has tutorials.",
           "type": "boolean"
         },
-        "playFabDataSourceChartsAvailableByKPITypes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "universe": {
+          "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseModel"
         }
       }
     },
-    "Roblox.Api.Develop.Models.UpdateTeamCreateSettingsRequest": {
-      "description": "Team create settings request",
+    "Roblox.Api.Develop.Models.GameUpdateMessageModel": {
+      "description": "Model for a game update message.",
       "type": "object",
       "properties": {
-        "isEnabled": {
-          "description": "Whether or not the universe should be enabled for team create",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.Response.TeamCreateSettingsResponse": {
-      "description": "Team create settings",
-      "type": "object",
-      "properties": {
-        "isEnabled": {
-          "description": "Whether or not the universe should be enabled for team create",
-          "type": "boolean"
-        }
-      }
-    },
-    "System.Threading.CancellationToken": {
-      "type": "object",
-      "properties": {
-        "IsCancellationRequested": {
-          "type": "boolean",
-          "readOnly": true
+        "universeId": {
+          "format": "int64",
+          "description": "ID of the game.",
+          "type": "integer"
         },
-        "CanBeCanceled": {
-          "type": "boolean",
-          "readOnly": true
+        "createdOn": {
+          "format": "date-time",
+          "description": "Creation date of the update message.",
+          "type": "string"
         },
-        "WaitHandle": {
-          "$ref": "#/definitions/System.Threading.WaitHandle",
-          "readOnly": true
-        }
-      }
-    },
-    "System.Threading.WaitHandle": {
-      "type": "object",
-      "properties": {
-        "Handle": {
-          "type": "object"
+        "createdOnKey": {
+          "description": "Key of Creation date ticks (dynamo table sort key).",
+          "type": "string"
         },
-        "SafeWaitHandle": {
-          "$ref": "#/definitions/Microsoft.Win32.SafeHandles.SafeWaitHandle"
-        }
-      }
-    },
-    "Microsoft.Win32.SafeHandles.SafeWaitHandle": {
-      "type": "object",
-      "properties": {
-        "IsInvalid": {
-          "type": "boolean",
-          "readOnly": true
+        "creatorType": {
+          "description": "Type of the creator entity of the update message: user, group, etc.",
+          "type": "string"
         },
-        "IsClosed": {
-          "type": "boolean",
-          "readOnly": true
+        "creatorId": {
+          "format": "int64",
+          "description": "ID of the creator entity (user, group, etc) creating the update message.",
+          "type": "integer"
+        },
+        "creatorName": {
+          "description": "Name of the creator entity.",
+          "type": "string"
+        },
+        "expiredOn": {
+          "format": "date-time",
+          "description": "Expiration date/time of the update message.",
+          "type": "string"
+        },
+        "content": {
+          "description": "Content of the update message.",
+          "type": "string"
+        },
+        "impressions": {
+          "format": "int64",
+          "description": "Number of impressions of the update message.",
+          "type": "integer"
+        },
+        "plays": {
+          "format": "int64",
+          "description": "Number of plays of the update message.",
+          "type": "integer"
+        },
+        "unfollows": {
+          "format": "int64",
+          "description": "Number of unfollows of the update message.",
+          "type": "integer"
         }
       }
     },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel": {
-      "description": "Team create settings of a universe",
+    "Roblox.Api.Develop.Models.GroupModel": {
+      "description": "A model containing information about a group",
       "type": "object",
       "properties": {
         "id": {
           "format": "int64",
-          "description": "Id of the universe.",
-          "type": "integer"
-        },
-        "isEnabled": {
-          "description": "Whether or not the universe is enabled for team create",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.ExclusiveStartRequest[Roblox.Platform.TeamCreate.ITeamCreateMembership]": {
-      "type": "object",
-      "properties": {
-        "ExclusiveStartKeyInfo": {
-          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[Roblox.Platform.TeamCreate.ITeamCreateMembership]",
-          "readOnly": true
-        },
-        "CursorRecipe": {
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[Roblox.Platform.TeamCreate.ITeamCreateMembership]": {
-      "type": "object",
-      "properties": {
-        "SortOrder": {
-          "enum": [
-            "Asc",
-            "Desc"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "PagingDirection": {
-          "enum": [
-            "Forward",
-            "Backward"
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "Count": {
-          "format": "int32",
-          "type": "integer",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UserResponse]": {
-      "type": "object",
-      "properties": {
-        "previousPageCursor": {
-          "type": "string"
-        },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.UserResponse"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.UserResponse": {
-      "description": "A model representing data about an {Roblox.Platform.Membership.IUser}",
-      "type": "object",
-      "properties": {
-        "buildersClubMembershipType": {
-          "enum": [
-            "None",
-            "BC",
-            "TBC",
-            "OBC",
-            "RobloxPremium"
-          ],
-          "type": "string"
-        },
-        "userId": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "username": {
-          "type": "string"
-        },
-        "displayName": {
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.TeamCreateMembershipRequest": {
-      "description": "Request model for a TeamCreate membership",
-      "type": "object",
-      "properties": {
-        "userId": {
-          "format": "int64",
-          "description": "The id of the user.",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Paging.StartIndexCursor": {
-      "type": "object",
-      "properties": {
-        "startIndex": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "discriminator": {
-          "type": "string"
-        },
-        "count": {
-          "format": "int32",
-          "type": "integer"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Users.SkinnyUserResponse]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Web.Responses.Users.SkinnyUserResponse"
-          }
-        }
-      }
-    },
-    "Roblox.Web.Responses.Users.SkinnyUserResponse": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "int64",
+          "description": "The Roblox.Platform.Groups.IGroup's Id.",
           "type": "integer"
         },
         "name": {
-          "type": "string"
-        },
-        "displayName": {
+          "description": "The Roblox.Platform.Groups.IGroup's name.",
           "type": "string"
         }
       }
+    },
+    "Roblox.Api.Develop.Models.IPlaceModel": {
+      "description": "A model containing information about a place",
+      "type": "object"
     },
     "Roblox.Api.Develop.Models.LiveStatsResponseModel": {
       "type": "object",
       "properties": {
         "totalPlayerCount": {
           "format": "int32",
-          "type": "integer",
-          "readOnly": true
+          "type": "integer"
         },
         "playerCountsByDeviceType": {
           "type": "object",
           "additionalProperties": {
             "format": "int32",
             "type": "integer"
-          },
-          "readOnly": true
+          }
         },
         "gameCount": {
           "format": "int32",
-          "type": "integer",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.RevenueReportStatusListResponse": {
-      "description": "The response model for revenue stats about a universe.",
-      "type": "object",
-      "properties": {
-        "monthlyRevenueReportStatusList": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.MonthlyRevenueReportStatus"
-          },
-          "readOnly": true
+          "type": "integer"
         }
       }
     },
@@ -3672,347 +2894,76 @@
           "readOnly": true
         },
         "RevenueReportStatus": {
-          "description": "The {Roblox.Api.Develop.Models.MonthlyRevenueReportStatus.RevenueReportStatus} for the given month and year.",
+          "format": "int32",
+          "description": "The Roblox.Api.Develop.Models.MonthlyRevenueReportStatus.RevenueReportStatus for the given month and year. ['NotGenerated' = 0, 'Queued' = 1, 'ReadyForDownload' = 2]",
           "enum": [
-            "NotGenerated",
-            "Queued",
-            "ReadyForDownload"
+            0,
+            1,
+            2
           ],
-          "type": "string",
+          "type": "integer",
           "readOnly": true
         }
       }
     },
-    "Roblox.Api.Develop.Models.RequestRevenueReportResponse": {
-      "type": "object",
-      "properties": {
-        "revenueReportStatus": {
-          "enum": [
-            "NotGenerated",
-            "Queued",
-            "ReadyForDownload"
-          ],
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.UniversePermissionsModel": {
-      "description": "A model containing information about a universe permissions",
-      "type": "object",
-      "properties": {
-        "canManage": {
-          "description": "Determines whether or not consumer can manage the target universe",
-          "type": "boolean"
-        },
-        "canCloudEdit": {
-          "description": "Determines whether or not consumer can cloud the target universe\r\nThis is only nullable/optional in the context of https://develop.roblox.com/docs#!/Universes/get_v1_universes_universeId_context_permissions endpoint which is consumed only internally. It should be computed and set for all other usages.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseIdPermissionsModel]": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseIdPermissionsModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.UniverseIdPermissionsModel": {
-      "description": "A model containing information about a universe permissions",
-      "type": "object",
-      "properties": {
-        "universeId": {
-          "format": "int64",
-          "description": "The universe Id these permissions reference",
-          "type": "integer"
-        },
-        "canManage": {
-          "description": "Determines whether or not consumer can manage the target universe",
-          "type": "boolean"
-        },
-        "canCloudEdit": {
-          "description": "Determines whether or not consumer can cloud the target universe\r\nThis is only nullable/optional in the context of https://develop.roblox.com/docs#!/Universes/get_v1_universes_universeId_context_permissions endpoint which is consumed only internally. It should be computed and set for all other usages.",
-          "type": "boolean"
-        }
-      }
-    },
-    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.IPlaceModel]": {
-      "type": "object",
-      "properties": {
-        "previousPageCursor": {
-          "type": "string"
-        },
-        "nextPageCursor": {
-          "type": "string"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.IPlaceModel"
-          }
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.IPlaceModel": {
+    "Roblox.Api.Develop.Models.PlaceCompatibilityModel": {
       "description": "A model containing information about a place",
       "type": "object",
-      "properties": {}
-    },
-    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseModel]": {
-      "type": "object",
       "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseModel"
-          }
+        "status": {
+          "format": "int32",
+          "description": " ['Good' = 0, 'Unknown' = 1, 'Bad' = 2]",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "platformName": {
+          "type": "string"
+        },
+        "crashRatePercentage": {
+          "format": "double",
+          "type": "number"
         }
       }
     },
-    "Roblox.Api.Develop.Models.UniverseSettingsResponse": {
-      "description": "Model for UniverseSettings controller responses",
+    "Roblox.Api.Develop.Models.PlaceConfigurationModel": {
+      "description": "A model containing information about a place to be configured",
       "type": "object",
       "properties": {
-        "allowPrivateServers": {
-          "type": "boolean"
+        "name": {
+          "description": "The name for the place.",
+          "type": "string"
         },
-        "privateServerPrice": {
-          "format": "int64",
-          "type": "integer"
-        },
+        "description": {
+          "description": "The new description for the place.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.PlaceModel": {
+      "description": "A model containing information about a place",
+      "type": "object",
+      "properties": {
         "id": {
           "format": "int64",
-          "description": "The universe Id.",
+          "description": "Returns the place id.",
+          "type": "integer"
+        },
+        "universeId": {
+          "format": "int64",
+          "description": "Returns the id of the place's universe, or null - if the place is not part of a universe.",
           "type": "integer"
         },
         "name": {
-          "description": "The universe name.",
+          "description": "Returns the place name.",
           "type": "string"
         },
-        "universeAvatarType": {
-          "description": "Which avatar types are allowed in the universe.",
-          "enum": [
-            "MorphToR6",
-            "PlayerChoice",
-            "MorphToR15"
-          ],
+        "description": {
+          "description": "Returns the place description.",
           "type": "string"
-        },
-        "universeScaleType": {
-          "description": "Whether custom scales allowed in the universe.",
-          "enum": [
-            "NoScales",
-            "AllScales"
-          ],
-          "type": "string"
-        },
-        "universeAnimationType": {
-          "description": "Whether custom animations are allowed in the universe.",
-          "enum": [
-            "Standard",
-            "PlayerChoice"
-          ],
-          "type": "string"
-        },
-        "universeCollisionType": {
-          "description": "What type of collisions are used by the universe.",
-          "enum": [
-            "InnerBox",
-            "OuterBox"
-          ],
-          "type": "string"
-        },
-        "universeBodyType": {
-          "description": "What avatar body types are allowed by the universe.",
-          "enum": [
-            "Standard",
-            "PlayerChoice"
-          ],
-          "type": "string"
-        },
-        "universeJointPositioningType": {
-          "description": "What avatar joint positioning is allowed by the universe.",
-          "enum": [
-            "Standard",
-            "ArtistIntent"
-          ],
-          "type": "string"
-        },
-        "isArchived": {
-          "description": "Archive status of the universe",
-          "type": "boolean"
-        },
-        "isFriendsOnly": {
-          "description": "Whether game access is limited to friends for user-owned games or group members for group-owned games.",
-          "type": "boolean"
-        },
-        "genre": {
-          "description": "Game genre.",
-          "enum": [
-            "All",
-            "Tutorial",
-            "Scary",
-            "TownAndCity",
-            "War",
-            "Funny",
-            "Fantasy",
-            "Adventure",
-            "SciFi",
-            "Pirate",
-            "FPS",
-            "RPG",
-            "Sports",
-            "Ninja",
-            "WildWest"
-          ],
-          "type": "string"
-        },
-        "playableDevices": {
-          "description": "List of device types this game can be played on.",
-          "type": "array",
-          "items": {
-            "enum": [
-              "Computer",
-              "Phone",
-              "Tablet",
-              "Console",
-              "VR"
-            ],
-            "type": "string"
-          }
-        },
-        "isForSale": {
-          "description": "Whether the game is offered for sale.",
-          "type": "boolean"
-        },
-        "price": {
-          "format": "int64",
-          "description": "Price of the game, in Robux.",
-          "type": "integer"
-        },
-        "isStudioAccessToApisAllowed": {
-          "description": "Whether studio access to APIs is allowed or not.",
-          "type": "boolean"
-        },
-        "privacyType": {
-          "description": "Privacy type of the universe.",
-          "type": "string"
-        }
-      }
-    },
-    "Roblox.Api.Develop.Models.UniverseSettingsRequest": {
-      "description": "Model for UniverseSettings patch requests",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "The name of the universe.",
-          "type": "string"
-        },
-        "universeAvatarType": {
-          "description": "Which avatar types are allowed in the universe.",
-          "enum": [
-            "MorphToR6",
-            "PlayerChoice",
-            "MorphToR15"
-          ],
-          "type": "string"
-        },
-        "universeScaleType": {
-          "description": "Whether custom scales allowed in the universe.",
-          "enum": [
-            "NoScales",
-            "AllScales"
-          ],
-          "type": "string"
-        },
-        "universeAnimationType": {
-          "description": "Whether custom animations are allowed in the universe.",
-          "enum": [
-            "Standard",
-            "PlayerChoice"
-          ],
-          "type": "string"
-        },
-        "universeCollisionType": {
-          "description": "What type of collisions are used by the universe.",
-          "enum": [
-            "InnerBox",
-            "OuterBox"
-          ],
-          "type": "string"
-        },
-        "universeBodyType": {
-          "description": "What avatar body types are allowed by the universe.",
-          "enum": [
-            "Standard",
-            "PlayerChoice"
-          ],
-          "type": "string"
-        },
-        "universeJointPositioningType": {
-          "description": "What avatar joint positioning type is allowed by the universe.",
-          "enum": [
-            "Standard",
-            "ArtistIntent"
-          ],
-          "type": "string"
-        },
-        "isArchived": {
-          "description": "Archive status of the universe.",
-          "type": "boolean"
-        },
-        "isFriendsOnly": {
-          "description": "Whether game access is limited to friends for user-owned games or group members for group-owned games.",
-          "type": "boolean"
-        },
-        "genre": {
-          "description": "Game genre.",
-          "enum": [
-            "All",
-            "Tutorial",
-            "Scary",
-            "TownAndCity",
-            "War",
-            "Funny",
-            "Fantasy",
-            "Adventure",
-            "SciFi",
-            "Pirate",
-            "FPS",
-            "RPG",
-            "Sports",
-            "Ninja",
-            "WildWest"
-          ],
-          "type": "string"
-        },
-        "playableDevices": {
-          "description": "List of device types this game can be played on.",
-          "type": "array",
-          "items": {
-            "enum": [
-              "Computer",
-              "Phone",
-              "Tablet",
-              "Console",
-              "VR"
-            ],
-            "type": "string"
-          }
-        },
-        "isForSale": {
-          "description": "Whether the game is offered for sale.",
-          "type": "boolean"
-        },
-        "price": {
-          "format": "int64",
-          "description": "Price of the game, in Robux.",
-          "type": "integer"
         }
       }
     },
@@ -4041,6 +2992,880 @@
         }
       }
     },
+    "Roblox.Api.Develop.Models.RequestRevenueReportResponse": {
+      "type": "object",
+      "properties": {
+        "revenueReportStatus": {
+          "format": "int32",
+          "description": " ['NotGenerated' = 0, 'Queued' = 1, 'ReadyForDownload' = 2]",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.Response.AssetVotingModel": {
+      "description": "Asset voting information",
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "format": "int64",
+          "description": "The !:IAsset's id.",
+          "type": "integer"
+        },
+        "hasUserVoted": {
+          "description": "Whether the user has voted on this !:IAsset.",
+          "type": "boolean"
+        },
+        "canUserVote": {
+          "description": "Whether the user can vote on this !:IAsset.",
+          "type": "boolean"
+        },
+        "shouldShowVotes": {
+          "description": "Whether votes should be shown.",
+          "type": "boolean"
+        },
+        "upVotes": {
+          "format": "int64",
+          "description": "The number of up votes.",
+          "type": "integer"
+        },
+        "downVotes": {
+          "format": "int64",
+          "description": "The number of down votes.",
+          "type": "integer"
+        },
+        "reasonForNotAbleToVote": {
+          "description": "The reason this !:IAsset cannot be voted on.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.Response.GameUpdateTextFilterResponse": {
+      "description": "Response to request to filter game update message text.",
+      "type": "object",
+      "properties": {
+        "filteredGameUpdateText": {
+          "description": "Filtered text.",
+          "type": "string"
+        },
+        "isFiltered": {
+          "description": "Indicates whether the text was filtered/blocked.",
+          "type": "boolean"
+        },
+        "moderationLevel": {
+          "format": "int32",
+          "description": "Text filter moderation level. ['FullyAcceptable' = 1, 'PartiallyModerated' = 2, 'FullyModerated' = 3]",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.Response.PlaceCompatibilitiesResponse": {
+      "type": "object",
+      "properties": {
+        "Compatibilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.PlaceCompatibilityModel"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.Response.StatisticsAgeDataResponse": {
+      "type": "object",
+      "properties": {
+        "isAgeDataAvailable": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.Response.StatisticsRange": {
+      "description": "The response model for a statistics data range inside of an Roblox.Api.Develop.Models.StatisticsResponse.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The data's subtype, e.g. the computer line of a revenue graph",
+          "type": "string",
+          "readOnly": true
+        },
+        "data": {
+          "description": "Samples by timestamp",
+          "type": "object",
+          "additionalProperties": {
+            "format": "double",
+            "type": "number"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.Response.TeamCreateSettingsResponse": {
+      "description": "Team create settings",
+      "type": "object",
+      "properties": {
+        "isEnabled": {
+          "description": "Whether or not the universe should be enabled for team create",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.RevenueReportStatusListResponse": {
+      "description": "The response model for revenue stats about a universe.",
+      "type": "object",
+      "properties": {
+        "monthlyRevenueReportStatusList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.MonthlyRevenueReportStatus"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.StatisticsResponse": {
+      "description": "The response model for statistics about a place",
+      "type": "object",
+      "properties": {
+        "placeId": {
+          "format": "int64",
+          "description": "The place belonging to the statistics",
+          "type": "integer"
+        },
+        "dataType": {
+          "format": "int32",
+          "description": "The statistics's data type ['Revenue' = 0, 'RevenuePerVisit' = 1, 'AverageVisitLength' = 2, 'Visits' = 3]",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "dataGranularity": {
+          "format": "int32",
+          "description": "The statistics's data granularity ['Hourly' = 0, 'Daily' = 1, 'Monthly' = 2]",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "startTime": {
+          "format": "date-time",
+          "description": "Time of the first sample",
+          "type": "string"
+        },
+        "endTime": {
+          "format": "date-time",
+          "description": "Time of the last sample",
+          "type": "string"
+        },
+        "data": {
+          "description": "The actual data.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.Response.StatisticsRange"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.TeamCreateMembershipRequest": {
+      "description": "Request model for a TeamCreate membership",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "format": "int64",
+          "description": "The id of the user.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UniverseIdPermissionsModel": {
+      "description": "A model containing information about a universe permissions",
+      "type": "object",
+      "properties": {
+        "universeId": {
+          "format": "int64",
+          "description": "The universe Id these permissions reference",
+          "type": "integer"
+        },
+        "canManage": {
+          "description": "Determines whether or not consumer can manage the target universe",
+          "type": "boolean"
+        },
+        "canCloudEdit": {
+          "description": "Determines whether or not consumer can cloud the target universe\r\nThis is only nullable/optional in the context of https://develop.roblox.com/docs#!/Universes/get_v1_universes_universeId_context_permissions endpoint which is consumed only internally. It should be computed and set for all other usages.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UniverseModel": {
+      "description": "Represents a universe in API endpoint results.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "description": "The universe Id.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The name of the universe",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the universe",
+          "type": "string"
+        },
+        "isArchived": {
+          "description": "Is this universe archived",
+          "type": "boolean"
+        },
+        "rootPlaceId": {
+          "format": "int64",
+          "description": "The universe's root place id",
+          "type": "integer"
+        },
+        "isActive": {
+          "description": "Is this universe active",
+          "type": "boolean"
+        },
+        "privacyType": {
+          "description": "The universe's privacy type.",
+          "type": "string"
+        },
+        "creatorType": {
+          "description": "The creator type, either \"User\" or \"Group\"",
+          "type": "string"
+        },
+        "creatorTargetId": {
+          "format": "int64",
+          "description": "The id of the user or group that created this universe.",
+          "type": "integer"
+        },
+        "creatorName": {
+          "description": "The name of the creator of the universe.",
+          "type": "string"
+        },
+        "created": {
+          "format": "date-time",
+          "description": "The created System.DateTime",
+          "type": "string"
+        },
+        "updated": {
+          "format": "date-time",
+          "description": "The updated System.DateTime",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UniversePermissionsModel": {
+      "description": "A model containing information about a universe permissions",
+      "type": "object",
+      "properties": {
+        "canManage": {
+          "description": "Determines whether or not consumer can manage the target universe",
+          "type": "boolean"
+        },
+        "canCloudEdit": {
+          "description": "Determines whether or not consumer can cloud the target universe\r\nThis is only nullable/optional in the context of https://develop.roblox.com/docs#!/Universes/get_v1_universes_universeId_context_permissions endpoint which is consumed only internally. It should be computed and set for all other usages.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UniverseSettingsRequest": {
+      "description": "Model for UniverseSettings patch requests",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the universe.",
+          "type": "string"
+        },
+        "universeAvatarType": {
+          "format": "int32",
+          "description": "Which avatar types are allowed in the universe.",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "universeScaleType": {
+          "format": "int32",
+          "description": "Whether custom scales allowed in the universe.",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "universeAnimationType": {
+          "format": "int32",
+          "description": "Whether custom animations are allowed in the universe.",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "universeCollisionType": {
+          "format": "int32",
+          "description": "What type of collisions are used by the universe.",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "universeBodyType": {
+          "format": "int32",
+          "description": "What avatar body types are allowed by the universe.",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "universeJointPositioningType": {
+          "format": "int32",
+          "description": "What avatar joint positioning type is allowed by the universe.",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "isArchived": {
+          "description": "Archive status of the universe.",
+          "type": "boolean"
+        },
+        "isFriendsOnly": {
+          "description": "Whether game access is limited to friends for user-owned games or group members for group-owned games.",
+          "type": "boolean"
+        },
+        "genre": {
+          "format": "int32",
+          "description": "Game genre.",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "type": "integer"
+        },
+        "playableDevices": {
+          "description": "List of device types this game can be played on.",
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "description": " ['Computer' = 1, 'Phone' = 2, 'Tablet' = 3, 'Console' = 4, 'VR' = 5]",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "type": "integer"
+          }
+        },
+        "isForSale": {
+          "description": "Whether the game is offered for sale.",
+          "type": "boolean"
+        },
+        "price": {
+          "format": "int64",
+          "description": "Price of the game, in Robux.",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UniverseSettingsResponse": {
+      "description": "Model for UniverseSettings controller responses",
+      "type": "object",
+      "properties": {
+        "allowPrivateServers": {
+          "description": "If the universe allows the use of private servers.",
+          "type": "boolean"
+        },
+        "privateServerPrice": {
+          "format": "int64",
+          "description": "The price to purchase a private server in robux.",
+          "type": "integer"
+        },
+        "id": {
+          "format": "int64",
+          "description": "The universe Id.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The universe name.",
+          "type": "string"
+        },
+        "universeAvatarType": {
+          "format": "int32",
+          "description": "Which avatar types are allowed in the universe. ['MorphToR6' = 1, 'PlayerChoice' = 2, 'MorphToR15' = 3]",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "universeScaleType": {
+          "format": "int32",
+          "description": "Whether custom scales allowed in the universe. ['NoScales' = 1, 'AllScales' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "universeAnimationType": {
+          "format": "int32",
+          "description": "Whether custom animations are allowed in the universe. ['Standard' = 1, 'PlayerChoice' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "universeCollisionType": {
+          "format": "int32",
+          "description": "What type of collisions are used by the universe. ['InnerBox' = 1, 'OuterBox' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "universeBodyType": {
+          "format": "int32",
+          "description": "What avatar body types are allowed by the universe. ['Standard' = 1, 'PlayerChoice' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "universeJointPositioningType": {
+          "format": "int32",
+          "description": "What avatar joint positioning is allowed by the universe. ['Standard' = 1, 'ArtistIntent' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "isArchived": {
+          "description": "Archive status of the universe",
+          "type": "boolean"
+        },
+        "isFriendsOnly": {
+          "description": "Whether game access is limited to friends for user-owned games or group members for group-owned games.",
+          "type": "boolean"
+        },
+        "genre": {
+          "format": "int32",
+          "description": "Game genre. ['All' = 0, 'Tutorial' = 1, 'Scary' = 2, 'TownAndCity' = 3, 'War' = 4, 'Funny' = 5, 'Fantasy' = 6, 'Adventure' = 7, 'SciFi' = 8, 'Pirate' = 9, 'FPS' = 10, 'RPG' = 11, 'Sports' = 12, 'Ninja' = 13, 'WildWest' = 14]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "type": "integer"
+        },
+        "playableDevices": {
+          "description": "List of device types this game can be played on.",
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "description": " ['Computer' = 1, 'Phone' = 2, 'Tablet' = 3, 'Console' = 4, 'VR' = 5]",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "type": "integer"
+          }
+        },
+        "isForSale": {
+          "description": "Whether the game is offered for sale.",
+          "type": "boolean"
+        },
+        "price": {
+          "format": "int64",
+          "description": "Price of the game, in Robux.",
+          "type": "integer"
+        },
+        "isStudioAccessToApisAllowed": {
+          "description": "Whether studio access to APIs is allowed or not.",
+          "type": "boolean"
+        },
+        "privacyType": {
+          "description": "Privacy type of the universe.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel": {
+      "description": "Team create settings of a universe",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "description": "Id of the universe.",
+          "type": "integer"
+        },
+        "isEnabled": {
+          "description": "Whether or not the universe is enabled for team create",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UniversesSearchRequest": {
+      "description": "Universes search model. Implements Roblox.Api.Develop.Search.ISearchAndSortBaseModel",
+      "type": "object",
+      "properties": {
+        "RawQuery": {
+          "type": "string"
+        },
+        "Keywords": {
+          "type": "string"
+        },
+        "IsArchived": {
+          "description": "Gets or sets the is archived.",
+          "type": "boolean"
+        },
+        "IsActive": {
+          "description": "Gets or sets the is active.",
+          "type": "boolean"
+        },
+        "UniverseSearchPreset": {
+          "format": "int32",
+          "description": "Gets or sets the universe search preset. ['User' = 0, 'Group' = 1, 'Team' = 2]",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "GroupIds": {
+          "description": "Gets or sets group ids to filter by. Only applies when the Groups filter is being used.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Sorts": {
+          "description": "Sort value and Roblox.DataV2.Core.SortOrder pairs.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/System.Tuple[System.String,Roblox.DataV2.Core.SortOrder]"
+          }
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UpdateTeamCreateSettingsRequest": {
+      "description": "Team create settings request",
+      "type": "object",
+      "properties": {
+        "isEnabled": {
+          "description": "Whether or not the universe should be enabled for team create",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Api.Develop.Models.UserResponse": {
+      "description": "A model representing data about an Roblox.Platform.Membership.IUser",
+      "type": "object",
+      "properties": {
+        "buildersClubMembershipType": {
+          "format": "int32",
+          "description": "The user's builders club membership type ['None' = 0, 'BC' = 1, 'TBC' = 2, 'OBC' = 3, 'RobloxPremium' = 4]",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "userId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Develop.Api.UpdatePluginRequest": {
+      "description": "A request model for updating a plugin.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The new plugin name.",
+          "type": "string"
+        },
+        "description": {
+          "description": "The new plugin description.",
+          "type": "string"
+        },
+        "commentsEnabled": {
+          "description": "Whether or not comments should be enabled.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Roblox.Paging.StartIndexCursor": {
+      "type": "object",
+      "properties": {
+        "startIndex": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "discriminator": {
+          "type": "string"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[Roblox.Platform.TeamCreate.ITeamCreateMembership]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "format": "int32",
+          "description": " ['Asc' = 1, 'Desc' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "format": "int32",
+          "description": " ['Forward' = 1, 'Backward' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int32]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "format": "int32",
+          "description": " ['Asc' = 1, 'Desc' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "format": "int32",
+          "description": " ['Forward' = 1, 'Backward' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]": {
+      "type": "object",
+      "properties": {
+        "SortOrder": {
+          "format": "int32",
+          "description": " ['Asc' = 1, 'Desc' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "PagingDirection": {
+          "format": "int32",
+          "description": " ['Forward' = 1, 'Backward' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer",
+          "readOnly": true
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "Roblox.Web.Responses.Plugins.PluginResponse": {
+      "description": "Represents information about a plugin.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "description": "The plugin Id.",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The plugin name.",
+          "type": "string"
+        },
+        "description": {
+          "description": "The plugin description.",
+          "type": "string"
+        },
+        "commentsEnabled": {
+          "description": "Whether or not the plugin allows comments to be posted.",
+          "type": "boolean"
+        },
+        "versionId": {
+          "format": "int64",
+          "description": "plugin version id",
+          "type": "integer"
+        },
+        "created": {
+          "format": "date-time",
+          "description": "The time the plugin was created.",
+          "type": "string"
+        },
+        "updated": {
+          "format": "date-time",
+          "description": "The last time the plugin was updated.",
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.Responses.Users.SkinnyUserResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ApiEmptyResponseModel": {
+      "type": "object"
+    },
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[Roblox.Platform.TeamCreate.ITeamCreateMembership]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[Roblox.Platform.TeamCreate.ITeamCreateMembership]"
+        },
+        "CursorRecipe": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int32]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int32]"
+        },
+        "CursorRecipe": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.ExclusiveStartRequest[System.Int64]": {
+      "type": "object",
+      "properties": {
+        "ExclusiveStartKeyInfo": {
+          "$ref": "#/definitions/Roblox.Platform.Core.ExclusiveStartPaging.IExclusiveStartKeyInfo[System.Int64]"
+        },
+        "CursorRecipe": {
+          "type": "string"
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.GameTemplateModel]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.GameTemplateModel"
+          }
+        }
+      }
+    },
     "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.GroupModel]": {
       "type": "object",
       "properties": {
@@ -4052,16 +3877,137 @@
         }
       }
     },
-    "Roblox.Api.Develop.Models.GroupModel": {
-      "description": "A model containing information about a group",
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.Response.AssetVotingModel]": {
       "type": "object",
       "properties": {
-        "id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "name": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.Response.AssetVotingModel"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseIdPermissionsModel]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseIdPermissionsModel"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseModel]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseModel"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseTeamCreateSettingsModel"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Plugins.PluginResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Responses.Plugins.PluginResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiArrayResponse[Roblox.Web.Responses.Users.SkinnyUserResponse]": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Web.Responses.Users.SkinnyUserResponse"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.IPlaceModel]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
           "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.IPlaceModel"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UniverseModel]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.UniverseModel"
+          }
+        }
+      }
+    },
+    "Roblox.Web.WebAPI.Models.ApiPageResponse[Roblox.Api.Develop.Models.UserResponse]": {
+      "type": "object",
+      "properties": {
+        "previousPageCursor": {
+          "type": "string"
+        },
+        "nextPageCursor": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roblox.Api.Develop.Models.UserResponse"
+          }
+        }
+      }
+    },
+    "System.Tuple[System.String,Roblox.DataV2.Core.SortOrder]": {
+      "type": "object",
+      "properties": {
+        "m_Item1": {
+          "type": "string"
+        },
+        "m_Item2": {
+          "format": "int32",
+          "description": " ['Asc' = 1, 'Desc' = 2]",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
         }
       }
     }
