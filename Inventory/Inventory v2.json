@@ -190,6 +190,12 @@
           },
           {
             "in": "query",
+            "name": "filterDisapprovedAssets",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "The number of results per request.",
             "type": "integer",
@@ -326,13 +332,9 @@
   },
   "definitions": {
     "Roblox.Inventory.Api.Models.InventoryItemModel": {
-      "description": "Extends Roblox.Inventory.Api.Models.UserAssetModel with additional information for inventory items.",
+      "description": "A model containing information about an inventory item.",
       "type": "object",
       "properties": {
-        "assetName": {
-          "description": "The asset name of the user asset",
-          "type": "string"
-        },
         "userAssetId": {
           "format": "int64",
           "description": "The user asset id",
@@ -342,6 +344,18 @@
           "format": "int64",
           "description": "The asset id of the user asset",
           "type": "integer"
+        },
+        "assetName": {
+          "description": "The asset name of the user asset",
+          "type": "string"
+        },
+        "collectibleItemId": {
+          "description": "The id of the corresponding collectible item",
+          "type": "string"
+        },
+        "collectibleItemInstanceId": {
+          "description": "The id of the corresponding collectible item instance",
+          "type": "string"
         },
         "serialNumber": {
           "format": "int64",
@@ -394,27 +408,21 @@
       "description": "An ExclusiveStartKey that contains a grouping of exclusive start keys.",
       "type": "object",
       "properties": {
-        "singleTypeExclusiveStartKeys": {
+        "types": {
+          "description": "The types of the SingleTypeExclusiveStartKeys",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Roblox.Inventory.Api.SingleTypeExclusiveStartKey[System.Int32,System.Int64]"
+            "format": "int32",
+            "type": "integer"
           }
-        }
-      }
-    },
-    "Roblox.Inventory.Api.SingleTypeExclusiveStartKey[System.Int32,System.Int64]": {
-      "description": "One grouping of an exclusive start key <typeparamref name=\"TExclusiveStartKey\" /> and an item type <typeparamref name=\"TType\" />",
-      "type": "object",
-      "properties": {
-        "type": {
-          "format": "int32",
-          "description": "Gets or sets the <typeparamref name=\"TType\" />.",
-          "type": "integer"
         },
-        "exclusiveStartKey": {
-          "format": "int64",
-          "description": "Gets or sets the <typeparamref name=\"TExclusiveStartKey\" /> exclusiveStartKey.",
-          "type": "integer"
+        "keys": {
+          "description": "The values of the SingleTypeExclusiveStartKeys",
+          "type": "array",
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          }
         }
       }
     },
